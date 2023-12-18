@@ -69,11 +69,17 @@
         <section class="row">
             <p></p>
             @foreach ($properties as $propertie)
+
+            @php
+                //get first image
+                $imgpri = explode("|", $propertie->images);
+            @endphp
+
                 <article class="col-sm-4" style="padding-left: 0px !important; padding-right: 0px !important">
                     <div class="card rounded-0 h-100">
                         <div class="card-body">
                             <div class="position-relative">
-                                <img class="img-fluid" src="https://www.shutterstock.com/image-photo/interior-light-living-room-grey-600nw-2338828941.jpg" alt="">
+                                <img class="img-fluid" src="https://casacredito.com/uploads/listing/{{$imgpri[0]}}" alt="">
                                 <div class="position-absolute" style="top: 5px; left: 5px">
                                     <span class="bg-white text-dark px-2 rounded-pill" style="font-size: small; font-weight: 600">Propiedad destacada</span>
                                 </div>
