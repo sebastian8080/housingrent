@@ -67,7 +67,7 @@
 
 {{-- este section es momentaneo hasta subir el filtro --}}
 <section class="container">
-    <section class="">
+    <section class="p-5">
         <h2 class="text-center display-4 fw-bold">Las mejores propiedades <br> en renta del Ecuador</h2>
     </section>
 </section>
