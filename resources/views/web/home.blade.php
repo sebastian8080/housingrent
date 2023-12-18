@@ -136,7 +136,7 @@
 
         coordinates.forEach(element => {
             L.marker([element.lat, element.lng]).addTo(map)
-                .bindPopup(`<div class="text-center"> <b> ${element.listing_title} </b> <br> <br> <img class='w-100' src='https://www.shutterstock.com/image-photo/interior-light-living-room-grey-600nw-2338828941.jpg' /> <br> <br> <a href="#">Ver propiedad</a></div>`)
+                .bindPopup(`<div class="text-center"> <b> ${element.listing_title} </b> <br> <br> <img class='w-100' src='https://casacredito.com/uploads/listing/{{$imgpri[0]}}' /> <br> <br> <a href="#">Ver propiedad</a></div>`)
                 .openPopup(); 
         });
 
