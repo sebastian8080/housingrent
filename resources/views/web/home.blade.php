@@ -135,8 +135,9 @@
         let coordinates = @json($properties) 
 
         coordinates.forEach(element => {
+            let images = element.images.split('|')[0];
             L.marker([element.lat, element.lng]).addTo(map)
-                .bindPopup(`<div class="text-center"> <b> ${element.listing_title} </b> <br> <br> <img class='w-100' src='https://casacredito.com/uploads/listing/{{$imgpri[0]}}' /> <br> <br> <a href="#">Ver propiedad</a></div>`)
+                .bindPopup(`<div class="text-center"> <b> ${element.listing_title} </b> <br> <br> <img class='w-100' src='https://casacredito.com/uploads/listing/${images}' /> <br> <br> <a href="#">Ver propiedad</a></div>`)
                 .openPopup(); 
         });
 
