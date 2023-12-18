@@ -67,6 +67,7 @@
 <section class="row">
     <section class="col-sm-6">
         <section class="row">
+            <p></p>
             @foreach ($properties as $propertie)
                 <article class="col-sm-4" style="padding-left: 0px !important; padding-right: 0px !important">
                     <div class="card rounded-0 h-100">
