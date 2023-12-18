@@ -7,10 +7,18 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
     <style>
+        html, body{
+            width: 100% !important;
+            overflow-x: hidden !important;
+        }
         #map { 
             width: 100%;
             height: 580px;
             box-shadow: 5px 5px 5px #888;
+        }
+        @media screen and (max-width: 580px){
+            .redes{display: none !important}
+            .text-title{position: relative !important; height: auto !important}
         }
     </style>
 
@@ -22,10 +30,10 @@
 <section class="d-flex">
     <section class="position-relative">
         <img class="img-fluid" src="{{ asset('img/home-banner.png') }}" alt="">
-        <div class="position-absolute top-0 left-0 w-100 h-100">
+        <div class="position-absolute top-0 left-0 w-100 h-100 text-title">
             <div class="row h-100">
                 <div class="col-sm-6"></div>
-                <div class="col-sm-4 d-flex align-items-center">
+                <div class="col-sm-6 d-flex align-items-center p-5">
                     <div>
                         <h1 class="fw-bold display-5">Encuentra tu <br> hogar perfecto</h1>
                         <p>Nuestra plataforma esta diseñana para facilitar la búsqueda de las propiedades, desde aquellas que permiten mascotas hasta aquellas con características expecíficas que se adaptan a tus necesidades. <b>¡Tu hogar perfecto te espera!</b></p>
@@ -34,7 +42,7 @@
             </div>
         </div>
     </section>
-    <section style="width: 100px">
+    <section style="width: 100px" class="redes">
         <div>
             <div style="-webkit-transform: rotate(-270deg); ">
                 <p>Instagram</p>
@@ -58,8 +66,8 @@
 </section> --}}
 
 {{-- este section es momentaneo hasta subir el filtro --}}
-<section class="container pb-5">
-    <section class="p-5">
+<section class="container">
+    <section class="">
         <h2 class="text-center display-4 fw-bold">Las mejores propiedades <br> en renta del Ecuador</h2>
     </section>
 </section>
