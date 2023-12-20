@@ -223,7 +223,7 @@
                                     <div class="rounded-circle d-flex justify-content-center align-items-center" style="border: 1px solid #242b40a2; width: 30px; height: 30px">
                                         <i class="fa-brands fa-whatsapp"></i>
                                     </div>
-                                    <a style="text-decoration: none" href="https://api.whatsapp.com/send?phone=593991261249&text=Hola%20Housing%20Rent%20Group,%20deseo%20consultar%20por%20sus%20servicios" class="mt-1 text-dark">+593 99 126 1249</a>
+                                    <a style="text-decoration: none" href="https://api.whatsapp.com/send?phone=593991261249&text=Hola%20*Housing%20Rent%20Group*,%20deseo%20consultar%20por%20sus%20servicios" class="mt-1 text-dark">+593 99 126 1249</a>
                                 </div>
 
                             </form>
