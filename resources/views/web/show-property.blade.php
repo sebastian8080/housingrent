@@ -3,6 +3,16 @@
 @section('title', $listing->listing_title)
 
 @section('css')
+<meta name="title" content="{{ $listing->listing_title }}" />
+<meta name="description" content="{{ $listing->listing_description }}" />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="{{ URL::current() }}" />
+<meta property="og:title" content="{{ $listing->listing_title }}" />
+<meta property="og:description" content="{{ $listing->listing_description }}" />
+<meta property="og:image" content="https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[0]}}" />
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
@@ -16,6 +26,7 @@
         }
         .images-desktop{display: none !important}
         .images-mobile{display: block !important}
+        .btn-modal-images{display: none !important}
     }
 </style>
 @endsection
@@ -52,9 +63,9 @@
 
                     <div class="col-sm-4 d-grid gap-3">
 
-                        <div style="height: 150px; border-radius: 0px 25px 0px 0px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[0]}}')"></div>
-                        <div style="height: 150px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[0]}}')"></div>
-                        <div style="height: 150px; border-radius: 0px 0px 25px 0px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[0]}}')"></div>
+                        <div style="height: 150px; border-radius: 0px 25px 0px 0px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[1]}}')"></div>
+                        <div style="height: 150px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[2]}}')"></div>
+                        <div style="height: 150px; border-radius: 0px 0px 25px 0px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[3]}}')"></div>
 
                     </div>
 
@@ -91,7 +102,7 @@
 
                     </div> --}}
 
-                    <div class="col-sm-6 col-6 d-flex align-items-center justify-content-center">
+                    <div class="col-sm-6 col-6 d-flex align-items-center justify-content-center btn-modal-images">
 
                         <button class="btn btn-outline-dark rounded-pill" data-bs-toggle="modal" data-bs-target="#modalImages">Ver todas las fotos</button>
 
@@ -99,7 +110,7 @@
 
                     <div class="col-sm-6 col-6 d-flex align-items-center justify-content-center">
 
-                        <a target="_blank" href="whatsapp://send?text={{URL::current()}}%0A{{$listing->listing_title}} 🏠%0A*_Housing Rent Group_*" style="text-decoration:none" class="text-dark"><i class="fa-solid fa-share me-3"></i> Compartir</a>
+                        <a target="_blank" href="whatsapp://send?text={{URL::current()}}%0A%0A{{$listing->listing_title}} 🏠%0A%0A*_Housing Rent Group_*" style="text-decoration:none" class="text-dark"><i class="fa-solid fa-share me-1"></i> Compartir</a>
 
                     </div>
 
