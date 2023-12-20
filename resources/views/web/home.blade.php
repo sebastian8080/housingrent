@@ -85,7 +85,7 @@
                 @endphp
     
                     <article class="col-sm-4" style="padding-left: 0px !important; padding-right: 0px !important">
-                        <a href="{{ route('show.property', $propertie->slug) }}">
+                        <a href="{{ route('show.property', $propertie->slug) }}" style="text-decoration: none">
                             <div class="card rounded-0 h-100">
                                 <div class="card-body">
                                     <div class="position-relative">

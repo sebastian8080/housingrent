@@ -8,11 +8,14 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
 <style>
+    .images-mobile{display: none !important}
     @media screen and (max-width: 580px){
         .form{
             padding-left: 0px !important;
             padding-right: 0px !important;
         }
+        .images-desktop{display: none !important}
+        .images-mobile{display: block !important}
     }
 </style>
 @endsection
@@ -43,24 +46,25 @@
 
             <article class="col-sm-7">
 
-                <section class="row">
+                <section class="row images-desktop">
 
-                    <div class="col-sm-8" style="height: 484px; border-radius: 25px 0px 0px 25px ; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://static.tokkobroker.com/pictures/46362631149902760577457130638852085981190234843815307894639246334105995656110.jpg')"></div>
+                    <div class="col-sm-8" style="height: 484px; border-radius: 25px 0px 0px 25px ; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[0]}}')"></div>
 
                     <div class="col-sm-4 d-grid gap-3">
 
-                        <div style="height: 150px; border-radius: 0px 25px 0px 0px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://static.tokkobroker.com/pictures/46362631149902760577457130638852085981190234843815307894639246334105995656110.jpg')""></div>
-                        <div style="height: 150px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://static.tokkobroker.com/pictures/46362631149902760577457130638852085981190234843815307894639246334105995656110.jpg')""></div>
-                        <div style="height: 150px; border-radius: 0px 0px 25px 0px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://static.tokkobroker.com/pictures/46362631149902760577457130638852085981190234843815307894639246334105995656110.jpg')""></div>
+                        <div style="height: 150px; border-radius: 0px 25px 0px 0px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[1]}}')""></div>
+                        <div style="height: 150px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[2]}}')""></div>
+                        <div style="height: 150px; border-radius: 0px 0px 25px 0px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[3]}}')""></div>
 
                     </div>
 
                 </section>
 
-                <section class="row">
+                <section class="row images-mobile">
 
                     <div id="carouselImages" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
+                            {{-- https://casacredito.com/uploads/listing/{{$image}} --}}
                             @foreach (explode('|', $listing->images) as $image)
                                 <div class="carousel-item @if($loop->index == 0) active @endif">
                                     <img src="https://casacredito.com/uploads/listing/{{$image}}" class="d-block w-100" alt="">
