@@ -227,12 +227,12 @@
     </section>
 
     <div class="modal fade" id="modalImages" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header bg-transparent">
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body bg-transparent">
                     <div id="carouselImagesModal" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             @foreach (explode("|", $listing->images) as $image)
