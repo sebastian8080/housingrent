@@ -52,9 +52,9 @@
 
                     <div class="col-sm-4 d-grid gap-3">
 
-                        <div style="height: 150px; border-radius: 0px 25px 0px 0px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[1]}}')"></div>
-                        <div style="height: 150px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[2]}}')"></div>
-                        <div style="height: 150px; border-radius: 0px 0px 25px 0px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[3]}}')"></div>
+                        <div style="height: 150px; border-radius: 0px 25px 0px 0px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[0]}}')"></div>
+                        <div style="height: 150px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[0]}}')"></div>
+                        <div style="height: 150px; border-radius: 0px 0px 25px 0px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[0]}}')"></div>
 
                     </div>
 
@@ -91,15 +91,15 @@
 
                     </div> --}}
 
-                    <div class="col-sm-6 col-6 d-flex align-items-center justify-content-end">
+                    <div class="col-sm-6 col-6 d-flex align-items-center justify-content-center">
 
                         <button class="btn btn-outline-dark rounded-pill" data-bs-toggle="modal" data-bs-target="#modalImages">Ver todas las fotos</button>
 
                     </div>
 
-                    <div class="col-sm-6 col-6 d-flex align-items-center justify-content-start">
+                    <div class="col-sm-6 col-6 d-flex align-items-center justify-content-center">
 
-                        <a target="_blank" href="whatsapp://send?text=This is WhatsApp sharing example using link" style="text-decoration:none" class="text-dark"><i class="fa-solid fa-share"></i> Compartir</a>
+                        <a target="_blank" href="whatsapp://send?text={{URL::current()}}%0{{$listing->listing_title}} 🏠%0*_Housing Rent Group_*" style="text-decoration:none" class="text-dark"><i class="fa-solid fa-share me-3"></i> Compartir</a>
 
                     </div>
 
