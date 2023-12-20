@@ -270,7 +270,7 @@
 
 @section('js')
     <script>
-        let map = L.map('map').setView([-2.899811789046444, -79.00568855005015], 14);
+        let map = L.map('map').setView(['{{ $listing->lat}}', '{{ $listing->lng}}'], 14);
 
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
