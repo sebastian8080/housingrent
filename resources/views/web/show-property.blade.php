@@ -91,13 +91,13 @@
 
                     </div> --}}
 
-                    <div class="col-sm-6 col-6 d-flex align-items-center justify-content-center">
+                    <div class="col-sm-6 col-6 d-flex align-items-center justify-content-end">
 
                         <button class="btn btn-outline-dark rounded-pill" data-bs-toggle="modal" data-bs-target="#modalImages">Ver todas las fotos</button>
 
                     </div>
 
-                    <div class="col-sm-6 col-6 d-flex align-items-center justify-content-center">
+                    <div class="col-sm-6 col-6 d-flex align-items-center justify-content-start">
 
                         <a href="#" style="text-decoration:none" class="text-dark"><i class="fa-solid fa-share"></i> Compartir</a>
 
