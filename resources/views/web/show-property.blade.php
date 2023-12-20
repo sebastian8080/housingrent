@@ -236,7 +236,7 @@
                     <div id="carouselImagesModal" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             @foreach (explode("|", $listing->images) as $image)
-                                <div class="carousel-item active">
+                                <div class="carousel-item @if($loop->index == 0) active @endif">
                                     <img src="https://casacredito.com/uploads/listing/{{$image}}" class="d-block w-100" alt="">
                                 </div>
                             @endforeach
