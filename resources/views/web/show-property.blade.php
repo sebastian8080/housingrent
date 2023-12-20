@@ -150,7 +150,7 @@
                 <div>
                     <h3>Ubicación</h3>
 
-                    <section>
+                    <section class="my-4">
                         <section id="map" style="height: 500px">
                             
                         </section>
