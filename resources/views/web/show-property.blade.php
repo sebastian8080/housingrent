@@ -99,7 +99,7 @@
 
                     <div class="col-sm-6 col-6 d-flex align-items-center justify-content-start">
 
-                        <a href="#" style="text-decoration:none" class="text-dark"><i class="fa-solid fa-share"></i> Compartir</a>
+                        <a target="_blank" href="whatsapp://send?text=This is WhatsApp sharing example using link" style="text-decoration:none" class="text-dark"><i class="fa-solid fa-share"></i> Compartir</a>
 
                     </div>
 
