@@ -51,7 +51,7 @@
                             <span>Habitaciones</span>
                             <div class="d-flex align-items-center">
                                 <button class="btn btn-sm rounded-pill border" onclick="sum('num_bedrooms')">+</button>
-                                <input style="width: 25px" id="num_bedrooms" type="text" class="form-control form-control-sm border-0" min="1" value="1" disabled>
+                                <input style="width: 25px" id="num_bedrooms" type="text" class="form-control form-control-sm border-0" min="1" value="" disabled>
                                 <button class="btn btn-sm rounded-pill border" onclick="rest('num_bedrooms')">-</button>
                             </div>
                         </div>
@@ -59,7 +59,7 @@
                             <span>Baños</span>
                             <div class="d-flex align-items-center">
                                 <button class="btn btn-sm rounded-pill border" onclick="sum('num_bathrooms')">+</button>
-                                <input style="width: 25px" id="num_bathrooms" type="text" class="form-control form-control-sm border-0" min="1" value="1" readonly>
+                                <input style="width: 25px" id="num_bathrooms" type="text" class="form-control form-control-sm border-0" min="1" value="" readonly>
                                 <button class="btn btn-sm rounded-pill border" onclick="rest('num_bathrooms')">-</button>
                             </div>
                         </div>
@@ -67,7 +67,7 @@
                             <span>Garage</span>
                             <div class="d-flex align-items-center">
                                 <button class="btn btn-sm rounded-pill border" onclick="sum('num_garage')">+</button>
-                                <input style="width: 25px" id="num_garage" type="text" class="form-control form-control-sm border-0" min="1" value="1" readonly>
+                                <input style="width: 25px" id="num_garage" type="text" class="form-control form-control-sm border-0" min="1" value="" readonly>
                                 <button class="btn btn-sm rounded-pill border" onclick="rest('num_garage')">-</button>
                             </div>
                         </div>                    
@@ -84,13 +84,13 @@
                         <div class="border-bottom pb-2">
                             <span>Desde</span>
                             <div>
-                                <input type="text" class="form-control form-control-sm" placeholder="Precio mínimo">
+                                <input type="text" class="form-control form-control-sm" placeholder="Precio mínimo" id="min_price">
                             </div>
                         </div>
                         <div class="pt-1">
                             <span>Hasta</span>
                             <div>
-                                <input type="text" class="form-control form-control-sm" placeholder="Precio máximo">
+                                <input type="text" class="form-control form-control-sm" placeholder="Precio máximo" id="max_price">
                             </div>
                         </div>                
                     </div>
@@ -120,6 +120,68 @@
             </div>
         </section>
     </section>
+
+    <section class="container mt-5">
+        <section class="row">
+            <section class="col-sm-12">
+                <section class="row justify-content-center">
+                    @foreach ($properties as $propertie)
+    
+                @php
+                    //get first image
+                    $imgpri = explode("|", $propertie->images);
+                @endphp
+    
+                    <article class="col-sm-3" style="padding-left: 0px !important; padding-right: 0px !important">
+                        <a href="{{ route('show.property', $propertie->slug) }}" style="text-decoration: none">
+                            <div class="card rounded-0 h-100">
+                                <div class="card-body">
+                                    <div class="position-relative">
+                                        {{-- https://casacredito.com/uploads/listing/{{$imgpri[0]}} --}}
+                                        <img class="img-fluid" src="https://casacredito.com/uploads/listing/{{$imgpri[0]}}" alt="">
+                                        <div class="position-absolute" style="top: 5px; left: 5px">
+                                            <span class="bg-white text-dark px-2 rounded-pill" style="font-size: small; font-weight: 600">Propiedad destacada</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h2 class="fw-bold mt-3" style="font-size: medium">{{ $propertie->listing_title }}</h2>
+                                        <p style="font-size: small" class="text-muted">{{ $propertie->listing_description }}</p>
+                                        <p>{{ $propertie->city }}, {{ $propertie->sector }}</p>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="d-flex gap-2">
+                                                @if($propertie->bedroom > 0)
+                                                    <div class="d-flex">
+                                                        <img width="25px" src="{{ asset('img/bed-icon.png') }}" alt="">
+                                                        <span>{{ $propertie->bedroom }}</span>
+                                                    </div>
+                                                @endif
+                                                @if($propertie->bathroom > 0)
+                                                    <div class="d-flex">
+                                                        <img width="25px" src="{{ asset('img/bath-icon.png') }}" alt="">
+                                                        <span>{{ $propertie->bathroom }}</span>
+                                                    </div>
+                                                @endif
+                                                @if($propertie->garage > 0)
+                                                    <div class="d-flex">
+                                                        <img width="25px" src="{{ asset('img/garage-icon.png') }}" alt="">
+                                                        <span>{{ $propertie->garage }}</span>
+                                                    </div>
+                                                @endif
+                                            </div>
+                                            <div>
+                                                <span class="fw-bold">${{ $propertie->property_price }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                @endforeach
+                </section>
+            </section>
+        </section>
+    </section>
 </div>
 
 <script>
@@ -136,6 +198,9 @@
         let bedrooms = document.getElementById('num_bedrooms').value;
         let bathrooms = document.getElementById('num_bathrooms').value;
         let garage = document.getElementById('num_garage').value;
+
+        let min_price = document.getElementById('min_price').value;
+        let max_price = document.getElementById('max_price').value;
 
         for (let i = 0; i < types.length; i++) {
             if(types[i].checked){
@@ -154,6 +219,8 @@
         @this.set('bedrooms', bedrooms);
         @this.set('bathrooms', bathrooms);
         @this.set('garage', garage);
+        @this.set('min_price', min_price);
+        @this.set('max_price', max_price);
         
     }
 
