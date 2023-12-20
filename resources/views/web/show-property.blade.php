@@ -52,9 +52,9 @@
 
                     <div class="col-sm-4 d-grid gap-3">
 
-                        <div style="height: 150px; border-radius: 0px 25px 0px 0px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[1]}}')""></div>
-                        <div style="height: 150px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[2]}}')""></div>
-                        <div style="height: 150px; border-radius: 0px 0px 25px 0px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[3]}}')""></div>
+                        <div style="height: 150px; border-radius: 0px 25px 0px 0px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[0]}}')"></div>
+                        <div style="height: 150px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[0]}}')"></div>
+                        <div style="height: 150px; border-radius: 0px 0px 25px 0px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[0]}}')"></div>
 
                     </div>
 
@@ -142,8 +142,8 @@
 
                     <p><b>Sector: </b> {{ $listing->sector}}</p>
                     <p><b>Descripción: </b> {{ $listing->listing_description }}</p>
-                    <p><b>Metros de terreno: </b> {{ $listing->land_area}}</p>
-                    <p><b>Metros de construcción: </b>{{ $listing->construction_area}}</p>
+                    <p><b>Metros de terreno: </b> {{ $listing->land_area}} m<sup>2</sup></p>
+                    <p><b>Metros de construcción: </b>{{ $listing->construction_area}} m<sup>2</sup></p>
 
                 </div>
 
@@ -151,7 +151,7 @@
                     <h3>Ubicación</h3>
 
                     <section>
-                        <section id="map" class="h-100">
+                        <section id="map" style="height: 500px">
                             
                         </section>
                     </section>
@@ -230,7 +230,7 @@
 
 @section('js')
     <script>
-        let map = L.map('map').setView([-2.900669036449896, -79.00723353370014], 14);
+        let map = L.map('map').setView([-2.899811789046444, -79.00568855005015], 14);
 
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -239,7 +239,7 @@
         let title = '{{ $listing->listing_title }}';
         let images = '{{ $listing->images }}'.split('|')[0];
 
-        L.marker(['{{ $listing->lat }}', '{{ $listing->lng }}']).addTo(map)
+        L.marker(['{{ $listing->lat}}', '{{ $listing->lng}}']).addTo(map)
             .bindPopup(`<div class="text-center"> <b> ${title} </b> <br> <br> <img class='w-100' src='https://casacredito.com/uploads/listing/${images}' /></div>`)
             .openPopup(); 
     </script>
