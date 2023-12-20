@@ -125,59 +125,65 @@
         <section class="row">
             <section class="col-sm-12">
                 <section class="row justify-content-center">
-                    @foreach ($properties as $propertie)
-    
-                @php
-                    //get first image
-                    $imgpri = explode("|", $propertie->images);
-                @endphp
-    
-                    <article class="col-sm-3" style="padding-left: 0px !important; padding-right: 0px !important">
-                        <a href="{{ route('show.property', $propertie->slug) }}" style="text-decoration: none">
-                            <div class="card rounded-0 h-100">
-                                <div class="card-body">
-                                    <div class="position-relative">
-                                        {{-- https://casacredito.com/uploads/listing/{{$imgpri[0]}} --}}
-                                        <img class="img-fluid" src="https://casacredito.com/uploads/listing/{{$imgpri[0]}}" alt="">
-                                        <div class="position-absolute" style="top: 5px; left: 5px">
-                                            <span class="bg-white text-dark px-2 rounded-pill" style="font-size: small; font-weight: 600">Propiedad destacada</span>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <h2 class="fw-bold mt-3" style="font-size: medium">{{ $propertie->listing_title }}</h2>
-                                        <p style="font-size: small" class="text-muted">{{ $propertie->listing_description }}</p>
-                                        <p>{{$propertie->state}}, {{ $propertie->city }}, {{ $propertie->sector }}</p>
-                                        <div class="d-flex justify-content-between">
-                                            <div class="d-flex gap-2">
-                                                @if($propertie->bedroom > 0)
-                                                    <div class="d-flex">
-                                                        <img width="25px" src="{{ asset('img/bed-icon.png') }}" alt="">
-                                                        <span>{{ $propertie->bedroom }}</span>
-                                                    </div>
-                                                @endif
-                                                @if($propertie->bathroom > 0)
-                                                    <div class="d-flex">
-                                                        <img width="25px" src="{{ asset('img/bath-icon.png') }}" alt="">
-                                                        <span>{{ $propertie->bathroom }}</span>
-                                                    </div>
-                                                @endif
-                                                @if($propertie->garage > 0)
-                                                    <div class="d-flex">
-                                                        <img width="25px" src="{{ asset('img/garage-icon.png') }}" alt="">
-                                                        <span>{{ $propertie->garage }}</span>
-                                                    </div>
-                                                @endif
+                    @if(count($properties)>0)
+                        @foreach ($properties as $propertie)
+            
+                            @php
+                                //get first image
+                                $imgpri = explode("|", $propertie->images);
+                            @endphp
+            
+                            <article class="col-sm-3" style="padding-left: 0px !important; padding-right: 0px !important">
+                                <a href="{{ route('show.property', $propertie->slug) }}" style="text-decoration: none">
+                                    <div class="card rounded-0 h-100">
+                                        <div class="card-body">
+                                            <div class="position-relative">
+                                                {{-- https://casacredito.com/uploads/listing/{{$imgpri[0]}} --}}
+                                                <img class="img-fluid" src="https://casacredito.com/uploads/listing/{{$imgpri[0]}}" alt="">
+                                                <div class="position-absolute" style="top: 5px; left: 5px">
+                                                    <span class="bg-white text-dark px-2 rounded-pill" style="font-size: small; font-weight: 600">Propiedad destacada</span>
+                                                </div>
                                             </div>
                                             <div>
-                                                <span class="fw-bold">${{ $propertie->property_price }}</span>
+                                                <h2 class="fw-bold mt-3" style="font-size: medium">{{ $propertie->listing_title }}</h2>
+                                                <p style="font-size: small" class="text-muted">{{ $propertie->listing_description }}</p>
+                                                <p>{{$propertie->state}}, {{ $propertie->city }}, {{ $propertie->sector }}</p>
+                                                <div class="d-flex justify-content-between">
+                                                    <div class="d-flex gap-2">
+                                                        @if($propertie->bedroom > 0)
+                                                            <div class="d-flex">
+                                                                <img width="25px" src="{{ asset('img/bed-icon.png') }}" alt="">
+                                                                <span>{{ $propertie->bedroom }}</span>
+                                                            </div>
+                                                        @endif
+                                                        @if($propertie->bathroom > 0)
+                                                            <div class="d-flex">
+                                                                <img width="25px" src="{{ asset('img/bath-icon.png') }}" alt="">
+                                                                <span>{{ $propertie->bathroom }}</span>
+                                                            </div>
+                                                        @endif
+                                                        @if($propertie->garage > 0)
+                                                            <div class="d-flex">
+                                                                <img width="25px" src="{{ asset('img/garage-icon.png') }}" alt="">
+                                                                <span>{{ $propertie->garage }}</span>
+                                                            </div>
+                                                        @endif
+                                                    </div>
+                                                    <div>
+                                                        <span class="fw-bold">${{ $propertie->property_price }}</span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </a>
-                    </article>
-                @endforeach
+                                </a>
+                            </article>
+                        @endforeach
+                    @else
+                        <section class="row">
+                            <p class="text-center fw-bold">No hemos encontrado propiedades</p>
+                        </section>
+                    @endif
                 </section>
             </section>
         </section>
