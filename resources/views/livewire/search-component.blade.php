@@ -146,7 +146,7 @@
                                     <div>
                                         <h2 class="fw-bold mt-3" style="font-size: medium">{{ $propertie->listing_title }}</h2>
                                         <p style="font-size: small" class="text-muted">{{ $propertie->listing_description }}</p>
-                                        <p>{{ $propertie->city }}, {{ $propertie->sector }}</p>
+                                        <p>{{$propertie->state}}, {{ $propertie->city }}, {{ $propertie->sector }}</p>
                                         <div class="d-flex justify-content-between">
                                             <div class="d-flex gap-2">
                                                 @if($propertie->bedroom > 0)
