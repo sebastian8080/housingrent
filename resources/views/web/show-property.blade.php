@@ -85,21 +85,21 @@
 
                 <section class="row justify-content-center my-3 py-2">
 
-                    <div class="col-sm-4 d-flex align-items-center justify-content-center">
+                    {{-- <div class="col-sm-4 d-flex align-items-center justify-content-center">
 
                         <span>Guardar</span>
 
+                    </div> --}}
+
+                    <div class="col-sm-6 col-6 d-flex align-items-center justify-content-center">
+
+                        <button class="btn btn-outline-dark rounded-pill" data-bs-toggle="modal" data-bs-target="#modalImages">Ver todas las fotos</button>
+
                     </div>
 
-                    <div class="col-sm-4 d-flex align-items-center justify-content-center">
+                    <div class="col-sm-6 col-6 d-flex align-items-center justify-content-center">
 
-                        <button class="btn btn-outline-dark rounded-pill">Ver todas las fotos</button>
-
-                    </div>
-
-                    <div class="col-sm-4 d-flex align-items-center justify-content-center">
-
-                        <a href="#">Compartir</a>
+                        <a href="#" style="text-decoration:none" class="text-dark"><i class="fa-solid fa-share"></i> Compartir</a>
 
                     </div>
 
@@ -168,7 +168,7 @@
                             <span style="font-size: medium">Incluye alícuota, <br> agua, luz e internet</span>
                         </div>
                     </div>
-                    <div class="bg-white pt-4 pb-5 shadow" style="border-radius: 0px 0px 25px 25px">
+                    <div class="bg-white pt-4 pb-5 shadow px-5" style="border-radius: 0px 0px 25px 25px">
                         <p class="text-center" style="font-size: x-large; font-weight: 600">¿Te interesa esta propiedad?</p>
                         <p class="text-center">Proporciónanos tus datos y te contactaremos</p>
                         <div class="d-flex justify-content-center">
@@ -225,6 +225,35 @@
         </section>
 
     </section>
+
+    <div class="modal fade" id="modalImages" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="carouselImagesModal" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            @foreach (explode("|", $listing->images) as $image)
+                                <div class="carousel-item active">
+                                    <img src="https://casacredito.com/uploads/listing/{{$image}}" class="d-block w-100" alt="">
+                                </div>
+                            @endforeach
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselImagesModal" data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselImagesModal" data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                        </button>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 @endsection
 
