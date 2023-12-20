@@ -74,10 +74,18 @@
             </div>
             <div class="d-flex justify-content-center py-5">
                 <div class="d-flex gap-2">
-                    <img width="60px" src="{{ asset('img/icon-facebook.png') }}" alt="">
-                    <img width="60px" src="{{ asset('img/icon-instagram.png') }}" alt="">
-                    <img width="60px" src="{{ asset('img/icon-whatsapp.png') }}" alt="">
-                    <img width="60px" src="{{ asset('img/icon-tiktok.png') }}" alt="">
+                    <a href="https://www.facebook.com/profile.php?id=61553203397168" target="_blank">
+                        <img width="60px" src="{{ asset('img/icon-facebook.png') }}" alt="">
+                    </a>
+                    <a href="https://www.instagram.com/housingrentgroup" target="_blank">
+                        <img width="60px" src="{{ asset('img/icon-instagram.png') }}" alt="">
+                    </a>
+                    <a href="">
+                        <img width="60px" src="{{ asset('img/icon-whatsapp.png') }}" alt="">
+                    </a>
+                    <a href="https://www.tiktok.com/@housingrent" target="_blank">
+                        <img width="60px" src="{{ asset('img/icon-tiktok.png') }}" alt="">
+                    </a>
                 </div>
             </div>
         </section>
