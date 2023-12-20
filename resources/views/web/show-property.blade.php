@@ -99,7 +99,7 @@
 
                     <div class="col-sm-6 col-6 d-flex align-items-center justify-content-center">
 
-                        <a target="_blank" href="whatsapp://send?text={{URL::current()}}%0{{$listing->listing_title}} 🏠%0*_Housing Rent Group_*" style="text-decoration:none" class="text-dark"><i class="fa-solid fa-share me-3"></i> Compartir</a>
+                        <a target="_blank" href="whatsapp://send?text={{URL::current()}} %0 {{$listing->listing_title}} 🏠%0 *_Housing Rent Group_*" style="text-decoration:none" class="text-dark"><i class="fa-solid fa-share me-3"></i> Compartir</a>
 
                     </div>
 
