@@ -6,22 +6,38 @@
                     <div class="text-center">
                         <span style="cursor: pointer" onclick="showfilter('tab1')" class="text-center">Todas las propiedades</span>
                     </div>
-                    <div id="tab1" class="position-absolute p-2 bg-white border w-100 rounded shadow-sm d-none mt-1" style="z-index: 1">
-                        <div>
-                            <input value="23" id="checkCasas" type="checkbox" name="types">
-                            <label for="checkCasas">Casas</label>
+                    <div id="tab1" class="position-absolute p-2 bg-white border rounded shadow-sm d-none mt-1" style="z-index: 1; width: 200px">
+                        <div class="d-flex gap-2">
+                            <input value="23" id="checkCasas" type="checkbox" name="types" style="width: 20px;">
+                            <label class="w-100" style="cursor: pointer" for="checkCasas">Casas</label>
                         </div>
-                        <div>
-                            <input value="24" id="checkDepartamentos" type="checkbox" name="types">
-                            <label for="checkDepartamentos">Departamentos</label>
+                        <div class="d-flex gap-2 mt-1">
+                            <input value="24" id="checkDepartamentos" type="checkbox" name="types" style="width: 20px">
+                            <label class="w-100" style="cursor: pointer" for="checkDepartamentos">Departamentos</label>
                         </div>
-                        <div>
-                            <input value="25" id="checkCasasComerciales" type="checkbox" name="types">
-                            <label for="checkCasasComerciales">Casas Comerciales</label>
+                        <div class="d-flex gap-2 mt-1">
+                            <input value="25" id="checkCasasComerciales" type="checkbox" name="types" style="width: 20px">
+                            <label class="w-100" style="cursor: pointer" for="checkCasasComerciales">Casas Comerciales</label>
                         </div>
-                        <div>
-                            <input value="32" id="checkLocalesComerciales" type="checkbox" name="types">
-                            <label for="checkLocalesComerciales">Locales Comerciales</label>
+                        <div class="d-flex gap-2 mt-1">
+                            <input value="32" id="checkLocalesComerciales" type="checkbox" name="types" style="width: 20px">
+                            <label class="w-100" style="cursor: pointer" for="checkLocalesComerciales">Locales Comerciales</label>
+                        </div>
+                        <div class="d-flex gap-2 mt-1">
+                            <input value="35" id="checkOficinas" type="checkbox" name="types" style="width: 20px">
+                            <label class="w-100" style="cursor: pointer" for="checkOficinas">Oficinas</label>
+                        </div>
+                        <div class="d-flex gap-2 mt-1">
+                            <input value="36" id="checkSuites" type="checkbox" name="types" style="width: 20px">
+                            <label class="w-100" style="cursor: pointer" for="checkSuites">Suites</label>
+                        </div>
+                        <div class="d-flex gap-2 mt-1">
+                            <input value="29" id="checkQuintas" type="checkbox" name="types" style="width: 20px">
+                            <label class="w-100" style="cursor: pointer" for="checkQuintas">Quintas</label>
+                        </div>
+                        <div class="d-flex gap-2 mt-1">
+                            <input value="30" id="checkHaciendas" type="checkbox" name="types" style="width: 20px">
+                            <label class="w-100" style="cursor: pointer" for="checkHaciendas">Haciendas</label>
                         </div>
                     </div>
                 </section>
