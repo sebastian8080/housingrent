@@ -8,12 +8,20 @@
                     </div>
                     <div id="tab1" class="position-absolute p-2 bg-white border w-100 rounded shadow-sm d-none mt-1" style="z-index: 1">
                         <div>
-                            <input value="23" type="checkbox" name="types">
-                            <label for="checktype">Casas</label>
+                            <input value="23" id="checkCasas" type="checkbox" name="types">
+                            <label for="checkCasas">Casas</label>
                         </div>
                         <div>
-                            <input value="24" type="checkbox" name="types">
-                            <label for="checktype">Departamentos</label>
+                            <input value="24" id="checkDepartamentos" type="checkbox" name="types">
+                            <label for="checkDepartamentos">Departamentos</label>
+                        </div>
+                        <div>
+                            <input value="25" id="checkCasasComerciales" type="checkbox" name="types">
+                            <label for="checkCasasComerciales">Casas Comerciales</label>
+                        </div>
+                        <div>
+                            <input value="32" id="checkLocalesComerciales" type="checkbox" name="types">
+                            <label for="checkLocalesComerciales">Locales Comerciales</label>
                         </div>
                     </div>
                 </section>
@@ -51,7 +59,7 @@
                             <span>Habitaciones</span>
                             <div class="d-flex align-items-center">
                                 <button class="btn btn-sm rounded-pill border" onclick="sum('num_bedrooms')">+</button>
-                                <input style="width: 25px" id="num_bedrooms" type="text" class="form-control form-control-sm border-0" min="1" value="" disabled>
+                                <input style="width: 25px" id="num_bedrooms" type="text" class="form-control form-control-sm border-0" min="1" value="" placeholder="0" readonly>
                                 <button class="btn btn-sm rounded-pill border" onclick="rest('num_bedrooms')">-</button>
                             </div>
                         </div>
