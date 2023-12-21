@@ -133,9 +133,9 @@
                                 $imgpri = explode("|", $propertie->images);
                             @endphp
             
-                            <article class="col-sm-3" style="padding-left: 0px !important; padding-right: 0px !important">
+                            <article class="col-sm-3 my-1" style="padding-left: 0px !important; padding-right: 0px !important">
                                 <a href="{{ route('show.property', $propertie->slug) }}" style="text-decoration: none">
-                                    <div class="card rounded-0 h-100">
+                                    <div class="card rounded-0 h-100 mx-1">
                                         <div class="card-body">
                                             <div class="position-relative">
                                                 {{-- https://casacredito.com/uploads/listing/{{$imgpri[0]}} --}}
@@ -146,34 +146,37 @@
                                             </div>
                                             <div>
                                                 <h2 class="fw-bold mt-3" style="font-size: medium">{{ $propertie->listing_title }}</h2>
-                                                <p style="font-size: small" class="text-muted">{{ $propertie->listing_description }}</p>
-                                                <p>{{$propertie->state}}, {{ $propertie->city }}, {{ $propertie->sector }}</p>
-                                                <div class="d-flex justify-content-between">
-                                                    <div class="d-flex gap-2">
-                                                        @if($propertie->bedroom > 0)
-                                                            <div class="d-flex">
-                                                                <img width="25px" src="{{ asset('img/bed-icon.png') }}" alt="">
-                                                                <span>{{ $propertie->bedroom }}</span>
-                                                            </div>
-                                                        @endif
-                                                        @if($propertie->bathroom > 0)
-                                                            <div class="d-flex">
-                                                                <img width="25px" src="{{ asset('img/bath-icon.png') }}" alt="">
-                                                                <span>{{ $propertie->bathroom }}</span>
-                                                            </div>
-                                                        @endif
-                                                        @if($propertie->garage > 0)
-                                                            <div class="d-flex">
-                                                                <img width="25px" src="{{ asset('img/garage-icon.png') }}" alt="">
-                                                                <span>{{ $propertie->garage }}</span>
-                                                            </div>
-                                                        @endif
-                                                    </div>
-                                                    <div>
-                                                        <span class="fw-bold">${{ $propertie->property_price }}</span>
-                                                    </div>
+                                                {{-- <p style="font-size: small" class="text-muted">{{ $propertie->listing_description }}</p> --}}
+                                                <p><img width="20px" src="{{ asset('img/location-icon.png') }}" alt=""> {{$propertie->state}}, {{ $propertie->city }}, {{ $propertie->sector }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer border-0 bg-white">
+                                            <div class="d-flex justify-content-between">
+                                                <div class="d-flex gap-2">
+                                                    @if($propertie->bedroom > 0)
+                                                        <div class="d-flex">
+                                                            <img width="25px" src="{{ asset('img/bed-icon.png') }}" alt="">
+                                                            <span>{{ $propertie->bedroom }}</span>
+                                                        </div>
+                                                    @endif
+                                                    @if($propertie->bathroom > 0)
+                                                        <div class="d-flex">
+                                                            <img width="25px" src="{{ asset('img/bath-icon.png') }}" alt="">
+                                                            <span>{{ $propertie->bathroom }}</span>
+                                                        </div>
+                                                    @endif
+                                                    @if($propertie->garage > 0)
+                                                        <div class="d-flex">
+                                                            <img width="25px" src="{{ asset('img/garage-icon.png') }}" alt="">
+                                                            <span>{{ $propertie->garage }}</span>
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                                <div>
+                                                    <span class="fw-bold">${{ $propertie->property_price }}</span>
                                                 </div>
                                             </div>
+
                                         </div>
                                     </div>
                                 </a>

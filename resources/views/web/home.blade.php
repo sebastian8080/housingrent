@@ -20,6 +20,9 @@
             .redes{display: none !important}
             .text-title{position: relative !important; height: auto !important}
         }
+        .card:hover{
+            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        }
     </style>
 
     @livewireStyles
