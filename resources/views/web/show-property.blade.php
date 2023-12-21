@@ -59,13 +59,13 @@
 
                 <section class="row images-desktop">
 
-                    <div class="col-sm-8" style="height: 484px; border-radius: 25px 0px 0px 25px ; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[0]}}')"></div>
+                    <div onclick="addactive(0)" data-bs-toggle="modal" data-bs-target="#modalImages" class="col-sm-8" style="height: 484px; border-radius: 25px 0px 0px 25px ; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[0]}}')"></div>
 
                     <div class="col-sm-4 d-grid gap-3">
 
-                        <div style="height: 150px; border-radius: 0px 25px 0px 0px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[1]}}')"></div>
-                        <div style="height: 150px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[2]}}')"></div>
-                        <div style="height: 150px; border-radius: 0px 0px 25px 0px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[3]}}')"></div>
+                        <div onclick="addactive(1)" data-bs-toggle="modal" data-bs-target="#modalImages" style="height: 150px; border-radius: 0px 25px 0px 0px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[1]}}')"></div>
+                        <div onclick="addactive(2)" data-bs-toggle="modal" data-bs-target="#modalImages" style="height: 150px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[2]}}')"></div>
+                        <div onclick="addactive(3)" data-bs-toggle="modal" data-bs-target="#modalImages" style="height: 150px; border-radius: 0px 0px 25px 0px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[3]}}')"></div>
 
                     </div>
 
@@ -247,7 +247,7 @@
                     <div id="carouselImagesModal" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             @foreach (explode("|", $listing->images) as $image)
-                                <div class="carousel-item @if($loop->index == 0) active @endif">
+                                <div id="img_{{ $loop->index }}" class="carousel-item @if($loop->index == 0) active @endif">
                                     <img src="https://casacredito.com/uploads/listing/{{$image}}" class="d-block w-100" alt="">
                                 </div>
                             @endforeach
@@ -270,6 +270,14 @@
 
 @section('js')
     <script>
+
+        const addactive = (id) => {
+            let images = document.querySelectorAll('.active');
+            images.forEach(element => { element.classList.remove('active'); });
+            let image = document.getElementById('img_'+id);
+            image.classList.add('active');
+        }
+
         let map = L.map('map').setView(['{{ $listing->lat}}', '{{ $listing->lng}}'], 14);
 
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -281,6 +289,6 @@
 
         L.marker(['{{ $listing->lat}}', '{{ $listing->lng}}']).addTo(map)
             .bindPopup(`<div class="text-center"> <b> ${title} </b> <br> <br> <img class='w-100' src='https://casacredito.com/uploads/listing/${images}' /></div>`)
-            .openPopup(); 
+            .openPopup();
     </script>
 @endsection
