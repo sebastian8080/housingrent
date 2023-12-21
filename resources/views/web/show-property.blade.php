@@ -64,9 +64,9 @@
 
                     <div class="col-sm-4 d-grid gap-3">
 
-                        <div onclick="addactive(1)" data-bs-toggle="modal" data-bs-target="#modalImages" style="cursor: pointer; height: 150px; border-radius: 0px 25px 0px 0px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[1]}}')"></div>
-                        <div onclick="addactive(2)" data-bs-toggle="modal" data-bs-target="#modalImages" style="cursor: pointer; height: 150px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[2]}}')"></div>
-                        <div onclick="addactive(3)" data-bs-toggle="modal" data-bs-target="#modalImages" style="cursor: pointer; height: 150px; border-radius: 0px 0px 25px 0px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[3]}}')"></div>
+                        <div onclick="addactive(1)" data-bs-toggle="modal" data-bs-target="#modalImages" class="img-banner" style="cursor: pointer; height: 150px; border-radius: 0px 25px 0px 0px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[1]}}')"></div>
+                        <div onclick="addactive(2)" data-bs-toggle="modal" data-bs-target="#modalImages" class="img-banner" style="cursor: pointer; height: 150px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[2]}}')"></div>
+                        <div onclick="addactive(3)" data-bs-toggle="modal" data-bs-target="#modalImages" class="img-banner" style="cursor: pointer; height: 150px; border-radius: 0px 0px 25px 0px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[3]}}')"></div>
 
                     </div>
 
