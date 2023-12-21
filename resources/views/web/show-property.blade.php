@@ -35,9 +35,9 @@
     
     <section class="container">
 
-        <section class="row text-end pt-3 pb-1 pe-3">
+        <section class="row justify-content-end text-end pt-3 pb-1 pe-3">
 
-            <span class="fw-bold" style="font-size: medium">Cód: {{ $listing->product_code }}</span>
+            <span class="text-white w-auto rounded-pill shadow" style="font-size: medium; background-color: #242B40; font-size: large">COD: {{ $listing->product_code }}</span>
 
         </section>
 
