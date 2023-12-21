@@ -60,7 +60,7 @@
 
                 <section class="row images-desktop">
 
-                    <div onclick="addactive(0)" data-bs-toggle="modal" data-bs-target="#modalImages" class="col-sm-8 img-banner" style="cursor: pointer; height: 484px; border-radius: 25px 0px 0px 25px ; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://lajoya.ec/wp-content/uploads/2015/03/LJ-CONDOMINIO-2-SALA-COMEDOR-1108x960.jpg')"></div>
+                    <div onclick="addactive(0)" data-bs-toggle="modal" data-bs-target="#modalImages" class="col-sm-8 img-banner" style="cursor: pointer; height: 484px; border-radius: 25px 0px 0px 25px ; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[0]}}')"></div>
 
                     <div class="col-sm-4 d-grid gap-3">
 
