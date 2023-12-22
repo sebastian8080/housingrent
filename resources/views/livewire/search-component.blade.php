@@ -90,7 +90,7 @@
                 <section class="position-relative w-100 margin-bottom-mobile">
                     <span class="text-muted label-filter" style="font-size: x-small; display: none">Especificaciones de la propiedad</span>
                     <div class="text-center border-tabs-mobile">
-                        <span style="cursor: pointer" onclick="showfilter('tab3')">Número de... <img class="ms-1" width="10px img-filters" style="display: none" src="{{ asset('img/icon-down-arrow.png') }}" alt=""></span>
+                        <span style="cursor: pointer" onclick="showfilter('tab3')">Número de... <img class="ms-1 img-filters" width="10px img-filters" style="display: none" src="{{ asset('img/icon-down-arrow.png') }}" alt=""></span>
                     </div>
                     <div id="tab3" class="position-absolute p-2 bg-white border rounded shadow-sm d-none mt-2" style="z-index: 1100; width: 200px;">
                         <div class="d-flex align-items-center justify-content-between border-bottom pb-1">

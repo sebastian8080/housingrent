@@ -27,7 +27,7 @@
             .border-tabs-mobile{border-radius: 25px !important; border: .5px solid rgb(202, 202, 202) !important; box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;}
             .btn-search-mobile{text-align: center !important; margin-top: 20px !important}
             .label-filter{display: block !important}
-            .img-filters{display: block !important}
+            .img-filters{display: inline-block !important}
         }
         .card:hover{
             box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
