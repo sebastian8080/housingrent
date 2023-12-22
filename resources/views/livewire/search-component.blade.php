@@ -127,8 +127,24 @@
                     <div class="text-center border-tabs-mobile">
                         <label style="cursor: pointer" onclick="showfilter('tab4')" class="w-100">Precio <img class="ms-1 img-filters" width="10px" style="display: none" src="{{ asset('img/icon-down-arrow.png') }}" alt=""></label>
                     </div>
-                    <div id="tab4" class="position-absolute p-2 bg-white border rounded shadow-sm d-none mt-2 w-100" style="z-index: 1100;">
-                        <div class="border-bottom pb-2">
+                    <div id="tab4" class="position-absolute p-2 bg-white border rounded shadow-sm d-none mt-2" style="z-index: 1100; width: 230px">
+                        <div>
+                            <div class="d-flex justify-content-center">
+                                <label>Desde <span class="text-center fw-bold" id="currentValueRange"> @if($rangePrice>0) ${{ $rangePrice }} @else ${{ $minRangePrice }} @endif</span> Hasta ${{ $maxRangePrice }}</label>
+                            </div>
+                            <div class="border-bottom pb-2 d-flex justify-content-center gap-2">
+                                <div>
+                                    <span class="text-muted fw-bold" style="font-size: x-small">Mínimo</span>
+                                    <span class="text-muted fw-bold" style="font-size: small">${{ $minRangePrice }}</span>
+                                </div>
+                                <input type="range" id="rangePrice" oninput="changeValueRangePrice()" min="{{$minRangePrice}}" max="{{ $maxRangePrice }}" value="" step="20" />
+                                <div>
+                                    <span class="text-muted fw-bold" style="font-size: x-small">Máximo</span>
+                                    <span class="text-muted fw-bold" style="font-size: small">${{ $maxRangePrice }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- <div class="border-bottom pb-2">
                             <span>Desde</span>
                             <div>
                                 <input type="text" class="form-control form-control-sm" placeholder="Precio mínimo" id="min_price">
@@ -139,7 +155,7 @@
                             <div>
                                 <input type="text" class="form-control form-control-sm" placeholder="Precio máximo" id="max_price">
                             </div>
-                        </div>                
+                        </div>                 --}}
                     </div>
                 </section>
 
@@ -256,8 +272,10 @@
         let bathrooms = document.getElementById('num_bathrooms').value;
         let garage = document.getElementById('num_garage').value;
 
-        let min_price = document.getElementById('min_price').value;
-        let max_price = document.getElementById('max_price').value;
+        // let min_price = document.getElementById('min_price').value;
+        // let max_price = document.getElementById('max_price').value;
+
+        let rangePrice = document.getElementById('rangePrice').value;
 
         let city = document.getElementById('inpCity').value;
 
@@ -273,16 +291,15 @@
             }
         }
 
-        console.log("city: " + city);
-
         @this.set('types', resulttypes);
         @this.set('zones', resultzones);
         @this.set('bedrooms', bedrooms);
         @this.set('bathrooms', bathrooms);
         @this.set('garage', garage);
-        @this.set('min_price', min_price);
-        @this.set('max_price', max_price);
+        // @this.set('min_price', min_price);
+        // @this.set('max_price', max_price);
         @this.set('city', city);
+        @this.set('rangePrice', rangePrice);
         @this.set('currentTab', '');
     }
 
@@ -326,6 +343,12 @@
                 element.disabled = false;
             });
         }
+    }
+
+    const changeValueRangePrice = () => {
+        let rangePrice = document.getElementById('rangePrice');
+        console.log(rangePrice.value);
+        document.getElementById('currentValueRange').textContent = "$"+rangePrice.value;
     }
 
 </script>
