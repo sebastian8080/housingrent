@@ -307,13 +307,18 @@
     const rest = (input) => document.getElementById(input).value > 1 ? document.getElementById(input).value-- : null;
 
     const showfilter = (tab_id) => {
+        //debugger;
         for (let index = 1; index < 6; index++) {
             let current_tab = document.getElementById('tab'+index);
             if(current_tab){
-                current_tab.classList.add('d-none')
+                "tab"+index != tab_id ? current_tab.classList.add('d-none') : null;
             }
         }
-        document.getElementById(tab_id).classList.remove('d-none');
+        if(document.getElementById(tab_id).classList.contains('d-none')){
+            document.getElementById(tab_id).classList.remove('d-none');
+        } else {
+            document.getElementById(tab_id).classList.add('d-none');
+        }
         tab_id == "tab2" ? @this.set('currentTab', tab_id) : null;
     }
 
