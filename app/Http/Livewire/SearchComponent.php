@@ -13,11 +13,33 @@ class SearchComponent extends Component
     public $zones = [];
     public $bedrooms = 0, $bathrooms = 0, $garage = 0;
     public $min_price = 0, $max_price = 0;
+    public $city = "";
+
+    public $citySearch = "";
+    public $currentTab = "";
+    public $showTab2 = false;
+
+    public $checkCity = "";
+    public $arrayCities = [];
+    public $cityTagName = "";
+
+    public function updated(){
+        // if($this->checkCity){
+        //     $this->cityTagName = DB::table('info_cities')->where('id', $this->checkCity)->first();
+        //     $this->cityTagName = $this->cityTagName->name;
+        // }
+    }
+
+    public function cleanCity(){
+        $this->city = "";
+        $this->cityTagName = "";
+        $this->citySearch = "";
+    }
 
     public function render()
     {
 
-        $properties_filter = Listing::select('id', 'product_code', 'listing_title', 'listing_description', 'bedroom', 'bathroom', 'garage', 'property_price', 'state', 'city', 'sector', 'images', 'property_by', 'slug')->where('property_by', 'Housing')->where('status', 1)->orderBy('product_code', 'desc');
+        $properties_filter = Listing::select('id', 'product_code', 'listing_title', 'listing_description', 'bedroom', 'bathroom', 'garage', 'property_price', 'state', 'city', 'sector', 'images', 'property_by', 'slug')->where('property_by', 'Housing')->orderBy('product_code', 'desc');
 
         if(count($this->types)>0){
             if(count($this->types) === 1){
@@ -26,6 +48,12 @@ class SearchComponent extends Component
                 $properties_filter->where(function ($query) {
                     $query->where('listingtype','=',$this->types[0])
                         ->orWhere('listingtype','=',$this->types[1]);
+                });
+            } else if(count($this->types) === 3){
+                $properties_filter->where(function ($query) {
+                    $query->where('listingtype','=',$this->types[0])
+                        ->orWhere('listingtype','=',$this->types[1])
+                        ->orWhere('listingtype','=',$this->types[2]);
                 });
             }
         };
@@ -54,11 +82,27 @@ class SearchComponent extends Component
         if ($this->min_price && $this->max_price) {
             $properties_filter->whereBetween('property_price', [$this->min_price, $this->max_price]);
         }
+
+        if($this->city){
+            $cityaux = DB::table('info_cities')->where('id', $this->city)->first();
+            $this->cityTagName = $cityaux->name;
+            $properties_filter->where('city', 'LIKE', "%".$cityaux->name."%");
+        }
         
         $properties = $properties_filter->get();
 
+        $cities = [];
+        if($this->citySearch){
+            $cities = DB::table('info_cities')->where('name', 'LIKE', '%'.$this->citySearch.'%')->orderBy('id', 'desc')->take(5)->get();
+        }
+
+        $this->currentTab == "tab2" ? $this->showTab2 = true : $this->showTab2 = false;
+
         return view('livewire.search-component', [
-            'properties' => $properties
+            'properties' => $properties,
+            'cities' => $cities,
+            'showTab2' => $this->showTab2,
+            'cityTagName' => $this->cityTagName
         ]);
     }
 }

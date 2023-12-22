@@ -8,35 +8,35 @@
                     </div>
                     <div id="tab1" class="position-absolute p-2 bg-white border rounded shadow-sm d-none mt-1" style="z-index: 1; width: 200px">
                         <div class="d-flex gap-2">
-                            <input value="23" id="checkCasas" type="checkbox" name="types" style="width: 20px;">
+                            <input value="23" id="checkCasas" type="checkbox" name="types" style="width: 20px;" onclick="disabledCheckBoxesTypes()">
                             <label class="w-100" style="cursor: pointer" for="checkCasas">Casas</label>
                         </div>
                         <div class="d-flex gap-2 mt-1">
-                            <input value="24" id="checkDepartamentos" type="checkbox" name="types" style="width: 20px">
+                            <input value="24" id="checkDepartamentos" type="checkbox" name="types" style="width: 20px" onclick="disabledCheckBoxesTypes()">
                             <label class="w-100" style="cursor: pointer" for="checkDepartamentos">Departamentos</label>
                         </div>
                         <div class="d-flex gap-2 mt-1">
-                            <input value="25" id="checkCasasComerciales" type="checkbox" name="types" style="width: 20px">
+                            <input value="25" id="checkCasasComerciales" type="checkbox" name="types" style="width: 20px" onclick="disabledCheckBoxesTypes()">
                             <label class="w-100" style="cursor: pointer" for="checkCasasComerciales">Casas Comerciales</label>
                         </div>
                         <div class="d-flex gap-2 mt-1">
-                            <input value="32" id="checkLocalesComerciales" type="checkbox" name="types" style="width: 20px">
+                            <input value="32" id="checkLocalesComerciales" type="checkbox" name="types" style="width: 20px" onclick="disabledCheckBoxesTypes()">
                             <label class="w-100" style="cursor: pointer" for="checkLocalesComerciales">Locales Comerciales</label>
                         </div>
                         <div class="d-flex gap-2 mt-1">
-                            <input value="35" id="checkOficinas" type="checkbox" name="types" style="width: 20px">
+                            <input value="35" id="checkOficinas" type="checkbox" name="types" style="width: 20px" onclick="disabledCheckBoxesTypes()">
                             <label class="w-100" style="cursor: pointer" for="checkOficinas">Oficinas</label>
                         </div>
                         <div class="d-flex gap-2 mt-1">
-                            <input value="36" id="checkSuites" type="checkbox" name="types" style="width: 20px">
+                            <input value="36" id="checkSuites" type="checkbox" name="types" style="width: 20px" onclick="disabledCheckBoxesTypes()">
                             <label class="w-100" style="cursor: pointer" for="checkSuites">Suites</label>
                         </div>
                         <div class="d-flex gap-2 mt-1">
-                            <input value="29" id="checkQuintas" type="checkbox" name="types" style="width: 20px">
+                            <input value="29" id="checkQuintas" type="checkbox" name="types" style="width: 20px" onclick="disabledCheckBoxesTypes()">
                             <label class="w-100" style="cursor: pointer" for="checkQuintas">Quintas</label>
                         </div>
                         <div class="d-flex gap-2 mt-1">
-                            <input value="30" id="checkHaciendas" type="checkbox" name="types" style="width: 20px">
+                            <input value="30" id="checkHaciendas" type="checkbox" name="types" style="width: 20px" onclick="disabledCheckBoxesTypes()">
                             <label class="w-100" style="cursor: pointer" for="checkHaciendas">Haciendas</label>
                         </div>
                     </div>
@@ -48,7 +48,26 @@
                     <div class="text-center">
                         <span style="cursor: pointer" onclick="showfilter('tab2')">Ubicaciones</span>
                     </div>
-                    <div id="tab2" class="position-absolute p-2 bg-white border rounded shadow-sm d-none mt-2 w-100" style="z-index: 1;">
+                    <div id="tab2" class="position-absolute p-2 bg-white border rounded shadow-sm @if(!$showTab2) d-none @endif mt-2" style="z-index: 1; width: 200px">
+                        <div class="mb-3">
+                            <input type="text" class="w-100 form-control border-0 border-bottom" placeholder="Ingrese una ciudad" wire:model="citySearch">
+                            @if (count($cities)>0)
+                                <div class="px-1 my-3">
+                                    @foreach ($cities as $city)
+                                        <div class="d-flex gap-2 align-items-center">
+                                            <span class="w-100" style="cursor: pointer" onclick="setValueCity('{{$city->id}}', '{{$city->name}}')"><img width="20px" src="{{ asset('img/location-icon.png') }}" alt="">{{ $city->name }}</span>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endif
+                            <span id="divCityValue" class="text-white rounded-pill px-2 py-1 w-auto @if($cityTagName == "") d-none @endif d-flex justify-content-between" style="background-color: #0F0F0F">
+                                <span id="spanCityValue"> @if($cityTagName != "") {{ $cityTagName }} @endif </span>
+                                <label wire:click="cleanCity()" style="width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; cursor: pointer" class="bg-white rounded-circle text-dark text-center">x</label>
+                            </span>
+                            <input style="display: none" type="text" id="inpCity" value="">
+                        </div>
+                        <hr>
+                        <span class="fw-bold" style="font-size: large">Zona</span>
                         <div>
                             <input id="checknorte" value="Norte" type="checkbox" name="zones">
                             <label for="checknorte">Norte</label>
@@ -83,7 +102,7 @@
                             <span>Baños</span>
                             <div class="d-flex align-items-center">
                                 <button class="btn btn-sm rounded-pill border" onclick="sum('num_bathrooms')">+</button>
-                                <input style="width: 25px" id="num_bathrooms" type="text" class="form-control form-control-sm border-0" min="1" value="" readonly>
+                                <input style="width: 25px" id="num_bathrooms" type="text" class="form-control form-control-sm border-0" min="1" value="" placeholder="0" readonly>
                                 <button class="btn btn-sm rounded-pill border" onclick="rest('num_bathrooms')">-</button>
                             </div>
                         </div>
@@ -91,7 +110,7 @@
                             <span>Garage</span>
                             <div class="d-flex align-items-center">
                                 <button class="btn btn-sm rounded-pill border" onclick="sum('num_garage')">+</button>
-                                <input style="width: 25px" id="num_garage" type="text" class="form-control form-control-sm border-0" min="1" value="" readonly>
+                                <input style="width: 25px" id="num_garage" type="text" class="form-control form-control-sm border-0" min="1" value="" placeholder="0" readonly>
                                 <button class="btn btn-sm rounded-pill border" onclick="rest('num_garage')">-</button>
                             </div>
                         </div>                    
@@ -235,6 +254,8 @@
         let min_price = document.getElementById('min_price').value;
         let max_price = document.getElementById('max_price').value;
 
+        let city = document.getElementById('inpCity').value;
+
         for (let i = 0; i < types.length; i++) {
             if(types[i].checked){
                 resulttypes.push(types[i].value)
@@ -247,6 +268,8 @@
             }
         }
 
+        console.log("city: " + city);
+
         @this.set('types', resulttypes);
         @this.set('zones', resultzones);
         @this.set('bedrooms', bedrooms);
@@ -254,10 +277,50 @@
         @this.set('garage', garage);
         @this.set('min_price', min_price);
         @this.set('max_price', max_price);
-        
+        @this.set('city', city);
+        @this.set('currentTab', '');
     }
 
     const sum = (input) => document.getElementById(input).value++;
-    const rest = (input) => document.getElementById(input).value > 1 ? document.getElementById(input).value-- : null; 
+    const rest = (input) => document.getElementById(input).value > 1 ? document.getElementById(input).value-- : null;
+
+    const showfilter = (tab_id) => {
+        for (let index = 1; index < 6; index++) {
+            let current_tab = document.getElementById('tab'+index);
+            if(current_tab){
+                current_tab.classList.add('d-none')
+            }
+        }
+        document.getElementById(tab_id).classList.remove('d-none');
+        tab_id == "tab2" ? @this.set('currentTab', tab_id) : null;
+    }
+
+    const setValueCity = (id, name) => {
+        let inputCity = document.getElementById('inpCity');
+        inputCity.value = id;
+        //@this.set('checkCity', id);
+        let divCityValue = document.getElementById('divCityValue');
+        let spanCityValue = document.getElementById('spanCityValue');
+
+        spanCityValue.textContent = name;
+        divCityValue.classList.remove('d-none');
+    }
+
+    const disabledCheckBoxesTypes = () => {
+        let checkboxes = document.getElementsByName('types');
+        let checkedCheckbox = 0;
+        checkboxes.forEach(element => {
+            if(element.checked) checkedCheckbox++;
+        });
+        if(checkedCheckbox == 3){
+            checkboxes.forEach(element => {
+                element.checked == false ? element.disabled = true : null;
+            });
+        } else {
+            checkboxes.forEach(element => {
+                element.disabled = false;
+            });
+        }
+    }
 
 </script>

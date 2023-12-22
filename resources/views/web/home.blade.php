@@ -98,16 +98,6 @@
         //         .openPopup(); 
         // });
 
-        const showfilter = (tab_id) => {
-            for (let index = 1; index < 6; index++) {
-                let current_tab = document.getElementById('tab'+index);
-                if(current_tab){
-                    current_tab.classList.add('d-none')
-                }
-            }
-            document.getElementById(tab_id).classList.remove('d-none');
-        }
-
         const search = () => {
             for (let index = 1; index < 6; index++) {
                 let current_tab = document.getElementById('tab'+index);
