@@ -39,7 +39,7 @@ class SearchComponent extends Component
     public function render()
     {
 
-        $properties_filter = Listing::select('id', 'product_code', 'listing_title', 'listing_description', 'bedroom', 'bathroom', 'garage', 'property_price', 'state', 'city', 'sector', 'images', 'property_by', 'slug')->where('property_by', 'Housing')->orderBy('product_code', 'desc');
+        $properties_filter = Listing::select('id', 'product_code', 'listing_title', 'listing_description', 'bedroom', 'bathroom', 'garage', 'property_price', 'state', 'city', 'sector', 'images', 'property_by', 'slug')->where('property_by', 'Housing')->where('status', 1)->orderBy('product_code', 'desc');
 
         if(count($this->types)>0){
             if(count($this->types) === 1){
