@@ -12,7 +12,7 @@ class SearchComponent extends Component
     public $types = [];
     public $zones = [];
     public $bedrooms = 0, $bathrooms = 0, $garage = 0;
-    public $min_price = 0, $max_price = 0;
+    public $min_price = 0, $max_price = 0, $rangePrice = 0;
     public $city = "";
 
     public $citySearch = "";
@@ -22,6 +22,9 @@ class SearchComponent extends Component
     public $checkCity = "";
     public $arrayCities = [];
     public $cityTagName = "";
+
+    public $minRangePrice;
+    public $maxRangePrice;
 
     public function updated(){
         // if($this->checkCity){
@@ -34,6 +37,12 @@ class SearchComponent extends Component
         $this->city = "";
         $this->cityTagName = "";
         $this->citySearch = "";
+    }
+
+    public function mount(){
+        $this->minRangePrice = Listing::select('property_price')->where('property_by', 'Housing')->min('property_price');
+
+        $this->maxRangePrice = Listing::select('property_price')->where('property_by', 'Housing')->max('property_price');
     }
 
     public function render()
@@ -83,6 +92,10 @@ class SearchComponent extends Component
             $properties_filter->whereBetween('property_price', [$this->min_price, $this->max_price]);
         }
 
+        if($this->rangePrice){
+            $properties_filter->whereBetween('property_price', [$this->rangePrice, $this->maxRangePrice]);
+        }
+
         if($this->city){
             $cityaux = DB::table('info_cities')->where('id', $this->city)->first();
             $this->cityTagName = $cityaux->name;
@@ -102,7 +115,9 @@ class SearchComponent extends Component
             'properties' => $properties,
             'cities' => $cities,
             'showTab2' => $this->showTab2,
-            'cityTagName' => $this->cityTagName
+            'cityTagName' => $this->cityTagName,
+            'minRangePrice' => $this->minRangePrice,
+            'maxRangePrice' => $this->maxRangePrice
         ]);
     }
 }
