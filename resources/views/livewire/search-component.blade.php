@@ -5,7 +5,7 @@
                 <section class="position-relative w-100 margin-bottom-mobile">
                     <span class="text-muted label-filter" style="font-size: x-small; display: none">Tipo de propiedad</span>
                     <div class="text-center border-tabs-mobile">
-                        <span style="cursor: pointer" onclick="showfilter('tab1')" class="text-center">Todas las propiedades <img class="ms-1 img-filters" width="10px" style="display: none" src="{{ asset('img/icon-down-arrow.png') }}" alt=""></span>
+                        <label style="cursor: pointer" onclick="showfilter('tab1')" class="text-center w-100">Todas las propiedades <img class="ms-1 img-filters" width="10px" style="display: none" src="{{ asset('img/icon-down-arrow.png') }}" alt=""></label>
                     </div>
                     <div id="tab1" class="position-absolute p-2 bg-white border rounded shadow-sm d-none mt-1" style="z-index: 1; width: 200px">
                         <div class="d-flex gap-2">
@@ -47,8 +47,8 @@
 
                 <section class="position-relative w-100 margin-bottom-mobile">
                     <span class="text-muted label-filter" style="font-size: x-small; display: none">¿En donde busca su propiedad?</span>
-                    <div class="text-center border-tabs-mobile">
-                        <span style="cursor: pointer" onclick="showfilter('tab2')">Ubicaciones <img class="ms-1 img-filters" width="10px" style="display: none" src="{{ asset('img/icon-down-arrow.png') }}" alt=""></span>
+                    <div class="text-center border-tabs-mobile w-100">
+                        <label style="cursor: pointer" onclick="showfilter('tab2')" class="w-100">Ubicaciones <img class="ms-1 img-filters" width="10px" style="display: none" src="{{ asset('img/icon-down-arrow.png') }}" alt=""></label>
                     </div>
                     <div id="tab2" class="position-absolute p-2 bg-white border rounded shadow-sm @if(!$showTab2) d-none @endif mt-2" style="z-index: 1; width: 200px">
                         <div class="mb-3">
@@ -90,7 +90,7 @@
                 <section class="position-relative w-100 margin-bottom-mobile">
                     <span class="text-muted label-filter" style="font-size: x-small; display: none">Especificaciones de la propiedad</span>
                     <div class="text-center border-tabs-mobile">
-                        <span style="cursor: pointer" onclick="showfilter('tab3')">Número de... <img class="ms-1 img-filters" width="10px img-filters" style="display: none" src="{{ asset('img/icon-down-arrow.png') }}" alt=""></span>
+                        <label style="cursor: pointer" onclick="showfilter('tab3')" class="w-100">Número de... <img class="ms-1 img-filters" width="10px img-filters" style="display: none" src="{{ asset('img/icon-down-arrow.png') }}" alt=""></label>
                     </div>
                     <div id="tab3" class="position-absolute p-2 bg-white border rounded shadow-sm d-none mt-2" style="z-index: 1100; width: 200px;">
                         <div class="d-flex align-items-center justify-content-between border-bottom pb-1">
@@ -125,7 +125,7 @@
                 <section class="position-relative w-100 margin-bottom-mobile">
                     <span class="text-muted label-filter" style="font-size: x-small; display: none">$ Monto de la propiedad</span>
                     <div class="text-center border-tabs-mobile">
-                        <span style="cursor: pointer" onclick="showfilter('tab4')">Precio <img class="ms-1 img-filters" width="10px" style="display: none" src="{{ asset('img/icon-down-arrow.png') }}" alt=""></span>
+                        <label style="cursor: pointer" onclick="showfilter('tab4')" class="w-100">Precio <img class="ms-1 img-filters" width="10px" style="display: none" src="{{ asset('img/icon-down-arrow.png') }}" alt=""></label>
                     </div>
                     <div id="tab4" class="position-absolute p-2 bg-white border rounded shadow-sm d-none mt-2 w-100" style="z-index: 1100;">
                         <div class="border-bottom pb-2">
@@ -148,7 +148,7 @@
                 <section class="position-relative w-100 margin-bottom-mobile">
                     <span class="text-muted label-filter" style="font-size: x-small; display: none">Características adicionales</span>
                     <div class="text-center border-tabs-mobile">
-                        <span style="cursor: pointer" onclick="showfilter('tab5')">Caracteristicas <img class="ms-1 img-filters" style="display: none" width="10px" src="{{ asset('img/icon-down-arrow.png') }}" alt=""></span>
+                        <label style="cursor: pointer" onclick="showfilter('tab5')" class="w-100">Caracteristicas <img class="ms-1 img-filters" style="display: none" width="10px" src="{{ asset('img/icon-down-arrow.png') }}" alt=""></;>
                     </div>
                     <div id="tab5" class="position-absolute p-2 bg-white border rounded shadow-sm d-none mt-2 w-100" style="z-index: 1100;">
                         <div>
