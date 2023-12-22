@@ -5,9 +5,12 @@
                 <section class="position-relative w-100 margin-bottom-mobile">
                     <span class="text-muted label-filter" style="font-size: x-small; display: none">Tipo de propiedad</span>
                     <div class="text-center border-tabs-mobile">
-                        <label style="cursor: pointer" onclick="showfilter('tab1')" class="text-center w-100">Todas las propiedades <img class="ms-1 img-filters" width="10px" style="display: none" src="{{ asset('img/icon-down-arrow.png') }}" alt=""></label>
+                        <label style="cursor: pointer" onclick="showfilter('tab1', null)" class="text-center w-100">Todas las propiedades <img class="ms-1 img-filters" width="10px" style="display: none" src="{{ asset('img/icon-down-arrow.png') }}" alt=""></label>
                     </div>
                     <div id="tab1" class="position-absolute p-2 bg-white border rounded shadow-sm d-none mt-1" style="z-index: 1; width: 200px">
+                        <div class="position-absolute" style="top: -5px; right: -5px">
+                            <div onclick="showfilter('tab1', 'close')" class="rounded-pill text-white d-flex justify-content-center align-items-center" style="width: 18px; height: 18px; background-color: #242B40; cursor: pointer">x</div>
+                        </div>
                         <div class="d-flex gap-2">
                             <input value="23" id="checkCasas" type="checkbox" name="types" style="width: 20px;" onclick="disabledCheckBoxesTypes()">
                             <label class="w-100" style="cursor: pointer" for="checkCasas">Casas</label>
@@ -48,9 +51,12 @@
                 <section class="position-relative w-100 margin-bottom-mobile">
                     <span class="text-muted label-filter" style="font-size: x-small; display: none">¿En donde busca su propiedad?</span>
                     <div class="text-center border-tabs-mobile w-100">
-                        <label style="cursor: pointer" onclick="showfilter('tab2')" class="w-100">Ubicaciones <img class="ms-1 img-filters" width="10px" style="display: none" src="{{ asset('img/icon-down-arrow.png') }}" alt=""></label>
+                        <label style="cursor: pointer" onclick="showfilter('tab2', null)" class="w-100">Ubicaciones <img class="ms-1 img-filters" width="10px" style="display: none" src="{{ asset('img/icon-down-arrow.png') }}" alt=""></label>
                     </div>
                     <div id="tab2" class="position-absolute p-2 bg-white border rounded shadow-sm @if(!$showTab2) d-none @endif mt-2" style="z-index: 1; width: 200px">
+                        <div class="position-absolute" style="top: -5px; right: -5px">
+                            <div onclick="showfilter('tab2', 'close')" class="rounded-pill text-white d-flex justify-content-center align-items-center" style="width: 18px; height: 18px; background-color: #242B40; cursor: pointer">x</div>
+                        </div>
                         <div class="mb-3">
                             <input type="text" class="w-100 form-control border-0 border-bottom" placeholder="Ingrese una ciudad" wire:model="citySearch">
                             @if (count($cities)>0)
@@ -90,9 +96,12 @@
                 <section class="position-relative w-100 margin-bottom-mobile">
                     <span class="text-muted label-filter" style="font-size: x-small; display: none">Especificaciones de la propiedad</span>
                     <div class="text-center border-tabs-mobile">
-                        <label style="cursor: pointer" onclick="showfilter('tab3')" class="w-100">Número de... <img class="ms-1 img-filters" width="10px img-filters" style="display: none" src="{{ asset('img/icon-down-arrow.png') }}" alt=""></label>
+                        <label style="cursor: pointer" onclick="showfilter('tab3', null)" class="w-100">Número de... <img class="ms-1 img-filters" width="10px img-filters" style="display: none" src="{{ asset('img/icon-down-arrow.png') }}" alt=""></label>
                     </div>
                     <div id="tab3" class="position-absolute p-2 bg-white border rounded shadow-sm d-none mt-2" style="z-index: 1100; width: 200px;">
+                        <div class="position-absolute" style="top: -5px; right: -5px">
+                            <div onclick="showfilter('tab3', 'close')" class="rounded-pill text-white d-flex justify-content-center align-items-center" style="width: 18px; height: 18px; background-color: #242B40; cursor: pointer">x</div>
+                        </div>
                         <div class="d-flex align-items-center justify-content-between border-bottom pb-1">
                             <span>Habitaciones</span>
                             <div class="d-flex align-items-center">
@@ -125,9 +134,12 @@
                 <section class="position-relative w-100 margin-bottom-mobile">
                     <span class="text-muted label-filter" style="font-size: x-small; display: none">$ Monto de la propiedad</span>
                     <div class="text-center border-tabs-mobile">
-                        <label style="cursor: pointer" onclick="showfilter('tab4')" class="w-100">Precio <img class="ms-1 img-filters" width="10px" style="display: none" src="{{ asset('img/icon-down-arrow.png') }}" alt=""></label>
+                        <label style="cursor: pointer" onclick="showfilter('tab4', null)" class="w-100">Precio <img class="ms-1 img-filters" width="10px" style="display: none" src="{{ asset('img/icon-down-arrow.png') }}" alt=""></label>
                     </div>
                     <div id="tab4" class="position-absolute p-2 bg-white border rounded shadow-sm d-none mt-2" style="z-index: 1100; width: 230px">
+                        <div class="position-absolute" style="top: -5px; right: -5px">
+                            <div onclick="showfilter('tab4', 'close')" class="rounded-pill text-white d-flex justify-content-center align-items-center" style="width: 18px; height: 18px; background-color: #242B40; cursor: pointer">x</div>
+                        </div>
                         <div>
                             <div class="d-flex justify-content-center">
                                 <label>Desde <span class="text-center fw-bold" id="currentValueRange"> @if($rangePrice>0) ${{ $rangePrice }} @else ${{ $minRangePrice }} @endif</span> Hasta ${{ $maxRangePrice }}</label>
@@ -164,9 +176,12 @@
                 <section class="position-relative w-100 margin-bottom-mobile">
                     <span class="text-muted label-filter" style="font-size: x-small; display: none">Características adicionales</span>
                     <div class="text-center border-tabs-mobile">
-                        <label style="cursor: pointer" onclick="showfilter('tab5')" class="w-100">Caracteristicas <img class="ms-1 img-filters" style="display: none" width="10px" src="{{ asset('img/icon-down-arrow.png') }}" alt=""></;>
+                        <label style="cursor: pointer" onclick="showfilter('tab5', null)" class="w-100">Caracteristicas <img class="ms-1 img-filters" style="display: none" width="10px" src="{{ asset('img/icon-down-arrow.png') }}" alt=""></;>
                     </div>
                     <div id="tab5" class="position-absolute p-2 bg-white border rounded shadow-sm d-none mt-2 w-100" style="z-index: 1100;">
+                        <div class="position-absolute" style="top: -5px; right: -5px">
+                            <div onclick="showfilter('tab5', 'close')" class="rounded-pill text-white d-flex justify-content-center align-items-center" style="width: 18px; height: 18px; background-color: #242B40; cursor: pointer">x</div>
+                        </div>
                         <div>
                             <input type="checkbox" name="" id="">
                             <label for="checkamoblada">Amoblada</label>
@@ -306,8 +321,7 @@
     const sum = (input) => document.getElementById(input).value++;
     const rest = (input) => document.getElementById(input).value > 1 ? document.getElementById(input).value-- : null;
 
-    const showfilter = (tab_id) => {
-        //debugger;
+    const showfilter = (tab_id, action) => {
         for (let index = 1; index < 6; index++) {
             let current_tab = document.getElementById('tab'+index);
             if(current_tab){
@@ -319,7 +333,7 @@
         } else {
             document.getElementById(tab_id).classList.add('d-none');
         }
-        tab_id == "tab2" ? @this.set('currentTab', tab_id) : null;
+        tab_id == "tab2" && action != "close" && !document.getElementById('tab2').classList.contains('d-none') ? @this.set('currentTab', tab_id) : null;
     }
 
     const setValueCity = (id, name) => {
