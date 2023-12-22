@@ -19,6 +19,15 @@
         @media screen and (max-width: 580px){
             .redes{display: none !important}
             .text-title{position: relative !important; height: auto !important}
+            .search{display: inline-block !important;}
+            .rounded-search-mobile{border: 1px solid rgb(195, 195, 195) !important; border-radius: 5% !important; padding: 10px 20px 10px 20px !important}
+            .slash{display: none !important}
+            .section-search{padding-left: 5% !important; padding-right: 5% !important}
+            .margin-bottom-mobile{margin-bottom: 9px !important}
+            .border-tabs-mobile{border-radius: 25px !important; border: .5px solid rgb(202, 202, 202) !important; box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;}
+            .btn-search-mobile{text-align: center !important; margin-top: 20px !important}
+            .label-filter{display: block !important}
+            .img-filters{display: block !important}
         }
         .card:hover{
             box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;

@@ -1,10 +1,11 @@
 <div>
-    <section style="padding-left: 10%; padding-right: 10%">
-        <section class="d-flex ps-5 pe-1 rounded-pill py-1" style="border: 1px solid #000000">
-            <div class="d-flex w-100 justify-content-between align-items-center">
-                <section class="position-relative w-100">
-                    <div class="text-center">
-                        <span style="cursor: pointer" onclick="showfilter('tab1')" class="text-center">Todas las propiedades</span>
+    <section class="section-search" style="padding-left: 10%; padding-right: 10%">
+        <section class="d-flex ps-4 pe-1 rounded-pill py-1 rounded-search-mobile shadow-sm" style="border: 1px solid #000000">
+            <div class="d-flex w-100 justify-content-between align-items-center search">
+                <section class="position-relative w-100 margin-bottom-mobile">
+                    <span class="text-muted label-filter" style="font-size: x-small; display: none">Tipo de propiedad</span>
+                    <div class="text-center border-tabs-mobile">
+                        <span style="cursor: pointer" onclick="showfilter('tab1')" class="text-center">Todas las propiedades <img class="ms-1 img-filters" width="10px" style="display: none" src="{{ asset('img/icon-down-arrow.png') }}" alt=""></span>
                     </div>
                     <div id="tab1" class="position-absolute p-2 bg-white border rounded shadow-sm d-none mt-1" style="z-index: 1; width: 200px">
                         <div class="d-flex gap-2">
@@ -42,11 +43,12 @@
                     </div>
                 </section>
 
-                <div>/</div>
+                <div class="slash">/</div>
 
-                <section class="position-relative w-100">
-                    <div class="text-center">
-                        <span style="cursor: pointer" onclick="showfilter('tab2')">Ubicaciones</span>
+                <section class="position-relative w-100 margin-bottom-mobile">
+                    <span class="text-muted label-filter" style="font-size: x-small; display: none">¿En donde busca su propiedad?</span>
+                    <div class="text-center border-tabs-mobile">
+                        <span style="cursor: pointer" onclick="showfilter('tab2')">Ubicaciones <img class="ms-1 img-filters" width="10px" style="display: none" src="{{ asset('img/icon-down-arrow.png') }}" alt=""></span>
                     </div>
                     <div id="tab2" class="position-absolute p-2 bg-white border rounded shadow-sm @if(!$showTab2) d-none @endif mt-2" style="z-index: 1; width: 200px">
                         <div class="mb-3">
@@ -83,11 +85,12 @@
                     </div>
                 </section>
 
-                <div>/</div>
+                <div class="slash">/</div>
 
-                <section class="position-relative w-100">
-                    <div class="text-center">
-                        <span style="cursor: pointer" onclick="showfilter('tab3')">Número de...</span>
+                <section class="position-relative w-100 margin-bottom-mobile">
+                    <span class="text-muted label-filter" style="font-size: x-small; display: none">Especificaciones de la propiedad</span>
+                    <div class="text-center border-tabs-mobile">
+                        <span style="cursor: pointer" onclick="showfilter('tab3')">Número de... <img class="ms-1" width="10px img-filters" style="display: none" src="{{ asset('img/icon-down-arrow.png') }}" alt=""></span>
                     </div>
                     <div id="tab3" class="position-absolute p-2 bg-white border rounded shadow-sm d-none mt-2" style="z-index: 1100; width: 200px;">
                         <div class="d-flex align-items-center justify-content-between border-bottom pb-1">
@@ -117,11 +120,12 @@
                     </div>
                 </section>
 
-                <div style="width: 5px !important">/</div>
+                <div class="slash" style="width: 5px !important">/</div>
 
-                <section class="position-relative w-100">
-                    <div class="text-center">
-                        <span style="cursor: pointer" onclick="showfilter('tab4')">Precio</span>
+                <section class="position-relative w-100 margin-bottom-mobile">
+                    <span class="text-muted label-filter" style="font-size: x-small; display: none">$ Monto de la propiedad</span>
+                    <div class="text-center border-tabs-mobile">
+                        <span style="cursor: pointer" onclick="showfilter('tab4')">Precio <img class="ms-1 img-filters" width="10px" style="display: none" src="{{ asset('img/icon-down-arrow.png') }}" alt=""></span>
                     </div>
                     <div id="tab4" class="position-absolute p-2 bg-white border rounded shadow-sm d-none mt-2 w-100" style="z-index: 1100;">
                         <div class="border-bottom pb-2">
@@ -139,11 +143,12 @@
                     </div>
                 </section>
 
-                <div>/</div>
+                <div class="slash">/</div>
 
-                <section class="position-relative w-100">
-                    <div class="text-center">
-                        <span style="cursor: pointer" onclick="showfilter('tab5')">Caracteristicas</span>
+                <section class="position-relative w-100 margin-bottom-mobile">
+                    <span class="text-muted label-filter" style="font-size: x-small; display: none">Características adicionales</span>
+                    <div class="text-center border-tabs-mobile">
+                        <span style="cursor: pointer" onclick="showfilter('tab5')">Caracteristicas <img class="ms-1 img-filters" style="display: none" width="10px" src="{{ asset('img/icon-down-arrow.png') }}" alt=""></span>
                     </div>
                     <div id="tab5" class="position-absolute p-2 bg-white border rounded shadow-sm d-none mt-2 w-100" style="z-index: 1100;">
                         <div>
@@ -157,7 +162,7 @@
                     </div>
                 </section>
 
-                <section>
+                <section class="btn-search-mobile">
                     <button onclick="filter_properties()" class="btn btn-dark btn-sm rounded-pill px-5">Buscar</button>
                 </section>
             </div>
