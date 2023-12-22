@@ -35,6 +35,7 @@
         input[type='checkbox'] {
             accent-color: #0F0F0F;
         }
+
     </style>
 
     @livewireStyles
