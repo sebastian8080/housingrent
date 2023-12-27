@@ -20,6 +20,7 @@ Route::get('/propiedades/{slug}', [WebController::class, 'show'])->name('show.pr
 Route::get('/publique-con-nosotros', [WebController::class, 'uploadpage'])->name('show.upload.page');
 Route::get('/contactenos', [WebController::class, 'contact'])->name('web.contact');
 Route::post('/send-lead', [WebController::class, 'sendlead'])->name('web.send.lead');
+Route::get('/thank', function(){ return view('web.thank');})->name('web.thank');
 
 Auth::routes();
 

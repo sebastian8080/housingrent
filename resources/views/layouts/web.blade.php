@@ -11,6 +11,13 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+    <style>
+        body, html{
+            width: 100%;
+            overflow-x: hidden;
+        }
+    </style>
+
     @yield('css')
 </head>
 <body>

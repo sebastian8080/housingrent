@@ -50,6 +50,7 @@ class WebController extends Controller
         //mail('info@casacredito.com','Lead Housing Rent: '.strip_tags($req->leadName), $message, $header);
         mail('sebas31051999@gmail.com', 'Lead Housing Rent: ' . strip_tags($request->name), $message, $header);
 
+        return redirect()->route('web.thank');
     }
 
 }
