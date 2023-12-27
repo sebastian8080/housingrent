@@ -31,10 +31,10 @@
                         <a class="nav-link" href="#">Buscar Propiedades</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Publicar Propiedades</a>
+                        <a class="nav-link" href="{{ route('show.upload.page') }}">Publicar Propiedades</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link">Contáctenos</a>
+                        <a class="nav-link" href="{{ route('web.contact') }}">Contáctenos</a>
                     </li>
                     </ul>
                 </div>
@@ -67,7 +67,7 @@
                 </div>
                 <div class="col-sm-2 text-white">
                     <div>CONTACTOS</div>
-                    <div>+593 99 126 1249</div>
+                    <div>098-384-9073</div>
                     <div>info@housingecuador.com</div>
                     <div>Av. Solano y Remigio Tamariz Crespo</div>
                 </div>

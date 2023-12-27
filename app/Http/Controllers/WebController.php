@@ -22,6 +22,14 @@ class WebController extends Controller
 
     }
 
+    public function uploadpage(){
+        return view('web.upload-property');
+    }
+
+    public function contact(){
+        return view('web.contact-page');
+    } 
+
     public function sendlead(Request $request){
 
         $message = "<br><strong>Nuevo Lead Housing</strong>

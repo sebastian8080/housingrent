@@ -52,7 +52,7 @@
                 <div class="col-sm-6 d-flex align-items-center p-5">
                     <div>
                         <h1 class="fw-bold display-5">Encuentra tu <br> hogar perfecto</h1>
-                        <p>Nuestra plataforma esta diseñana para facilitar la búsqueda de las propiedades, desde aquellas que permiten mascotas hasta aquellas con características expecíficas que se adaptan a tus necesidades. <b>¡Tu hogar perfecto te espera!</b></p>
+                        <p>Nuestra plataforma esta diseñada para facilitar la búsqueda de las propiedades, desde aquellas que permiten mascotas hasta aquellas con características expecíficas que se adaptan a tus necesidades. <b>¡Tu hogar perfecto te espera!</b></p>
                     </div>
                 </div>
             </div>

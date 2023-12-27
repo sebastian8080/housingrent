@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WebController::class, 'home'])->name('web.home');
 Route::get('/propiedades/{slug}', [WebController::class, 'show'])->name('show.property');
+Route::get('/publique-con-nosotros', [WebController::class, 'uploadpage'])->name('show.upload.page');
+Route::get('/contactenos', [WebController::class, 'contact'])->name('web.contact');
 Route::post('/send-lead', [WebController::class, 'sendlead'])->name('web.send.lead');
 
 Auth::routes();
