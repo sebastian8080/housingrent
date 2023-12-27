@@ -33,11 +33,13 @@ class WebController extends Controller
     public function sendlead(Request $request){
 
         $message = "<br><strong>Nuevo Lead Housing</strong>
-                    <br> Nombre: ". strip_tags($request->name). "" . strip_tags($request->lastname) ."
+                    <br> Nombre: ". strip_tags($request->name). " " . strip_tags($request->lastname) ."
                     <br> Telef: ".  strip_tags($request->phone)."
-                    <br> Email: ".  strip_tags($request->email)."
-                    <br> Interes: ".strip_tags($request->interest)."
-                    <br> Mensaje: ".strip_tags($request->message)."
+                    <br> Email: ".  strip_tags($request->email);
+
+        if($request->interest) $message .= "<br> Interes: ".strip_tags($request->interest);
+
+        $message .= "<br> Mensaje: ".strip_tags($request->message)."
                     <br> Fuente: Website";
                 
         $header='';

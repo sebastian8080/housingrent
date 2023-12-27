@@ -68,7 +68,7 @@
                 <div class="col-sm-2 text-white">
                     <div>CONTACTOS</div>
                     <div>098-384-9073</div>
-                    <div>info@housingecuador.com</div>
+                    <div>info@housingrentgroup.com</div>
                     <div>Av. Solano y Remigio Tamariz Crespo</div>
                 </div>
             </div>
@@ -80,7 +80,7 @@
                     <a href="https://www.instagram.com/housingrentgroup" target="_blank">
                         <img width="60px" src="{{ asset('img/icon-instagram.png') }}" alt="">
                     </a>
-                    <a href="">
+                    <a target="_blank" href="https://api.whatsapp.com/send?phone=593983849073&text=Hola%20*Housing%20Rent%20Group*,%20deseo%20consultar%20por%20sus%20servicios">
                         <img width="60px" src="{{ asset('img/icon-whatsapp.png') }}" alt="">
                     </a>
                     <a href="https://www.tiktok.com/@housingrent" target="_blank">
