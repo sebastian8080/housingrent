@@ -149,7 +149,7 @@
                                     <span class="text-muted fw-bold" style="font-size: x-small">Mínimo</span>
                                     <span class="text-muted fw-bold" style="font-size: small">${{ $minRangePrice }}</span>
                                 </div>
-                                <input type="range" id="rangePrice" oninput="changeValueRangePrice()" min="{{$minRangePrice}}" max="{{ $maxRangePrice }}" value="" step="20" />
+                                <input type="range" id="rangePrice" oninput="changeValueRangePrice()" min="{{$minRangePrice}}" max="{{ $maxRangePrice }}" step="20" />
                                 <div>
                                     <span class="text-muted fw-bold" style="font-size: x-small">Máximo</span>
                                     <span class="text-muted fw-bold" style="font-size: small">${{ $maxRangePrice }}</span>
@@ -366,7 +366,6 @@
 
     const changeValueRangePrice = () => {
         let rangePrice = document.getElementById('rangePrice');
-        console.log(rangePrice.value);
         document.getElementById('currentValueRange').textContent = "$"+rangePrice.value;
     }
 
