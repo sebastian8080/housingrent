@@ -84,9 +84,9 @@ class SearchComponent extends Component
             }
         };
 
-        if($this->bedrooms) $properties_filter->where('bedroom', $this->bedrooms);
-        if($this->bathrooms) $properties_filter->where('bathroom', $this->bathrooms);
-        if($this->garage) $properties_filter->where('garage', $this->garage);
+        if($this->bedrooms) $properties_filter->where('bedroom', '>=', $this->bedrooms);
+        if($this->bathrooms) $properties_filter->where('bathroom', '>=', $this->bathrooms);
+        if($this->garage) $properties_filter->where('garage', '>=', $this->garage);
 
         if ($this->min_price && $this->max_price) {
             $properties_filter->whereBetween('property_price', [$this->min_price, $this->max_price]);

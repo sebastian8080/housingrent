@@ -74,7 +74,7 @@
                             </span>
                             <input style="display: none" type="text" id="inpCity" value="">
                         </div>
-                        <hr>
+                        {{-- <hr>
                         <span class="fw-bold" style="font-size: large">Zona</span>
                         <div>
                             <input id="checknorte" value="Norte" type="checkbox" name="zones">
@@ -87,7 +87,7 @@
                         <div>
                             <input id="checkcentro" value="Centro" type="checkbox" name="zones">
                             <label for="checkcentro">Centro</label>
-                        </div>                       
+                        </div> --}}
                     </div>
                 </section>
 
