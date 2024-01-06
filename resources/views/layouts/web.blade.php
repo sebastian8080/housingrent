@@ -80,9 +80,9 @@
                             <a href="tel:+593987746833" class="asindeco" style="color: #ffffff !important; text-decoration: none"> 098-774-6833</a>
                         </p>
                     </div>
-                    <div>
+                    {{-- <div>
                         <p><a href="mailto:ventas@habitarenecuador.com" class="asindeco" style="color: #ffffff !important; text-decoration: none">ventas@habitarenecuador.com</a></p>
-                    </div>
+                    </div> --}}
                     <div>
                         <p class="text-dark-50"><a target="_blank" style="color: #ffffff; text-decoration: none" href="https://g.page/r/CV7pH0E3AVo_EBA"> Av. Juan Iñiguez 3-87 y D. Gonzalo Cordero - Edificio Santa Lucia</a></p> 
                     </div>
