@@ -74,9 +74,18 @@
                 </div>
                 <div class="col-sm-2 text-white">
                     <div>CONTACTOS</div>
-                    <div>098-384-9073</div>
-                    <div>info@housingrentgroup.com</div>
-                    <div>Av. Solano y Remigio Tamariz Crespo</div>
+                    <div>
+                        <p><a href="tel:+593999944247" class="asindeco" style="color: #ffffff !important; text-decoration: none"> 099-994-4247</a> <br>
+                            <a href="tel:+593999944590" class="asindeco" style="color: #ffffff !important; text-decoration: none"> 099-994-4590</a> <br>
+                            <a href="tel:+593987746833" class="asindeco" style="color: #ffffff !important; text-decoration: none"> 098-774-6833</a>
+                        </p>
+                    </div>
+                    <div>
+                        <p><a href="mailto:ventas@habitarenecuador.com" class="asindeco" style="color: #ffffff !important; text-decoration: none">ventas@habitarenecuador.com</a></p>
+                    </div>
+                    <div>
+                        <p class="text-dark-50"><a target="_blank" style="color: #ffffff; text-decoration: none" href="https://g.page/r/CV7pH0E3AVo_EBA"> Av. Juan Iñiguez 3-87 y D. Gonzalo Cordero - Edificio Santa Lucia</a></p> 
+                    </div>
                 </div>
             </div>
             <div class="d-flex justify-content-center py-5">
