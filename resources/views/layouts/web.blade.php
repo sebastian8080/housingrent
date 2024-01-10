@@ -75,9 +75,7 @@
                 <div class="col-sm-2 text-white">
                     <div>CONTACTOS</div>
                     <div>
-                        <p><a href="tel:+593999944247" class="asindeco" style="color: #ffffff !important; text-decoration: none"> 099-994-4247</a> <br>
-                            <a href="tel:+593999944590" class="asindeco" style="color: #ffffff !important; text-decoration: none"> 099-994-4590</a> <br>
-                            <a href="tel:+593987746833" class="asindeco" style="color: #ffffff !important; text-decoration: none"> 098-774-6833</a>
+                        <p><a href="tel:+593983849073" class="asindeco" style="color: #ffffff !important; text-decoration: none"> 098-384-9073</a>
                         </p>
                     </div>
                     {{-- <div>
