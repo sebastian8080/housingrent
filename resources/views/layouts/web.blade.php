@@ -83,7 +83,7 @@
                         <p><a href="mailto:ventas@habitarenecuador.com" class="asindeco" style="color: #ffffff !important; text-decoration: none">ventas@habitarenecuador.com</a></p>
                     </div> --}}
                     <div>
-                        <p class="text-dark-50"><a target="_blank" style="color: #ffffff; text-decoration: none" href="https://g.page/r/CV7pH0E3AVo_EBA"> Av. Juan Iñiguez 3-87 y D. Gonzalo Cordero - Edificio Santa Lucia</a></p> 
+                        <p class="text-dark-50"><a target="_blank" style="color: #ffffff; text-decoration: none" href="https://maps.app.goo.gl/fxWb66XY8BrzVhaf8"> Remigio Tamariz Crespo y Av. Fray Vicente Solano</a></p> 
                     </div>
                 </div>
             </div>
