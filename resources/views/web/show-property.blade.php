@@ -11,7 +11,7 @@
 <meta property="og:url" content="{{ URL::current() }}" />
 <meta property="og:title" content="{{ $listing->listing_title }}" />
 <meta property="og:description" content="{{ $listing->listing_description }}" />
-<meta property="og:image" content="https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[0]}}" />
+<meta property="og:image" content="https://grupohousing.com/uploads/listing/{{explode("|", $listing->images)[0]}}" />
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
@@ -60,13 +60,13 @@
 
                 <section class="row images-desktop">
 
-                    <div onclick="addactive(0)" data-bs-toggle="modal" data-bs-target="#modalImages" class="col-sm-8 img-banner" style="cursor: pointer; height: 484px; border-radius: 25px 0px 0px 25px ; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[0]}}')"></div>
+                    <div onclick="addactive(0)" data-bs-toggle="modal" data-bs-target="#modalImages" class="col-sm-8 img-banner" style="cursor: pointer; height: 484px; border-radius: 25px 0px 0px 25px ; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://grupohousing.com/uploads/listing/{{explode("|", $listing->images)[0]}}')"></div>
 
                     <div class="col-sm-4 d-grid gap-3">
 
-                        <div onclick="addactive(1)" data-bs-toggle="modal" data-bs-target="#modalImages" class="img-banner" style="cursor: pointer; height: 150px; border-radius: 0px 25px 0px 0px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[1]}}')"></div>
-                        <div onclick="addactive(2)" data-bs-toggle="modal" data-bs-target="#modalImages" class="img-banner" style="cursor: pointer; height: 150px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[2]}}')"></div>
-                        <div onclick="addactive(3)" data-bs-toggle="modal" data-bs-target="#modalImages" class="img-banner" style="cursor: pointer; height: 150px; border-radius: 0px 0px 25px 0px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://casacredito.com/uploads/listing/{{explode("|", $listing->images)[3]}}')"></div>
+                        <div onclick="addactive(1)" data-bs-toggle="modal" data-bs-target="#modalImages" class="img-banner" style="cursor: pointer; height: 150px; border-radius: 0px 25px 0px 0px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://grupohousing.com/uploads/listing/{{explode("|", $listing->images)[1]}}')"></div>
+                        <div onclick="addactive(2)" data-bs-toggle="modal" data-bs-target="#modalImages" class="img-banner" style="cursor: pointer; height: 150px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://grupohousing.com/uploads/listing/{{explode("|", $listing->images)[2]}}')"></div>
+                        <div onclick="addactive(3)" data-bs-toggle="modal" data-bs-target="#modalImages" class="img-banner" style="cursor: pointer; height: 150px; border-radius: 0px 0px 25px 0px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://grupohousing.com/uploads/listing/{{explode("|", $listing->images)[3]}}')"></div>
 
                     </div>
 
@@ -79,7 +79,7 @@
                             {{-- https://casacredito.com/uploads/listing/{{$image}} --}}
                             @foreach (explode('|', $listing->images) as $image)
                                 <div class="carousel-item @if($loop->index == 0) active @endif">
-                                    <img src="https://casacredito.com/uploads/listing/{{$image}}" class="d-block w-100" alt="">
+                                    <img src="https://grupohousing.com/uploads/listing/{{$image}}" class="d-block w-100" alt="">
                                 </div>
                             @endforeach
                         </div>
@@ -249,7 +249,7 @@
                         <div class="carousel-inner">
                             @foreach (explode("|", $listing->images) as $image)
                                 <div id="img_{{ $loop->index }}" class="carousel-item @if($loop->index == 0) active @endif">
-                                    <img src="https://casacredito.com/uploads/listing/{{$image}}" class="d-block w-100" alt="">
+                                    <img src="https://grupohousing.com/uploads/listing/{{$image}}" class="d-block w-100" alt="">
                                 </div>
                             @endforeach
                         </div>
@@ -289,7 +289,7 @@
         let images = '{{ $listing->images }}'.split('|')[0];
 
         L.marker(['{{ $listing->lat}}', '{{ $listing->lng}}']).addTo(map)
-            .bindPopup(`<div class="text-center"> <b> ${title} </b> <br> <br> <img class='w-100' src='https://casacredito.com/uploads/listing/${images}' /></div>`)
+            .bindPopup(`<div class="text-center"> <b> ${title} </b> <br> <br> <img class='w-100' src='https://grupohousing.com/uploads/listing/${images}' /></div>`)
             .openPopup();
     </script>
 @endsection
