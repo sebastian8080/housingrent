@@ -218,7 +218,7 @@
                                         <div class="card-body">
                                             <div class="position-relative">
                                                 {{-- https://casacredito.com/uploads/listing/{{$imgpri[0]}} --}}
-                                                <img class="img-fluid" src="https://casacredito.com/uploads/listing/600/{{$imgpri[0]}}" alt="">
+                                                <img class="img-fluid" src="https://grupohousing.com/uploads/listing/600/{{$imgpri[0]}}" alt="">
                                                 <div class="position-absolute" style="top: 5px; left: 5px">
                                                     <span class="bg-white text-dark px-2 rounded-pill" style="font-size: small; font-weight: 600">Propiedad destacada</span>
                                                 </div>
