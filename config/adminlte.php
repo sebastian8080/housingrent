@@ -312,11 +312,14 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
+            'text'        => 'Mis Propiedades',
+            'url'         => 'admin/properties',
+            'icon'        => 'fas fa-home',
+        ],
+        [
+            'text'        => 'Subir Propiedad',
+            'url'         => 'admin/property/create',
+            'icon'        => 'fas fa-plus-circle',
         ],
         ['header' => 'account_settings'],
         [
