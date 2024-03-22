@@ -206,59 +206,18 @@
                 <section class="row justify-content-center">
                     @if(count($properties)>0)
                         @foreach ($properties as $propertie)
+            
                             @php
+                                //get first image
                                 $imgpri = explode("|", $propertie->images);
                             @endphp
-                            <article class="col-12 my-1" style="padding-left: 0px !important; padding-right: 0px !important">
+            
+                            <article class="col-sm-3 my-1" style="padding-left: 0px !important; padding-right: 0px !important">
                                 <a href="{{ route('show.property', $propertie->slug) }}" style="text-decoration: none">
-                                    <div class="card mb-3 rounded-0">
-                                        <div class="row g-0 d-flex">
-                                            <div class="col-md-4">
-                                                <img src="https://grupohousing.com/uploads/listing/600/{{$imgpri[0]}}" class="img-fluid" alt="...">
-                                            </div>
-                                            <div class="col-md-8 px-5 py-3">
-                                                <div class="card-body">
-                                                <h5 class="card-title">{{ $propertie->listing_title }}</h5>
-                                                <p class="card-text" style="font-size: 23px">${{ $propertie->property_price }}</p>
-                                                <p class="card-text">{{ Str::limit(Str::title($propertie->listing_description), '150') }}</p>
-                                                <hr>
-                                                <div class="d-flex justify-content-between w-100">
-                                                    <div class="d-flex gap-4">
-                                                        @if($propertie->bedroom > 0)
-                                                            <div class="d-flex align-items-center justify-content-center gap-2">
-                                                                <img width="40px" height="40px" src="{{ asset('img/bedrooms.png') }}" alt="">
-                                                                <p style="font-size: 20px; height: 100%; align-items: center">{{ $propertie->bedroom }}</p>
-                                                            </div>
-                                                        @endif
-                                                        @if($propertie->bathroom > 0)
-                                                            <div class="d-flex align-items-center justify-content-center gap-2">
-                                                                <img width="40px" height="40px" src="{{ asset('img/bathrooms.png') }}" alt="">
-                                                                <p style="font-size: 20px; ">{{ $propertie->bathroom }}</p>
-                                                            </div>
-                                                        @endif
-                                                        @if($propertie->garage > 0)
-                                                            <div class="d-flex align-items-center justify-content-center gap-2">
-                                                                <img width="40px" height="30px" src="{{ asset('img/garage.png') }}" alt="">
-                                                                <p style="font-size: 20px">{{ $propertie->garage }}</p>
-                                                            </div>
-                                                        @endif
-                                                    </div>
-                                                    {{-- <div class="d-flex gap-4">
-                                                        <div class="w-100">
-                                                            <button class="btn rounded-pill text-white w-100" style="background-color: #242B40; font-size: smaller">LLAMAR</button>
-                                                        </div>
-                                                        <div>
-                                                            <button class="btn rounded-pill text-white w-100" style="background-color: #242B40; font-size: smaller">CONTACTAR</button>
-                                                        </div>
-                                                    </div> --}}
-                                                </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {{-- <div class="card rounded-0 h-100 mx-1">
+                                    <div class="card rounded-0 h-100 mx-1">
                                         <div class="card-body">
                                             <div class="position-relative">
+                                                {{-- https://casacredito.com/uploads/listing/{{$imgpri[0]}} --}}
                                                 <img class="img-fluid" src="https://grupohousing.com/uploads/listing/600/{{$imgpri[0]}}" alt="">
                                                 <div class="position-absolute" style="top: 5px; left: 5px">
                                                     <span class="bg-white text-dark px-2 rounded-pill" style="font-size: small; font-weight: 600">Propiedad destacada</span>
@@ -266,6 +225,7 @@
                                             </div>
                                             <div>
                                                 <h2 class="fw-bold mt-3" style="font-size: medium">{{ $propertie->listing_title }}</h2>
+                                                {{-- <p style="font-size: small" class="text-muted">{{ $propertie->listing_description }}</p> --}}
                                                 <p><img width="20px" src="{{ asset('img/location-icon.png') }}" alt=""> {{$propertie->state}}, {{ $propertie->city }}, {{ $propertie->sector }}</p>
                                             </div>
                                         </div>
@@ -297,7 +257,7 @@
                                             </div>
 
                                         </div>
-                                    </div> --}}
+                                    </div>
                                 </a>
                             </article>
                         @endforeach

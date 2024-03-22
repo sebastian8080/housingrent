@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\SearchController;
 use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -22,9 +21,6 @@ Route::get('/publique-con-nosotros', [WebController::class, 'uploadpage'])->name
 Route::get('/contactenos', [WebController::class, 'contact'])->name('web.contact');
 Route::post('/send-lead', [WebController::class, 'sendlead'])->name('web.send.lead');
 Route::get('/thank', function(){ return view('web.thank');})->name('web.thank');
-
-Route::get('/search', [SearchController::class, 'search'])->name('web.search');
-Route::get('/{type}/{location?}', [SearchController::class, 'redirectBySearch'])->name('web.redirect.search');
 
 Auth::routes();
 
