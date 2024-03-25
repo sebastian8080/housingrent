@@ -57,3 +57,8 @@ input[type='checkbox'] {
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
 }
+.card:hover > .footer-card{
+    background-color: #0F0F0F;
+    border-radius: 0px 0px 5px 5px;
+    color: #ffffff;
+}

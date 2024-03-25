@@ -9,7 +9,7 @@ class WebController extends Controller
 {
     public function home(){
 
-        $properties = Listing::select('id', 'product_code', 'listing_title', 'listing_description', 'bedroom', 'bathroom', 'garage', 'state', 'city', 'sector', 'property_price', 'lat', 'lng', 'images', 'slug')->where('property_by', 'Housing')->where('status', 1)->get();
+        $properties = Listing::select('id', 'product_code', 'listing_title', 'listing_description', 'bedroom', 'bathroom', 'garage', 'state', 'city', 'sector', 'property_price', 'lat', 'lng', 'images', 'slug')->where('property_by', 'Housing')->where('status', 1)->take(4)->latest()->get();
 
         return view('web.home', compact('properties'));
     }

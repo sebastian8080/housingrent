@@ -32,18 +32,18 @@
             <div class="d-flex justify-content-end">
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav d-flex gap-4">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('web.home') }}">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Buscar Propiedades</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('show.upload.page') }}">Publicar Propiedades</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('web.contact') }}">Contáctenos</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{ route('web.home') }}">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('show.upload.page') }}">Publicar Propiedades</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('web.contact') }}">Contáctenos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white rounded-pill px-3" style="background-color: #242b40" href="{{ route('login') }}">Iniciar Sesion</a>
+                        </li>
                     </ul>
                 </div>
             </div>

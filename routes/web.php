@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/', [WebController::class, 'home'])->name('web.home');
 Route::get('/propiedades/{slug}', [WebController::class, 'show'])->name('show.property');
@@ -26,6 +28,4 @@ Route::get('/thank', function(){ return view('web.thank');})->name('web.thank');
 Route::get('/search', [SearchController::class, 'search'])->name('web.search');
 Route::get('/{type}/{location?}', [SearchController::class, 'redirectBySearch'])->name('web.redirect.search');
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
