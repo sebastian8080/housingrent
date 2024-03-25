@@ -4,7 +4,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/font-style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/home-style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/home-style.css?v=1') }}">
     @livewireStyles
 @endsection
 
