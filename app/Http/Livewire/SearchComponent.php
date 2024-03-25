@@ -3,14 +3,11 @@
 namespace App\Http\Livewire;
 
 use App\Models\Models\Listing;
-use App\Models\Property;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class SearchComponent extends Component
 {
-
-    public $properties;
 
     public $types = [];
     public $zones = [];
@@ -42,20 +39,16 @@ class SearchComponent extends Component
         $this->citySearch = "";
     }
 
-    public function mount($properties){
-        
+    public function mount(){
         $this->minRangePrice = Listing::select('property_price')->where('property_by', 'Housing')->min('property_price');
 
         $this->maxRangePrice = Listing::select('property_price')->where('property_by', 'Housing')->max('property_price');
-
-        $this->properties = $properties;
-
     }
 
     public function render()
     {
 
-        $properties_filter = Property::select('id', 'product_code', 'listing_title', 'listing_description', 'bedroom', 'bathroom', 'garage', 'property_price', 'state', 'city', 'sector', 'images', 'slug')->where('property_by', 'Housing')->where('status', 1)->orderBy('product_code', 'desc');
+        $properties_filter = Listing::select('id', 'product_code', 'listing_title', 'listing_description', 'bedroom', 'bathroom', 'garage', 'property_price', 'state', 'city', 'sector', 'images', 'property_by', 'slug')->where('property_by', 'Housing')->where('status', 1)->orderBy('product_code', 'desc');
 
         if(count($this->types)>0){
             if(count($this->types) === 1){
@@ -106,10 +99,10 @@ class SearchComponent extends Component
         if($this->city){
             $cityaux = DB::table('info_cities')->where('id', $this->city)->first();
             $this->cityTagName = $cityaux->name;
-            $properties_filter->where('city', 'LIKE', $cityaux->name."%");
+            $properties_filter->where('city', 'LIKE', "%".$cityaux->name."%");
         }
         
-        $this->properties = $properties_filter->get();
+        $properties = $properties_filter->get();
 
         $cities = [];
         if($this->citySearch){
@@ -119,7 +112,7 @@ class SearchComponent extends Component
         $this->currentTab == "tab2" ? $this->showTab2 = true : $this->showTab2 = false;
 
         return view('livewire.search-component', [
-            'properties' => $this->properties,
+            'properties' => $properties,
             'cities' => $cities,
             'showTab2' => $this->showTab2,
             'cityTagName' => $this->cityTagName,
