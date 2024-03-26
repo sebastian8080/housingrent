@@ -216,7 +216,7 @@
                                             <div class="col-md-4">
                                                 <img src="https://grupohousing.com/uploads/listing/600/{{$imgpri[0]}}" class="img-fluid" alt="...">
                                             </div>
-                                            <div class="col-md-8 px-5 py-3">
+                                            <div class="col-md-8 px-5 py-3 padding-mobile-0">
                                                 <div class="card-body">
                                                 <h5 class="card-title">{{ $propertie->listing_title }}</h5>
                                                 <p class="card-text" style="font-size: 23px">${{ $propertie->property_price }}</p>
