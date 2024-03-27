@@ -114,7 +114,7 @@ class SearchComponent extends Component
             }
     
             if($this->city){
-                $cityaux = DB::table('info_cities')->where('id', $this->city)->first();
+                $cityaux = DB::connection('mysql_grupo_housing')->table('info_cities')->where('id', $this->city)->first();
                 $this->cityTagName = $cityaux->name;
                 $properties_filter->where('city', 'LIKE', $cityaux->name."%");
             }
