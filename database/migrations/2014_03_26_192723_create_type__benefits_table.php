@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInfoStatesTable extends Migration
+class CreateTypeBenefitsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateInfoStatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('info_states', function (Blueprint $table) {
+        Schema::create('type_benefits', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 300);
+            $table->string('name'); // Ejemplo: "servicios básicos", "beneficios", "permisos"
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateInfoStatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('info_states');
+        Schema::dropIfExists('type__benefits');
     }
 }
