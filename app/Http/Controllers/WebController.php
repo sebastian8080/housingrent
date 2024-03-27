@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Models\Listing;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class WebController extends Controller
 {
@@ -16,7 +17,7 @@ class WebController extends Controller
 
     public function show($slug){
 
-        $listing = Listing::where('slug', $slug)->first();
+        $listing = DB::connection('mysql_grupo_housing')->table('listings')->where('slug', $slug)->first();
 
         return view('web.show-property', compact('listing'));
 
