@@ -137,7 +137,7 @@ class SearchComponent extends Component
 
         $cities = [];
         if($this->citySearch){
-            $cities = DB::table('info_cities')->where('name', 'LIKE', '%'.$this->citySearch.'%')->orderBy('id', 'desc')->take(5)->get();
+            $cities = DB::connection('mysql_grupo_housing')->table('info_cities')->where('name', 'LIKE', '%'.$this->citySearch.'%')->orderBy('id', 'desc')->take(5)->get();
         }
 
         $this->currentTab == "tab2" ? $this->showTab2 = true : $this->showTab2 = false;
