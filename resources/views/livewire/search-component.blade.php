@@ -194,6 +194,7 @@
                 </section>
 
                 <section class="btn-search-mobile">
+                    {{-- <button onclick="filter_properties()" class="btn btn-dark btn-sm rounded-pill px-5">Buscar</button> --}}
                     <button onclick="filter_properties()" class="btn btn-dark btn-sm rounded-pill px-5">Buscar</button>
                 </section>
             </div>
@@ -207,14 +208,16 @@
                     @if(count($properties)>0)
                         @foreach ($properties as $propertie)
                             @php
-                                $imgpri = explode("|", $propertie->images);
+                                if($propertie->images != null){
+                                    $imgpri = explode("|", $propertie->images);
+                                }
                             @endphp
                             <article class="col-12 my-1" style="padding-left: 0px !important; padding-right: 0px !important">
                                 <a href="{{ route('show.property', $propertie->slug) }}" style="text-decoration: none">
                                     <div class="card mb-3 rounded-0">
                                         <div class="row g-0 d-flex">
                                             <div class="col-md-4">
-                                                <img src="https://grupohousing.com/uploads/listing/600/{{$imgpri[0]}}" class="img-fluid" alt="...">
+                                                <img src="https://grupohousing.com/uploads/listing/{{$imgpri[0]}}" class="img-fluid" alt="...">
                                             </div>
                                             <div class="col-md-8 px-5 py-3 padding-mobile-0">
                                                 <div class="card-body">
@@ -316,8 +319,6 @@
     
     function filter_properties(){
 
-        search();
-
         let types = document.getElementsByName('types');
         let zones = document.getElementsByName('zones');
         let resulttypes = [];
@@ -356,6 +357,8 @@
         @this.set('city', city);
         @this.set('rangePrice', rangePrice);
         @this.set('currentTab', '');
+
+        @this.searchProperties();
     }
 
     const sum = (input) => document.getElementById(input).value++;

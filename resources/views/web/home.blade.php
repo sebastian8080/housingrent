@@ -24,6 +24,7 @@
                         <select name="type" id="type" style="border-radius: 25px 0px 0px 25px !important; cursor: pointer" class="form-select w-auto rounded-0 bg-white border-0 border-end">
                             <option value="Departamentos">Departamentos</option>
                             <option value="Casas">Casas</option>
+                            <option value="Casas Comerciales">Casas Comerciales</option>
                             <option value="Locales Comerciales">Locales Comerciales</option>
                             <option value="Oficinas">Oficinas</option>
                         </select>

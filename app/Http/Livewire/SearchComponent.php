@@ -10,7 +10,9 @@ use Livewire\Component;
 class SearchComponent extends Component
 {
 
-    public $properties;
+    public $properties = [];
+
+    public $type, $searchtxt;
 
     public $types = [];
     public $zones = [];
@@ -29,11 +31,14 @@ class SearchComponent extends Component
     public $minRangePrice;
     public $maxRangePrice;
 
-    public function updated(){
+    public function hydrate(){
         // if($this->checkCity){
         //     $this->cityTagName = DB::table('info_cities')->where('id', $this->checkCity)->first();
         //     $this->cityTagName = $this->cityTagName->name;
         // }
+        $this->properties = [];
+        $this->type = null;
+        $this->searchtxt = null;
     }
 
     public function cleanCity(){
@@ -42,72 +47,93 @@ class SearchComponent extends Component
         $this->citySearch = "";
     }
 
-    public function mount($properties){
-        $this->minRangePrice = Listing::select('property_price')->where('property_by', 'Housing')->min('property_price');
+    public function mount($type, $searchtxt){
 
-        $this->maxRangePrice = Listing::select('property_price')->where('property_by', 'Housing')->max('property_price');
+        $this->type = $type;
+
+        $this->searchtxt = $searchtxt;
+
+        $this->minRangePrice = DB::connection('mysql_grupo_housing')->table('listings')->select('property_price')->where('available', 1)->min('property_price');
+
+        $this->maxRangePrice = DB::connection('mysql_grupo_housing')->table('listings')->select('property_price')->where('available', 1)->max('property_price');
     
-        $this->properties = $properties;
+    }
+
+    public function searchProperties(){
+
+            $properties_filter = DB::connection('mysql_grupo_housing')->table('listings')->select('id', 'product_code', 'listing_title', 'listing_description', 'listingtype', 'listingtypestatus', 'bedroom', 'bathroom', 'garage', 'property_price', 'state', 'city', 'sector', 'images', 'slug')->where('available', 1)->where('listingtypestatus', 'alquilar')->orderBy('product_code', 'desc');
+
+            if($this->searchtxt != null || $this->searchtxt != ""){
+                $properties_filter->where('city', 'LIKE', "%".$this->searchtxt."%");
+            }
+            
+            if(count($this->types)>0){
+                if(count($this->types) === 1){
+                    $properties_filter->where('listingtype', $this->types[0]);
+                } else if(count($this->types) === 2){
+                    $properties_filter->where(function ($query) {
+                        $query->where('listingtype','=',$this->types[0])
+                            ->orWhere('listingtype','=',$this->types[1]);
+                    });
+                } else if(count($this->types) === 3){
+                    $properties_filter->where(function ($query) {
+                        $query->where('listingtype','=',$this->types[0])
+                            ->orWhere('listingtype','=',$this->types[1])
+                            ->orWhere('listingtype','=',$this->types[2]);
+                    });
+                }
+            };
+    
+            if(count($this->zones)>0){
+                if(count($this->zones) === 1){
+                    $properties_filter->where('zone', $this->zones[0]);
+                } else if(count($this->zones) === 2){
+                    $properties_filter->where(function ($query) {
+                        $query->where('zone','=',$this->zones[0])
+                            ->orWhere('zone','=',$this->zones[1]);
+                    });
+                } else if(count($this->zones) === 3){
+                    $properties_filter->where(function ($query) {
+                        $query->where('zone','=',$this->zones[0])
+                            ->orWhere('zone','=',$this->zones[1])
+                            ->orWhere('zone','=',$this->zones[2]);
+                    });
+                }
+            };
+    
+            if($this->bedrooms) $properties_filter->where('bedroom', '>=', $this->bedrooms);
+            if($this->bathrooms) $properties_filter->where('bathroom', '>=', $this->bathrooms);
+            if($this->garage) $properties_filter->where('garage', '>=', $this->garage);
+    
+            if ($this->min_price && $this->max_price) {
+                $properties_filter->whereBetween('property_price', [$this->min_price, $this->max_price]);
+            }
+    
+            if($this->rangePrice){
+                $properties_filter->whereBetween('property_price', [$this->rangePrice, $this->maxRangePrice]);
+            }
+    
+            if($this->city){
+                $cityaux = DB::table('info_cities')->where('id', $this->city)->first();
+                $this->cityTagName = $cityaux->name;
+                $properties_filter->where('city', 'LIKE', $cityaux->name."%");
+            }
+
+            //consultando variables que vienen por el constructor
+            if($this->type){
+                $properties_filter->where('listingtype', $this->type);
+            }
+
+            //dd($properties_filter);
+    
+            $this->properties = $properties_filter->get();
     }
 
     public function render()
     {
 
-        $properties_filter = Property::select('id', 'product_code', 'listing_title', 'listing_description', 'bedroom', 'bathroom', 'garage', 'property_price', 'state', 'city', 'sector', 'images', 'property_by', 'slug')->where('property_by', 'Housing')->where('status', 1)->orderBy('product_code', 'desc');
-
-        if(count($this->types)>0){
-            if(count($this->types) === 1){
-                $properties_filter->where('listingtype', $this->types[0]);
-            } else if(count($this->types) === 2){
-                $properties_filter->where(function ($query) {
-                    $query->where('listingtype','=',$this->types[0])
-                        ->orWhere('listingtype','=',$this->types[1]);
-                });
-            } else if(count($this->types) === 3){
-                $properties_filter->where(function ($query) {
-                    $query->where('listingtype','=',$this->types[0])
-                        ->orWhere('listingtype','=',$this->types[1])
-                        ->orWhere('listingtype','=',$this->types[2]);
-                });
-            }
-        };
-
-        if(count($this->zones)>0){
-            if(count($this->zones) === 1){
-                $properties_filter->where('zone', $this->zones[0]);
-            } else if(count($this->zones) === 2){
-                $properties_filter->where(function ($query) {
-                    $query->where('zone','=',$this->zones[0])
-                        ->orWhere('zone','=',$this->zones[1]);
-                });
-            } else if(count($this->zones) === 3){
-                $properties_filter->where(function ($query) {
-                    $query->where('zone','=',$this->zones[0])
-                        ->orWhere('zone','=',$this->zones[1])
-                        ->orWhere('zone','=',$this->zones[2]);
-                });
-            }
-        };
-
-        if($this->bedrooms) $properties_filter->where('bedroom', '>=', $this->bedrooms);
-        if($this->bathrooms) $properties_filter->where('bathroom', '>=', $this->bathrooms);
-        if($this->garage) $properties_filter->where('garage', '>=', $this->garage);
-
-        if ($this->min_price && $this->max_price) {
-            $properties_filter->whereBetween('property_price', [$this->min_price, $this->max_price]);
-        }
-
-        if($this->rangePrice){
-            $properties_filter->whereBetween('property_price', [$this->rangePrice, $this->maxRangePrice]);
-        }
-
-        if($this->city){
-            $cityaux = DB::table('info_cities')->where('id', $this->city)->first();
-            $this->cityTagName = $cityaux->name;
-            $properties_filter->where('city', 'LIKE', $cityaux->name."%");
-        }
-        
-        $this->properties = $properties_filter->get();
+        $this->searchProperties();
+        // $properties_filter = Property::select('id', 'product_code', 'listing_title', 'listing_description', 'bedroom', 'bathroom', 'garage', 'property_price', 'state', 'city', 'sector', 'images', 'property_by', 'slug')->where('property_by', 'Housing')->where('status', 1)->orderBy('product_code', 'desc');
 
         $cities = [];
         if($this->citySearch){

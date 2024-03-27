@@ -13,7 +13,8 @@
         <section class="p-5">
             <h2 style="font-family: 'Sharp Grotesk'" class="text-center display-6 fw-bold"><span style="font-weight: 100">Prueba nuestro</span> <span style="font-weight: 500">buscador avanzado</span></h2>
         </section>
-        @livewire('search-component', ['properties' => $properties])
+        {{-- @livewire('search-component', ['properties' => $properties]) --}}
+        @livewire('search-component', ['type' => $type, 'searchtxt' => $searchtxt])
     </section>
 @endsection
 
