@@ -217,7 +217,8 @@
                                     <div class="card mb-3 rounded-0">
                                         <div class="row g-0 d-flex">
                                             <div class="col-md-4">
-                                                <img src="https://grupohousing.com/uploads/listing/{{$imgpri[0]}}" class="img-fluid" alt="...">
+                                                <div style="height: 325px; background-position: center; background-repeat: no-repeat; background-size: cover; background-image: url('https://grupohousing.com/uploads/listing/{{$imgpri[0]}}')"></div>
+                                                {{-- <img src="https://grupohousing.com/uploads/listing/{{$imgpri[0]}}" class="img-fluid" alt="..."> --}}
                                             </div>
                                             <div class="col-md-8 px-5 py-3 padding-mobile-0">
                                                 <div class="card-body">
