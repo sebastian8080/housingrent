@@ -61,7 +61,11 @@
                     <img width="250px" src="{{ asset('img/logo-footer.png') }}" alt="">
                 </div>
                 <div class="col-sm-2 text-white">
-                    <div>HOME</div>
+                    <div>
+                        <a class="text-white text-decoration-none" href="{{ route('web.home') }}">
+                            HOME
+                        </a>
+                    </div>
                     <div>BENEFICIOS</div>
                     <div>BUSCADOR</div>
                     <div>DESTACADAS</div>
@@ -70,13 +74,16 @@
                 </div>
                 <div class="col-sm-2 text-white">
                     <div>SERVICIOS</div>
-                    <div>BUSCAR PROPIEDAD</div>
-                    <div>PUBLICAR PROPIEDAD</div>
+                    <div>
+                        <a class="text-white text-decoration-none" href="{{ route('show.upload.page') }}">
+                            PUBLICAR PROPIEDAD
+                        </a>
+                    </div>
                 </div>
                 <div class="col-sm-2 text-white">
                     <div>CONTACTOS</div>
                     <div>
-                        <p><a href="tel:+593983849073" class="asindeco" style="color: #ffffff !important; text-decoration: none"> 098-384-9073</a>
+                        <p><a href="tel:+593987474637" class="asindeco" style="color: #ffffff !important; text-decoration: none"> 098-747-4637</a>
                         </p>
                     </div>
                     {{-- <div>
