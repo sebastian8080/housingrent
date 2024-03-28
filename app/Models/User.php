@@ -22,6 +22,8 @@ class User extends Authenticatable
         'email',
         'password',
         'role_id',
+        'phone',
+        'address',
         'is_active',
     ];
 
@@ -47,8 +49,8 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
-    public function properties()
+    public function domains()
     {
-        return $this->hasMany(Property::class);
+        return $this->hasMany(Domain::class);
     }
 }

@@ -16,12 +16,12 @@ class Benefit_Property extends Pivot
     public $timestamps = true;
 
     // If you have additional fields on the pivot table you want to be fillable
-    protected $fillable = ['property_id', 'benefit_id'];
+    protected $fillable = ['domain_id', 'benefit_id'];
     
     // Define the inverse relationship with the Property model
     public function property()
     {
-        return $this->belongsTo(Property::class);
+        return $this->belongsTo(Domain::class);
     }
 
     // Define the inverse relationship with the Benefit model

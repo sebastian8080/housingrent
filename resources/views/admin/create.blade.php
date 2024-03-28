@@ -9,7 +9,6 @@
 @stop
 
 @section('content')
-<section class="container">
     @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -19,6 +18,7 @@
         </ul>
     </div>
 @endif
+<div class="container">
 <form id="crearPropiedad" action="{{ route('properties.store') }}" method="POST" novalidate>
     @csrf
 
@@ -237,7 +237,6 @@
     </div>
     
 </form>
-</section>
 
     
 @stop
@@ -248,17 +247,6 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
     <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
-    <style>
-    	.dropzoneDragArea {
-		    background-color: #fbfdff;
-		    border: 1px dashed #c0ccda;
-		    border-radius: 6px;
-		    padding: 60px;
-		    text-align: center;
-		    margin-bottom: 15px;
-		    cursor: pointer;
-		}
-    </style>
     @parent
 @stop
 

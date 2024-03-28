@@ -15,7 +15,7 @@ class CreateMultimediaTable extends Migration
     {
         Schema::create('multimedia', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('property_id')->constrained()->onDelete('cascade'); // Asegura la relación con la tabla properties.
+            $table->foreignId('domain_id')->constrained()->onDelete('cascade'); // Asegura la relación con la tabla properties.
             $table->string('filename'); // Nombre del archivo o path de la imagen.
             $table->string('mime_type')->nullable(); // Tipo MIME de la imagen.
             $table->string('description')->nullable(); // Una descripción opcional.

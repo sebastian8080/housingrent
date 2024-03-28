@@ -10,16 +10,16 @@ class Multimedia extends Model
     use HasFactory;
 
     protected $fillable = [
-        'property_id',
+        'domain_id',
         'filename',
         'mime_type',
         'description',
     ];
 
     // Relación con el modelo Property
-    public function property()
+    public function domain()
     {
-        return $this->belongsTo(Property::class);
+        return $this->belongsTo(Domain::class);
     }
 
 }

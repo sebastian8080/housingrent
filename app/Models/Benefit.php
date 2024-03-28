@@ -16,9 +16,9 @@ class Benefit extends Model
     /**
      * The properties that belong to the benefit.
      */
-    public function properties()
+    public function domains()
     {
-        return $this->belongsToMany(Property::class, 'property_benefit')
+        return $this->belongsToMany(Domain::class, 'property_benefit')
                     ->withTimestamps();
     }
     public function typeBenefit()
