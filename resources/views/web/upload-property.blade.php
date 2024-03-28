@@ -3,11 +3,15 @@
 @section('title', 'Publique su propiedad en Housing Rent')
 
 @section('css')
+    <link rel="stylesheet" href="{{ asset('css/font-style.css') }}">
     <style>
         @media screen and (max-width: 580px){
             .padding-x-mobile{
                 padding-left: 0px !important;
                 padding-right: 0px !important;
+            }
+            .display-6{
+                font-size: 22px !important;
             }
         }
        @media (min-width: 768px) {
@@ -44,69 +48,51 @@
 
 @section('content')
 
-    <section class="container">
-
-        <section class="row justify-content-center text-center pt-4">
-            <h1 class="display-6 fw-bold">¿Cómo publicar una propiedad <br> en Housing Rent Group?</h1>
-            <p class="my-3 padding-x-mobile" style="padding-left: 25%; padding-right: 25%">Para garantizar la seguridad y la calidad en cada experiencia de arrendamiento, hemos implementado un proceso exclusivo para publicar propiedades</p>
-            <p class="my-3 padding-x-mobile" style="padding-left: 25%; padding-right: 25%;"><b>Invitamos a los propietarios interesados ponerse en contacto con nuestro equipo para iniciar el proceso de publicación de su propiedad,</b> garantizamos una experiencia sin complicaciones y una representación precisa de cada espacio.</p>
-            <button class="btn rounded-pill text-white w-auto mt-2 mb-5" style="background-color: #242B40">Contactarme con Housing</button>
+    <section style="background-position: center; background-repeat: no-repeat; background-size: cover; background-image: url('{{ asset('img/bg-publique-con-nosotros.jpg') }}')">
+        <section class="container pt-4">
+            <section  class="row justify-content-center text-center pt-4 pb-4">
+                <h1 class="display-6 fw-bold" style="font-family: 'Sharp Grotesk'"><span style="font-weight: 100">¡No necesitas moverte para</span> <br> <span style="font-weight: 500">darle visibilidad a tu propiedad!</span> </h1>
+                <p class="mb-3 mt-4 padding-x-mobile pb-5" style="padding-left: 30%; padding-right: 30%; font-family: 'Sharp Grotesk'; font-weight: 300">Desde casa, con un click, puedes subirla a nuestra página web y comenzar a recibir consultas</p>
+                {{-- <h2 style="font-family: 'Sharp Grotesk'; font-weight: 100" class="py-4">Nuestros Beneficios</h2> --}}
+            </section>
         </section>
-
     </section>
 
-    <section class="container">
-        <h2>Nuestros beneficios</h2>
-        
-        <div id="carouselExampleControls" class="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <div class="card">
-    <img src="..." class="d-block w-100" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">Card title 2</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-            card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-</div>
-              </div>
-              <div class="carousel-item">
-                <div class="card">
-    <img src="..." class="d-block w-100" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">Card title 2</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-            card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-</div>
-              </div>
-              <div class="carousel-item">
-                <div class="card">
-    <img src="..." class="d-block w-100" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">Card title 2</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-            card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-</div>
-              </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
-          </div>
+    <section class="container mt-5">
+        <h2 style="font-family: 'Sharp Grotesk'; font-weight: 500;" class="text-center display-6">¿Cómo publicar una propiedad <br> en Housing Rent Group?</h2>
+        <p style="font-family: 'Sharp Grotesk'; font-weight: 100" class="text-center py-3">Para garantizar la seguridad y la calidad en cada experiencia de arrendamiento, hemos implementado un proceso exclusivo para publicar propiedades</p>
+        <p style="font-family: 'Sharp Grotesk'; font-weight: 500;" class="text-center">Se debe cumplir todos los pasos para poder publicar la propiedad</p>
+        <section class="row mt-5">
+            <article class="col-sm-6 d-flex justify-content-center justify-content-md-end">
+                <div class="card text-dark bg-light mb-3 position-relative" style="max-width: 18rem;">
+                    <div class="card-header text-center h4" style="background-color: #242B40; color: #ffffff">Registro</div>
+                    <div class="card-body text-center">
+                        <img src="{{ asset('img/register-icon.png') }}" alt="">
+                        <p class="card-text pt-3" style="font-family: 'Sharp Grotesk'; font-weight: 300">Llenar el formulario de registro</p>
+                        <a href="" class="btn rounded-pill" style="background-color: #242B40; color: #ffffff; font-family: 'Sharp Grotesk'">REGISTRARSE</a>
+                    </div>
+                    <div class="position-absolute rounded-circle border border-2 d-flex align-items-center justify-content-center" style="background-color: #242B40; color: #ffffff; top: -10px; left: -10px; height: 30px; width: 30px">1</div>
+                  </div>
+            </article>
+            <article class="col-sm-6 d-flex justify-content-center justify-content-md-start">
+                <div class="card text-dark bg-light mb-3 position-relative" style="max-width: 18rem;">
+                    <div class="card-header text-center h4" style="background-color: #242B40; color: #ffffff">Subir Propiedad</div>
+                    <div class="card-body text-center">
+                        <img src="{{ asset('img/upload-property-icon.png') }}" alt="">
+                        <p class="card-text pt-3 px-4" style="font-family: 'Sharp Grotesk'; font-weight: 300">Información y fotografías</p>
+                        <a href="" class="btn rounded-pill" style="background-color: #242B40; color: #ffffff; font-family: 'Sharp Grotesk'">PUBLICAR</a>
+                    </div>
+                    <div class="position-absolute rounded-circle border border-2 d-flex align-items-center justify-content-center" style="background-color: #242B40; color: #ffffff; top: -10px; left: -10px; height: 30px; width: 30px">2</div>
+                  </div>
+            </article>
+        </section>
+        <section class="row justify-content-center mt-5">
+            <a href="#" class="btn rounded-pill w-auto px-4" style="background-color: #242B40; color: #ffffff">MÁS INFORMACIÓN</a>
+        </section>
     </section>
 
     <section>
-        <img class="img-fluid w-100" src="{{ asset('img/upload-property-page.webp') }}" alt="">
+        <img class="img-fluid w-100" src="{{ asset('img/footer-bg-publique-con-nosotros.webp') }}" alt="">
     </section>
 
 @endsection

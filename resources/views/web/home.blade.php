@@ -17,6 +17,10 @@
         <div class="text-center" style="z-index: 1">
             <img width="800px" class="logo-housing" style="border-bottom: 1px solid #ffffff" src="{{ asset('img/logo.png') }}" alt="">
             <p class="mt-3 mb-3 text-white title" style="font-size: 40px; line-height: 40px; font-family: 'Sharp Grotesk'"><span style="font-weight: 100 !important">¡Tu alquiler está a un clic de</span> <br> <span style="font-weight: 500 !important">distancia!</span></p>
+            <div class="d-flex justify-content-center mb-3">
+                <button class="btn btn-light rounded-0 px-5" style="border-radius: 15px 0px 0px 15px !important; font-weight: 600">Alquilar</button>
+                <a href="{{ route('show.upload.page') }}" class="btn btn-outline-light rounded-0" style="border-radius: 0px 15px 15px 0px !important;">Publica Propiedad</a>
+            </div>
             <form action="{{ route('web.search') }}" method="GET">
                 @csrf
                 <div class="d-flex justify-content-center">
