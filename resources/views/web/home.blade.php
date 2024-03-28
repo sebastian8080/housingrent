@@ -107,18 +107,19 @@
         </article>
         <article class="col-sm-6">
             <h3 style="font-family: 'Sharp Grotesk'; font-weight: 400" class="text-white px-5 h2">Proporciónanos tus datos y te contactaremos</h3>
-            <form action="" class="px-5">
+            <form action="{{ route('web.send.lead') }}" method="POST" class="px-5">
+                @csrf
                 <div class="form-group mb-2 mt-3">
-                    <input type="text" class="form-control bg-transparent border-0 border-bottom border-white rounded-0 inputs-contact" style="color: #ffffff !important; font-family: 'Sharp Grotesk'; font-weight: 100" placeholder="Nombre y Apellido">
+                    <input type="text" class="form-control bg-transparent border-0 border-bottom border-white rounded-0 inputs-contact" style="color: #ffffff !important; font-family: 'Sharp Grotesk'; font-weight: 100" placeholder="Nombre y Apellido" name="name" autocomplete="off" required>
                 </div>
                 <div class="form-group mb-2">
-                    <input type="email" class="form-control bg-transparent border-0 border-bottom border-white rounded-0 inputs-contact" style="color: #ffffff !important; font-family: 'Sharp Grotesk'; font-weight: 100" placeholder="Email">
+                    <input type="email" class="form-control bg-transparent border-0 border-bottom border-white rounded-0 inputs-contact" style="color: #ffffff !important; font-family: 'Sharp Grotesk'; font-weight: 100" placeholder="Email" name="email" autocomplete="off" required>
                 </div>
                 <div class="form-group mb-2">
-                    <input type="number" class="form-control bg-transparent border-0 border-bottom border-white rounded-0 inputs-contact" style="color: #ffffff !important; font-family: 'Sharp Grotesk'; font-weight: 100" placeholder="Teléfono">
+                    <input type="number" class="form-control bg-transparent border-0 border-bottom border-white rounded-0 inputs-contact" style="color: #ffffff !important; font-family: 'Sharp Grotesk'; font-weight: 100" placeholder="Teléfono" name="phone" autocomplete="off" required>
                 </div>
                 <div class="form-group mb-2">
-                    <textarea name="message" style="color: #ffffff !important; font-family: 'Sharp Grotesk'; font-weight: 100" class="form-control bg-transparent border-0 border-bottom border-white rounded-0 inputs-contact" rows="3" placeholder="Mensaje"></textarea>
+                    <textarea name="message" style="color: #ffffff !important; font-family: 'Sharp Grotesk'; font-weight: 100" class="form-control bg-transparent border-0 border-bottom border-white rounded-0 inputs-contact" rows="3" placeholder="Mensaje" name="message" autocomplete="off" required></textarea>
                 </div>
                 <div class="row justify-content-center mt-4">
                     <button class="btn rounded-pill w-auto px-5" style="font-family: 'Sharp Grotesk'; font-weight: 400; background-color: #ffffff">ENVIAR</button>
@@ -142,20 +143,5 @@
 @section('js')
     @livewireScripts
     <script>
-        // var map = L.map('map').setView([-2.900669036449896, -79.00723353370014], 14);
-
-        // L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        //     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        // }).addTo(map);
-
-        // let coordinates = @json($properties) 
-
-        // coordinates.forEach(element => {
-        //     let images = element.images.split('|')[0];
-        //     L.marker([element.lat, element.lng]).addTo(map)
-        //         .bindPopup(`<div class="text-center"> <b> ${element.listing_title} </b> <br> <br> <img class='w-100' src='https://casacredito.com/uploads/listing/${images}' /> <br> <br> <a href="#">Ver propiedad</a></div>`)
-        //         .openPopup(); 
-        // });
-
     </script>
 @endsection
