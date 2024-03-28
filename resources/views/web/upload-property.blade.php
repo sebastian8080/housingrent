@@ -69,7 +69,7 @@
                     <div class="card-body text-center">
                         <img src="{{ asset('img/register-icon.png') }}" alt="">
                         <p class="card-text pt-3" style="font-family: 'Sharp Grotesk'; font-weight: 300">Llenar el formulario de registro</p>
-                        <a href="" class="btn rounded-pill" style="background-color: #242B40; color: #ffffff; font-family: 'Sharp Grotesk'">REGISTRARSE</a>
+                        <a href="{{ route('register') }}" class="btn rounded-pill" style="background-color: #242B40; color: #ffffff; font-family: 'Sharp Grotesk'">REGISTRARSE</a>
                     </div>
                     <div class="position-absolute rounded-circle border border-2 d-flex align-items-center justify-content-center" style="background-color: #242B40; color: #ffffff; top: -10px; left: -10px; height: 30px; width: 30px">1</div>
                   </div>
@@ -80,7 +80,7 @@
                     <div class="card-body text-center">
                         <img src="{{ asset('img/upload-property-icon.png') }}" alt="">
                         <p class="card-text pt-3 px-4" style="font-family: 'Sharp Grotesk'; font-weight: 300">Información y fotografías</p>
-                        <a href="" class="btn rounded-pill" style="background-color: #242B40; color: #ffffff; font-family: 'Sharp Grotesk'">PUBLICAR</a>
+                        <a href="{{ route('login') }}" class="btn rounded-pill" style="background-color: #242B40; color: #ffffff; font-family: 'Sharp Grotesk'">PUBLICAR</a>
                     </div>
                     <div class="position-absolute rounded-circle border border-2 d-flex align-items-center justify-content-center" style="background-color: #242B40; color: #ffffff; top: -10px; left: -10px; height: 30px; width: 30px">2</div>
                   </div>
