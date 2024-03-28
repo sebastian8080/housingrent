@@ -49,7 +49,7 @@
 @section('content')
 
     <section style="background-position: center; background-repeat: no-repeat; background-size: cover; background-image: url('{{ asset('img/bg-publique-con-nosotros.jpg') }}')">
-        <section class="container pt-4">
+        <section class="container pt-5">
             <section  class="row justify-content-center text-center pt-4 pb-4">
                 <h1 class="display-6 fw-bold" style="font-family: 'Sharp Grotesk'"><span style="font-weight: 100">¡No necesitas moverte para</span> <br> <span style="font-weight: 500">darle visibilidad a tu propiedad!</span> </h1>
                 <p class="mb-3 mt-4 padding-x-mobile pb-5" style="padding-left: 30%; padding-right: 30%; font-family: 'Sharp Grotesk'; font-weight: 300">Desde casa, con un click, puedes subirla a nuestra página web y comenzar a recibir consultas</p>
