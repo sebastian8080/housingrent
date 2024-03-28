@@ -87,7 +87,7 @@
             </article>
         </section>
         <section class="row justify-content-center mt-5">
-            <a href="#" class="btn rounded-pill w-auto px-4" style="background-color: #242B40; color: #ffffff">MÁS INFORMACIÓN</a>
+            <a href="{{ route('web.contact') }}" class="btn rounded-pill w-auto px-4" style="background-color: #242B40; color: #ffffff">MÁS INFORMACIÓN</a>
         </section>
     </section>
 
