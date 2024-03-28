@@ -4,6 +4,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/', [WebController::class, 'home'])->name('web.home');
 Route::get('/propiedades/{slug}', [WebController::class, 'show'])->name('show.property');
 Route::get('/publique-con-nosotros', [WebController::class, 'uploadpage'])->name('show.upload.page');
@@ -27,5 +27,3 @@ Route::get('/thank', function(){ return view('web.thank');})->name('web.thank');
 
 Route::get('/search', [SearchController::class, 'search'])->name('web.search');
 Route::get('/{type}/{location?}', [SearchController::class, 'redirectBySearch'])->name('web.redirect.search');
-
-

@@ -308,18 +308,18 @@ return [
         ],
         [
             'text' => 'blog',
-            'url'  => 'admin/blog',
+            'url'  => 'blog',
             'can'  => 'manage-blog',
         ],
         [
             'text'        => 'Mis Propiedades',
-            'url'         => 'admin/properties',
+            'url'         => 'admin/properties/list',
             'icon'        => 'fas fa-home',
         ],
         [
-            'text'        => 'Subir Propiedad',
-            'url'         => 'admin/property/create',
-            'icon'        => 'fas fa-plus-circle',
+            'text' => 'Subir Propiedad',
+            'url'  => 'admin/property/create', // Asegúrate de que esto coincida con la URL definida en las rutas.
+            'icon' => 'fas fa-plus-circle',
         ],
         ['header' => 'account_settings'],
         [

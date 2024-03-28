@@ -29,10 +29,10 @@ class CreatePropertiesTable extends Migration
         $table->string('sector')->nullable();
         $table->string('city');
         $table->boolean('is_negotiable')->default(false);
+        $table->string('slug')->unique();
         $table->text('address')->nullable();
         $table->double('lat', 15, 10)->nullable();
         $table->double('lng', 15, 10)->nullable();
-        $table->boolean('pet_friendly')->default(false);
         $table->string('laundry_type')->nullable();
         $table->boolean('is_active')->default(false);
         $table->unsignedBigInteger('user_id'); // Asegúrate de que el tipo de dato coincida con tu columna de ID de usuarios.

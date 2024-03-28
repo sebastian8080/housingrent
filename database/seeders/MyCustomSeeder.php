@@ -2,13 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\Role;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class MyCustomSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
@@ -19,8 +18,9 @@ class DatabaseSeeder extends Seeder
             InfoListingType::class,
             InfoLaundryTypes::class,
             InfoListingType::class,
+            InfoTablesSeeder::class,
             RoleSeeder::class,
-            // Agrega aquí cualquier otro seeder que necesites ejecutar
+            // Agrega aquí cualquier otro seeder que necesites ejecutar.
         ]);
     }
 }
