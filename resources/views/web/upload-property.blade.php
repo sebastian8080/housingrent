@@ -4,6 +4,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/font-style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/info-upload-property.css') }}">
     <style>
         @media screen and (max-width: 580px){
             .padding-x-mobile{
@@ -48,46 +49,120 @@
 
 @section('content')
 
-    <section style="background-position: center; background-repeat: no-repeat; background-size: cover; background-image: url('{{ asset('img/bg-publique-con-nosotros.jpg') }}')">
-        <section class="container pt-5">
-            <section  class="row justify-content-center text-center pt-4 pb-4">
-                <h1 class="display-6 fw-bold" style="font-family: 'Sharp Grotesk'"><span style="font-weight: 100">¡No necesitas moverte para</span> <br> <span style="font-weight: 500">darle visibilidad a tu propiedad!</span> </h1>
-                <p class="mb-3 mt-4 padding-x-mobile pb-5" style="padding-left: 30%; padding-right: 30%; font-family: 'Sharp Grotesk'; font-weight: 300">Desde casa, con un click, puedes subirla a nuestra página web y comenzar a recibir consultas</p>
-                {{-- <h2 style="font-family: 'Sharp Grotesk'; font-weight: 100" class="py-4">Nuestros Beneficios</h2> --}}
-            </section>
+    <section class="bg-footer-home">
+        <section class="row w-full h-100 align-items-center justify-content-center">
+            <article class="col-sm-6 col-12 text-center d-flex align-items-center justify-content-center">
+                <h2 class="display-6" style="font-family: 'Sharp Grotesk'; color: #ffffff"><span style="font-weight: 100">¡Desde tu casa con un click</span> <br> <span style="font-weight: 500">publica tu propiedad!</span></h2>
+            </article>
+            <article class="col-sm-6 col-12">
+                <h3 style="font-family: 'Sharp Grotesk'; font-weight: 400" class="text-white px-5 h2">Registro de Usuario</h3>
+                <form action="{{ route('register') }}" method="POST" class="px-5">
+                    @csrf
+                    <div class="form-group mb-3 mt-3">
+                        <input type="text" class="form-control bg-transparent border-0 border-bottom border-white rounded-0 inputs-contact" style="color: #ffffff !important; font-family: 'Sharp Grotesk'; font-weight: 100" placeholder="Nombre y Apellido" name="name" autocomplete="off" required>
+                    </div>+
+                    <div class="form-group mb-3">
+                        <input type="email" class="form-control bg-transparent border-0 border-bottom border-white rounded-0 inputs-contact" style="color: #ffffff !important; font-family: 'Sharp Grotesk'; font-weight: 100" placeholder="Email" name="email" autocomplete="off" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <input type="number" class="form-control bg-transparent border-0 border-bottom border-white rounded-0 inputs-contact" style="color: #ffffff !important; font-family: 'Sharp Grotesk'; font-weight: 100" placeholder="Teléfono" name="phone" autocomplete="off" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <input type="password" name="password" id="password" class="form-control bg-transparent border-0 border-bottom border-white rounded-0 inputs-contact" style="color: #ffffff !important; font-family: 'Sharp Grotesk'; font-weight: 100" placeholder="Cree una contraseña" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <input type="password" name="password_confirmation" id="password" class="form-control bg-transparent border-0 border-bottom border-white rounded-0 inputs-contact" style="color: #ffffff !important; font-family: 'Sharp Grotesk'; font-weight: 100" placeholder="Confirmar contraseña" required>
+                    </div>
+                    <div class="row justify-content-center mt-4">
+                        <button class="btn rounded-pill w-auto px-5" style="font-family: 'Sharp Grotesk'; font-weight: 400; background-color: #ffffff">REGISTRARSE</button>
+                    </div>
+                </form>
+            </article>
         </section>
     </section>
 
     <section class="container mt-5">
-        <h2 style="font-family: 'Sharp Grotesk'; font-weight: 500;" class="text-center display-6">¿Cómo publicar una propiedad <br> en Housing Rent Group?</h2>
-        <p style="font-family: 'Sharp Grotesk'; font-weight: 100" class="text-center py-3">Para garantizar la seguridad y la calidad en cada experiencia de arrendamiento, hemos implementado un proceso exclusivo para publicar propiedades</p>
-        <p style="font-family: 'Sharp Grotesk'; font-weight: 500;" class="text-center">Se debe cumplir todos los pasos para poder publicar la propiedad</p>
+        <h2 style="font-family: 'Sharp Grotesk'; color: #242B40" class="text-center display-6 pb-5"><span style="font-weight: 500">Pasos para subir</span> <span style="font-weight: 100">una propiedad</span></h2>
         <section class="row mt-5">
-            <article class="col-sm-6 d-flex justify-content-center justify-content-md-end">
-                <div class="card text-dark bg-light mb-3 position-relative" style="max-width: 18rem;">
-                    <div class="card-header text-center h4" style="background-color: #242B40; color: #ffffff">Registro</div>
-                    <div class="card-body text-center">
-                        <img src="{{ asset('img/register-icon.png') }}" alt="">
-                        <p class="card-text pt-3" style="font-family: 'Sharp Grotesk'; font-weight: 300">Llenar el formulario de registro</p>
-                        <a href="{{ route('register') }}" class="btn rounded-pill" style="background-color: #242B40; color: #ffffff; font-family: 'Sharp Grotesk'">REGISTRARSE</a>
+            <article class="col-sm-3 w-full mb-3">
+                <div class="card text-dark h-auto mb-3 position-relative">
+                    <div class="card-body text-center pt-5">
+                        <img width="50px" height="50px" src="{{ asset('img/1icono.webp') }}" alt="">
+                        <p class="card-text pt-3" style="font-family: 'Sharp Grotesk';"><span style="font-weight: 100">Escoger la opción</span> <br> <span style="font-weight: 500">Subir Propiedad</span></p>
                     </div>
-                    <div class="position-absolute rounded-circle border border-2 d-flex align-items-center justify-content-center" style="background-color: #242B40; color: #ffffff; top: -10px; left: -10px; height: 30px; width: 30px">1</div>
-                  </div>
+                    <div class="position-absolute rounded-circle border border-2 d-flex align-items-center justify-content-center" style="background-color: #242B40; color: #ffffff; top: -10px; left: 0; right: 0; margin: auto; height: 50px; width: 50px; font-size: 20px">1</div>
+                </div>
             </article>
-            <article class="col-sm-6 d-flex justify-content-center justify-content-md-start">
-                <div class="card text-dark bg-light mb-3 position-relative" style="max-width: 18rem;">
-                    <div class="card-header text-center h4" style="background-color: #242B40; color: #ffffff">Subir Propiedad</div>
-                    <div class="card-body text-center">
-                        <img src="{{ asset('img/upload-property-icon.png') }}" alt="">
-                        <p class="card-text pt-3 px-4" style="font-family: 'Sharp Grotesk'; font-weight: 300">Información y fotografías</p>
-                        <a href="{{ route('login') }}" class="btn rounded-pill" style="background-color: #242B40; color: #ffffff; font-family: 'Sharp Grotesk'">PUBLICAR</a>
+            <article class="col-sm-3 w-full mb-3">
+                <div class="card text-dark h-auto mb-3 position-relative">
+                    <div class="card-body text-center pt-5">
+                        <img width="50px" height="50px" src="{{ asset('img/2icono.webp') }}" alt="">
+                        <p class="card-text pt-3" style="font-family: 'Sharp Grotesk'; font-weight: 300"><span style="font-weight: 100">Completar información</span> <br> <span style="font-weight: 500">de su propiedad</span></p>
                     </div>
-                    <div class="position-absolute rounded-circle border border-2 d-flex align-items-center justify-content-center" style="background-color: #242B40; color: #ffffff; top: -10px; left: -10px; height: 30px; width: 30px">2</div>
-                  </div>
+                    <div class="position-absolute rounded-circle border border-2 d-flex align-items-center justify-content-center" style="background-color: #242B40; color: #ffffff; top: -10px; left: 0; right: 0; margin: auto; height: 50px; width: 50px; font-size: 20px">2</div>
+                </div>
+            </article>
+            <article class="col-sm-3 w-full mb-3">
+                <div class="card text-dark h-auto mb-3 position-relative">
+                    <div class="card-body text-center pt-5">
+                        <img width="50px" height="50px" src="{{ asset('img/3icono.webp') }}" alt="">
+                        <p class="card-text pt-3" style="font-family: 'Sharp Grotesk'; font-weight: 300"><span style="font-weight: 100">Subir imágenes</span> <br> <span style="font-weight: 500">y guardar</span></p>
+                    </div>
+                    <div class="position-absolute rounded-circle border border-2 d-flex align-items-center justify-content-center" style="background-color: #242B40; color: #ffffff; top: -10px; left: 0; right: 0; margin: auto; height: 50px; width: 50px; font-size: 20px">3</div>
+                </div>
+            </article>
+            <article class="col-sm-3 w-full mb-3">
+                <div class="card text-dark h-auto mb-3 position-relative">
+                    <div class="card-body text-center pt-5">
+                        <img width="50px" height="50px" src="{{ asset('img/4icono.webp') }}" alt="">
+                        <p class="card-text pt-3" style="font-family: 'Sharp Grotesk'; font-weight: 300"><span style="font-weight: 100">Su propiedad será</span> <br> <span style="font-weight: 500">activada</span></p>
+                    </div>
+                    <div class="position-absolute rounded-circle border border-2 d-flex align-items-center justify-content-center" style="background-color: #242B40; color: #ffffff; top: -10px; left: 0; right: 0; margin: auto; height: 50px; width: 50px; font-size: 20px">4</div>
+                </div>
             </article>
         </section>
         <section class="row justify-content-center mt-5">
-            <a href="{{ route('web.contact') }}" class="btn rounded-pill w-auto px-4" style="background-color: #242B40; color: #ffffff">MÁS INFORMACIÓN</a>
+            <a href="{{ route('register') }}" class="btn rounded-pill w-auto px-4" style="background-color: #242B40; color: #ffffff">COMIENZA AHORA</a>
+        </section>
+    </section>
+
+    <section class="container py-5">
+        <hr>
+    </section>
+
+    <section class="container">
+        <h2 class="text-center mb-5" style="font-family: 'Sharp Grotesk'; color: #242B40"><span style="font-weight: 100">Nuestros</span> <span style="font-weight: 500">Beneficios</span></h2>
+        <section class="row">
+            <article class="col-sm-4">
+                <div class="position-relative w-auto">
+                    <img class="img-fluid" src="{{ asset('img/cuadro1.webp') }}" alt="">
+                    <div class="position-absolute px-5" style="top: 45px; left: 25px;">
+                        <p class="h2" style="color: #242B40; font-family: 'Sharp Grotesk'; font-weight: 500">Facilidad de Gestión</p>
+                        <p class="pe-4" style="font-family: 'Sharp Grotesk'; font-weight: 300">Administrar fácilmente tus propiedades permitiéndole actualizar la información fácilmente</p>
+                    </div>
+                </div>
+            </article>
+            <article class="col-sm-4">
+                <div class="position-relative">
+                    <img class="img-fluid" src="{{ asset('img/cuadro2.webp') }}" alt="">
+                    <div class="position-absolute px-5" style="top: 45px; left: 25px;">
+                        <p class="h2" style="color: #242B40; font-family: 'Sharp Grotesk'; font-weight: 500">Acceso las 24 horas</p>
+                        <p class="pe-4" style="font-family: 'Sharp Grotesk'; font-weight: 300">Disponible para ser vista por posibles inquilinos las 24 horas del día, los 7 días de la semana</p>
+                    </div>
+                </div>
+            </article>
+            <article class="col-sm-4">
+                <div class="position-relative">
+                    <img class="img-fluid" src="{{ asset('img/cuadro3.webp') }}" alt="">
+                    <div class="position-absolute px-5" style="top: 45px; left: 25px;">
+                        <p class="h2" style="color: #242B40; font-family: 'Sharp Grotesk'; font-weight: 500">Alcance Geográfico</p>
+                        <p class="pe-4" style="font-family: 'Sharp Grotesk'; font-weight: 300">Puedes llegar a inquilinos potenciales no solo localmente, sino tambien a nivel nacional</p>
+                    </div>
+                </div>
+            </article>
+        </section>
+        <section class="row justify-content-center mt-5">
+            <a class="btn rounded-pill px-3 w-auto" style="font-family: 'Sharp Grotesk'; font-weight: 300; background-color: #242B40; color: #ffffff" href="{{ route('web.contact') }}">Más Información</a>
         </section>
     </section>
 
