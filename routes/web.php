@@ -27,4 +27,7 @@ Route::get('/thank', function(){ return view('web.thank');})->name('web.thank');
 
 Route::get('/search', [SearchController::class, 'search'])->name('web.search');
 Route::get('/propiedades-en-renta', [SearchController::class, 'getAllProperties'])->name('get.all.properties');
+Route::get('/terminos-y-condiciones', function(){ return view('web.terminos'); })->name('web.terminos');
+Route::get('/politicas-de-privacidad', function(){ return view('web.politicas'); })->name('web.politicas');
+
 Route::get('/{type?}/{location?}', [SearchController::class, 'redirectBySearch'])->name('web.redirect.search');
