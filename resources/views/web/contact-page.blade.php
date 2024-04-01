@@ -20,7 +20,7 @@
                 <div class="row">
                     <div class="col-sm-6 py-3">
                         <h2 class="fw-bold">Proporciónenos sus datos y lo contactaremos</h2>
-                        <form action="{{ route('web.send.lead') }}" method="POST">
+                        <form id="demo-form" action="{{ route('web.send.lead') }}" method="POST">
                             @csrf
                             <div class="form-group mb-2">
                                 <input class="w-75 form-control form-control-sm border-0 rounded-0 border-bottom border-dark" type="text" placeholder="Nombre" name="name" required>
@@ -86,6 +86,13 @@
                             </div>
                             <a style="text-decoration: none; color: #000000" target="_blank" href="https://www.tiktok.com/@housingrent">housingrentgroup</a>
                         </div>
+                        <div class="d-flex justify-content-start gap-2 align-items-center mb-2">
+                            <input type="hidden" name="g-recaptcha-response" id="recaptchaToken">
+        
+                            @error('captcha')
+                                    <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
                     </div>
                 </div>
             </div>
@@ -94,5 +101,17 @@
 @endsection
 
 @section('js')
-    
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      document.getElementById('demo-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        grecaptcha.ready(function() {
+          grecaptcha.execute('{{ config('services.recaptcha.site_key') }}', {action: 'submit'}).then(function(token) {
+              document.getElementById('recaptchaToken').value = token;
+              event.target.submit();
+          });
+        });
+      });
+    });
+  </script>
 @endsection

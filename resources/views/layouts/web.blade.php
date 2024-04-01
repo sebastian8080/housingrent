@@ -18,6 +18,8 @@
             overflow-x: hidden;
         }
     </style>
+    <script src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.site_key') }}"></script>
+
 
     @yield('css')
 </head>
@@ -65,12 +67,8 @@
                         <a class="text-white text-decoration-none" href="{{ route('web.home') }}">
                             HOME
                         </a>
-                    </div>
-                    <div>BENEFICIOS</div>
-                    <div>BUSCADOR</div>
-                    <div>DESTACADAS</div>
+                    </div>              
                     <div>CATÁLOGO</div>
-                    <div>SOCIOS</div>
                 </div>
                 <div class="col-sm-2 text-white">
                     <div>SERVICIOS</div>
@@ -102,7 +100,7 @@
                     <a href="https://www.instagram.com/housingrentgroup" target="_blank">
                         <img width="60px" src="{{ asset('img/icon-instagram.png') }}" alt="">
                     </a>
-                    <a target="_blank" href="https://api.whatsapp.com/send?phone=593983849073&text=Hola%20*Housing%20Rent%20Group*,%20deseo%20consultar%20por%20sus%20servicios">
+                    <a target="_blank" href="https://api.whatsapp.com/send?phone=593987474637&text=Hola%20*Housing%20Rent%20Group*,%20deseo%20consultar%20por%20sus%20servicios">
                         <img width="60px" src="{{ asset('img/icon-whatsapp.png') }}" alt="">
                     </a>
                     <a href="https://www.tiktok.com/@housingrent" target="_blank">
@@ -112,7 +110,6 @@
             </div>
         </section>
     </footer>
-
     @yield('js')
 </body>
 </html>

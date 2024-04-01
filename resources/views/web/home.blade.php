@@ -107,7 +107,7 @@
         </article>
         <article class="col-sm-6">
             <h3 style="font-family: 'Sharp Grotesk'; font-weight: 400" class="text-white px-5 h2">Proporciónanos tus datos y te contactaremos</h3>
-            <form action="{{ route('web.send.lead') }}" method="POST" class="px-5">
+            <form id="demo-form" action="{{ route('web.send.lead') }}" method="POST" class="px-5">
                 @csrf
                 <div class="form-group mb-2 mt-3">
                     <input type="text" class="form-control bg-transparent border-0 border-bottom border-white rounded-0 inputs-contact" style="color: #ffffff !important; font-family: 'Sharp Grotesk'; font-weight: 100" placeholder="Nombre y Apellido" name="name" autocomplete="off" required>
@@ -120,6 +120,13 @@
                 </div>
                 <div class="form-group mb-2">
                     <textarea name="message" style="color: #ffffff !important; font-family: 'Sharp Grotesk'; font-weight: 100" class="form-control bg-transparent border-0 border-bottom border-white rounded-0 inputs-contact" rows="3" placeholder="Mensaje" name="message" autocomplete="off" required></textarea>
+                </div>
+                <div class="form-group mb-2">
+                    <input type="hidden" name="g-recaptcha-response" id="recaptchaToken">
+
+                    @error('captcha')
+                            <div class="text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="row justify-content-center mt-4">
                     <button class="btn rounded-pill w-auto px-5" style="font-family: 'Sharp Grotesk'; font-weight: 400; background-color: #ffffff">ENVIAR</button>
@@ -143,5 +150,17 @@
 @section('js')
     @livewireScripts
     <script>
-    </script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+          document.getElementById('demo-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            grecaptcha.ready(function() {
+              grecaptcha.execute('{{ config('services.recaptcha.site_key') }}', {action: 'submit'}).then(function(token) {
+                  document.getElementById('recaptchaToken').value = token;
+                  event.target.submit();
+              });
+            });
+          });
+        });
+
+      </script>
 @endsection

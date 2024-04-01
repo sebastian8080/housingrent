@@ -186,7 +186,7 @@
                         <p class="text-center" style="font-size: x-large; font-weight: 600">¿Te interesa esta propiedad?</p>
                         <p class="text-center">Proporciónanos tus datos y te contactaremos</p>
                         <div class="d-flex justify-content-center">
-                            <form action="{{ route('web.send.lead') }}" method="POST">
+                            <form action="{{ route('web.send.lead') }}" method="POST" id="demo-form">
                                 
                                 @csrf
 
@@ -228,7 +228,13 @@
                                     </div>
                                     <a style="text-decoration: none" href="https://api.whatsapp.com/send?phone=593983849073&text=Hola%20*Housing%20Rent%20Group*,%20deseo%20consultar%20por%20sus%20servicios" class="mt-1 text-dark">098-384-9073</a>
                                 </div>
-
+                                <div class="form-group mb-2">
+                                    <input type="hidden" name="g-recaptcha-response" id="recaptchaToken">
+                
+                                    @error('captcha')
+                                            <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -294,4 +300,18 @@
             .bindPopup(`<div class="text-center"> <b> ${title} </b> <br> <br> <img class='w-100' src='https://grupohousing.com/uploads/listing/${images}' /></div>`)
             .openPopup();
     </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      document.getElementById('demo-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        grecaptcha.ready(function() {
+          grecaptcha.execute('{{ config('services.recaptcha.site_key') }}', {action: 'submit'}).then(function(token) {
+              document.getElementById('recaptchaToken').value = token;
+              event.target.submit();
+          });
+        });
+      });
+    });
+
+  </script>
 @endsection

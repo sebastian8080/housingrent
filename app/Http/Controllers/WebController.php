@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Models\Listing;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Http;
 class WebController extends Controller
 {
     public function home(){
@@ -32,26 +32,40 @@ class WebController extends Controller
     } 
 
     public function sendlead(Request $request){
+        $recaptchaResponse = $request->input('g-recaptcha-response');
+    
+        $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+            'secret' => config('services.recaptcha.secret_key'),
+            'response' => $recaptchaResponse,
+            'remoteip' => $request->ip(),
+        ])->json();
 
-        $message = "<br><strong>Nuevo Lead Housing</strong>
-                    <br> Nombre: ". strip_tags($request->name). " " . strip_tags($request->lastname) ."
-                    <br> Telef: ".  strip_tags($request->phone)."
-                    <br> Email: ".  strip_tags($request->email);
+        if (!isset($response['success']) || !$response['success'] || $response['score'] < 0.5) {
+            // Manejar la verificación fallida
+            return back()->withErrors(['captcha' => 'Error de reCAPTCHA. Por favor, inténtalo de nuevo.'])->withInput();
+        }else{
+            $message = "<br><strong>Nuevo Lead Housing</strong>
+            <br> Nombre: ". strip_tags($request->name). " " . strip_tags($request->lastname) ."
+            <br> Telef: ".  strip_tags($request->phone)."
+            <br> Email: ".  strip_tags($request->email);
 
-        if($request->interest) $message .= "<br> Interes: ".strip_tags($request->interest);
+            if($request->interest) $message .= "<br> Interes: ".strip_tags($request->interest);
 
-        $message .= "<br> Mensaje: ".strip_tags($request->message)."
-                    <br> Fuente: Website";
-                
-        $header='';
-        $header .= 'From: <leads@housingrentgroup.com>' . "\r\n";
-        $header .= "Reply-To: ".'info@housingrentgroup.com'."\r\n";
-        $header .= "MIME-Version: 1.0\r\n";
-        $header .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-        //mail('info@casacredito.com','Lead Housing Rent: '.strip_tags($request->name), $message, $header);
-        mail('sebas31051999@gmail.com', 'Lead Housing Rent: ' . strip_tags($request->name), $message, $header);
+            $message .= "<br> Mensaje: ".strip_tags($request->message)."
+                        <br> Fuente: Website";
+                    
+            $header='';
+            $header .= 'From: <leads@housingrentgroup.com>' . "\r\n";
+            $header .= "Reply-To: ".'info@housingrentgroup.com'."\r\n";
+            $header .= "MIME-Version: 1.0\r\n";
+            $header .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
-        return redirect()->route('web.thank');
+            //mail('info@casacredito.com','Lead Housing Rent: '.strip_tags($request->name), $message, $header);
+            mail('sayala7986@gmail.com', 'Lead Housing Rent: ' . strip_tags($request->name), $message, $header); 
+
+            return redirect()->route('web.thank');
+        }
+       
     }
 
 }
