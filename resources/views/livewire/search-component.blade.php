@@ -305,10 +305,10 @@
                                 </a>
                             </article>
 
+                            @endforeach
                             <div class="row">
                                 {{ $properties->links() }}
                             </div>
-                        @endforeach
                     @else
                         <section class="row">
                             <p class="text-center fw-bold">No hemos encontrado propiedades</p>
