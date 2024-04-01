@@ -68,8 +68,13 @@
                             HOME
                         </a>
                     </div>              
-                    <div>CATÁLOGO</div>
+                    <div>
+                        <a class="text-white text-decoration-none" href="{{ route('web.contact') }}">
+                            CONTACTANOS
+                        </a>
+                    </div>
                 </div>
+                
                 <div class="col-sm-2 text-white">
                     <div>SERVICIOS</div>
                     <div>
