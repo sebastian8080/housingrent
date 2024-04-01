@@ -138,7 +138,7 @@
                     <img class="img-fluid" src="{{ asset('img/cuadro1.webp') }}" alt="">
                     <div class="position-absolute px-5" style="top: 45px; left: 25px;">
                         <p class="h2" style="color: #242B40; font-family: 'Sharp Grotesk'; font-weight: 500">Facilidad de Gestión</p>
-                        <p class="pe-4" style="font-family: 'Sharp Grotesk'; font-weight: 300">Administrar fácilmente tus propiedades permitiéndole actualizar la información fácilmente</p>
+                        <p class="pe-4" style="font-family: 'Sharp Grotesk'; font-weight: 300">Administrar fácilmente tus propiedades permitiéndole actualizar la información rápidamente</p>
                     </div>
                 </div>
             </article>
