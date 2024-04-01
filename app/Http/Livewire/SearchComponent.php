@@ -66,7 +66,7 @@ class SearchComponent extends Component
 
     public function searchProperties(){
 
-            $properties_filter = DB::connection('mysql_grupo_housing')->table('listings')->select('id', 'product_code', 'listing_title', 'listing_description', 'listingtype', 'listingtypestatus', 'bedroom', 'bathroom', 'garage', 'property_price', 'state', 'city', 'sector', 'images', 'slug')->where('available', 1)->where('listingtypestatus', 'alquilar')->orderBy('product_code', 'desc');
+            $properties_filter = DB::connection('mysql_grupo_housing')->table('listings')->select('id', 'product_code', 'listing_title', 'listing_description', 'listingtype', 'listingtypestatus', 'bedroom', 'bathroom', 'garage', 'property_price', 'state', 'city', 'sector', 'images', 'slug')->where('available', 1)->where('status', 1)->where('listingtypestatus', 'alquilar')->orderBy('product_code', 'desc');
 
             if($this->searchtxt != null || $this->searchtxt != ""){
                 $properties_filter->where('city', 'LIKE', "%".$this->searchtxt."%");
