@@ -20,6 +20,7 @@ class MyCustomSeeder extends Seeder
             InfoListingType::class,
             InfoTablesSeeder::class,
             RoleSeeder::class,
+            AdminUserSeeder::class,
             // Agrega aquí cualquier otro seeder que necesites ejecutar.
         ]);
     }

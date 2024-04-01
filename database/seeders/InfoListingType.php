@@ -14,7 +14,7 @@ class InfoListingType extends Seeder
      */
     public function run()
     {
-        $array = array("Casa", "Casa Adosada", "Departamento o Piso", "Solo Habitación");
+        $array = array("Casa", "Casa Adosada", "Departamento o Piso", "Solo Habitación","Casa Comercial","Local Comercial","Oficina","Suite","Quintas");
         foreach ($array as $i => $value) {
            $type = listing_type::firstOrCreate(['name' => $value] );
         }

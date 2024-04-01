@@ -1,23 +1,28 @@
 @extends('adminlte::page')
 
-@section('title', 'Mis Propiedades')
+@section('title', 'Propiedades Registradas')
 
 @section('content_header')
 <section class="container">
-    <h1>Mis Propiedades</h1>
+    <h1>Propiedades Registradas</h1>
 </section>
 
 @stop
 
 @section('content')
+
 <div class="container">
     <div class="row">
         @foreach($properties as $property)
             <div class="col-md-4 d-flex align-items-stretch">
                 <div class="card mb-4 d-flex flex-column" style="width: 100%;">
-                    <div class="card-img-top" style="background-image: url('{{ $property->multimedia->isNotEmpty() ? Storage::url($property->multimedia->first()->filename) : asset('path/to/default/image.jpg') }}'); background-size: cover; background-position: center; height: 200px;">
-                        <!-- La imagen se muestra como fondo para mantener el tamaño uniforme -->
+                    <div class="position-relative">
+                        <div class="card-img-top" style="background-image: url('{{ $property->multimedia->isNotEmpty() ? Storage::url($property->multimedia->first()->filename) : asset('path/to/default/image.jpg') }}'); background-size: cover; background-position: center; height: 200px;">
+                            <!-- La imagen se muestra como fondo para mantener el tamaño uniforme -->
+                        </div>
+                        <span class="property-code">{{ $property->code }}</span>
                     </div>
+
                     <div class="card-body d-flex flex-column justify-content-between">
                         <div>
                             <h5 class="card-title">{{ $property->title }}</h5>
@@ -31,7 +36,11 @@
                             </p>
                         </div>
                         <div class="mt-auto">
-                            <a href="{{ route('show.preview', $property->slug) }}" class="btn btn-secondary">
+                            <div class="form-check form-switch mb-2">
+                                <input class="form-check-input change-status" type="checkbox" id="activeSwitch{{ $property->id }}" data-id="{{ $property->id }}" {{ $property->is_active ? 'checked' : '' }}>
+                                <label class="form-check-label" for="activeSwitch{{ $property->id }}">Activo</label>
+                            </div>
+                            <a href="{{ route('show.preview', $property->slug) }}" class="btn btn-success">
                                 <i class="fas fa-eye"></i>
                             </a>
                             <a href="{{ route('properties.edit', $property->id) }}" class="btn btn-primary">
@@ -81,11 +90,25 @@
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+    <style>
+        .property-code {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #ffffff;
+            padding: 5px 10px;
+            font-size: 14px;
+            border-bottom-left-radius: 10px;
+        }
+        .position-relative {
+            position: relative;
+        }
+    </style>
 @stop
 @section('js')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script>
-
 $(document).ready(function() {
     @if(session('success'))
             toastr.success('{{ session("success") }}');
@@ -102,4 +125,27 @@ $(document).ready(function() {
     });
 });
 </script>
+<script>
+    $(document).ready(function() {
+        $('.change-status').change(function() {
+            var propertyId = $(this).data('id');
+            var isActive = $(this).is(':checked') ? 1 : 0;
+            
+            $.ajax({
+                url: `/admin/properties/${propertyId}/change-status`,
+                type: 'POST',
+                data: {
+                    'is_active': isActive,
+                    '_token': "{{ csrf_token() }}",
+                },
+                success: function(response) {
+                    toastr.success(`Estado de la propiedad ${response.code} ${isActive ? 'activada' : 'desactivada'}.`);
+                },
+                error: function(xhr) {
+                    toastr.error('Hubo un error al cambiar el estado de la propiedad.');
+                }
+            });
+        });
+    });
+    </script>
 @stop

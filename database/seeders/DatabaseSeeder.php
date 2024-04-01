@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
             InfoLaundryTypes::class,
             InfoListingType::class,
             RoleSeeder::class,
-            // Agrega aquí cualquier otro seeder que necesites ejecutar
+            AdminUserSeeder::class,
         ]);
     }
 }

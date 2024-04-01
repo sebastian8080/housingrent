@@ -10,6 +10,7 @@ use App\Models\info_city;
 use App\Models\info_parishes;
 use App\Models\Domain;
 use App\Models\Benefit;
+use App\Models\User;
 use App\Models\Multimedia;
 use App\Models\laundry_types;
 use App\Models\Type_Benefit;
@@ -22,7 +23,6 @@ use Illuminate\Support\Facades\Storage;
 class HomeController extends Controller
 {
     public function index() {
-        // Asumiendo que estás utilizando la autenticación por defecto de Laravel
         $userId = auth()->id(); // Obtener el ID del usuario autenticado
         
         // Obtener las propiedades del usuario actual y luego cargar la relación 'multimedia'
@@ -89,7 +89,6 @@ class HomeController extends Controller
                     'benefits.array' => 'El campo beneficios debe ser un arreglo.',
                     'benefits.*.exists' => 'El beneficio seleccionado no es válido.',
                 ];
-                // Aquí va tu lógica de validación y creación de la propiedad
                 $validatedData = $request->validate([
                     'type_property' => 'required|string|max:255',
                     'max_price' => 'required|numeric|min:0',
@@ -107,8 +106,8 @@ class HomeController extends Controller
                     'lat' => 'required|numeric',
                     'lng' => 'required|numeric',
                     'laundry_type' => 'required|string|max:255',
-                    'benefits' => 'required|array', // Asegúrate de que se hayan enviado beneficios
-                    'benefits.*' => 'exists:benefits,id', // Asegúrate de que los beneficios existan
+                    'benefits' => 'required|array', 
+                    'benefits.*' => 'exists:benefits,id',
                 ],$messages);
                 // Agregar el user_id manualmente
                 $validatedData['user_id'] = auth()->user()->id;
@@ -116,9 +115,22 @@ class HomeController extends Controller
 
 
                 // Genera el code con iniciales en mayúsculas y un número aleatorio de 4 dígitos
-                $initials = implode('', array_map(function ($word) { return strtoupper($word[0]); }, explode(' ', $request->title)));
-                $randomNumber = mt_rand(1000, 9999); // Genera un número aleatorio entre 1000 y 9999
-                $code = "HR-{$initials}{$randomNumber}";
+               // Obtén el último código generado desde la base de datos
+                $lastProperty = Domain::where('code', 'like', 'HR-%')->orderBy('code', 'desc')->first();
+
+                if ($lastProperty) {
+                    // Extrae el número del último código
+                    $lastNumber = (int) substr($lastProperty->code, 3);
+                } else {
+                    // Si no hay propiedades, empieza desde el número inicial
+                    $lastNumber = 999; // Este es 999 porque vamos a sumarle 1 más adelante
+                }
+
+                // Incrementa el número para el nuevo código
+                $newNumber = $lastNumber + 1;
+
+                // Genera el nuevo código
+                $newCode = "HR-" . $newNumber;
 
                 // Genera el slug y añade un número aleatorio de 4 dígitos al final
                 $slug = Str::slug($request->title, '-') . '-' . mt_rand(1000, 9999);
@@ -129,8 +141,8 @@ class HomeController extends Controller
                     $count++;
                 }
 
-                // Añade code y slug a $validatedData y otros datos validados...
-                $validatedData['code'] = $code;
+                // Añade code y slug a $validatedData 
+                $validatedData['code'] = $newCode;
                 $validatedData['slug'] = $slug;
 
                 
@@ -232,11 +244,11 @@ class HomeController extends Controller
         // Cargar los datos necesarios para el formulario
         $listing_types = DB::table('listing_type')->get();
         $states = DB::table('info_states')->get();
-        $laundry_types = laundry_types::all(); // Asegúrate de que la clase se llama `LaundryType`, no `laundry_types`
-        $typeBenefits = Type_Benefit::with('benefits')->get(); // La convención de Laravel recomienda nombres de clases en CamelCase
+        $laundry_types = laundry_types::all(); 
+        $typeBenefits = Type_Benefit::with('benefits')->get(); 
 
         // Cargar la propiedad específica para editar
-        $property = Domain::with(['benefits'])->findOrFail($id); // Asegúrate de cargar cualquier otra relación necesaria
+        $property = Domain::with(['benefits'])->findOrFail($id); 
         $cities = info_city::all();
         $parishes = info_parishes::all();
         // Enviar los datos a la vista
@@ -333,7 +345,7 @@ class HomeController extends Controller
             $validatedData['slug'] = $slug;
             // Actualiza la propiedad con los datos validados
             $property->update($validatedData);
-
+            
             // Si hay beneficios para sincronizar, actualiza la relación
             if ($request->has('benefits')) {
                 $property->benefits()->sync($request->input('benefits'));
@@ -341,10 +353,21 @@ class HomeController extends Controller
 
             // Registro en log para seguimiento
             Log::info('Propiedad actualizada con éxito: ', $validatedData);
+            $userId = auth()->id(); 
+            $user = User::findOrFail($userId);
 
-            // Redirecciona con un mensaje de éxito
-            return redirect()->route('properties.index', $property->id)
+            // Utilizando el helper can() para el usuario autenticado
+            if ($user->can('have_permissions')) {
+                // Redirecciona a 'properties.manage' si el usuario es Admin o Asesor
+                return redirect()->route('properties.manage', $property->id)
+                                ->with('success', 'Propiedad actualizada correctamente.');
+            } else{
+                return redirect()->route('properties.index',$property->id)
                             ->with('success', 'Propiedad actualizada correctamente.');
+            }
+
+            
+            
         } catch (\Illuminate\Validation\ValidationException $e) {
             // Manejo de errores de validación
             Log::error('Error de validación al actualizar la propiedad: ' . $e->getMessage());
@@ -360,9 +383,35 @@ class HomeController extends Controller
         $property = Domain::find($id);
         $property->delete();
 
-        return redirect()->route('properties.index')->with('success', 'Propiedad eliminada correctamente.');
+        $userId = auth()->id(); 
+            $user = User::findOrFail($userId);
+
+            // Utilizando el helper can() para el usuario autenticado
+            if ($user->can('have_permissions')) {
+                // Redirecciona a 'properties.manage' si el usuario es Admin o Asesor
+                return redirect()->route('properties.manage', $property->id)
+                                ->with('success', 'Propiedad eliminada correctamente.');
+            } else{
+                return redirect()->route('properties.index',$property->id)
+                            ->with('success', 'Propiedad eliminada correctamente.');
+            }
     }
 
+    public function preview($slug){
+        // Usando 'with' para cargar la relación multimedia junto con el dominio
+        $domain = Domain::with('multimedia')->where('slug', $slug)->firstOrFail();
+    
+        // Retorna la vista y pasa el dominio como variable
+        return view('admin.show', compact('domain'));
+    }
+    public function changeStatus(Request $request, $id)
+    {
+        $property = Domain::findOrFail($id);
+        $property->is_active = $request->is_active;
+        $property->save();
+
+        return response()->json(['code' => $property->code, 'success' => true]);
+    }
 }
 
 

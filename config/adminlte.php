@@ -300,14 +300,7 @@ return [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
         ],
-
-        // Sidebar items:
-
-        [
-            'text' => 'blog',
-            'url'  => 'blog',
-            'can'  => 'manage-blog',
-        ],
+        ['header' => 'PROPIEDADES'],
         [
             'text' => 'Mis Propiedades',
             'url'  => 'admin/properties/list',
@@ -315,10 +308,12 @@ return [
         ],
         [
             'text' => 'Subir Propiedad',
-            'url'  => 'admin/property/create', // Asegúrate de que esto coincida con la URL definida en las rutas.
+            'url'  => 'admin/property/create',
             'icon' => 'fas fa-plus-circle',
         ],
-        ['header' => 'Cuenta'],
+    
+        // Sidebar items comunes a todos:
+        ['header' => 'PERFIL'],
         [
             'text' => 'Perfil',
             'url'  => 'admin/user/edit',
@@ -329,8 +324,31 @@ return [
             'url'  => 'admin/user/password/change',
             'icon' => 'fas fa-fw fa-lock',
         ],
+    
 
-
+        
+        // Sección exclusiva para Asesores y Administradores:
+        [
+            'text' => 'Control de Propiedades',
+            'url'  => 'admin/properties/manage',
+            'icon' => 'fas fa-tools',
+            'can'  => ['is-asesor', 'is-admin'], // Asumiendo que 'is-asesor' y 'is-admin' son tus políticas/gates
+        ],
+    
+        // Sección exclusiva para Administradores:
+        ['header' => 'ADMINISTRACIÓN', 'can' => 'is-admin'],
+        [
+            'text' => 'Control de Usuarios',
+            'url'  => 'admin/users/list',
+            'icon' => 'fas fa-users-cog',
+            'can'  => 'is-admin',
+        ],
+        [
+            'text' => 'Control de Permisos',
+            'url'  => 'admin/permissions',
+            'icon' => 'fas fa-unlock-alt',
+            'can'  => 'is-admin',
+        ],
     ],
 
     /*

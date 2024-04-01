@@ -25,6 +25,8 @@ class UserController extends Controller
         // Mensajes de error personalizados
         $messages = [
             'email.unique' => 'Este correo electrónico ya está registrado. Por favor, utiliza otro.',
+            'phone.regex' => 'El número de telefono tiene un formato invalido.',
+            'name.regex' => 'El nombre y apellido es necesario.',
             // Aquí puedes añadir más mensajes personalizados para otras reglas de validación si es necesario
         ];
 
@@ -32,7 +34,7 @@ class UserController extends Controller
         $rules = [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . $userId,
-            'phone' => 'nullable|regex:/^\+[0-9]+$/',
+            'phone' => 'nullable|regex:/^\+?[0-9]+$/',
             'address' => 'nullable|string|max:255',
         ];
 

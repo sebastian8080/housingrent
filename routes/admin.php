@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\UserController;
-
+use App\Http\Controllers\Admin\AsesorController;
+use App\Http\Controllers\Admin\AdminController;
     Route::get('/properties/list', [HomeController::class, 'index'])->name('properties.index');
     Route::get('/property/create', [HomeController::class, 'create'])->name('property.create');
     Route::post('/properties/store', [HomeController::class, 'store'])->name('properties.store');
@@ -15,7 +16,7 @@ use App\Http\Controllers\Admin\UserController;
     Route::get('/properties/{id}/edit', [HomeController::class, 'edit'])->name('properties.edit');
     Route::put('/properties/{id}/upload', [HomeController::class, 'update'])->name('properties.update');
     Route::delete('/properties/delete/{id}', [HomeController::class, 'destroy'])->name('properties.destroy');
-
+    Route::post('/properties/{id}/change-status', [HomeController::class, 'changeStatus'])->name('properties.change.status');
 
 
 
@@ -28,7 +29,28 @@ use App\Http\Controllers\Admin\UserController;
     Route::put('/user/update', [UserController::class, 'update'])->name('users.update'); // Procesar los cambios
     Route::get('/user/password/change', [UserController::class, 'showChangePasswordForm'])->name('user.password.change');
     Route::post('/user/password/change', [UserController::class, 'changePassword'])->name('user.password.update');
+
+
+    Route::get('/propiedades/preview/{slug}', [HomeController::class, 'preview'])->name('show.preview');
+
+    Route::middleware(['can:is-admin'])->group(function () {
+        Route::get('/users/list', [AdminController::class, 'list_users'])->name('users.list');
+        Route::get('/users/list/search', [AdminController::class, 'ajaxListUsers'])->name('users.ajaxListUsers');
+
+        Route::put('/users/{user}/role', [AdminController::class, 'updateRole'])->name('users.updateRole');
+        Route::put('/users/{user}/isActive', [AdminController::class, 'updateIsActive'])->name('users.updateIsActive');
+        Route::get('/users/{user}/edit', [AdminController::class, 'edit'])->name('users.admin.edit');
+        Route::put('/users/{user}/update', [AdminController::class, 'update'])->name('users.admin.update');
+        Route::delete('users/{user}/delete', [AdminController::class, 'destroy'])->name('users.destroy');
+
+
+    });
+
+    Route::middleware(['can:have_permissions'])->group(function () {
+        Route::get('/properties/manage', [AsesorController::class, 'list_properties'])->name('properties.manage');
+    });
     
+   
 
 
     
