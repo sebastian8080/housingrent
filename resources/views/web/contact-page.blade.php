@@ -40,6 +40,13 @@
                             <div class="w-75 text-center mt-3">
                                 <button type="submit" class="btn text-white rounded-pill" style="background-color: #242B40">Enviar</button>
                             </div>
+                            <div class="w-75 text-center mt-3">
+                                <input type="hidden" name="g-recaptcha-response" id="recaptchaToken">
+            
+                                @error('captcha')
+                                        <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
                         </form>
                     </div>
                     <div class="col-sm-6 py-3">
@@ -86,13 +93,7 @@
                             </div>
                             <a style="text-decoration: none; color: #000000" target="_blank" href="https://www.tiktok.com/@housingrent">housingrentgroup</a>
                         </div>
-                        <div class="d-flex justify-content-start gap-2 align-items-center mb-2">
-                            <input type="hidden" name="g-recaptcha-response" id="recaptchaToken">
-        
-                            @error('captcha')
-                                    <div class="text-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
+                        
                     </div>
                 </div>
             </div>

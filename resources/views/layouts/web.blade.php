@@ -73,6 +73,11 @@
                             CONTACTANOS
                         </a>
                     </div>
+                    <div>
+                        <a class="text-white text-decoration-none" href="{{ route('get.all.properties') }}">
+                            PROPIEDADES
+                        </a>
+                    </div>
                 </div>
                 
                 <div class="col-sm-2 text-white">
