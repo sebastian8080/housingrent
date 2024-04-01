@@ -326,7 +326,7 @@ return [
         ],
     
 
-        ['header' => 'ASESORES'],
+        ['header' => 'ASESORES', 'can' => 'is-asesor'],
         // Sección exclusiva para Asesores y Administradores:
         [
             'text' => 'Control de Propiedades',
