@@ -86,7 +86,7 @@
         </article>
     </section>
     <section class="row justify-content-center mt-4">
-        <a class="btn text-white rounded-pill w-auto" style="background-color: #242B40" href="#">Ver todas las propiedades</a>
+        <a class="btn text-white rounded-pill w-auto" style="background-color: #242B40" href="{{ route('get.all.properties') }}">Ver todas las propiedades</a>
     </section>
 </section>
 

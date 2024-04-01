@@ -8,6 +8,10 @@
     @livewireStyles
 @endsection
 
+@php
+    !isset($type) ? $type = null : null; !isset($searchtxt) ? $searchtxt = null : null;
+@endphp
+
 @section('content')
     <section class="container pb-5">
         <section class="p-5">

@@ -304,6 +304,10 @@
                                     </div> --}}
                                 </a>
                             </article>
+
+                            <div class="row">
+                                {{ $properties->links() }}
+                            </div>
                         @endforeach
                     @else
                         <section class="row">

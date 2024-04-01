@@ -6,11 +6,16 @@ use App\Models\Models\Listing;
 use App\Models\Property;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class SearchComponent extends Component
 {
 
-    public $properties = [];
+    use WithPagination;
+
+    protected $paginationTheme = 'bootstrap';
+
+    protected $properties = [];
 
     public $type, $searchtxt;
 
@@ -126,7 +131,7 @@ class SearchComponent extends Component
 
             //dd($properties_filter);
     
-            $this->properties = $properties_filter->get();
+            $this->properties = $properties_filter->paginate(10);
     }
 
     public function render()

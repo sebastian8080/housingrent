@@ -26,4 +26,5 @@ Route::post('/send-lead', [WebController::class, 'sendlead'])->name('web.send.le
 Route::get('/thank', function(){ return view('web.thank');})->name('web.thank');
 
 Route::get('/search', [SearchController::class, 'search'])->name('web.search');
-Route::get('/{type}/{location?}', [SearchController::class, 'redirectBySearch'])->name('web.redirect.search');
+Route::get('/propiedades-en-renta', [SearchController::class, 'getAllProperties'])->name('get.all.properties');
+Route::get('/{type?}/{location?}', [SearchController::class, 'redirectBySearch'])->name('web.redirect.search');
