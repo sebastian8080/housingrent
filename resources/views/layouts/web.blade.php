@@ -107,7 +107,7 @@
                     <a href="https://www.facebook.com/profile.php?id=61553203397168" target="_blank">
                         <img width="60px" src="{{ asset('img/icon-facebook.png') }}" alt="">
                     </a>
-                    <a href="https://www.instagram.com/housingrentgroup" target="_blank">
+                    <a href="https://www.instagram.com/_housingrent_" target="_blank">
                         <img width="60px" src="{{ asset('img/icon-instagram.png') }}" alt="">
                     </a>
                     <a target="_blank" href="https://api.whatsapp.com/send?phone=593987474637&text=Hola%20*Housing%20Rent%20Group*,%20deseo%20consultar%20por%20sus%20servicios">
