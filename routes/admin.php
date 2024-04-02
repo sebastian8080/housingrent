@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\AdminController;
     Route::put('/properties/{id}/upload', [HomeController::class, 'update'])->name('properties.update');
     Route::delete('/properties/delete/{id}', [HomeController::class, 'destroy'])->name('properties.destroy');
     Route::post('/properties/{id}/change-status', [HomeController::class, 'changeStatus'])->name('properties.change.status');
+    Route::post('/properties/{id}/change-availability', [HomeController::class, 'changeAvailable'])->name('properties.change.availability');
 
 
 
@@ -42,6 +43,15 @@ use App\Http\Controllers\Admin\AdminController;
         Route::get('/users/{user}/edit', [AdminController::class, 'edit'])->name('users.admin.edit');
         Route::put('/users/{user}/update', [AdminController::class, 'update'])->name('users.admin.update');
         Route::delete('users/{user}/delete', [AdminController::class, 'destroy'])->name('users.destroy');
+
+
+        Route::get('/services/list', [AdminController::class, 'list_services'])->name('services.list');
+        Route::get('/services/list/search', [AdminController::class, 'ajaxListServices'])->name('services.ajaxListServices');
+        Route::get('/services/{service}/edit', [AdminController::class, 'editService'])->name('services.admin.edit');
+        Route::put('/services/{service}/update', [AdminController::class, 'updateService'])->name('services.admin.update');
+        Route::delete('services/{service}/delete', [AdminController::class, 'destroyService'])->name('services.destroy');
+        Route::post('/services/create', [AdminController::class, 'createService'])->name('services.create');
+        Route::post('/type_services/create', [AdminController::class, 'createTypeService'])->name('type_services.create');
 
 
     });

@@ -21,10 +21,26 @@ use Illuminate\Support\Facades\Storage;
 
 class AsesorController extends Controller
 {
-    public function list_properties() {
-        // Obtener las propiedades del usuario actual y luego cargar la relación 'multimedia'
-        $properties = Domain::All()->load('multimedia');
-        
+    public function list_properties(Request $request) {
+        // Iniciar la consulta
+        $query = Domain::query();
+    
+        // Verificar si el término de búsqueda está presente
+        if ($request->has('search') && !empty($request->search)) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('title', 'LIKE', "%$search%")
+                  ->orWhere('code', 'LIKE', "%$search%")
+                  ->orWhereHas('user', function($qr) use ($search) {
+                      $qr->where('name', 'LIKE', "%$search%")
+                        ->orWhere('email', 'LIKE', "%$search%");
+                  });
+            });
+        }
+    
+
+        $properties = $query->with(['multimedia','user'])->paginate(20);
+    
         return view('admin.userAsesor.control_properties', compact('properties'));
     }
 }

@@ -44,6 +44,7 @@ class HomeController extends Controller
         {
             try {
                 $messages = [
+                    'meta_description.max' => 'La descripción meta no debe exceder los 150 caracteres.',
                     'type_property.required' => 'El campo tipo de propiedad es obligatorio.',
                     'max_price.required' => 'El campo precio máximo es obligatorio.',
                     'max_price.numeric' => 'El precio máximo debe ser un valor numérico.',
@@ -108,6 +109,7 @@ class HomeController extends Controller
                     'laundry_type' => 'required|string|max:255',
                     'benefits' => 'required|array', 
                     'benefits.*' => 'exists:benefits,id',
+                    'meta_description' => 'nullable|string|max:150',
                 ],$messages);
                 // Agregar el user_id manualmente
                 $validatedData['user_id'] = auth()->user()->id;
@@ -260,6 +262,7 @@ class HomeController extends Controller
             // Busca la propiedad por ID
             $property = Domain::findOrFail($id);
             $messages = [
+                'meta_description.max' => 'La descripción meta no debe exceder los 150 caracteres.',
                 'type_property.required' => 'El campo tipo de propiedad es obligatorio.',
                 'max_price.required' => 'El campo precio máximo es obligatorio.',
                 'max_price.numeric' => 'El precio máximo debe ser un valor numérico.',
@@ -325,6 +328,7 @@ class HomeController extends Controller
                 'laundry_type' => 'required|string|max:255',
                 'benefits' => 'required|array', // Asegúrate de que se hayan enviado beneficios
                 'benefits.*' => 'exists:benefits,id', // Asegúrate de que los beneficios existan
+                'meta_description' => 'nullable|string|max:150',
             ], $messages);
             $validatedData['is_negotiable'] = $request->boolean('is_negotiable', false);
 
@@ -408,6 +412,15 @@ class HomeController extends Controller
     {
         $property = Domain::findOrFail($id);
         $property->is_active = $request->is_active;
+        $property->save();
+
+        return response()->json(['code' => $property->code, 'success' => true]);
+    }
+
+    public function changeAvailable(Request $request, $id)
+    {
+        $property = Domain::findOrFail($id);
+        $property->available = $request->available;
         $property->save();
 
         return response()->json(['code' => $property->code, 'success' => true]);

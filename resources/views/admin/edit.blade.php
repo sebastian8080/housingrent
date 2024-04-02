@@ -92,6 +92,21 @@
             </span>
         @enderror
     </div>
+    @can('have_permissions')
+    <div class="form-group">
+        <label for="meta_description">Meta Description (Máximo 150 caracteres)</label>
+        <textarea name="meta_description" class="form-control @error('description') is-invalid @enderror" id="meta_description" maxlength="150" rows="2" placeholder=""></textarea>
+        <div id="count" class="text-right mt-2">
+            <span id="current_count" class="font-weight-bold">0</span>
+            <span id="maximum_count">/ 150</span>
+        </div>
+        @error('meta_description')
+            <span class="invalid-feedback">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+    </div>
+    @endcan
     <!-- Detalles de la propiedad -->
     <div class="form-row">
         <div class="col-md-4">
@@ -381,4 +396,13 @@
         });
     
         </script>
+<script type="text/javascript">
+    $('textarea').keyup(function() {    
+        var characterCount = $(this).val().length,
+            current_count = $('#current_count'),
+            maximum_count = $('#maximum_count'),
+            count = $('#count');    
+            current_count.text(characterCount);        
+    });
+    </script>
 @stop

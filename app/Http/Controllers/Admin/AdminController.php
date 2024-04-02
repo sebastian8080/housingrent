@@ -11,6 +11,8 @@ use App\Models\info_parishes;
 use App\Models\Domain;
 use App\Models\User;
 use App\Models\Role;
+
+
 use App\Models\Benefit;
 use App\Models\Multimedia;
 use App\Models\laundry_types;
@@ -114,14 +116,99 @@ class AdminController extends Controller
     }
 
     public function destroy(User $user)
-{
-    try {
-        $userName = $user->name; // Guardar el nombre para usarlo en la respuesta
-        $user->delete();
-        return response()->json(['success' => true, 'message' => "El usuario {$userName} ha sido eliminado con éxito."]);
-    } catch (\Exception $e) {
-        return response()->json(['success' => false, 'message' => "Error al intentar eliminar el usuario."], 500);
+    {
+        try {
+            $userName = $user->name; // Guardar el nombre para usarlo en la respuesta
+            $user->delete();
+            return response()->json(['success' => true, 'message' => "El usuario {$userName} ha sido eliminado con éxito."]);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => "Error al intentar eliminar el usuario."], 500);
+        }
     }
-}
+
+    public function list_services(Request $request)
+    {
+        $benefits = Benefit::with('typeBenefit')->paginate(20); // Asumiendo relación 'typeBenefit'
+        $typeBenefits= Type_Benefit::All();
+
+        return view('admin.userAdmin.list_services', compact('benefits','typeBenefits'));
+    }
+
+    public function createService(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'type_benefit_id' => 'required|exists:type_benefits,id',
+        ]);
+    
+        $service = new Benefit($validatedData);
+        $service->save();
+    
+        return response()->json(['success' => true, 'message' => 'Servicio creado exitosamente.']);
+    }
+
+    public function editService(Benefit $service)
+    {
+        return response()->json($service->load('typeBenefit')); // Asegúrate de cargar relaciones si es necesario
+    }
+
+    public function updateService(Request $request, Benefit $service)
+    {
+        try {
+            $validatedData = $request->validate([
+                'name' => 'required|string|max:255',
+                'type_benefit_id' => 'required|exists:type_benefits,id',
+            ]);
+            
+            $service->update($validatedData);
+
+            return response()->json(['success' => true, 'message' => 'Servicio actualizado exitosamente.']);
+        } catch (\Exception $e) {
+            // Registra el error y la solicitud que lo causó
+            Log::error('Error actualizando servicio: '.$e->getMessage(), $request->all());
+            
+            return response()->json(['success' => false, 'message' => 'Error al actualizar el servicio.'], 500);
+        }
+    }
+
+    public function destroyService(Benefit $service)
+    {
+        try {
+            $serviceName = $service->name; // Guardar el nombre para usarlo en la respuesta
+            $service->delete();
+            return response()->json(['success' => true, 'message' => "El servicio {$serviceName} ha sido eliminado con éxito."]);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => "Error al intentar eliminar el servicio."], 500);
+        }
+    }
+    public function createTypeService(Request $request)
+    {
+        Log::info('Llege: ');
+        // Validar la entrada del formulario
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255|unique:type_benefits,name',
+        ]);
+
+        try {
+            // Crear el nuevo TypeService
+            $typeService = new Type_Benefit();
+            $typeService->name = $validatedData['name'];
+            $typeService->save();
+
+            // Opcionalmente, puedes devolver una respuesta más detallada
+            // o incluso redirigir al usuario a una página específica
+            return response()->json([
+                'success' => true, 
+                'message' => 'Tipo de servicio creado exitosamente.',
+                'data' => $typeService
+            ]);
+        } catch (\Exception $e) {
+            Log::error('Error creando tipo de servicio: ' . $e->getMessage());
+            return response()->json([
+                'success' => false,
+                'message' => 'Error al crear el tipo de servicio. Por favor, intente nuevamente.',
+            ], 500);
+        }
+    }
 
 }

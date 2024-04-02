@@ -54,7 +54,6 @@
 </div>
     
 </div>
-{{ $users->links('pagination::bootstrap-4') }}
 {{-- Modal para Editar Usuario --}}
 <div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="editUserModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

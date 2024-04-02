@@ -15,6 +15,7 @@ class Domain extends Model
         'min_price',
         'title',
         'description',
+        'meta_description',
         'bedroom',
         'bathroom',
         'garage',
@@ -29,6 +30,7 @@ class Domain extends Model
         'lng',
         'laundry_type',
         'is_active',
+        'available',
         'user_id',
         'created_at',
         'updated_at'

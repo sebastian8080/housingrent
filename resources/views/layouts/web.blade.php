@@ -124,9 +124,11 @@
                 <p class="text-white h5">&copy; 2024 Housing Rent Group. Todos los derechos reservados.</p>
             </div>
             <div>
-                <a class="text-white text-decoration-none" href="{{ route('web.politicas') }}">Políticas de Privacidad</a>
-                <span class="text-white h5">|</span>
-                <a class="text-white text-decoration-none" href="{{ route('web.terminos') }}">Términos y Condiciones</a>
+                <div>
+                    <a class="text-white text-decoration-none" href="{{ route('web.politicas') }}">Políticas de Privacidad</a>
+                    <span class="text-white h5">|</span>
+                    <a class="text-white text-decoration-none" href="{{ route('web.terminos') }}">Términos y Condiciones</a>
+                </div>
             </div>
         </section>
     </footer>

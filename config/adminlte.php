@@ -64,7 +64,7 @@ return [
     */
 
     'logo' => '<b>Housing</b> Rent',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo_img' => 'favicon3.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -84,9 +84,9 @@ return [
     */
 
     'auth_logo' => [
-        'enabled' => false,
+        'enabled' => true,
         'img' => [
-            'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+            'path' => 'favicon3.png',
             'alt' => 'Auth Logo',
             'class' => '',
             'width' => 50,
@@ -109,7 +109,7 @@ return [
     'preloader' => [
         'enabled' => true,
         'img' => [
-            'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+            'path' => 'favicon3.png',
             'alt' => 'AdminLTE Preloader Image',
             'effect' => 'animation__shake',
             'width' => 60,
@@ -341,6 +341,12 @@ return [
             'text' => 'Control de Usuarios',
             'url'  => 'admin/users/list',
             'icon' => 'fas fa-users-cog',
+            'can'  => 'is-admin',
+        ],
+        [
+            'text' => 'Control de Servicios',
+            'url'  => 'admin/services/list',
+            'icon' => 'fas fa-water ',
             'can'  => 'is-admin',
         ],
         [

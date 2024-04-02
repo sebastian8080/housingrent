@@ -85,6 +85,21 @@
         @enderror
     </div>
 
+    @can('have_permissions')
+    <div class="form-group">
+        <label for="meta_description">Meta Description (Máximo 150 caracteres)</label>
+        <textarea name="meta_description" class="form-control @error('description') is-invalid @enderror" id="meta_description" maxlength="150" rows="2" placeholder=""></textarea>
+        <div id="count" class="text-right mt-2">
+            <span id="current_count" class="font-weight-bold">0</span>
+            <span id="maximum_count">/ 150</span>
+        </div>
+        @error('meta_description')
+            <span class="invalid-feedback">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+    </div>
+    @endcan
     <!-- Detalles de la propiedad -->
     <div class="form-row">
         <div class="col-md-4">
@@ -122,10 +137,10 @@
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <label for="construction_area">Metros Cuadrados</label>
+                <label for="construction_area">Metros Cuadrados (Aproximados)</label>
                 <input type="number" class="form-control @error('construction_area') is-invalid @enderror " id="construction_area" name="construction_area" value="{{old('construction_area')}}" >
                 @error('construction_area')
-                    <span class="invalid-feedback">
+                    <span class="invalid-feedback"> 
                         <strong>{{$message}}</strong>
                     </span>
                 @enderror
@@ -384,6 +399,16 @@
     });
 
     </script>
+    
+    <script type="text/javascript">
+        $('textarea').keyup(function() {    
+            var characterCount = $(this).val().length,
+                current_count = $('#current_count'),
+                maximum_count = $('#maximum_count'),
+                count = $('#count');    
+                current_count.text(characterCount);        
+        });
+        </script>
     @parent
     
 @stop
