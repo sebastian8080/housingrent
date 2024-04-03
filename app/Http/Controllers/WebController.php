@@ -60,7 +60,7 @@ class WebController extends Controller
             $header .= "MIME-Version: 1.0\r\n";
             $header .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
-            mail('info@casacredito.com','Lead Housing Rent: '.strip_tags($request->name), $message, $header);
+            mail('info@housingrentgroup.com','Lead Housing Rent: '.strip_tags($request->name), $message, $header);
             mail('sebas31051999@gmail.com', 'Lead Housing Rent: ' . strip_tags($request->name), $message, $header); 
             mail('sayala7986@gmail.com', 'Lead Housing Rent: ' . strip_tags($request->name), $message, $header); 
             return redirect()->route('web.thank');
