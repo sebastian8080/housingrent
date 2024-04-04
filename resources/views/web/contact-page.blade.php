@@ -55,13 +55,13 @@
                             <div class="border border-dark rounded-circle d-flex justify-content-center align-items-center" style="width: 30px; height: 30px;">
                                 <img width="15px" src="{{ asset('img/phone-icon.png') }}" alt="">
                             </div>
-                            <a style="text-decoration: none; color: #000000" href="tel:+593983849073">098-384-9073</a>
+                            <a style="text-decoration: none; color: #000000" href="tel:+593987474637">098-747-4637</a>
                         </div>
                         <div class="d-flex justify-content-start gap-2 align-items-center mb-2">
                             <div class="border border-dark rounded-circle d-flex justify-content-center align-items-center" style="width: 30px; height: 30px;">
                                 <img width="15px" src="{{ asset('img/whatsapp-icon.png') }}" alt="">
                             </div>
-                            <a style="text-decoration: none; color: #000000" href="tel:+593983849073">098-384-9073</a>
+                            <a style="text-decoration: none; color: #000000" target="_blank" href="https://wa.me/+593987474637?text=Hola%2C%20Housing%20Rent%20estoy%20interesado%20en%20alquilar">098-747-4637</a>
                         </div>
                         <div class="d-flex justify-content-start gap-2 align-items-center mb-2">
                             <div class="border border-dark rounded-circle d-flex justify-content-center align-items-center" style="width: 30px; height: 30px;">
@@ -73,7 +73,7 @@
                             <div class="border border-dark rounded-circle d-flex justify-content-center align-items-center" style="width: 30px; height: 30px;">
                                 <img width="15px" src="{{ asset('img/location-icon.png') }}" alt="">
                             </div>
-                            <span>Remigio Tamariz Crespo y Av. Solano</span>
+                            <a style="text-decoration: none; color: #000000" href="https://maps.app.goo.gl/g4G5hBDe9doEPJvx7">Remigio Tamariz Crespo y Av. Solano</a>
                         </div>
                         <div class="d-flex justify-content-start gap-2 align-items-center mb-2">
                             <div class="border border-dark rounded-circle d-flex justify-content-center align-items-center" style="width: 30px; height: 30px;">
@@ -85,7 +85,7 @@
                             <div class="border border-dark rounded-circle d-flex justify-content-center align-items-center" style="width: 30px; height: 30px;">
                                 <img width="15px" src="{{ asset('img/instagram-icon.png') }}" alt="">
                             </div>
-                            <a style="text-decoration: none; color: #000000" target="_blank" href="https://www.instagram.com/housingrentgroup">housingrentgroup</a>
+                            <a style="text-decoration: none; color: #000000" target="_blank" href="https://www.instagram.com/_housingrent_">housingrentgroup</a>
                         </div>
                         <div class="d-flex justify-content-start gap-2 align-items-center mb-2">
                             <div class="border border-dark rounded-circle d-flex justify-content-center align-items-center" style="width: 30px; height: 30px;">
