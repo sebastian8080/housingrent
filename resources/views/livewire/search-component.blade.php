@@ -222,8 +222,11 @@
                                             </div>
                                             <div class="col-md-8 px-5 py-3 padding-mobile-0">
                                                 <div class="card-body">
-                                                <h5 class="card-title">{{ $propertie->listing_title }}</h5>
-                                                <p class="card-text" style="font-size: 23px">${{ $propertie->property_price }}</p>
+                                                    <h5 class="card-title">{{ $propertie->listing_title }}</h5>
+                                                    <div class="d-flex justify-content-between">
+                                                        <p class="card-text" style="font-size: 23px">${{ $propertie->property_price }}</p>
+                                                        <div style="background-color: #242B40; color: #ffffff; width: 150px; height: 32px; font-size: large" class="d-flex justify-content-center align-items-center rounded-pill px-3">COD: {{ $propertie->product_code }}</div>                                                    
+                                                </div>
                                                 <p class="card-text">{{ Str::limit(Str::title($propertie->listing_description), '150') }}</p>
                                                 <hr>
                                                 <div class="d-flex justify-content-between w-100">
