@@ -26,6 +26,7 @@
                 <div class="d-flex justify-content-center">
                     <div class="bg-white d-flex justify-content-between w-100 px-2 py-2 filters" style="border-radius: 25px">
                         <select name="type" id="type" style="border-radius: 25px 0px 0px 25px !important; cursor: pointer; font-family: 'Sharp Grotesk'; font-weight: 300" class="form-select w-100 rounded-0 bg-white border-0 border-end">
+                            <option value="">Tipo de propiedad</option>
                             <option value="Departamentos">Departamentos</option>
                             <option value="Casas">Casas</option>
                             <option value="Casas Comerciales">Casas Comerciales</option>

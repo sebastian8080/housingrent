@@ -69,7 +69,11 @@ class SearchComponent extends Component
             $properties_filter = DB::connection('mysql_grupo_housing')->table('listings')->select('id', 'product_code', 'listing_title', 'listing_description', 'listingtype', 'listingtypestatus', 'bedroom', 'bathroom', 'garage', 'property_price', 'state', 'city', 'sector', 'images', 'slug')->where('available', 1)->where('status', 1)->where('listingtypestatus', 'alquilar')->orderBy('product_code', 'desc');
 
             if($this->searchtxt != null || $this->searchtxt != ""){
-                $properties_filter->where('city', 'LIKE', "%".$this->searchtxt."%");
+                if(is_numeric($this->searchtxt)){
+                    $properties_filter->where('product_code', 'LIKE', '%'.$this->searchtxt.'%');
+                } else {
+                    $properties_filter->where('city', 'LIKE', "%".$this->searchtxt."%");
+                }
             }
             
             if(count($this->types)>0){
@@ -125,7 +129,7 @@ class SearchComponent extends Component
             }
 
             //consultando variables que vienen por el constructor
-            if($this->type){
+            if($this->type && $this->type != "Propiedad"){
                 $properties_filter->where('listingtype', $this->type);
             }
 
