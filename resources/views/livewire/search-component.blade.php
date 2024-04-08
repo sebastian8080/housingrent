@@ -1,5 +1,5 @@
 <div>
-    <section class="section-search" style="padding-left: 10%; padding-right: 10%">
+    <section class="section-search">
         <section class="d-flex ps-4 pe-1 rounded-pill py-1 rounded-search-mobile shadow-sm" style="border: 1px solid #000000">
             <div class="d-flex w-100 justify-content-between align-items-center search">
                 <section class="position-relative w-100 margin-bottom-mobile">
@@ -51,7 +51,7 @@
                 <section class="position-relative w-100 margin-bottom-mobile">
                     <span class="text-muted label-filter" style="font-size: x-small; display: none">¿En donde busca su propiedad?</span>
                     <div class="text-center border-tabs-mobile w-100">
-                        <label style="cursor: pointer" onclick="showfilter('tab2', null)" class="w-100">Ubicaciones <img class="ms-1 img-filters" width="10px" style="display: none" src="{{ asset('img/icon-down-arrow.png') }}" alt=""></label>
+                        <label style="cursor: pointer" onclick="showfilter('tab2', null)" class="w-100">Ubicación <img class="ms-1 img-filters" width="10px" style="display: none" src="{{ asset('img/icon-down-arrow.png') }}" alt=""></label>
                     </div>
                     <div id="tab2" class="position-absolute p-2 bg-white border rounded shadow-sm @if(!$showTab2) d-none @endif mt-2" style="z-index: 1; width: 200px">
                         <div class="position-absolute" style="top: -5px; right: -5px">
@@ -129,6 +129,25 @@
                     </div>
                 </section>
 
+                <div class="slash">/</div>
+
+                <section class="position-relative w-100 margin-bottom-mobile">
+                    <span class="text-muted label-filter" style="font-size: x-small; display: none">Buscar por código</span>
+                    <div class="text-center border-tabs-mobile">
+                        <label style="cursor: pointer" onclick="showfilter('tab6', null)" class="w-100">Código <img class="ms-1 img-filters" width="10px img-filters" style="display: none" src="{{ asset('img/icon-down-arrow.png') }}" alt=""></label>
+                    </div>
+                    <div id="tab6" class="position-absolute p-2 bg-white border rounded shadow-sm d-none mt-2" style="z-index: 1100; width: 200px;">
+                        <div class="position-absolute" style="top: -5px; right: -5px">
+                            <div onclick="showfilter('tab6', 'close')" class="rounded-pill text-white d-flex justify-content-center align-items-center" style="width: 18px; height: 18px; background-color: #242B40; cursor: pointer">x</div>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between border-bottom pb-1">
+                            <div class="d-flex align-items-center">
+                                <input id="code" type="text" class="form-control form-control-sm border-0" placeholder="Ej: 2214">
+                            </div>
+                        </div>          
+                    </div>
+                </section>
+
                 <div class="slash" style="width: 5px !important">/</div>
 
                 <section class="position-relative w-100 margin-bottom-mobile">
@@ -196,6 +215,7 @@
                 <section class="btn-search-mobile">
                     {{-- <button onclick="filter_properties()" class="btn btn-dark btn-sm rounded-pill px-5">Buscar</button> --}}
                     <button onclick="filter_properties()" class="btn btn-dark btn-sm rounded-pill px-5">Buscar</button>
+                    {{-- <button class="btn btn-danger btn-sm rounded-pill px-5">Eliminar Filtros</button> --}}
                 </section>
             </div>
         </section>
@@ -336,6 +356,8 @@
         let bathrooms = document.getElementById('num_bathrooms').value;
         let garage = document.getElementById('num_garage').value;
 
+        let code = document.getElementById('code').value;
+
         // let min_price = document.getElementById('min_price').value;
         // let max_price = document.getElementById('max_price').value;
 
@@ -360,6 +382,7 @@
         @this.set('bedrooms', bedrooms);
         @this.set('bathrooms', bathrooms);
         @this.set('garage', garage);
+        @this.set('product_code', code);
         // @this.set('min_price', min_price);
         // @this.set('max_price', max_price);
         @this.set('city', city);

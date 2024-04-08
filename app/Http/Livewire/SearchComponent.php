@@ -24,6 +24,7 @@ class SearchComponent extends Component
     public $bedrooms = 0, $bathrooms = 0, $garage = 0;
     public $min_price = 0, $max_price = 0, $rangePrice = 0;
     public $city = "";
+    public $product_code;
 
     public $citySearch = "";
     public $currentTab = "";
@@ -74,6 +75,10 @@ class SearchComponent extends Component
                 } else {
                     $properties_filter->where('city', 'LIKE', "%".$this->searchtxt."%");
                 }
+            }
+
+            if($this->product_code){
+                $properties_filter->where('product_code', 'LIKE', '%'.$this->product_code.'%');
             }
             
             if(count($this->types)>0){
