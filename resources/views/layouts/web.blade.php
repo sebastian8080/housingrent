@@ -14,8 +14,8 @@
 
     <style>
         body, html{
-            width: 100%;
-            overflow-x: hidden;
+            max-width: 100% !important;
+            overflow-x: clip !important;
         }
     </style>
     <script src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.site_key') }}"></script>

@@ -1,4 +1,236 @@
 <div>
+    @if($ismobile)
+    <div class="d-flex justify-content-end" style="position: sticky !important; top: 10px; !important; z-index: 5; margin-right:-12px">
+        <button id="buttonFilter" class="btn btn-danger" onclick="setAnimation()">Filtros</button>
+    </div>
+    <div id="filters-mobile" style="position: fixed; top: 0px; right: 0px; background-color: #ffffff; width: 90vw; height: 100%; z-index: 4; margin-right: -350px">
+        <div class="px-1 d-flex gap-2 align-items-center" style="background-color: #242B40; color: #ffffff">
+            <p class="pt-3 pb-2 ps-3 h5">Filtrar por:</p>
+        </div>
+        <section class="section-search pt-3">
+            <section class="d-flex ps-4 pe-1 rounded-pill py-1 rounded-search-mobile shadow-sm" style="border: 1px solid #000000">
+                <div class="d-flex w-100 justify-content-between align-items-center search">
+                    <section class="position-relative w-100 margin-bottom-mobile">
+                        <span class="text-muted label-filter" style="font-size: x-small; display: none">Tipo de propiedad</span>
+                        <div class="text-center border-tabs-mobile">
+                            <label style="cursor: pointer" onclick="showfilter('tab1', null)" class="text-center w-100">Todas las propiedades <img class="ms-1 img-filters" width="10px" style="display: none" src="{{ asset('img/icon-down-arrow.png') }}" alt=""></label>
+                        </div>
+                        <div id="tab1" class="position-absolute p-2 bg-white border rounded shadow-sm d-none mt-1" style="z-index: 1; width: 200px">
+                            <div class="position-absolute" style="top: -5px; right: -5px">
+                                <div onclick="showfilter('tab1', 'close')" class="rounded-pill text-white d-flex justify-content-center align-items-center" style="width: 18px; height: 18px; background-color: #242B40; cursor: pointer">x</div>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <input value="23" id="checkCasas" type="checkbox" name="types" style="width: 20px;" onclick="disabledCheckBoxesTypes()">
+                                <label class="w-100" style="cursor: pointer" for="checkCasas">Casas</label>
+                            </div>
+                            <div class="d-flex gap-2 mt-1">
+                                <input value="24" id="checkDepartamentos" type="checkbox" name="types" style="width: 20px" onclick="disabledCheckBoxesTypes()">
+                                <label class="w-100" style="cursor: pointer" for="checkDepartamentos">Departamentos</label>
+                            </div>
+                            <div class="d-flex gap-2 mt-1">
+                                <input value="25" id="checkCasasComerciales" type="checkbox" name="types" style="width: 20px" onclick="disabledCheckBoxesTypes()">
+                                <label class="w-100" style="cursor: pointer" for="checkCasasComerciales">Casas Comerciales</label>
+                            </div>
+                            <div class="d-flex gap-2 mt-1">
+                                <input value="32" id="checkLocalesComerciales" type="checkbox" name="types" style="width: 20px" onclick="disabledCheckBoxesTypes()">
+                                <label class="w-100" style="cursor: pointer" for="checkLocalesComerciales">Locales Comerciales</label>
+                            </div>
+                            <div class="d-flex gap-2 mt-1">
+                                <input value="35" id="checkOficinas" type="checkbox" name="types" style="width: 20px" onclick="disabledCheckBoxesTypes()">
+                                <label class="w-100" style="cursor: pointer" for="checkOficinas">Oficinas</label>
+                            </div>
+                            <div class="d-flex gap-2 mt-1">
+                                <input value="36" id="checkSuites" type="checkbox" name="types" style="width: 20px" onclick="disabledCheckBoxesTypes()">
+                                <label class="w-100" style="cursor: pointer" for="checkSuites">Suites</label>
+                            </div>
+                            <div class="d-flex gap-2 mt-1">
+                                <input value="29" id="checkQuintas" type="checkbox" name="types" style="width: 20px" onclick="disabledCheckBoxesTypes()">
+                                <label class="w-100" style="cursor: pointer" for="checkQuintas">Quintas</label>
+                            </div>
+                            <div class="d-flex gap-2 mt-1">
+                                <input value="30" id="checkHaciendas" type="checkbox" name="types" style="width: 20px" onclick="disabledCheckBoxesTypes()">
+                                <label class="w-100" style="cursor: pointer" for="checkHaciendas">Haciendas</label>
+                            </div>
+                        </div>
+                    </section>
+    
+                    <div class="slash">/</div>
+    
+                    <section class="position-relative w-100 margin-bottom-mobile">
+                        <span class="text-muted label-filter" style="font-size: x-small; display: none">¿En donde busca su propiedad?</span>
+                        <div class="text-center border-tabs-mobile w-100">
+                            <label style="cursor: pointer" onclick="showfilter('tab2', null)" class="w-100">Ubicación <img class="ms-1 img-filters" width="10px" style="display: none" src="{{ asset('img/icon-down-arrow.png') }}" alt=""></label>
+                        </div>
+                        <div id="tab2" class="position-absolute p-2 bg-white border rounded shadow-sm @if(!$showTab2) d-none @endif mt-2" style="z-index: 1; width: 200px">
+                            <div class="position-absolute" style="top: -5px; right: -5px">
+                                <div onclick="showfilter('tab2', 'close')" class="rounded-pill text-white d-flex justify-content-center align-items-center" style="width: 18px; height: 18px; background-color: #242B40; cursor: pointer">x</div>
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" class="w-100 form-control border-0 border-bottom" placeholder="Ingrese una ciudad" id="inpCity">
+                                {{-- @if (count($cities)>0)
+                                    <div class="px-1 my-3">
+                                        @foreach ($cities as $city)
+                                            <div class="d-flex gap-2 align-items-center">
+                                                <span class="w-100" style="cursor: pointer" onclick="setValueCity('{{$city->id}}', '{{$city->name}}')"><img width="20px" src="{{ asset('img/location-icon.png') }}" alt="">{{ $city->name }}</span>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                @endif
+                                <span id="divCityValue" class="text-white rounded-pill px-2 py-1 w-auto @if($cityTagName == "") d-none @endif d-flex justify-content-between" style="background-color: #0F0F0F">
+                                    <span id="spanCityValue"> @if($cityTagName != "") {{ $cityTagName }} @endif </span>
+                                    <label wire:click="cleanCity()" style="width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; cursor: pointer" class="bg-white rounded-circle text-dark text-center">x</label>
+                                </span>
+                                <input style="display: none" type="text" id="inpCity" value=""> --}}
+                            </div>
+                            {{-- <hr>
+                            <span class="fw-bold" style="font-size: large">Zona</span>
+                            <div>
+                                <input id="checknorte" value="Norte" type="checkbox" name="zones">
+                                <label for="checknorte">Norte</label>
+                            </div>
+                            <div>
+                                <input id="checkSur" value="Sur" type="checkbox" name="zones">
+                                <label for="checkSur">Sur</label>
+                            </div>
+                            <div>
+                                <input id="checkcentro" value="Centro" type="checkbox" name="zones">
+                                <label for="checkcentro">Centro</label>
+                            </div> --}}
+                        </div>
+                    </section>
+    
+                    <div class="slash">/</div>
+    
+                    <section class="position-relative w-100 margin-bottom-mobile">
+                        <span class="text-muted label-filter" style="font-size: x-small; display: none">Especificaciones de la propiedad</span>
+                        <div class="text-center border-tabs-mobile">
+                            <label style="cursor: pointer" onclick="showfilter('tab3', null)" class="w-100">Número de... <img class="ms-1 img-filters" width="10px img-filters" style="display: none" src="{{ asset('img/icon-down-arrow.png') }}" alt=""></label>
+                        </div>
+                        <div id="tab3" class="position-absolute p-2 bg-white border rounded shadow-sm d-none mt-2" style="z-index: 1100; width: 200px;">
+                            <div class="position-absolute" style="top: -5px; right: -5px">
+                                <div onclick="showfilter('tab3', 'close')" class="rounded-pill text-white d-flex justify-content-center align-items-center" style="width: 18px; height: 18px; background-color: #242B40; cursor: pointer">x</div>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between border-bottom pb-1">
+                                <span>Habitaciones</span>
+                                <div class="d-flex align-items-center">
+                                    <button class="btn btn-sm rounded-pill border" onclick="sum('num_bedrooms')">+</button>
+                                    <input style="width: 25px" id="num_bedrooms" type="text" class="form-control form-control-sm border-0" min="1" value="" placeholder="0" readonly>
+                                    <button class="btn btn-sm rounded-pill border" onclick="rest('num_bedrooms')">-</button>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between border-bottom pt-1 pb-1">
+                                <span>Baños</span>
+                                <div class="d-flex align-items-center">
+                                    <button class="btn btn-sm rounded-pill border" onclick="sum('num_bathrooms')">+</button>
+                                    <input style="width: 25px" id="num_bathrooms" type="text" class="form-control form-control-sm border-0" min="1" value="" placeholder="0" readonly>
+                                    <button class="btn btn-sm rounded-pill border" onclick="rest('num_bathrooms')">-</button>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between pt-1">
+                                <span>Garage</span>
+                                <div class="d-flex align-items-center">
+                                    <button class="btn btn-sm rounded-pill border" onclick="sum('num_garage')">+</button>
+                                    <input style="width: 25px" id="num_garage" type="text" class="form-control form-control-sm border-0" min="1" value="" placeholder="0" readonly>
+                                    <button class="btn btn-sm rounded-pill border" onclick="rest('num_garage')">-</button>
+                                </div>
+                            </div>                    
+                        </div>
+                    </section>
+    
+                    <div class="slash">/</div>
+    
+                    <section class="position-relative w-100 margin-bottom-mobile">
+                        <span class="text-muted label-filter" style="font-size: x-small; display: none">Buscar por código</span>
+                        <div class="text-center border-tabs-mobile">
+                            <label style="cursor: pointer" onclick="showfilter('tab6', null)" class="w-100">Código <img class="ms-1 img-filters" width="10px img-filters" style="display: none" src="{{ asset('img/icon-down-arrow.png') }}" alt=""></label>
+                        </div>
+                        <div id="tab6" class="position-absolute p-2 bg-white border rounded shadow-sm d-none mt-2" style="z-index: 1100; width: 200px;">
+                            <div class="position-absolute" style="top: -5px; right: -5px">
+                                <div onclick="showfilter('tab6', 'close')" class="rounded-pill text-white d-flex justify-content-center align-items-center" style="width: 18px; height: 18px; background-color: #242B40; cursor: pointer">x</div>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between border-bottom pb-1">
+                                <div class="d-flex align-items-center">
+                                    <input id="code" type="text" class="form-control form-control-sm border-0" placeholder="Ej: 2214">
+                                </div>
+                            </div>          
+                        </div>
+                    </section>
+    
+                    <div class="slash" style="width: 5px !important">/</div>
+    
+                    <section class="position-relative w-100 margin-bottom-mobile">
+                        <span class="text-muted label-filter" style="font-size: x-small; display: none">$ Monto de la propiedad</span>
+                        <div class="text-center border-tabs-mobile">
+                            <label style="cursor: pointer" onclick="showfilter('tab4', null)" class="w-100">Precio <img class="ms-1 img-filters" width="10px" style="display: none" src="{{ asset('img/icon-down-arrow.png') }}" alt=""></label>
+                        </div>
+                        <div id="tab4" class="position-absolute p-2 bg-white border rounded shadow-sm d-none mt-2" style="z-index: 1100; width: 230px">
+                            <div class="position-absolute" style="top: -5px; right: -5px">
+                                <div onclick="showfilter('tab4', 'close')" class="rounded-pill text-white d-flex justify-content-center align-items-center" style="width: 18px; height: 18px; background-color: #242B40; cursor: pointer">x</div>
+                            </div>
+                            <div>
+                                <div class="d-flex justify-content-center">
+                                    <label>Desde <span class="text-center fw-bold" id="currentValueRange"> @if($rangePrice>0) ${{ $rangePrice }} @else ${{ $minRangePrice }} @endif</span> Hasta ${{ $maxRangePrice }}</label>
+                                </div>
+                                <div class="border-bottom pb-2 d-flex justify-content-center gap-2">
+                                    <div>
+                                        <span class="text-muted fw-bold" style="font-size: x-small">Mínimo</span>
+                                        <span class="text-muted fw-bold" style="font-size: small">${{ $minRangePrice }}</span>
+                                    </div>
+                                    <input type="range" id="rangePrice" oninput="changeValueRangePrice()" min="{{$minRangePrice}}" max="{{ $maxRangePrice }}" value="{{ $minRangePrice }}" step="20" />
+                                    <div>
+                                        <span class="text-muted fw-bold" style="font-size: x-small">Máximo</span>
+                                        <span class="text-muted fw-bold" style="font-size: small">${{ $maxRangePrice }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- <div class="border-bottom pb-2">
+                                <span>Desde</span>
+                                <div>
+                                    <input type="text" class="form-control form-control-sm" placeholder="Precio mínimo" id="min_price">
+                                </div>
+                            </div>
+                            <div class="pt-1">
+                                <span>Hasta</span>
+                                <div>
+                                    <input type="text" class="form-control form-control-sm" placeholder="Precio máximo" id="max_price">
+                                </div>
+                            </div>                 --}}
+                        </div>
+                    </section>
+    
+                    <div class="slash">/</div>
+    
+                    <section class="position-relative w-100 margin-bottom-mobile">
+                        <span class="text-muted label-filter" style="font-size: x-small; display: none">Características adicionales</span>
+                        <div class="text-center border-tabs-mobile">
+                            <label style="cursor: pointer" onclick="showfilter('tab5', null)" class="w-100">Caracteristicas <img class="ms-1 img-filters" style="display: none" width="10px" src="{{ asset('img/icon-down-arrow.png') }}" alt=""></;>
+                        </div>
+                        <div id="tab5" class="position-absolute p-2 bg-white border rounded shadow-sm d-none mt-2 w-100" style="z-index: 1100;">
+                            <div class="position-absolute" style="top: -5px; right: -5px">
+                                <div onclick="showfilter('tab5', 'close')" class="rounded-pill text-white d-flex justify-content-center align-items-center" style="width: 18px; height: 18px; background-color: #242B40; cursor: pointer">x</div>
+                            </div>
+                            <div>
+                                <input type="checkbox" name="" id="">
+                                <label for="checkamoblada">Amoblada</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" name="" id="">
+                                <label for="checkmascota">Pet Friendly</label>
+                            </div>                 
+                        </div>
+                    </section>
+    
+                    <section class="btn-search-mobile">
+                        <button onclick="closeFilters()" style="font-size: small" class="btn btn-danger btn-sm fw-bold rounded-pill">Cancelar</button>
+                        {{-- <button onclick="filter_properties()" class="btn btn-dark btn-sm rounded-pill px-5">Buscar</button> --}}
+                        <button onclick="filter_properties()" style="background-color: #242B40;" class="btn btn-sm rounded-pill px-5 text-white">Buscar</button>
+                        {{-- <button class="btn btn-danger btn-sm rounded-pill px-5">Eliminar Filtros</button> --}}
+                    </section>
+                </div>
+            </section>
+        </section>
+    </div>
+    @else
     <section class="section-search">
         <section class="d-flex ps-4 pe-1 rounded-pill py-1 rounded-search-mobile shadow-sm" style="border: 1px solid #000000">
             <div class="d-flex w-100 justify-content-between align-items-center search">
@@ -58,8 +290,8 @@
                             <div onclick="showfilter('tab2', 'close')" class="rounded-pill text-white d-flex justify-content-center align-items-center" style="width: 18px; height: 18px; background-color: #242B40; cursor: pointer">x</div>
                         </div>
                         <div class="mb-3">
-                            <input type="text" class="w-100 form-control border-0 border-bottom" placeholder="Ingrese una ciudad" wire:model="citySearch">
-                            @if (count($cities)>0)
+                            <input type="text" class="w-100 form-control border-0 border-bottom" placeholder="Ingrese una ciudad" id="inpCity">
+                            {{-- @if (count($cities)>0)
                                 <div class="px-1 my-3">
                                     @foreach ($cities as $city)
                                         <div class="d-flex gap-2 align-items-center">
@@ -72,7 +304,7 @@
                                 <span id="spanCityValue"> @if($cityTagName != "") {{ $cityTagName }} @endif </span>
                                 <label wire:click="cleanCity()" style="width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; cursor: pointer" class="bg-white rounded-circle text-dark text-center">x</label>
                             </span>
-                            <input style="display: none" type="text" id="inpCity" value="">
+                            <input style="display: none" type="text" id="inpCity" value=""> --}}
                         </div>
                         {{-- <hr>
                         <span class="fw-bold" style="font-size: large">Zona</span>
@@ -220,6 +452,7 @@
             </div>
         </section>
     </section>
+    @endif
 
     <section class="container mt-5">
         <section class="row">
@@ -385,7 +618,7 @@
         @this.set('product_code', code);
         // @this.set('min_price', min_price);
         // @this.set('max_price', max_price);
-        @this.set('city', city);
+        @this.set('citySearch', city);
         @this.set('rangePrice', rangePrice);
         @this.set('currentTab', '');
 
@@ -407,7 +640,7 @@
         } else {
             document.getElementById(tab_id).classList.add('d-none');
         }
-        tab_id == "tab2" && action != "close" && !document.getElementById('tab2').classList.contains('d-none') ? @this.set('currentTab', tab_id) : null;
+        //tab_id == "tab2" && action != "close" && !document.getElementById('tab2').classList.contains('d-none') ? @this.set('currentTab', tab_id) : null;
     }
 
     const setValueCity = (id, name) => {
@@ -443,4 +676,23 @@
         document.getElementById('currentValueRange').textContent = "$"+rangePrice.value;
     }
 
+    const setAnimation = () => {
+        let div = document.getElementById('filters-mobile');
+        let buttonFilter = document.getElementById('buttonFilter');
+
+        div.style.animation = "slide-right 1s ease";
+        div.style.marginRight = "0px";
+
+        buttonFilter.style.animation = "slide-button-filter-right 1s ease";
+        buttonFilter.style.marginRight = '-100px';
+    }
+
+    const closeFilters = () => {
+        let div = document.getElementById('filters-mobile');
+        div.style.animation = 'slide-left 1s ease';
+        div.style.marginRight = "-350px";
+
+        buttonFilter.style.animation = "slide-button-filter-left 1s ease";
+        buttonFilter.style.marginRight = '0px';
+    }
 </script>
