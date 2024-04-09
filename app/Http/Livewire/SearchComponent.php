@@ -163,14 +163,14 @@ class SearchComponent extends Component
                         ->orWhere('state', $location);
                 });
             }
-    
+
             $this->properties = $properties_filter->paginate(10);
     }
 
     public function render()
     {
 
-        //$this->searchProperties();
+        $this->searchProperties();
         // $properties_filter = Property::select('id', 'product_code', 'listing_title', 'listing_description', 'bedroom', 'bathroom', 'garage', 'property_price', 'state', 'city', 'sector', 'images', 'property_by', 'slug')->where('property_by', 'Housing')->where('status', 1)->orderBy('product_code', 'desc');
 
         // $cities = [];
