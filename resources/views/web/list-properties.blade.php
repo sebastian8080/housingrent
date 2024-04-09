@@ -86,7 +86,7 @@
             let img = document.getElementById('img_modal_contact');
             let titleTxt = document.getElementById('txt_modal_contact');
             let inpCode = document.getElementById('interest');
-            let path = "http://localhost/acasaweb-master/public/uploads/listing/";
+            let path = "https://grupohousing.com/uploads/listing/";
 
             img.src = path+imgUrl;
             titleTxt.innerHTML = title;
