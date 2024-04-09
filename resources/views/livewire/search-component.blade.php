@@ -466,16 +466,18 @@
                                 }
                             @endphp
                             <article class="col-12 my-1" style="padding-left: 0px !important; padding-right: 0px !important">
-                                <a href="{{ route('show.property', $propertie->slug) }}" style="text-decoration: none">
                                     <div class="card mb-3 rounded-0">
                                         <div class="row g-0 d-flex">
                                             <div class="col-md-4">
-                                                <div style="height: 325px; background-position: center; background-repeat: no-repeat; background-size: cover; background-image: url('https://grupohousing.com/uploads/listing/{{$imgpri[0]}}')"></div>
-                                                {{-- <img src="https://grupohousing.com/uploads/listing/{{$imgpri[0]}}" class="img-fluid" alt="..."> --}}
+                                                <a href="{{ route('show.property', $propertie->slug) }}" style="text-decoration: none">
+                                                    <div style="height: 325px; background-position: center; background-repeat: no-repeat; background-size: cover; background-image: url('https://grupohousing.com/uploads/listing/{{$imgpri[0]}}')"></div>
+                                                </a>
                                             </div>
                                             <div class="col-md-8 px-5 py-3 padding-mobile-0">
                                                 <div class="card-body">
-                                                    <h5 class="card-title">{{ $propertie->listing_title }}</h5>
+                                                    <a href="{{ route('show.property', $propertie->slug) }}" class="text-dark" style="text-decoration: none">
+                                                        <h5 class="card-title">{{ $propertie->listing_title }}</h5>
+                                                    </a>
                                                     <p><img width="18px" src="{{ asset('img/location-icon.webp') }}" alt=""> {{ $propertie->state }}, {{ $propertie->city }}, {{ $propertie->sector }}</p>
                                                     <div class="d-flex justify-content-between">
                                                         <p class="card-text" style="font-size: 23px">${{ $propertie->property_price }}</p>
@@ -504,14 +506,14 @@
                                                             </div>
                                                         @endif
                                                     </div>
-                                                    {{-- <div class="d-flex gap-4">
+                                                    <div class="d-flex gap-4">
                                                         <div class="w-100">
-                                                            <button class="btn rounded-pill text-white w-100" style="background-color: #242B40; font-size: smaller">LLAMAR</button>
+                                                            <a href="tel:+593987474637" class="btn rounded-pill text-white w-100" style="background-color: #242B40; font-size: smaller">LLAMAR</a>
                                                         </div>
                                                         <div>
-                                                            <button class="btn rounded-pill text-white w-100" style="background-color: #242B40; font-size: smaller">CONTACTAR</button>
+                                                            <button class="btn rounded-pill text-white w-100" style="background-color: #242B40; font-size: smaller" onclick="setInformationModal('{{$imgpri[0]}}', '{{$propertie->listing_title}}', '{{$propertie->product_code}}')" data-bs-toggle="modal" data-bs-target="#exampleModal">CONTACTAR</button>
                                                         </div>
-                                                    </div> --}}
+                                                    </div>
                                                 </div>
                                                 </div>
                                             </div>
@@ -559,7 +561,6 @@
 
                                         </div>
                                     </div> --}}
-                                </a>
                             </article>
 
                             @endforeach
