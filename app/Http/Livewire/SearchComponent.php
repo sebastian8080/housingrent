@@ -83,7 +83,7 @@ class SearchComponent extends Component
 
     public function searchProperties(){
 
-            $properties_filter = DB::connection('mysql_grupo_housing')->table('listings')->select('id', 'product_code', 'listing_title', 'listing_description', 'listingtype', 'listingtypestatus', 'bedroom', 'bathroom', 'garage', 'property_price', 'state', 'city', 'sector', 'images', 'slug')->orderBy('product_code', 'desc');
+            $properties_filter = DB::connection('mysql_grupo_housing')->table('listings')->select('id', 'product_code', 'listing_title', 'listing_description', 'listingtype', 'listingtypestatus', 'bedroom', 'bathroom', 'garage', 'property_price', 'state', 'city', 'sector', 'images', 'slug', 'available', 'status')->where('available', 1)->where('status', 1)->where('listingtypestatus', 'alquilar')->orderBy('product_code', 'desc');
 
             if($this->searchtxt != null || $this->searchtxt != ""){
                 if(is_numeric($this->searchtxt)){
@@ -154,16 +154,15 @@ class SearchComponent extends Component
                 $properties_filter->where('listingtype', $this->type);
             }
 
-            if($this->citySearch){
-                //$cities = DB::connection('mysql_grupo_housing')->table('info_cities')->where('name', 'LIKE', '%'.$this->citySearch.'%')->orderBy('id', 'desc')->take(5)->get();
-                $properties_filter->where('state', 'LIKE', '%'.$this->citySearch.'%')->orWhere('city',  'LIKE', '%'.$this->citySearch.'%')->orWhere('address', 'LIKE', '%'.$this->citySearch.'%');
+            $location = $this->citySearch;
+
+            if($location){
+                $properties_filter->where(function ($query) use ($location) {
+                    $query->where('sector', $location)
+                        ->orWhere('city', $location)
+                        ->orWhere('state', $location);
+                });
             }
-
-            $properties_filter->where('available', 1);
-            $properties_filter->where('status', 1);
-            $properties_filter->where('listingtypestatus', 'alquilar');
-
-            //dd($properties_filter);
     
             $this->properties = $properties_filter->paginate(10);
     }
@@ -171,7 +170,7 @@ class SearchComponent extends Component
     public function render()
     {
 
-        $this->searchProperties();
+        //$this->searchProperties();
         // $properties_filter = Property::select('id', 'product_code', 'listing_title', 'listing_description', 'bedroom', 'bathroom', 'garage', 'property_price', 'state', 'city', 'sector', 'images', 'property_by', 'slug')->where('property_by', 'Housing')->where('status', 1)->orderBy('product_code', 'desc');
 
         // $cities = [];
