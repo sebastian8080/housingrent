@@ -485,8 +485,8 @@
                                                 </div>
                                                 <p class="card-text">{{ Str::limit(Str::title($propertie->listing_description), '150') }}</p>
                                                 <hr>
-                                                <div class="d-flex justify-content-between w-100">
-                                                    <div class="d-flex gap-4">
+                                                <div class="row">
+                                                    <div class="col-sm-7 d-flex justify-content-between gap-4">
                                                         @if($propertie->bedroom > 0)
                                                             <div class="d-flex align-items-center justify-content-center gap-2">
                                                                 <img width="40px" height="40px" src="{{ asset('img/bedrooms.png') }}" alt="">
@@ -506,11 +506,11 @@
                                                             </div>
                                                         @endif
                                                     </div>
-                                                    <div class="d-flex gap-4">
+                                                    <div class="col-sm-5 d-flex gap-4">
                                                         <div class="w-100">
                                                             <a href="tel:+593987474637" class="btn rounded-pill text-white w-100" style="background-color: #242B40; font-size: smaller">LLAMAR</a>
                                                         </div>
-                                                        <div>
+                                                        <div class="w-100">
                                                             <button class="btn rounded-pill text-white w-100" style="background-color: #242B40; font-size: smaller" onclick="setInformationModal('{{$imgpri[0]}}', '{{$propertie->listing_title}}', '{{$propertie->product_code}}')" data-bs-toggle="modal" data-bs-target="#exampleModal">CONTACTAR</button>
                                                         </div>
                                                     </div>
