@@ -36,8 +36,10 @@ class SearchComponent extends Component
     public $arrayCities = [];
     public $cityTagName = "";
 
-    public $minRangePrice;
+    //public $minRangePrice;
     public $maxRangePrice;
+
+    public $minPrice, $maxPrice;
 
     public function hydrate(){
         // if($this->checkCity){
@@ -63,7 +65,7 @@ class SearchComponent extends Component
 
         $this->searchtxt = $searchtxt;
 
-        $this->minRangePrice = DB::connection('mysql_grupo_housing')->table('listings')->select('property_price')->where('available', 1)->where('listingtypestatus', 'alquilar')->min('property_price');
+        //$this->minRangePrice = DB::connection('mysql_grupo_housing')->table('listings')->select('property_price')->where('available', 1)->where('listingtypestatus', 'alquilar')->min('property_price');
 
         $this->maxRangePrice = DB::connection('mysql_grupo_housing')->table('listings')->select('property_price')->where('available', 1)->where('listingtypestatus', 'alquilar')->max('property_price');
     
@@ -135,13 +137,18 @@ class SearchComponent extends Component
             if($this->bathrooms) $properties_filter->where('bathroom', '>=', $this->bathrooms);
             if($this->garage) $properties_filter->where('garage', '>=', $this->garage);
     
-            if ($this->min_price && $this->max_price) {
-                $properties_filter->whereBetween('property_price', [$this->min_price, $this->max_price]);
+            if ($this->minPrice || $this->maxPrice) {
+
+                if($this->minPrice == "") $properties_filter->whereBetween('property_price', [0 ,$this->maxPrice]);
+                if($this->maxPrice == "") $properties_filter->whereBetween('property_price', [$this->minPrice, $this->maxRangePrice]);
+                if($this->minPrice != "" && $this->maxPrice != "") $properties_filter->whereBetween('property_price', [$this->minPrice, $this->maxPrice]);
+
+                //$properties_filter->whereBetween('property_price', [$this->minPrice, $this->maxPrice]);
             }
     
-            if($this->rangePrice){
-                $properties_filter->whereBetween('property_price', [$this->rangePrice, $this->maxRangePrice]);
-            }
+            // if($this->rangePrice){
+            //     $properties_filter->whereBetween('property_price', [$this->rangePrice, $this->maxRangePrice]);
+            // }
     
             if($this->city){
                 $cityaux = DB::connection('mysql_grupo_housing')->table('info_cities')->where('id', $this->city)->first();
@@ -186,8 +193,8 @@ class SearchComponent extends Component
             //'cities' => $cities,
             'showTab2' => $this->showTab2,
             'cityTagName' => $this->cityTagName,
-            'minRangePrice' => $this->minRangePrice,
-            'maxRangePrice' => $this->maxRangePrice
+            // 'minRangePrice' => $this->minRangePrice,
+            // 'maxRangePrice' => $this->maxRangePrice
         ]);
     }
 }

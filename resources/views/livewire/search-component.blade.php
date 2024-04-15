@@ -168,7 +168,7 @@
                                 <div onclick="showfilter('tab4', 'close')" class="rounded-pill text-white d-flex justify-content-center align-items-center" style="width: 18px; height: 18px; background-color: #242B40; cursor: pointer">x</div>
                             </div>
                             <div>
-                                <div class="d-flex justify-content-center">
+                                {{-- <div class="d-flex justify-content-center">
                                     <label>Desde <span class="text-center fw-bold" id="currentValueRange"> @if($rangePrice>0) ${{ $rangePrice }} @else ${{ $minRangePrice }} @endif</span> Hasta ${{ $maxRangePrice }}</label>
                                 </div>
                                 <div class="border-bottom pb-2 d-flex justify-content-center gap-2">
@@ -181,6 +181,12 @@
                                         <span class="text-muted fw-bold" style="font-size: x-small">Máximo</span>
                                         <span class="text-muted fw-bold" style="font-size: small">${{ $maxRangePrice }}</span>
                                     </div>
+                                </div> --}}
+                                <div>
+                                    <p class="text-muted">Desde</p>
+                                    <input type="number" class="form-control" placeholder="Mínimo. Ej: 200" id="minPrice">
+                                    <p class="text-muted">Hasta</p>
+                                    <input type="number" class="form-control" placeholder="Máximo. Ej: 1200" id="maxPrice">
                                 </div>
                             </div>
                             {{-- <div class="border-bottom pb-2">
@@ -392,7 +398,7 @@
                             <div onclick="showfilter('tab4', 'close')" class="rounded-pill text-white d-flex justify-content-center align-items-center" style="width: 18px; height: 18px; background-color: #242B40; cursor: pointer">x</div>
                         </div>
                         <div>
-                            <div class="d-flex justify-content-center">
+                            {{-- <div class="d-flex justify-content-center">
                                 <label>Desde <span class="text-center fw-bold" id="currentValueRange"> @if($rangePrice>0) ${{ $rangePrice }} @else ${{ $minRangePrice }} @endif</span> Hasta ${{ $maxRangePrice }}</label>
                             </div>
                             <div class="border-bottom pb-2 d-flex justify-content-center gap-2">
@@ -405,6 +411,12 @@
                                     <span class="text-muted fw-bold" style="font-size: x-small">Máximo</span>
                                     <span class="text-muted fw-bold" style="font-size: small">${{ $maxRangePrice }}</span>
                                 </div>
+                            </div> --}}
+                            <div>
+                                <p class="text-muted m-0 pb-1">Desde</p>
+                                <input type="number" class="form-control" placeholder="Mínimo. Ej: 200" id="minPrice">
+                                <p class="text-muted m-0 pb-1">Hasta</p>
+                                <input type="number" class="form-control" placeholder="Máximo. Ej: 1200" id="maxPrice">
                             </div>
                         </div>
                         {{-- <div class="border-bottom pb-2">
@@ -615,7 +627,10 @@
         // let min_price = document.getElementById('min_price').value;
         // let max_price = document.getElementById('max_price').value;
 
-        let rangePrice = document.getElementById('rangePrice').value;
+        //let rangePrice = document.getElementById('rangePrice').value;
+
+        let minPrice = document.getElementById('minPrice').value;
+        let maxPrice = document.getElementById('maxPrice').value;    
 
         let city = document.getElementById('inpCity').value;
 
@@ -640,7 +655,11 @@
         // @this.set('min_price', min_price);
         // @this.set('max_price', max_price);
         @this.set('citySearch', city);
-        @this.set('rangePrice', rangePrice);
+        //@this.set('rangePrice', rangePrice);
+
+        @this.set('minPrice', minPrice);
+        @this.set('maxPrice', maxPrice);
+
         @this.set('currentTab', '');
 
         @this.searchProperties();
@@ -650,7 +669,7 @@
     const rest = (input) => document.getElementById(input).value > 1 ? document.getElementById(input).value-- : null;
 
     const showfilter = (tab_id, action) => {
-        for (let index = 1; index < 6; index++) {
+        for (let index = 1; index < 7; index++) {
             let current_tab = document.getElementById('tab'+index);
             if(current_tab){
                 "tab"+index != tab_id ? current_tab.classList.add('d-none') : null;
