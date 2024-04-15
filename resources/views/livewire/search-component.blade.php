@@ -478,8 +478,8 @@
                                                     <p class="m-0 py-3 px-3 h5">Cod: {{ $propertie->product_code }}</p>
                                                 </div>
                                                 <div class="card-body">
-                                                    <a href="{{ route('show.property', $propertie->slug) }}" class="text-dark" style="text-decoration: none">
-                                                        <h2 class="card-title" style="font-size: 1.4rem">{{ $propertie->listing_title }}</h2>
+                                                    <a href="{{ route('show.property', $propertie->slug) }}" class="text-dark" style="text-decoration: none;">
+                                                        <h2 class="card-title" style="font-size: 1.4rem; padding-right: 60px">{{ $propertie->listing_title }}</h2>
                                                     </a>
                                                     @if(isset($propertie->address))
                                                         <p class="h5 text-muted"> <span style="font-weight: 600">Sector:</span> {{ $propertie->address }}</p>
