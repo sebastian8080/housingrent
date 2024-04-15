@@ -136,7 +136,14 @@
 
     <script>
         window.addEventListener('scroll', function() {
+            loadImages();
+        });
 
+        window.addEventListener('load', function(){
+            loadImages();
+        });
+
+        const loadImages = () => {
             let images = document.querySelectorAll('img[loading="lazy"]');
             let BGImages = document.querySelectorAll('.bgimages');
             
@@ -154,7 +161,7 @@
                     elemento.classList.remove('bgimages'); // Elimina la clase para evitar cargar la imagen múltiples veces
                 }
             });
-        });
+        }
 
         function elementInViewport(el) {
             var rect = el.getBoundingClientRect();
