@@ -165,7 +165,9 @@ class SearchComponent extends Component
 
             if($location){
                 $properties_filter->where(function ($query) use ($location) {
-                    $query->where('sector', $location)
+                    $query->where('listing_title', 'LIKE', '%'.$location.'%')
+                        ->orWhere('address', 'LIKE', '%'.$location.'%')
+                        ->orWhere('sector', $location)
                         ->orWhere('city', $location)
                         ->orWhere('state', $location);
                 });
