@@ -470,48 +470,65 @@
                                         <div class="row g-0 d-flex">
                                             <div class="col-md-4">
                                                 <a href="{{ route('show.property', $propertie->slug) }}" style="text-decoration: none">
-                                                    <div style="height: 325px; background-position: center; background-repeat: no-repeat; background-size: cover; background-image: url('https://grupohousing.com/uploads/listing/{{$imgpri[0]}}')"></div>
+                                                    <div class="image_thumbnail" style="height: 325px; background-position: center; background-repeat: no-repeat; background-size: cover; background-image: url('https://grupohousing.com/uploads/listing/{{$imgpri[0]}}')"></div>
                                                 </a>
                                             </div>
                                             <div class="col-md-8 px-5 py-3 padding-mobile-0">
                                                 <div class="card-body">
                                                     <a href="{{ route('show.property', $propertie->slug) }}" class="text-dark" style="text-decoration: none">
-                                                        <h5 class="card-title">{{ $propertie->listing_title }}</h5>
+                                                        <h2 class="card-title">{{ $propertie->listing_title }}</h2>
                                                     </a>
-                                                    <p><img width="18px" src="{{ asset('img/location-icon.webp') }}" alt=""> {{ $propertie->state }}, {{ $propertie->city }}, {{ $propertie->sector }}</p>
+                                                    @if(isset($propertie->address))
+                                                        <p class="h4 text-muted"> <span style="font-weight: 600">Sector:</span> {{ $propertie->address }}</p>
+                                                    @else
+                                                        <p class="h4 text-muted"> <span style="font-weight: 600">Sector:</span> {{ $propertie->sector}}</p>
+                                                    @endif
                                                     <div class="d-flex justify-content-between">
                                                         <p class="card-text" style="font-size: 23px">${{ $propertie->property_price }}</p>
                                                         <div style="background-color: #242B40; color: #ffffff; width: 150px; height: 32px; font-size: large" class="d-flex justify-content-center align-items-center rounded-pill px-3">COD: {{ $propertie->product_code }}</div>                                                    
                                                 </div>
-                                                <p class="card-text">{{ Str::limit(Str::title($propertie->listing_description), '150') }}</p>
+                                                <p class="text-muted">{{ Str::limit(Str::title($propertie->listing_description), '150') }}</p>
                                                 <hr>
-                                                <div class="row">
-                                                    <div class="col-sm-7 d-flex justify-content-between gap-4">
+                                                <div class="row align-items-center">
+                                                    <div class="col-sm-8 d-flex justify-content-around">
                                                         @if($propertie->bedroom > 0)
-                                                            <div class="d-flex align-items-center justify-content-center gap-2">
-                                                                <img width="40px" height="40px" src="{{ asset('img/bedrooms.png') }}" alt="">
-                                                                <p style="font-size: 20px; height: 100%; align-items: center">{{ $propertie->bedroom }}</p>
+                                                            <div class="d-flex align-items-center justify-content-center w-100 border-end characteristics">
+                                                                <img width="50px" height="50px" src="{{ asset('img/dormitorios.png') }}" alt="">
+                                                                <p class="pt-3" style="font-weight: 600; font-size: 15px">{{ $propertie->bedroom }} Hab.</p>
                                                             </div>
                                                         @endif
                                                         @if($propertie->bathroom > 0)
-                                                            <div class="d-flex align-items-center justify-content-center gap-2">
-                                                                <img width="40px" height="40px" src="{{ asset('img/bathrooms.png') }}" alt="">
-                                                                <p style="font-size: 20px; ">{{ $propertie->bathroom }}</p>
+                                                            <div class="d-flex align-items-center justify-content-center w-100 border-end characteristics">
+                                                                <img width="50px" height="50px" src="{{ asset('img/baño.png') }}" alt="">
+                                                                <p class="pt-3" style="font-weight: 600; font-size: 15px">{{ $propertie->bathroom }} @if($propertie->bathroom > 1) Baños @else Baño @endif</p>
                                                             </div>
                                                         @endif
                                                         @if($propertie->garage > 0)
-                                                            <div class="d-flex align-items-center justify-content-center gap-2">
-                                                                <img width="40px" height="30px" src="{{ asset('img/garage.png') }}" alt="">
-                                                                <p style="font-size: 20px">{{ $propertie->garage }}</p>
+                                                            <div class="d-flex align-items-center justify-content-center w-100 border-end characteristics">
+                                                                <img width="50px" height="50px" src="{{ asset('img/estacionamiento.png') }}" alt="">
+                                                                <p class="pt-3" style="font-weight: 600; font-size: 15px">{{ $propertie->garage }} @if($propertie->garage > 1) Garajes @else Garaje @endif</p>
+                                                            </div>
+                                                        @endif
+                                                        @if($propertie->construction_area > 0)
+                                                            <div class="d-flex align-items-center justify-content-center w-100 characteristics">
+                                                                <img width="50px" height="50px" src="{{ asset('img/area.png') }}" alt="">
+                                                                <p class="pt-3" style="font-weight: 600; font-size: 15px">{{ $propertie->construction_area }} m<sup>2</sup> </p>
                                                             </div>
                                                         @endif
                                                     </div>
-                                                    <div class="col-sm-5 d-flex gap-4">
-                                                        <div class="w-100">
-                                                            <a href="tel:+593987474637" class="btn rounded-pill text-white w-100" style="background-color: #242B40; font-size: smaller">LLAMAR</a>
+                                                    <div class="col-sm-4 d-flex gap-3">
+                                                        <div class="w-100 d-flex align-items-center" style="height: 35px">
+                                                            <a href="tel:+593987474637" class="btn rounded-pill w-100 ps-4 pe-4 d-flex align-items-center" style="font-size: smaller; border: 0.5px #242B40 solid; height: 25px">Llamar</a>
+                                                            <div style="margin-left: -23px; background-color: #242B40; width: 35px; height: 30px" class="rounded-circle d-flex align-items-center justify-content-center">
+                                                                <a href="tel:+593987474637"><img width="15px" style="filter: invert(1);" src="{{ asset('img/phone-icon.png') }}" alt=""></a>
+                                                            </div>
                                                         </div>
-                                                        <div class="w-100">
-                                                            <button class="btn rounded-pill text-white w-100" style="background-color: #242B40; font-size: smaller" onclick="setInformationModal('{{$imgpri[0]}}', '{{$propertie->listing_title}}', '{{$propertie->product_code}}')" data-bs-toggle="modal" data-bs-target="#exampleModal">CONTACTAR</button>
+                                                        <div class="w-100 d-flex align-items-center" style="height: 35px">
+                                                            <a href="https://wa.me/+593987474637?text=Hola%2C%20Housing%20Rent%20estoy%20interesado%20en%20alquilar%20esta%20propiedad:%20{{ $propertie->product_code}}" class="btn rounded-pill w-100 ps-4 pe-4 d-flex align-items-center" style="font-size: smaller; border: 0.5px green solid; height: 25px; color: green">WhatsApp</a>
+                                                            <div style="margin-left: -23px; padding-top: 2px; background-color: green; width: 35px; height: 30px" class="rounded-circle d-flex justify-content-center">
+                                                                <a href="https://wa.me/+593987474637?text=Hola%2C%20Housing%20Rent%20estoy%20interesado%20en%20alquilar%20esta%20propiedad:%20{{ $propertie->product_code}}"><img width="20px" style="filter: invert(1)" src="{{ asset('img/whatsapp-icon.png') }}" alt=""></a>
+                                                            </div>
+                                                            {{-- <button class="btn rounded-pill text-white w-100" style="background-color: #242B40; font-size: smaller" onclick="setInformationModal('{{$imgpri[0]}}', '{{$propertie->listing_title}}', '{{$propertie->product_code}}')" data-bs-toggle="modal" data-bs-target="#exampleModal">CONTACTAR</button> --}}
                                                         </div>
                                                     </div>
                                                 </div>
