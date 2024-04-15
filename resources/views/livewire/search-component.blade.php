@@ -499,7 +499,7 @@
                                                         @endif
                                                         @if($propertie->bathroom > 0)
                                                             <div class="d-flex align-items-center justify-content-center w-100 border-end characteristics">
-                                                                <img width="50px" height="50px" src="{{ asset('img/baño.png') }}" alt="">
+                                                                <img width="50px" height="50px" src="{{ asset('img/banio.png') }}" alt="">
                                                                 <p class="pt-3" style="font-weight: 600; font-size: 15px">{{ $propertie->bathroom }} @if($propertie->bathroom > 1) Baños @else Baño @endif</p>
                                                             </div>
                                                         @endif
