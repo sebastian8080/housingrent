@@ -473,7 +473,10 @@
                                                     <div class="image_thumbnail" style="height: 325px; background-position: center; background-repeat: no-repeat; background-size: cover; background-image: url('https://grupohousing.com/uploads/listing/{{$imgpri[0]}}')"></div>
                                                 </a>
                                             </div>
-                                            <div class="col-md-8 px-5 py-3 padding-mobile-0">
+                                            <div class="col-md-8 px-5 py-3 padding-mobile-0 position-relative">
+                                                <div class="position-absolute" style="top: 0px; right: 0px; background-color: #242B40; color: #ffffff; border-radius: 0px 0px 0px 25px !important">
+                                                    <p class="m-0 py-3 px-3 h5">Cod: {{ $propertie->product_code }}</p>
+                                                </div>
                                                 <div class="card-body">
                                                     <a href="{{ route('show.property', $propertie->slug) }}" class="text-dark" style="text-decoration: none">
                                                         <h2 class="card-title" style="font-size: 1.4rem">{{ $propertie->listing_title }}</h2>
@@ -484,8 +487,7 @@
                                                         <p class="h5 text-muted"> <span style="font-weight: 600">Sector:</span> {{ $propertie->sector}}</p>
                                                     @endif
                                                     <div class="d-flex justify-content-between">
-                                                        <p class="card-text" style="font-size: 23px">${{ $propertie->property_price }}</p>
-                                                        <div style="background-color: #242B40; color: #ffffff; width: 150px; height: 32px; font-size: large" class="d-flex justify-content-center align-items-center rounded-pill px-3">COD: {{ $propertie->product_code }}</div>                                                    
+                                                        <p class="card-text" style="font-size: 23px">${{ $propertie->property_price }}</p>                                                   
                                                 </div>
                                                 <p class="text-muted">{{ Str::limit(Str::title($propertie->listing_description), '150') }}</p>
                                                 <hr>
