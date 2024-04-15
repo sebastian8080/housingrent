@@ -22,7 +22,7 @@ class SearchController extends Controller
         }
 
         if($request->searchtxt != null){
-            return redirect()->route('web.redirect.search', [strtolower($slug), strtolower($request->searchtxt)]);
+            return redirect()->route('web.redirect.search', [strtolower($slug), Str::slug(strtolower($request->searchtxt))]);
         }
         else {
             return redirect()->route('web.redirect.search', [strtolower($slug)]);
@@ -40,44 +40,11 @@ class SearchController extends Controller
             }
         }
 
-
-        $properties_filter = DB::connection('mysql_grupo_housing')->table('listings')
-        ->select('id', 'listing_title', 'listing_description', 'listingtype', 'listingtypestatus', 'bedroom', 'bathroom', 'garage', 'product_code', 'slug', 'state', 'city', 'sector', 'address', 'property_price', 'images')
-        ->where('listingtypestatus', 'alquilar')
-        ->where('available', 1);
-        //->where('images', '!=', "");
-
-        
         if($searchtxt != null){
-            if(is_numeric($searchtxt)){
-                $properties_filter->where('product_code', 'LIKE', '%'.$searchtxt.'%');
-            } else {
-                $properties_filter->where('address', 'LIKE', "%".$searchtxt."%");
-                if(count($properties_filter->get())<1){
-                    $properties_filter->orWhere('sector', 'LIKE', "%".$searchtxt."%");
-                }
-                if(count($properties_filter->get())<1){
-                    $properties_filter->orWhere('city', 'LIKE', '%'.$searchtxt.'%');
-                }
-                if(count($properties_filter->get())<1){
-                    $properties_filter->orWhere('state', 'LIKE', "%".$searchtxt."%");
-                }
-            }
+            $searchtxt = Str::title(str_replace('-', ' ', $searchtxt));
+            strtolower($searchtxt);
         }
 
-        if($type != null && $type != "Propiedad"){
-            $properties_filter->where('listingtype', $type);
-        }
-
-        $properties = $properties_filter->get();
-
-        // $properties = Property::select('id', 'listing_title', 'listing_description', 'bedroom', 'bathroom', 'garage', 'product_code', 'slug', 'state', 'city', 'sector', 'property_price', 'images')
-        //                         ->where('listing_type', $type)
-        //                         ->where('address', 'LIKE', $searchtxt."%")
-        //                         ->orWhere('sector', 'LIKE', $searchtxt."%")
-        //                         ->orWhere('city', 'LIKE', $searchtxt."%")
-        //                         ->orWhere('state', 'LIKE', $searchtxt."%")
-        //                         ->get();
 
         return view('web.list-properties', compact('type', 'searchtxt'));
 

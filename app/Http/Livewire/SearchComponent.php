@@ -63,7 +63,7 @@ class SearchComponent extends Component
 
         $this->type = $type;
 
-        $this->searchtxt = $searchtxt;
+        $this->citySearch = $searchtxt;
 
         //$this->minRangePrice = DB::connection('mysql_grupo_housing')->table('listings')->select('property_price')->where('available', 1)->where('listingtypestatus', 'alquilar')->min('property_price');
 
@@ -87,13 +87,13 @@ class SearchComponent extends Component
 
             $properties_filter = DB::connection('mysql_grupo_housing')->table('listings')->select('id', 'product_code', 'listing_title', 'listing_description', 'listingtype', 'listingtypestatus', 'bedroom', 'bathroom', 'garage', 'construction_area', 'property_price', 'state', 'city', 'sector', 'images', 'slug', 'available', 'status')->where('available', 1)->where('status', 1)->where('listingtypestatus', 'alquilar')->orderBy('product_code', 'desc');
 
-            if($this->searchtxt != null || $this->searchtxt != ""){
-                if(is_numeric($this->searchtxt)){
-                    $properties_filter->where('product_code', 'LIKE', '%'.$this->searchtxt.'%');
-                } else {
-                    $properties_filter->where('city', 'LIKE', "%".$this->searchtxt."%");
-                }
-            }
+            // if($this->searchtxt != null || $this->searchtxt != ""){
+            //     if(is_numeric($this->searchtxt)){
+            //         $properties_filter->where('product_code', 'LIKE', '%'.$this->searchtxt.'%');
+            //     } else {
+            //         $properties_filter->where('city', 'LIKE', "%".$this->searchtxt."%");
+            //     }
+            // }
 
             if($this->product_code){
                 $properties_filter->where('product_code', 'LIKE', '%'.$this->product_code.'%');
