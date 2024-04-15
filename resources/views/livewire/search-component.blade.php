@@ -482,7 +482,7 @@
                                         <div class="row g-0 d-flex">
                                             <div class="col-md-4">
                                                 <a href="{{ route('show.property', $propertie->slug) }}" style="text-decoration: none">
-                                                    <div class="image_thumbnail" style="height: 325px; background-position: center; background-repeat: no-repeat; background-size: cover; background-image: url('https://grupohousing.com/uploads/listing/{{$imgpri[0]}}')"></div>
+                                                    <div class="image_thumbnail bgimages" style="height: 325px; background-position: center; background-repeat: no-repeat; background-size: cover;" data-src="https://grupohousing.com/uploads/listing/{{$imgpri[0]}}"></div>
                                                 </a>
                                             </div>
                                             <div class="col-md-8 px-5 py-3 padding-mobile-0 position-relative">

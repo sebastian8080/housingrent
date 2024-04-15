@@ -20,7 +20,6 @@ html, body{
     background-color: #271f1f7c;
 }
 .bg-footer-home{
-    background-image: url('../img/footer-contact-home.webp');
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;

@@ -48,7 +48,7 @@
         <article class="col-sm-3 w-auto mb-3">
             <a href="{{ route('web.redirect.search', 'departamentos') }}" style="text-decoration: none">
                 <div class="card">
-                    <div class="rounded-top" style="width: 250px; height: 300px; background-position: center; background-repeat: no-repeat; background-size: cover; background-image: url('{{asset('img/departamentos.jpg')}}')"></div>
+                    <div class="rounded-top bgimages" style="width: 250px; height: 300px; background-position: center; background-repeat: no-repeat; background-size: cover;}}')" data-src="{{ asset('img/departamentos.jpg') }}"></div>
                     <div class="d-flex align-items-center justify-content-center pt-2 footer-card">
                         <p style="font-family: 'Sharp Grotesk'">Departamentos</p>
                     </div>
@@ -58,7 +58,7 @@
         <article class="col-sm-3 w-auto mb-3">
             <a href="{{ route('web.redirect.search', 'casas') }}" style="text-decoration: none">
                 <div class="card">
-                    <div class="rounded-top" style="width: 250px; height: 300px; background-position: center; background-repeat: no-repeat; background-size: cover; background-image: url('{{asset('img/casas.jpg')}}')"></div>
+                    <div class="rounded-top bgimages" style="width: 250px; height: 300px; background-position: center; background-repeat: no-repeat; background-size: cover;" data-src="{{ asset('img/casas.jpg') }}"></div>
                     <div class="d-flex align-items-center justify-content-center pt-2 footer-card">
                         <p style="font-family: 'Sharp Grotesk'">Casas</p>
                     </div>
@@ -68,7 +68,7 @@
         <article class="col-sm-3 w-auto mb-3">
             <a href="{{ route('web.redirect.search', 'locales-comerciales') }}" style="text-decoration: none">
                 <div class="card">
-                    <div class="rounded-top" style="width: 250px; height: 300px; background-position: center; background-repeat: no-repeat; background-size: cover; background-image: url('{{asset('img/locales_comerciales.jpg')}}')"></div>
+                    <div class="rounded-top bgimages" style="width: 250px; height: 300px; background-position: center; background-repeat: no-repeat; background-size: cover;" data-src="{{ asset('img/locales_comerciales.jpg') }}"></div>
                     <div class="d-flex align-items-center justify-content-center pt-2 footer-card">
                         <p style="font-family: 'Sharp Grotesk'">Locales Comerciales</p>
                     </div>
@@ -78,7 +78,7 @@
         <article class="col-sm-3 w-auto mb-3">
             <a href="{{ route('web.redirect.search', 'oficinas') }}" style="text-decoration: none">
                 <div class="card">
-                    <div class="rounded-top" style="width: 250px; height: 300px; background-position: center; background-repeat: no-repeat; background-size: cover; background-image: url('{{asset('img/oficinas.jpg')}}')"></div>
+                    <div class="rounded-top bgimages" style="width: 250px; height: 300px; background-position: center; background-repeat: no-repeat; background-size: cover;" data-src="{{ asset('img/oficinas.jpg') }}"></div>
                     <div class="d-flex align-items-center justify-content-center pt-2 footer-card">
                         <p style="font-family: 'Sharp Grotesk'">Oficinas</p>
                     </div>
@@ -99,9 +99,12 @@
             <a href="{{ route('show.upload.page') }}" class="btn rounded-pill w-auto px-3" style="background-color: #242B40; color: #ffffff; font-family: 'Sharp Grotesk'">Comenzar ahora</a>
         </div>
     </section>
+    <section class="d-flex justify-content-center px-5">
+        <img class="img-fluid" loading="lazy" data-src="{{ asset('img/muebles.png') }}" alt="¿Donde puedo rentar una propiedad?">
+    </section>
 </section>
 
-<section class="bg-footer-home">
+<section class="bg-footer-home bgimages" data-src="{{ asset('img/footer-contact-home.webp') }}">
     <section class="row w-100 h-100 align-items-center justify-content-center">
         <article class="col-sm-6 text-center">
             <h2 class="display-6" style="font-family: 'Sharp Grotesk'; color: #ffffff"><span style="font-weight: 100">¿Necesitas más</span> <br> <span style="font-weight: 500">información?</span></h2>

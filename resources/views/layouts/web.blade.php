@@ -133,5 +133,38 @@
         </section>
     </footer>
     @yield('js')
+
+    <script>
+        window.addEventListener('scroll', function() {
+
+            let images = document.querySelectorAll('img[loading="lazy"]');
+            let BGImages = document.querySelectorAll('.bgimages');
+            
+            images.forEach(function(image) {
+                if (elementInViewport(image)) {
+                    image.setAttribute('src', image.getAttribute('data-src'));
+                    image.removeAttribute('loading');
+                }
+            });
+
+            BGImages.forEach(function(elemento) {
+                if (elementInViewport(elemento)) {
+                    var urlImagen = elemento.getAttribute('data-src');
+                    elemento.style.backgroundImage = 'url(' + urlImagen + ')';
+                    elemento.classList.remove('bgimages'); // Elimina la clase para evitar cargar la imagen múltiples veces
+                }
+            });
+        });
+
+        function elementInViewport(el) {
+            var rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+    </script>
 </body>
 </html>
