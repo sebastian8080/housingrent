@@ -93,6 +93,7 @@ class SearchComponent extends Component
 
             if($this->product_code){
                 $properties_filter->where('product_code', 'LIKE', '%'.$this->product_code.'%');
+                $properties_filter_domain->where('code', 'LIKE', '%'.$this->product_code.'%');
             }
             
             if(count($this->types)>0){
@@ -155,13 +156,17 @@ class SearchComponent extends Component
             $location = $this->citySearch;
 
             if($location){
-                $properties_filter->where(function ($query) use ($location) {
-                    $query->where('listing_title', 'LIKE', '%'.$location.'%')
-                        ->orWhere('address', 'LIKE', '%'.$location.'%')
-                        ->orWhere('sector', $location)
-                        ->orWhere('city', $location)
-                        ->orWhere('state', $location);
-                });
+                if(is_numeric($location)){
+                    $properties_filter->where('product_code', 'LIKE', '%'.$location.'%');
+                } else {
+                    $properties_filter->where(function ($query) use ($location) {
+                        $query->where('listing_title', 'LIKE', '%'.$location.'%')
+                            ->orWhere('address', 'LIKE', '%'.$location.'%')
+                            ->orWhere('sector', $location)
+                            ->orWhere('city', $location)
+                            ->orWhere('state', $location);
+                    });
+                }
             }
 
             $this->properties = $properties_filter->get();
