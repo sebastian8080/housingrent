@@ -186,6 +186,13 @@ class SearchComponent extends Component
                             ->orWhere('city', $location)
                             ->orWhere('state', $location);
                     });
+                    $properties_filter_domain->where(function ($query) use ($location) {
+                        $query->where('title', 'LIKE', '%'.$location.'%')
+                            ->orWhere('address', 'LIKE', '%'.$location.'%')
+                            ->orWhere('sector', $location)
+                            ->orWhere('city', $location)
+                            ->orWhere('state_province', $location);
+                    });
                 }
             }
 
