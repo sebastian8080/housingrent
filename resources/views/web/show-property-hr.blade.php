@@ -1,4 +1,4 @@
-@extends('admin.elements.preview')
+@extends('layouts.web')
 
 @section('title', $domain->title)
 
@@ -11,51 +11,11 @@
 <meta property="og:url" content="{{ URL::current() }}" />
 <meta property="og:title" content="{{ $domain->title }}" />
 <meta property="og:description" content="{{ $domain->description }}" />
-{{-- Asegúrate de actualizar la URL de la imagen aquí --}}
-<style>
-    body { padding-top: 70px; } /* Ajusta este valor según la altura de tu barra de navegación */
-</style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 @endsection
-@section('content_header')
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Opciones</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('properties.edit', $domain->id) }}">
-                            <i class="fas fa-edit"></i> Editar
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('properties.upload.images', $domain->id) }}">
-                            <i class="fas fa-images"></i> Editar Imágenes
-                        </a>
-                    </li>
-                    @can('have_permissions')
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('properties.manage') }}">
-                                <i class="fas fa-list"></i> Mis Propiedades
-                            </a>
-                        </li>
-                    @else
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('properties.index') }}">
-                                <i class="fas fa-list"></i> Propiedades
-                            </a>
-                        </li>
-                    @endcan
-                </ul>
-            </div>
-        </div>
-    </nav>
-@stop
+
 @section('content')
 <section class="container">
     <section class="row justify-content-end text-end pt-3 pb-1 pe-3">
