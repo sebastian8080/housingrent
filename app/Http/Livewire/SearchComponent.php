@@ -41,6 +41,7 @@ class SearchComponent extends Component
 
     //public $minRangePrice;
     public $maxRangePrice;
+    public $maxRangePriceHousingRent;
 
     public $minPrice, $maxPrice;
 
@@ -71,7 +72,7 @@ class SearchComponent extends Component
         //$this->minRangePrice = DB::connection('mysql_grupo_housing')->table('listings')->select('property_price')->where('available', 1)->where('listingtypestatus', 'alquilar')->min('property_price');
 
         $this->maxRangePrice = DB::connection('mysql_grupo_housing')->table('listings')->select('property_price')->where('available', 1)->where('listingtypestatus', 'alquilar')->max('property_price');
-    
+        $this->maxRangePriceHousingRent = Domain::select('max_price')->where('is_active', 1)->max('max_price');
     }
 
     public function detectMobile(){
@@ -130,15 +131,33 @@ class SearchComponent extends Component
                 }
             };
     
-            if($this->bedrooms) $properties_filter->where('bedroom', '>=', $this->bedrooms);
-            if($this->bathrooms) $properties_filter->where('bathroom', '>=', $this->bathrooms);
-            if($this->garage) $properties_filter->where('garage', '>=', $this->garage);
+            if($this->bedrooms){
+                $properties_filter->where('bedroom', '>=', $this->bedrooms);
+                $properties_filter_domain->where('bedroom', '>=', $this->bedrooms);
+            }
+            if($this->bathrooms){
+                $properties_filter->where('bathroom', '>=', $this->bathrooms);
+                $properties_filter_domain->where('bathroom', '>=', $this->bathrooms);
+            }
+            if($this->garage){
+                $properties_filter->where('garage', '>=', $this->garage);
+                $properties_filter_domain->where('garage', '>=', $this->garage);
+            }
     
             if ($this->minPrice || $this->maxPrice) {
 
-                if($this->minPrice == "") $properties_filter->whereBetween('property_price', [0 ,$this->maxPrice]);
-                if($this->maxPrice == "") $properties_filter->whereBetween('property_price', [$this->minPrice, $this->maxRangePrice]);
-                if($this->minPrice != "" && $this->maxPrice != "") $properties_filter->whereBetween('property_price', [$this->minPrice, $this->maxPrice]);
+                if($this->minPrice == ""){
+                    $properties_filter->whereBetween('property_price', [0 ,$this->maxPrice]);
+                    $properties_filter_domain->whereBetween('max_price', [0 ,$this->maxPrice]);
+                } 
+                if($this->maxPrice == ""){
+                    $properties_filter->whereBetween('property_price', [$this->minPrice, $this->maxRangePrice]);
+                    $properties_filter_domain->whereBetween('max_price', [$this->minPrice, $this->maxRangePriceHousingRent]);
+                }
+                if($this->minPrice != "" && $this->maxPrice != ""){
+                    $properties_filter->whereBetween('property_price', [$this->minPrice, $this->maxPrice]);
+                    $properties_filter_domain->whereBetween('max_price', [$this->minPrice, $this->maxPrice]);
+                }
 
             }
     
