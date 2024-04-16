@@ -156,8 +156,9 @@ class SearchComponent extends Component
             $location = $this->citySearch;
 
             if($location){
-                if(is_numeric($location)){
+                if(preg_match('/^\d{4}$/', $location)){
                     $properties_filter->where('product_code', 'LIKE', '%'.$location.'%');
+                    $properties_filter_domain->where('code', 'LIKE', '%'.$location.'%');
                 } else {
                     $properties_filter->where(function ($query) use ($location) {
                         $query->where('listing_title', 'LIKE', '%'.$location.'%')
