@@ -84,7 +84,7 @@
             <div class="px-5 sticky-top form" style="top: 0px">
                 <div class="d-flex justify-content-center text-white py-3 shadow" style="background-color: #242B40; border-radius: 25px 25px 0px 0px">
                     <div class="d-flex justify-content-between gap-4">
-                        <span style="font-size: xx-large" class="border-end pe-4 fw-bold">${{ $domain->max_price }}</span>
+                        <span style="font-size: xx-large" class="pe-4 fw-bold">Precio: ${{ $domain->max_price }}</span>
                     </div>
                 </div>
                 <div class="bg-white pt-4 pb-5 shadow px-5" style="border-radius: 0px 0px 25px 25px">
