@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('admin.template.template_dashboard')
 
 @section('title', 'Gestión de Servicios')
 
@@ -171,6 +171,7 @@ background-color: #fff;
 background-color: #0056b3; /* Color de fondo al pasar el ratón */
 }
 </style>
+@parent
 @stop
 @stop
 @section('js')

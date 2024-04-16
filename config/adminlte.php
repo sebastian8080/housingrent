@@ -192,7 +192,7 @@ return [
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-dark-primary elevation-4',
+    'classes_sidebar' => 'sidebar-dark-custom elevation-4',
     'classes_sidebar_nav' => '',
     'classes_topnav' => 'navbar-white navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
@@ -292,15 +292,17 @@ return [
     'menu' => [
         // Navbar items:
         [
-            'type'         => 'navbar-search',
-            'text'         => 'Buscar',
-            'topnav_right' => true,
+            'type'         => 'navbar-button',
+            'text'         => 'Subir Propiedad',
+            'topnav_right' => true,  // Esto pone el botón en la parte derecha de la navbar
+            'url'          => 'admin/property/create',  // URL a la que debe dirigirse el botón
+            'icon'         => 'fas fa-upload',
+            'classes'      => 'btn btn-primary',   // Icono para el botón
         ],
         [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
         ],
-        ['header' => 'PROPIEDADES'],
         [
             'text' => 'Mis Propiedades',
             'url'  => 'admin/properties/list',
@@ -309,15 +311,15 @@ return [
         [
             'text' => 'Subir Propiedad',
             'url'  => 'admin/property/create',
-            'icon' => 'fas fa-plus-circle',
+            'icon' => 'fas fa-upload',
         ],
     
         // Sidebar items comunes a todos:
-        ['header' => 'PERFIL'],
+        ['header' => 'CUENTA'],
         [
-            'text' => 'Perfil',
+            'text' => 'Mi Perfil',
             'url'  => 'admin/user/edit',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-user-circle',
         ],
         [
             'text' => 'Cambiar Contraseña',
@@ -326,7 +328,7 @@ return [
         ],
     
 
-        ['header' => 'ASESORES', 'can' => 'have_permissions'],
+        ['header' => 'ADMINISTRACIÓN', 'can' => 'have_permissions'],
         // Sección exclusiva para Asesores y Administradores:
         [
             'text' => 'Control de Propiedades',
@@ -335,8 +337,6 @@ return [
             'can'  => ['is-asesor', 'is-admin'], // Asumiendo que 'is-asesor' y 'is-admin' son tus políticas/gates
         ],
     
-        // Sección exclusiva para Administradores:
-        ['header' => 'ADMINISTRACIÓN', 'can' => 'is-admin'],
         [
             'text' => 'Control de Usuarios',
             'url'  => 'admin/users/list',

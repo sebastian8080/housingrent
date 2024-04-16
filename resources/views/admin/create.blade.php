@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('admin.template.template_dashboard')
 
 @section('title', 'Dashboard')
 

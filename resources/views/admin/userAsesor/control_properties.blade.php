@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('admin.template.template_dashboard')
 
 @section('title', 'Propiedades Registradas')
 
@@ -220,6 +220,7 @@
     background-color: #0056b3; /* Color de fondo al pasar el ratón */
 }
     </style>
+    @parent
 @stop
 @section('js')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>

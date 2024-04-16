@@ -70,16 +70,22 @@
             </div>
         </article>
 
+        {{-- Sección de imágenes --}}
         <article class="col-sm-7">
             <section class="row images-desktop">
                 @php $multimedia = $domain->multimedia->take(4); @endphp
-                <div onclick="addactive(0)" data-bs-toggle="modal" data-bs-target="#modalImages" class="col-sm-8 img-banner" style="cursor: pointer; height: 484px; border-radius: 25px 0px 0px 25px; background-image: url('{{ asset('storage/' . $multimedia[0]->filename) }}'); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
-
-                <div class="col-sm-4 d-grid gap-3">
-                    @foreach($multimedia->slice(1) as $index => $media)
-                        <div onclick="addactive({{ $index + 1 }})" data-bs-toggle="modal" data-bs-target="#modalImages" class="img-banner" style="cursor: pointer; height: 150px; background-image: url('{{ asset('storage/' . $media->filename) }}'); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
-                    @endforeach
-                </div>
+                @if($multimedia->isNotEmpty())
+                    <div onclick="addactive(0)" data-bs-toggle="modal" data-bs-target="#modalImages" class="col-sm-8 img-banner" style="cursor: pointer; height: 484px; border-radius: 25px 0px 0px 25px; background-image: url('{{ asset('storage/' . $multimedia[0]->filename) }}'); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+                    <div class="col-sm-4 d-grid gap-3">
+                        @foreach($multimedia->slice(1) as $index => $media)
+                            <div onclick="addactive({{ $index + 1 }})" data-bs-toggle="modal" data-bs-target="#modalImages" class="img-banner" style="cursor: pointer; height: 150px; background-image: url('{{ asset('storage/' . $media->filename) }}'); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+                        @endforeach
+                    </div>
+                @else
+                    <div class="col-12">
+                        <p>No hay imágenes disponibles para esta propiedad.</p>
+                    </div>
+                @endif
             </section>
         </article>
     </section>

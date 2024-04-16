@@ -1,0 +1,122 @@
+.sidebar-dark-custom {
+    background-color: #242B40 !important; /* Tu color personalizado */
+}
+@font-face {
+    font-family: 'Sharp Grotesk';
+    src: url("/fonts/SharpGrotesk-Book20.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Sharp Grotesk';
+    src: url("/fonts/SharpGrotesk-Light20.otf") format("opentype");
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Sharp Grotesk';
+    src: url("/fonts/SharpGrotesk-Medium20.otf") format("opentype");
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Sharp Grotesk';
+    src: url("/fonts/SharpGrotesk-Thin20.otf") format("opentype");
+    font-weight: 100;
+    font-style: normal;
+}
+body {
+    font-family: 'Sharp Grotesk', sans-serif;
+    
+}
+
+.btn-primary {
+    background-color: #242B40 !important;  /* Color de fondo */
+    border-color: #242B40 !important;      /* Color del borde */
+    color: #ffffff !important;             /* Color del texto */
+}
+
+.btn-primary:hover {
+    background-color: #1a1f33 !important;  /* Color de fondo al pasar el mouse */
+    border-color: #161a28 !important;      /* Color del borde al pasar el mouse */
+}
+
+/* Sobrescribe el estilo para los enlaces activos */
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    background-color: #ffffff !important; /* Fondo blanco */
+    color: #242B40 !important;           /* Texto en color principal */
+}
+
+/* Si también necesitas cambiar el estilo al pasar el mouse, añade esto */
+.nav-pills .nav-link:hover {
+    background-color: #e6e6e6 !important; /* Un gris claro para hover */
+    color: #242B40 !important;
+}
+
+[class*=sidebar-dark-] .sidebar a {
+    color: #FFFFFF;
+}
+
+.navbar {
+    background-color: transparent !important; /* Hace el fondo transparente */
+    border-bottom: none !important; /* Elimina el borde inferior si existe */
+}
+
+/* Si el navbar cambia de color al desplazarse o en diferentes estados, también deberás manejar eso */
+.navbar-light .navbar-nav .nav-link {
+    color: rgba(0,0,0,0.5); /* Asegura que el texto sea visible sobre fondo claro */
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link.active {
+    color: rgba(0,0,0,0.8); /* Oscurece el texto al pasar el ratón o en el enlace activo */
+}
+
+
+.content-wrapper {
+    background-color: transparent !important; /* Hace el fondo transparente */
+    border-bottom: none !important; /* Elimina el borde inferior si existe */
+}
+
+/* Hacer transparentes todos los inputs, select, textarea y buttons */
+.form-control, .form-control:focus, .custom-select, .custom-file-input{
+    background-color: transparent !important;
+    border-color: #ced4da;  /* Color de borde estándar de Bootstrap */
+    color: #495057; /* Color de texto estándar de Bootstrap */
+}
+
+/* Ajustar checkboxes y radios para mantener la transparencia */
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before,
+.custom-radio .custom-control-input:checked ~ .custom-control-label::before {
+    background-color: transparent !important;
+    border-color: inherit;
+}
+
+/* Mantener visibilidad de los checkboxes y radios cuando están desmarcados */
+.custom-checkbox .custom-control-input:indeterminate ~ .custom-control-label::before,
+.custom-radio .custom-control-input ~ .custom-control-label::before {
+    background-color: transparent !important;
+    border-color: inherit;
+}
+
+/* Personalizar todos los checkboxes utilizando las clases de Bootstrap */
+.form-check-input {
+    border-width: 1px; /* Hace los bordes más delgados */
+    width: 1.25rem; /* Aumenta el tamaño del checkbox */
+    height: 1.25rem; /* Aumenta el tamaño del checkbox */
+    cursor: pointer; /* Hace que el cursor sea una mano cuando se pasa por encima */
+    border-radius: 50%; /* Hace los bordes completamente redondos */
+    transition: background-color 0.3s, border-color 0.3s; /* Suaviza la transición de colores */
+}
+
+.form-check-input:checked {
+    background-color: #007bff; /* Color de Bootstrap para elementos activos */
+    border-color: #007bff; /* Mantiene el borde del mismo color que el fondo cuando está activo */
+    box-shadow: inset 0 0 0 2px #fff; /* Añade un sombreado interior para un efecto más nítido */
+}
+
+/* Asegúrate de que las etiquetas asociadas son fácilmente clickeables y legibles */
+.form-check-label {
+    margin-left: 0.5rem;
+    cursor: pointer; /* Consistencia con el cursor del input */
+}

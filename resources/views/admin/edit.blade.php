@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('admin.template.template_dashboard')
 
 @section('title', 'Editar Propiedad')
 
@@ -296,7 +296,7 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
     <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
