@@ -173,6 +173,7 @@ class SearchComponent extends Component
                 
                 // Agrega el nuevo campo 'images' al array de la propiedad
                 $propiedad->images = $imagenes;
+                $propiedad->from = "HR";
                 
                 return $propiedad;
             });
