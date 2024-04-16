@@ -2,8 +2,10 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Domain;
 use App\Models\Models\Listing;
 use App\Models\Property;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -16,6 +18,7 @@ class SearchComponent extends Component
     protected $paginationTheme = 'bootstrap';
 
     protected $properties = [];
+    protected $properties_domain = [];
 
     public $type, $searchtxt;
 
@@ -86,14 +89,7 @@ class SearchComponent extends Component
     public function searchProperties(){
 
             $properties_filter = DB::connection('mysql_grupo_housing')->table('listings')->select('id', 'product_code', 'listing_title', 'listing_description', 'listingtype', 'listingtypestatus', 'bedroom', 'bathroom', 'garage', 'construction_area', 'property_price', 'state', 'city', 'sector', 'images', 'slug', 'available', 'status')->where('available', 1)->where('status', 1)->where('listingtypestatus', 'alquilar')->orderBy('product_code', 'desc');
-
-            // if($this->searchtxt != null || $this->searchtxt != ""){
-            //     if(is_numeric($this->searchtxt)){
-            //         $properties_filter->where('product_code', 'LIKE', '%'.$this->searchtxt.'%');
-            //     } else {
-            //         $properties_filter->where('city', 'LIKE', "%".$this->searchtxt."%");
-            //     }
-            // }
+            $properties_filter_domain = Domain::with('multimedia')->select('id', 'code as product_code', 'title as listing_title', 'description as listing_description', 'bedroom', 'bathroom', 'garage', 'construction_area', 'max_price as property_price', 'state_province as state', 'city', 'sector', 'slug', 'is_active as status')->where('is_active', 1)->orderBy('product_code', 'desc');
 
             if($this->product_code){
                 $properties_filter->where('product_code', 'LIKE', '%'.$this->product_code.'%');
@@ -143,12 +139,7 @@ class SearchComponent extends Component
                 if($this->maxPrice == "") $properties_filter->whereBetween('property_price', [$this->minPrice, $this->maxRangePrice]);
                 if($this->minPrice != "" && $this->maxPrice != "") $properties_filter->whereBetween('property_price', [$this->minPrice, $this->maxPrice]);
 
-                //$properties_filter->whereBetween('property_price', [$this->minPrice, $this->maxPrice]);
             }
-    
-            // if($this->rangePrice){
-            //     $properties_filter->whereBetween('property_price', [$this->rangePrice, $this->maxRangePrice]);
-            // }
     
             if($this->city){
                 $cityaux = DB::connection('mysql_grupo_housing')->table('info_cities')->where('id', $this->city)->first();
@@ -173,7 +164,32 @@ class SearchComponent extends Component
                 });
             }
 
-            $this->properties = $properties_filter->paginate(10);
+            $this->properties = $properties_filter->get();
+            $this->properties_domain = $properties_filter_domain->get();
+
+            $propiedades = $this->properties_domain->map(function ($propiedad) {
+                // Accede a las imágenes de la propiedad
+                $imagenes = $propiedad->multimedia;
+                
+                // Agrega el nuevo campo 'images' al array de la propiedad
+                $propiedad->images = $imagenes;
+                
+                return $propiedad;
+            });
+            
+            //dd($propiedades);
+
+            $properties_all = $this->properties->concat($propiedades);
+
+            $resultadosPorPagina = 10;
+            $paginaActual = LengthAwarePaginator::resolveCurrentPage();
+            $itemsPaginados = $properties_all->slice(($paginaActual - 1) * $resultadosPorPagina, $resultadosPorPagina);
+            $resultadosPaginados = new LengthAwarePaginator($itemsPaginados, $properties_all->count(), $resultadosPorPagina, $paginaActual);
+
+            // Opcional: establecer la URL base para la paginación
+            $resultadosPaginados->setPath(url()->current());
+
+            $this->properties = $resultadosPaginados;
     }
 
     public function render()
@@ -192,6 +208,7 @@ class SearchComponent extends Component
 
         return view('livewire.search-component', [
             'properties' => $this->properties,
+            //'properties_domain' => $this->properties_domain,
             //'cities' => $cities,
             'showTab2' => $this->showTab2,
             'cityTagName' => $this->cityTagName,

@@ -59,13 +59,16 @@
             <article class="col-sm-7">
 
                 <section class="row images-desktop">
-
-                    <div onclick="addactive(0)" data-bs-toggle="modal" data-bs-target="#modalImages" class="col-sm-8 img-banner" style="cursor: pointer; height: 484px; border-radius: 25px 0px 0px 25px ; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://grupohousing.com/uploads/listing/{{explode("|", $listing->images)[0]}}')"></div>
+                    <div onclick="addactive(0)" data-bs-toggle="modal" data-bs-target="#modalImages" class="col-sm-8 img-banner" style="cursor: pointer; height: 484px; border-radius: 25px 0px 0px 25px ; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: @if(is_array($listing->images)) url('{{ asset('storage/properties_images/', $listing->images[1]) }}') @else url('https://grupohousing.com/uploads/listing/{{explode("|", $listing->images)[1]}}') @endif"></div>
 
                     <div class="col-sm-4 d-grid gap-3">
 
-                        <div onclick="addactive(1)" data-bs-toggle="modal" data-bs-target="#modalImages" class="img-banner" style="cursor: pointer; height: 150px; border-radius: 0px 25px 0px 0px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://grupohousing.com/uploads/listing/{{explode("|", $listing->images)[1]}}')"></div>
-                        <div onclick="addactive(2)" data-bs-toggle="modal" data-bs-target="#modalImages" class="img-banner" style="cursor: pointer; height: 150px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://grupohousing.com/uploads/listing/{{explode("|", $listing->images)[2]}}')"></div>
+                        @if(is_array($listing->images) && count($listing->images) > 1 || !is_array($listing->images) && count(explode("|", $listing->images)) > 1)
+                            <div onclick="addactive(1)" data-bs-toggle="modal" data-bs-target="#modalImages" class="img-banner" style="cursor: pointer; height: 150px; border-radius: 0px 25px 0px 0px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: @if(is_array($listing->images)) url('{{ asset('storage/properties_images/', $listing->images[1]) }}') @else url('https://grupohousing.com/uploads/listing/{{explode("|", $listing->images)[1]}}') @endif"></div>
+                        @endif
+                        @if(is_array($listing->images) && count($listing->images) > 2 || !is_array($listing->images) && count(explode("|", $listing->images)) > 2)
+                            <div onclick="addactive(2)" data-bs-toggle="modal" data-bs-target="#modalImages" class="img-banner" style="cursor: pointer; height: 150px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://grupohousing.com/uploads/listing/{{explode("|", $listing->images)[2]}}')"></div>
+                        @endif
                         @if (count(explode("|", $listing->images))>3)
                             <div onclick="addactive(3)" data-bs-toggle="modal" data-bs-target="#modalImages" class="img-banner" style="cursor: pointer; height: 150px; border-radius: 0px 0px 25px 0px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('https://grupohousing.com/uploads/listing/{{explode("|", $listing->images)[3]}}')"></div>
                         @endif
@@ -156,8 +159,12 @@
 
                     <p><b>Sector: </b> {{ $listing->sector}}</p>
                     <p><b>Descripción: </b> {{ $listing->listing_description }}</p>
-                    <p><b>Metros de terreno: </b> {{ $listing->land_area}} m<sup>2</sup></p>
-                    <p><b>Metros de construcción: </b>{{ $listing->construction_area}} m<sup>2</sup></p>
+                    @if(isset($isting->land_area))
+                        <p><b>Metros de terreno: </b> {{ $listing->land_area}} m<sup>2</sup></p>
+                    @endif
+                    @if(isset($listing->construction_area))
+                        <p><b>Metros de construcción: </b>{{ $listing->construction_area}} m<sup>2</sup></p>
+                    @endif
 
                 </div>
 
