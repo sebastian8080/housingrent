@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Domain;
 use App\Models\Models\Listing;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
@@ -21,7 +22,8 @@ class WebController extends Controller
         $listing = DB::connection('mysql_grupo_housing')->table('listings')->where('slug', $slug)->first();
 
         if(!isset($listing)){
-            $domain = Domain::with('multimedia')->where('slug', $slug)->first();
+            $domain = Domain::with(['multimedia', 'user', 'benefits.typeBenefit']) // Cargando beneficios aquí
+                    ->where('slug', $slug)->first();
         }
 
         if(isset($domain)) return view('web.show-property-hr', compact('domain'));

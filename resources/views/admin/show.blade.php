@@ -115,6 +115,25 @@
                 <p><b>Metros de terreno:</b> {{ $domain->land_area }} m<sup>2</sup></p>
                 <p><b>Metros de construcción:</b> {{ $domain->construction_area }} m<sup>2</sup></p>
             </div>
+            <div>
+                <h3>Beneficios de la Propiedad</h3>
+                <div class="row">
+                    @php
+                        $benefitsByType = $domain->benefits->groupBy('typeBenefit.name');
+                    @endphp
+            
+                    @foreach ($benefitsByType as $type => $benefits)
+                        <div class="col-md-4">
+                            <h4>{{ $type }}</h4>
+                            <ul class="list-unstyled">
+                                @foreach ($benefits as $benefit)
+                                    <li><i class="fa-solid fa-check"></i> {{ $benefit->name }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
 
             <div>
                 <h3>Ubicación</h3>
@@ -136,7 +155,7 @@
                     <p class="text-center" style="font-size: x-large; font-weight: 600">¿Te interesa esta propiedad?</p>
                     <p class="text-center">Proporciónanos tus datos y te contactaremos</p>
                     <div class="d-flex justify-content-center">
-                        <form action="{{ route('web.send.lead') }}" method="POST">
+                        <form>
                             
                             @csrf
 

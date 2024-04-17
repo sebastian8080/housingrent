@@ -71,6 +71,25 @@
                 @endif
                 <p><b>Metros de construcción:</b> {{ $domain->construction_area }} m<sup>2</sup></p>
             </div>
+            <div>
+                <h3>Beneficios de la Propiedad</h3>
+                <div class="row">
+                    @php
+                        $benefitsByType = $domain->benefits->groupBy('typeBenefit.name');
+                    @endphp
+            
+                    @foreach ($benefitsByType as $type => $benefits)
+                        <div class="col-md-4">
+                            <h4>{{ $type }}</h4>
+                            <ul class="list-unstyled">
+                                @foreach ($benefits as $benefit)
+                                    <li><i class="fa-solid fa-check"></i> {{ $benefit->name }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
 
             <div>
                 <h3>Ubicación</h3>
@@ -91,8 +110,8 @@
                     <p class="text-center" style="font-size: x-large; font-weight: 600">¿Te interesa esta propiedad?</p>
                     <p class="text-center">Proporciónanos tus datos y te contactaremos</p>
                     <div class="d-flex justify-content-center">
-                        <form action="{{ route('web.send.lead') }}" method="POST">
-                            
+                        <form action="{{ route('web.send.lead') }}" method="POST" id="demo-form">
+                                
                             @csrf
 
                             <div class="form-group">
@@ -124,18 +143,23 @@
                                 <div class="rounded-circle d-flex justify-content-center align-items-center" style="border: 1px solid #242b40a2; width: 30px; height: 30px">
                                     <i class="fa-solid fa-phone"></i>
                                 </div>
-                                <a style="text-decoration: none" href="tel:+593983849073" class="mt-1 text-dark">098-384-9073</a>
+                                <a style="text-decoration: none" href="tel:+593987474637" class="mt-1 text-dark">098-747-4637</a>
                             </div>
 
                             <div class="d-flex gap-3 ms-4 mt-2">
                                 <div class="rounded-circle d-flex justify-content-center align-items-center" style="border: 1px solid #242b40a2; width: 30px; height: 30px">
                                     <i class="fa-brands fa-whatsapp"></i>
                                 </div>
-                                <a style="text-decoration: none" href="https://api.whatsapp.com/send?phone=593983849073&text=Hola%20*Housing%20Rent%20Group*,%20deseo%20consultar%20por%20sus%20servicios" class="mt-1 text-dark">098-384-9073</a>
+                                <a style="text-decoration: none" href="https://api.whatsapp.com/send?phone=593987474637&text=Hola%20*Housing%20Rent%20Group*,%20deseo%20consultar%20por%20esta%20propiedad:%20*{{$domain->code}}*" class="mt-1 text-dark">098-747-4637</a>
                             </div>
-
+                            <div class="form-group mb-2">
+                                <input type="hidden" name="g-recaptcha-response" id="recaptchaToken">
+            
+                                @error('captcha')
+                                        <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
                         </form>
-                    </div>
                 </div>
             </div>
 
@@ -214,4 +238,18 @@
         map.invalidateSize();
     });
 </script>
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      document.getElementById('demo-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        grecaptcha.ready(function() {
+          grecaptcha.execute('{{ config('services.recaptcha.site_key') }}', {action: 'submit'}).then(function(token) {
+              document.getElementById('recaptchaToken').value = token;
+              event.target.submit();
+          });
+        });
+      });
+    });
+
+  </script>
 @endsection

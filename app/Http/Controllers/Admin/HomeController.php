@@ -400,12 +400,12 @@ class HomeController extends Controller
                             ->with('success', 'Propiedad eliminada correctamente.');
             }
     }
-
     public function preview($slug){
         // Usando 'with' para cargar la relación multimedia junto con el dominio
-        $domain = Domain::with('multimedia')->where('slug', $slug)->firstOrFail();
+        $domain = Domain::with(['multimedia', 'user', 'benefits.typeBenefit']) // Cargando beneficios aquí
+                    ->where('slug', $slug)->first();
     
-        // Retorna la vista y pasa el dominio como variable
+        // Retorna la vista y pasa el dominio y el usuario como variables
         return view('admin.show', compact('domain'));
     }
     public function changeStatus(Request $request, $id)
