@@ -51,8 +51,8 @@ class SearchComponent extends Component
         //     $this->cityTagName = $this->cityTagName->name;
         // }
         $this->properties = [];
-        $this->type = null;
-        $this->searchtxt = null;
+        // $this->type = null;
+        // $this->searchtxt = null;
     }
 
     public function cleanCity(){
@@ -98,6 +98,7 @@ class SearchComponent extends Component
             }
             
             if(count($this->types)>0){
+                $this->type = null;
                 if(count($this->types) === 1){
                     $properties_filter->where('listingtype', $this->types[0]);
                 } else if(count($this->types) === 2){
@@ -168,8 +169,19 @@ class SearchComponent extends Component
             }
 
             //consultando variables que vienen por el constructor
-            if($this->type && $this->type != "Propiedad"){
+            if($this->type != null && $this->type != "Propiedad"){
                 $properties_filter->where('listingtype', $this->type);
+                switch ($this->type) {
+                    case '23': $type_housing = 1;break; //casas
+                    case '24': $type_housing = 3;break; //departamentos
+                    case '25': $type_housing = 5;break; //casas comerciales
+                    case '32': $type_housing = 6;break; //locales comerciales
+                    case '35': $type_housing = 7;break; //oficinas
+                    default:
+                        # code...
+                        break;
+                }
+                $properties_filter_domain->where('type_property', $type_housing);
             }
 
             $location = $this->citySearch;
@@ -209,8 +221,6 @@ class SearchComponent extends Component
                 
                 return $propiedad;
             });
-            
-            //dd($propiedades);
 
             $properties_all = $this->properties->concat($propiedades);
 
@@ -229,24 +239,13 @@ class SearchComponent extends Component
     {
 
         $this->searchProperties();
-        // $properties_filter = Property::select('id', 'product_code', 'listing_title', 'listing_description', 'bedroom', 'bathroom', 'garage', 'property_price', 'state', 'city', 'sector', 'images', 'property_by', 'slug')->where('property_by', 'Housing')->where('status', 1)->orderBy('product_code', 'desc');
-
-        // $cities = [];
-        // if($this->citySearch){
-        //     //$cities = DB::connection('mysql_grupo_housing')->table('info_cities')->where('name', 'LIKE', '%'.$this->citySearch.'%')->orderBy('id', 'desc')->take(5)->get();
-        //     $properties_filter->where('state', 'LIKE', '%'.$this->citySearch.'%')->orWhere('city',  'LIKE', '%'.$this->citySearch.'%')->orWhere('address', 'LIKE', '%'.$this->citySearch.'%');
-        // }
 
         $this->currentTab == "tab2" ? $this->showTab2 = true : $this->showTab2 = false;
 
         return view('livewire.search-component', [
             'properties' => $this->properties,
-            //'properties_domain' => $this->properties_domain,
-            //'cities' => $cities,
             'showTab2' => $this->showTab2,
             'cityTagName' => $this->cityTagName,
-            // 'minRangePrice' => $this->minRangePrice,
-            // 'maxRangePrice' => $this->maxRangePrice
         ]);
     }
 }
