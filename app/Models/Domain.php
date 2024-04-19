@@ -33,7 +33,8 @@ class Domain extends Model
         'available',
         'user_id',
         'created_at',
-        'updated_at'
+        'updated_at',
+        'annotation',
     ];
     protected $casts = [
         'is_negotiable' => 'boolean',

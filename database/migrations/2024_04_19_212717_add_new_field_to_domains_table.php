@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLaundryTypesTable extends Migration
+class AddNewFieldToDomainsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateLaundryTypesTable extends Migration
      */
     public function up()
     {
-            Schema::create('laundry_types', function (Blueprint $table) {
-                $table->id();
-                $table->string('name',300);
-                $table->timestamps();
-            });
+        Schema::table('domains', function (Blueprint $table) {
+            $table->text('annotation')->nullable();
+        });
     }
 
     /**
@@ -27,6 +25,8 @@ class CreateLaundryTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('laundry_types');
+        Schema::table('domains', function (Blueprint $table) {
+            $table->text('annotation');
+        });
     }
 }

@@ -18,7 +18,7 @@
         </ul>
     </div>
 @endif
-<div class="container">
+<div class="container pb-5">
 <form id="crearPropiedad" action="{{ route('properties.store') }}" method="POST" novalidate>
     @csrf
 
@@ -245,14 +245,14 @@
             <div id="mapid" style="height: 400px;"></div>
         </div>
     </div>
-    <div class="row justify-content-center mb-4">
+    <div class="row justify-content-center pb-4">
         <div class="col">
             <button type="submit" class="btn btn-primary">Subir Propiedad</button>
         </div>
     </div>
     
 </form>
-
+</div>
     
 @stop
 

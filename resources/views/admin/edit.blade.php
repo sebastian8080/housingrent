@@ -23,7 +23,17 @@
 <form action="{{ route('properties.update', $property->id) }}" method="POST">   
     @csrf
     @method('PUT') <!-- Cambio importante para usar el método PUT en Laravel -->
-
+    @can('have_permissions')
+    <div class="form-group">
+        <label for="annotation">Razón por la cual no ha sido activada la propiedad</label>
+        <textarea name="annotation" class="form-control @error('annotation') is-invalid @enderror" id="annotation" rows="2">{{ old('annotation', $property->annotation) }}</textarea>
+        @error('annotation')
+            <span class="invalid-feedback">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+    </div>
+    @endcan
     <!-- Tipo de propiedad -->
     <div class="form-group">
         <label for="type_property">Tipo de propiedad</label>
@@ -95,7 +105,7 @@
     @can('have_permissions')
     <div class="form-group">
         <label for="meta_description">Meta Description (Máximo 150 caracteres)</label>
-        <textarea name="meta_description" class="form-control @error('description') is-invalid @enderror" id="meta_description" maxlength="150" rows="2" placeholder=""></textarea>
+        <textarea name="meta_description" class="form-control @error('meta_description') is-invalid @enderror" id="meta_description" maxlength="150" rows="2" placeholder="">{{ old('meta_description', $property->meta_description) }}</textarea>
         <div id="count" class="text-right mt-2">
             <span id="current_count" class="font-weight-bold">0</span>
             <span id="maximum_count">/ 150</span>
@@ -286,7 +296,7 @@
         </div>
     </div>
 
-    <div class="row justify-content-center mb-4">
+    <div class="row justify-content-center pb-4">
         <div class="col">
             <button type="submit" class="btn btn-primary">Actualizar Propiedad</button>
         </div>

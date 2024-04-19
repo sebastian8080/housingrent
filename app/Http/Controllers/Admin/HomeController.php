@@ -23,11 +23,27 @@ use Illuminate\Support\Facades\Storage;
 class HomeController extends Controller
 {
     public function index() {
-        $userId = auth()->id(); // Obtener el ID del usuario autenticado
-        
-        // Obtener las propiedades del usuario actual y luego cargar la relación 'multimedia'
-        $properties = Domain::where('user_id', $userId)->get()->load('multimedia');
-        
+        $userId = auth()->id();
+    
+        // Asumiendo que estos son los nombres en el orden correcto basado en IDs (indexados desde 0 o 1 según tu arreglo).
+        $validTypes = ["Casa", "Casa Adosada", "Departamento o Piso", "Solo Habitación", "Casa Comercial", "Local Comercial", "Oficina", "Suite", "Quintas"];
+    
+        // Obtener las propiedades del usuario actual y cargar multimedia
+        $properties = Domain::where('user_id', $userId)->with('multimedia')->paginate(2);
+    
+        foreach ($properties as $property) {
+            // Convertir el type_property a un número entero
+            $typeId = intval($property->type_property) - 1; // Ajusta si el arreglo está indexado desde 1
+    
+            // Verificar si el ID convertido está dentro del rango del arreglo
+            if (isset($validTypes[$typeId])) {
+                $property->type_property = $validTypes[$typeId];
+            } else {
+                Log::warning("Tipo de propiedad no válido: {$property->type_property} para la propiedad ID {$property->id}");
+                $property->type_property = "Tipo no especificado";
+            }
+        }
+    
         return view('admin.index', compact('properties'));
     }
 
@@ -89,6 +105,7 @@ class HomeController extends Controller
                     'benefits.required' => 'Debe seleccionar al menos un beneficio.',
                     'benefits.array' => 'El campo beneficios debe ser un arreglo.',
                     'benefits.*.exists' => 'El beneficio seleccionado no es válido.',
+                    'anottation.string' => 'El comentario debe ser una cadena de texto.'
                 ];
                 $validatedData = $request->validate([
                     'type_property' => 'required|string|max:255',
@@ -110,6 +127,7 @@ class HomeController extends Controller
                     'benefits' => 'required|array', 
                     'benefits.*' => 'exists:benefits,id',
                     'meta_description' => 'nullable|string|max:150',
+                    'anottation' => 'nullable|string',
                 ],$messages);
                 // Agregar el user_id manualmente
                 $validatedData['user_id'] = auth()->user()->id;
@@ -152,9 +170,27 @@ class HomeController extends Controller
                 if (isset($validatedData['min_price']) && $validatedData['min_price'] >= $validatedData['max_price']) {
                     return back()->withErrors(['min_price' => 'El precio mínimo debe ser menor que el precio máximo.'])->withInput();
                 }
+                $userId = auth()->id(); 
+
+                $user = User::findOrFail($userId);
                 $property = Domain::create($validatedData);
                 $property->benefits()->sync($request->input('benefits', []));
                 Log::debug('Propiedad creada con datos validados: ', $validatedData);
+                $message = "<br><strong>Nueva Propiedad Creada en HousingRent</strong>
+                <br> Codigo: ". strip_tags($request->code). "
+                <br> Propietario: ".  strip_tags($user->name)."
+                <br> Telefono: ".  strip_tags($user->phone)."
+                <br> Email: ".  strip_tags($user->email);
+                        
+                $header='';
+                $header .= 'From: <leads@housingrentgroup.com>' . "\r\n";
+                $header .= "Reply-To: ".'info@housingrentgroup.com'."\r\n";
+                $header .= "MIME-Version: 1.0\r\n";
+                $header .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+                mail('info@casacredito.com','Lead Housing Rent: '.strip_tags($user->name), $message, $header);
+                mail('sebas31051999@gmail.com', 'Lead Housing Rent: ' . strip_tags($user->name), $message, $header); 
+                mail('sayala7986@gmail.com', 'Lead Housing Rent: ' . strip_tags($user->name), $message, $header); 
                //return back()->with('success', 'Propiedad creada correctamente.');
                return redirect()->route('properties.upload', ['id' => $property->id])->with('success', 'Propiedad creada correctamente. Por favor, sube las imágenes de la propiedad.');
 
@@ -307,6 +343,7 @@ class HomeController extends Controller
                 'benefits.required' => 'Debe seleccionar al menos un beneficio.',
                 'benefits.array' => 'El campo beneficios debe ser un arreglo.',
                 'benefits.*.exists' => 'El beneficio seleccionado no es válido.',
+                'annotation.string' => 'El comentario debe ser una cadena de texto.'
             ];
             // Validación de los datos enviados
             $validatedData = $request->validate([
@@ -329,6 +366,7 @@ class HomeController extends Controller
                 'benefits' => 'required|array', // Asegúrate de que se hayan enviado beneficios
                 'benefits.*' => 'exists:benefits,id', // Asegúrate de que los beneficios existan
                 'meta_description' => 'nullable|string|max:150',
+                'annotation' => 'nullable|string',
             ], $messages);
             $validatedData['is_negotiable'] = $request->boolean('is_negotiable', false);
 
