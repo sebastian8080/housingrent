@@ -15,7 +15,6 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            // Definir primero la columna sin usar constrained() pero estableciendo un valor por defecto
             $table->foreignId('role_id')->default(3)->onDelete('cascade');
             $table->string('name');
             $table->string('email')->unique();
@@ -26,7 +25,6 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->boolean('is_active')->default(true);
-            // Ahora, establecer manualmente la relación de clave foránea
             $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
         });
     }
