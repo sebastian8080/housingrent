@@ -103,7 +103,7 @@
                                             <a href="{{ route('properties.upload', $property->id) }}" class="text-white"><i class="fas fa-image"></i></a>
                                             <div class="action-text">Imágenes</div>
                                         </div>
-                                        <button class="rounded-btn btn btn-danger mx-2" data-id="{{ $property->id }}" data-toggle="modal" data-target="#deleteConfirmationModal"> 
+                                        <button class="rounded-btn btn btn-danger mx-2 delete-property-button" data-id="{{ $property->id }}" data-toggle="modal" data-target="#deleteConfirmationModal"> 
                                                 <i class="fas fa-trash"></i>
                                             <div class="action-text">Eliminar</div>
                                         </button>
