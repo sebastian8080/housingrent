@@ -214,25 +214,41 @@
         const lng = {{ $domain->lng }};
 
         // Inicializa el mapa
-        let map = L.map('map').setView([lat, lng], 14);
+        let map = L.map('map').setView([lat, lng], 15);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '© OpenStreetMap contributors'
         }).addTo(map);
 
+        let circle = L.circle([lat, lng], {
+            color: '#242B40',
+            fillColor: '#242B40',
+            fillOpacity: 0.5,
+            radius: 500
+        }).addTo(map);
+
         // Asegura que existe al menos una imagen en multimedia antes de intentar acceder a ella
         @if($domain->multimedia->isNotEmpty())
             const imageUrl = "{{ asset('storage/' . $domain->multimedia->first()->filename) }}";
-            const popupContent = `<b>{{ $domain->title }}</b><br><img src='${imageUrl}' class='w-100' />`;
+            const popupContent = `<b>Sector donde se ubica la propiedad:</b><br><span>{{ $domain->title }}</span><br><img src='${imageUrl}' class='w-100' />`;
 
             // Agrega un marcador basado en la latitud y longitud con la imagen
-            L.marker([lat, lng]).addTo(map)
-                .bindPopup(popupContent).openPopup();
+            
+            //L.marker([lat, lng]).addTo(map)
+            //circle.bindPopup(popupContent).openPopup();
+            let popup = L.popup()
+                .setLatLng([lat + 0.004, lng])
+                .setContent(popupContent)
+                .addTo(map);
         @else
             // Solo texto, si no hay imagen disponible
-            L.marker([lat, lng]).addTo(map)
-                .bindPopup("<b>{{ $domain->title }}</b>").openPopup();
+            //L.marker([lat, lng]).addTo(map)
+            //circle.bindPopup("<b>{{ $domain->title }}</b>").openPopup();
+            let popup = L.popup()
+                .setLatLng([lat + 0.004, lng])
+                .setContent("<b>Sector donde se ubica la propiedad</b><br><span>{{ $domain->title }}</span>")
+                .addTo(map);
         @endif
 
         map.invalidateSize();

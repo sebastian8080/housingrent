@@ -294,7 +294,10 @@
             image.classList.add('active');
         }
 
-        let map = L.map('map').setView(['{{ $listing->lat}}', '{{ $listing->lng}}'], 14);
+        const lat = {{ $listing->lat }};
+        const lng = {{ $listing->lng }};
+
+        let map = L.map('map').setView([lat, lng], 15);
 
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -303,9 +306,23 @@
         let title = '{{ $listing->listing_title }}';
         let images = '{{ $listing->images }}'.split('|')[0];
 
-        L.marker(['{{ $listing->lat}}', '{{ $listing->lng}}']).addTo(map)
-            .bindPopup(`<div class="text-center"> <b> ${title} </b> <br> <br> <img class='w-100' src='https://grupohousing.com/uploads/listing/${images}' /></div>`)
-            .openPopup();
+        let circle = L.circle([lat, lng], {
+            color: '#242B40',
+            fillColor: '#242B40',
+            fillOpacity: 0.5,
+            radius: 500
+        }).addTo(map);
+
+        let popup = L.popup()
+        .setLatLng([lat + 0.004, lng])
+        .setContent(`<div class="text-center"> <b>Sector donde se encuentra la propiedad:</b> <br> <br> <span> ${title} </span> <br> <br> <img class='w-100' src='https://grupohousing.com/uploads/listing/${images}' /></div>`)
+        .addTo(map);
+
+        //circle.bindPopup("<b>Sector donde se ubica la propiedad</b>").openPopup();
+
+        // L.marker(['{{ $listing->lat}}', '{{ $listing->lng}}']).addTo(map)
+        //     .bindPopup(`<div class="text-center"> <b> ${title} </b> <br> <br> <img class='w-100' src='https://grupohousing.com/uploads/listing/${images}' /></div>`)
+        //     .openPopup();
     </script>
     <script>
     document.addEventListener('DOMContentLoaded', (event) => {
