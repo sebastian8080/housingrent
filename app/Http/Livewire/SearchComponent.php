@@ -190,18 +190,18 @@ class SearchComponent extends Component
                     $properties_filter->where('product_code', 'LIKE', '%'.$location.'%');
                     $properties_filter_domain->where('code', 'LIKE', '%'.$location.'%');
                 } else {
-                    $properties_filter->where('address', 'LIKE', '%'.$location.'%')
-                        ->orWhere('sector', 'LIKE', '%'.$location.'%')
-                        ->orWhere('city', 'LIKE', '%'.$location.'%')
-                        ->orWhere('state', 'LIKE', '%'.$location.'%')
-                        ->orWhere('listing_title', 'LIKE', '%'.$location.'%');
-                    // $properties_filter->where(function ($query) use ($location) {
-                    //     $query->where('listing_title', 'LIKE', '%'.$location.'%')
-                    //         ->orWhere('address', 'LIKE', '%'.$location.'%')
-                    //         ->orWhere('sector', 'LIKE', '%'.$location.'%')
-                    //         ->orWhere('city', 'LIKE', '%'.$location.'%')
-                    //         ->orWhere('state', 'LIKE', '%'.$location.'%');
-                    // });
+                    // $properties_filter->where('address', 'LIKE', '%'.$location.'%')
+                    //     ->orWhere('sector', 'LIKE', '%'.$location.'%')
+                    //     ->orWhere('city', 'LIKE', '%'.$location.'%')
+                    //     ->orWhere('state', 'LIKE', '%'.$location.'%')
+                    //     ->orWhere('listing_title', 'LIKE', '%'.$location.'%');
+                    $properties_filter->where(function ($query) use ($location) {
+                        $query->where('listing_title', 'LIKE', '%'.$location.'%')
+                            ->orWhere('address', 'LIKE', '%'.$location.'%')
+                            ->orWhere('sector', 'LIKE', '%'.$location.'%')
+                            ->orWhere('city', 'LIKE', '%'.$location.'%')
+                            ->orWhere('state', 'LIKE', '%'.$location.'%');
+                    });
                     $properties_filter_domain->where(function ($query) use ($location) {
                         $query->where('title', 'LIKE', '%'.$location.'%')
                             ->orWhere('address', 'LIKE', '%'.$location.'%')
