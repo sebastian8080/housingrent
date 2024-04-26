@@ -20,6 +20,7 @@ class SearchComponent extends Component
     protected $properties = [];
     protected $properties_domain = [];
 
+    //variables que vienen desde el buscador de la home
     public $type, $searchtxt;
 
     public $types = [];
@@ -68,8 +69,6 @@ class SearchComponent extends Component
         $this->type = $type;
 
         $this->citySearch = $searchtxt;
-
-        //$this->minRangePrice = DB::connection('mysql_grupo_housing')->table('listings')->select('property_price')->where('available', 1)->where('listingtypestatus', 'alquilar')->min('property_price');
 
         $this->maxRangePrice = DB::connection('mysql_grupo_housing')->table('listings')->select('property_price')->where('available', 1)->where('listingtypestatus', 'alquilar')->max('property_price');
         $this->maxRangePriceHousingRent = Domain::select('max_price')->where('is_active', 1)->max('max_price');
@@ -191,13 +190,18 @@ class SearchComponent extends Component
                     $properties_filter->where('product_code', 'LIKE', '%'.$location.'%');
                     $properties_filter_domain->where('code', 'LIKE', '%'.$location.'%');
                 } else {
-                    $properties_filter->where(function ($query) use ($location) {
-                        $query->where('listing_title', 'LIKE', '%'.$location.'%')
-                            ->orWhere('address', 'LIKE', '%'.$location.'%')
-                            ->orWhere('sector', $location)
-                            ->orWhere('city', $location)
-                            ->orWhere('state', $location);
-                    });
+                    $properties_filter->where('address', 'LIKE', '%'.$location.'%')
+                        ->orWhere('sector', 'LIKE', '%'.$location.'%')
+                        ->orWhere('city', 'LIKE', '%'.$location.'%')
+                        ->orWhere('state', 'LIKE', '%'.$location.'%')
+                        ->orWhere('listing_title', 'LIKE', '%'.$location.'%');
+                    // $properties_filter->where(function ($query) use ($location) {
+                    //     $query->where('listing_title', 'LIKE', '%'.$location.'%')
+                    //         ->orWhere('address', 'LIKE', '%'.$location.'%')
+                    //         ->orWhere('sector', 'LIKE', '%'.$location.'%')
+                    //         ->orWhere('city', 'LIKE', '%'.$location.'%')
+                    //         ->orWhere('state', 'LIKE', '%'.$location.'%');
+                    // });
                     $properties_filter_domain->where(function ($query) use ($location) {
                         $query->where('title', 'LIKE', '%'.$location.'%')
                             ->orWhere('address', 'LIKE', '%'.$location.'%')
@@ -205,6 +209,7 @@ class SearchComponent extends Component
                             ->orWhere('city', $location)
                             ->orWhere('state_province', $location);
                     });
+                    //dd($properties_filter->get());
                 }
             }
 

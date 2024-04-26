@@ -35,14 +35,12 @@ class SearchController extends Controller
         if($type != null){
             $type = Str::title(str_replace('-', ' ', $type));
             $typeFromTable = DB::connection('mysql_grupo_housing')->table('listing_types')->where('type_title', 'LIKE', '%'.$type."%")->first();
-            if($typeFromTable){
-                $type = $typeFromTable->id;
-            }
+            $typeFromTable ? $type = $typeFromTable->id : null;
         }
 
         if($searchtxt != null){
             $searchtxt = Str::title(str_replace('-', ' ', $searchtxt));
-            strtolower($searchtxt);
+            $searchtxt = strtolower($searchtxt);
         }
 
 
