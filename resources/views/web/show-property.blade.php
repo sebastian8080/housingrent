@@ -140,9 +140,9 @@
 
                 <div class="d-flex gap-2">
 
-                    <p>{{ $listing->bedroom }} habitaciones /</p>
-                    <p>{{ $listing->bathroom }} baños /</p>
-                    <p>{{ $listing->garage }} garage</p>
+                    @if($listing->bedroom > 0) <p>{{ $listing->bedroom }} habitaciones </p> @endif
+                    @if($listing->bathroom > 0)<p>/ {{ $listing->bathroom }} baños </p> @endif
+                    @if($listing->garage > 0)<p>/ {{ $listing->garage }} garage</p> @endif
 
                 </div>
 
