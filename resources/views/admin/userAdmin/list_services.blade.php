@@ -182,21 +182,19 @@ background-color: #0056b3; /* Color de fondo al pasar el ratón */
             e.preventDefault();
             
             $.ajax({
-                url: "{{ route('services.create') }}", // Asegúrate de que esta ruta sea correcta
+                url: "{{ route('services.create') }}",
                 type: "POST",
                 data: {
-                    "_token": $("input[name=_token]").val(), // El token CSRF
+                    "_token": $("input[name=_token]").val(),
                     "name": $("#serviceName").val(),
                     "type_benefit_id": $("#typeBenefit").val()
                 },
                 success: function(response) {
                     toastr.success('Servicio creado exitosamente.');
-                    $('#createServiceForm')[0].reset(); // Resetea el formulario después de la creación exitosa
-                    // Aquí puedes recargar la lista de servicios o añadir el nuevo servicio a la tabla
+                    $('#createServiceForm')[0].reset();
                 },
                 error: function(xhr) {
                     toastr.error('Error al crear el servicio.');
-                    // Aquí puedes manejar errores de validación y mostrarlos al usuario
                 }
             });
         });
@@ -225,11 +223,10 @@ $('#editServiceForm').submit(function(e) {
     $.ajax({
         url: `/admin/services/${serviceId}/update`,
         type: "PUT",
-        data: $(this).serialize()+ "&_token={{ csrf_token() }}", // Incluye el token CSRF en tu formulario como un campo oculto
+        data: $(this).serialize()+ "&_token={{ csrf_token() }}",
         success: function(response) {
             toastr.success('Servicio actualizado exitosamente.');
             $('#editServiceModal').modal('hide');
-            // Aquí puedes recargar la lista de servicios o actualizar la tabla directamente con los nuevos datos
         },
         error: function(response) {
             toastr.error('Error al actualizar el servicio.');
@@ -241,36 +238,31 @@ $('#editServiceForm').submit(function(e) {
 
 <script>
     $(document).ready(function() {
-        var serviceIdToDelete = 0; // Variable para almacenar el ID del servicio a eliminar
+        var serviceIdToDelete = 0;
     
-        // Abre el modal de confirmación y guarda el ID del servicio a eliminar
         $('.deleteServiceBtn').click(function() {
-            serviceIdToDelete = $(this).data('id'); // Guarda el ID del servicio
+            serviceIdToDelete = $(this).data('id');
         });
     
-        // Maneja la confirmación de eliminación
         $('#deleteServiceBtn').click(function() {
-            // Verifica que tenemos un ID válido para eliminar
             if (serviceIdToDelete === 0) {
                 toastr.error('Error al obtener el ID del servicio para eliminar.');
                 return;
             }
     
             $.ajax({
-                url: `/admin/services/${serviceIdToDelete}/delete`, // La URL correcta para tu ruta de eliminación
+                url: `/admin/services/${serviceIdToDelete}/delete`,
                 type: 'DELETE',
                 data: {
-                    "_token": "{{ csrf_token() }}", // Asegúrate de incluir el token CSRF
+                    "_token": "{{ csrf_token() }}",
                 },
                 success: function(response) {
-                    // Muestra un mensaje de éxito y oculta el modal de confirmación
                     toastr.success(response.message);
-                    $(`button.deleteServiceBtn[data-id="${serviceIdToDelete}"]`).closest('tr').remove(); // Elimina la fila del servicio
+                    $(`button.deleteServiceBtn[data-id="${serviceIdToDelete}"]`).closest('tr').remove();
                     $('#deleteServiceConfirmationModal').modal('hide');
-                    serviceIdToDelete = 0; // Restablece el ID a 0 para la próxima operación
+                    serviceIdToDelete = 0;
                 },
                 error: function(xhr, status, error) {
-                    // Maneja errores potenciales, como problemas de red o errores del servidor
                     toastr.error('No se pudo eliminar el servicio. Por favor, intente de nuevo.');
                 }
             });

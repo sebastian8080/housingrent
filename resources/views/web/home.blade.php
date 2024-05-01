@@ -1,6 +1,30 @@
 @extends('layouts.web')
 
-@section('title', 'Housing Rent Group')
+@section('title', 'Propiedades en Ecuador: venta y alquiler de casas, departamentos y otros bienes raíces - Housing Rent Group')
+
+@section('meta-description', 'Explora oportunidades únicas en Ecuador para alquilar, adquirir o vender propiedades. Encuentra desde casas y apartamentos hasta terrenos y diversos inmuebles. ¡Tu propiedad ideal te espera en Housing Rent!')
+
+@section('meta-keywords', 'alquiler en Ecuador, propiedades Ecuador, alquiler en Cuenca, propiedades en Cuenca, alquiler de casas en Cuenca, alquiler de departamentos en Cuenca, alquiler de locales comerciales en Cuenca, alquiler de oficinas en Cuenca, alquiler de propiedades comerciales en Cuenca, alquiler de propiedades residenciales en Cuenca, alquiler de propiedades en el centro de Cuenca, alquiler de propiedades en zonas residenciales de Cuenca, alquiler de propiedades cerca de parques en Cuenca, alquiler de propiedades cerca de colegios en Cuenca, alquiler de propiedades cerca de universidades en Cuenca, alquiler de propiedades cerca de hospitales en Cuenca, alquiler de propiedades cerca de supermercados en Cuenca, alquiler de propiedades cerca de centros comerciales en Cuenca')
+
+@section('meta-robots', 'index, follow')
+
+@section('meta-author', 'Housing Rent Group - Ecuador')
+
+
+
+@section('og-title', 'Propiedades en Ecuador: venta y alquiler de casas, departamentos y otros bienes raíces - Housing Rent Group')
+
+@section('og-description', 'Explora oportunidades únicas en Ecuador para alquilar, adquirir o vender propiedades. Encuentra desde casas y apartamentos hasta terrenos y diversos inmuebles. ¡Tu propiedad ideal te espera en Housing Rent!')
+
+@section('og-image', asset('img/departamentos.jpg'))
+
+@section('og-url', 'https://housingrentgroup.com')
+
+@section('og-type', 'website')
+
+@section('og-site-name', 'Housing Rent Group - Ecuador')
+
+
 
 @section('css')
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />

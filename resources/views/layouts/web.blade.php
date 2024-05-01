@@ -6,6 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
     <link rel="icon" href="{{asset('favicon3.png')}}" type="image/x-icon" />
+    <!-- Meta Descriptions -->
+    <meta name="description" content="@yield('meta-description', 'Alquiler, compra y venta de propiedades en Ecuador: casas, apartamentos, terrenos y otros bienes raíces. ¡La propiedad de tus sueños está en Housing Rent Group!')">
+    <meta name="keywords" content="@yield('meta-keywords', 'alquiler, arriendo, renta, propiedades, bienes raíces, inmuebles, casas, departamentos, apartamentos, condominios, villas, suites, habitaciones, locales comerciales, oficinas, terrenos, espacios comerciales, residenciales, urbanizaciones, barrios, áreas comerciales, zonas residenciales, áreas industriales, sector inmobiliario, mercado inmobiliario, agencias inmobiliarias')">
+    <meta name="robots" content="@yield('meta-robots', 'index, follow')">
+    <meta name="author" content="@yield('meta-author', 'Housing Rent Group - Ecuador')">
+
+    <!-- Social Media Meta Tags -->
+    <meta property="og:title" content="@yield('og-title', 'Propiedades en Ecuador: venta y alquiler de casas, departamentos y otros bienes raíces - Housing Rent Group')">
+    <meta property="og:description" content="@yield('og-description', 'Explora oportunidades únicas en Ecuador para alquilar, adquirir o vender propiedades. Encuentra desde casas y apartamentos hasta terrenos y diversos inmuebles. Tu propiedad ideal te espera en Housing Rent')">
+    <meta property="og:image" content="@yield('og-image', 'link-to-default-image.png')">
+    <meta property="og:url" content="@yield('og-url', 'https://housingrentgroup.com')">
+    <meta property="og:type" content="@yield('og-type', 'website')">
+    <meta property="og:site_name" content="@yield('og-site-name', 'Housing Rent Group - Ecuador')">
+    
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 

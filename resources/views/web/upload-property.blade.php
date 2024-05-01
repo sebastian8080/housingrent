@@ -1,6 +1,28 @@
 @extends('layouts.web')
 
-@section('title', 'Publique su propiedad en Housing Rent')
+@section('title', 'Publique su propiedad - Housing Rent Group: venta y alquiler de casas, departamentos y otros bienes raíces - Cuenca,Ecuador')
+
+@section('meta-description', 'Explora oportunidades únicas en Ecuador para alquilar, adquirir o vender propiedades. Encuentra desde casas y apartamentos hasta terrenos y diversos inmuebles. ¡Tu propiedad ideal te espera en Housing Rent!')
+
+@section('meta-keywords', 'alquiler, propiedades, casas, departamentos, comerciales, oficinas, Ecuador')
+
+@section('meta-robots', 'index, follow')
+
+@section('meta-author', 'Housing Rent Group - Ecuador')
+
+@section('og-title', 'Propiedades en Ecuador: venta y alquiler de casas, departamentos y otros bienes raíces - Housing Rent Group')
+
+@section('og-description', 'Explora oportunidades únicas en Ecuador para alquilar, adquirir o vender propiedades. Encuentra desde casas y apartamentos hasta terrenos y diversos inmuebles. ¡Tu propiedad ideal te espera en Housing Rent!')
+
+@section('og-image', asset('img/departamentos.jpg'))
+
+@section('og-url', 'https://housingrentgroup.com')
+
+@section('og-type', 'website')
+
+@section('og-site-name', 'Housing Rent Group - Ecuador')
+
+
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/font-style.css') }}">
