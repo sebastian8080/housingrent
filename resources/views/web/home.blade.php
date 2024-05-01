@@ -2,7 +2,7 @@
 
 @section('title', 'Propiedades en Renta Cuenca - Housing Rent Group')
 
-@section('meta-description', 'Explora oportunidades únicas en Ecuador para alquilar y rentar. Encuentra desde casas y departamentos hasta terrenos y diversos inmuebles - Housing Rent Group')
+@section('meta-description', 'Explora propiedades  únicas en Ecuador para alquilar y rentar. Encuentra desde casas y departamentos hasta terrenos y diversos inmuebles - Housing Rent Group')
 
 @section('meta-keywords', 'alquiler en Ecuador, propiedades Ecuador, alquiler en Cuenca, propiedades en Cuenca , renta de propiedades Cuenca, renta de casas cuenca, casas de arriendo cuenca, casa de arriendo cuenca baratas')
 
@@ -14,7 +14,7 @@
 
 @section('og-title', 'Propiedades en Ecuador: venta y alquiler de casas, departamentos y otros bienes raíces - Housing Rent Group')
 
-@section('og-description', 'Explora oportunidades únicas en Ecuador para alquilar, adquirir o vender propiedades. Encuentra desde casas y apartamentos hasta terrenos y diversos inmuebles. ¡Tu propiedad ideal te espera en Housing Rent!')
+@section('og-description', 'Explora propiedades únicas en Ecuador para alquilar y rentar. Encuentra desde casas y departamentos hasta terrenos y diversos inmuebles - Housing Rent Group')
 
 @section('og-image', asset('img/departamentos.jpg'))
 
