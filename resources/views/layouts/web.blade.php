@@ -20,11 +20,18 @@
     </style>
     <script src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.site_key') }}"></script>
 
-    @if(App::environment('local'))
-        <p>Estás en localhost</p>
-    @else
-        <p>Estás en el servidor</p>
-    @endif
+    {{-- @if(!Request::is('http://localhost*'))
+        
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B53KCMR7P6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-B53KCMR7P6');
+    </script>
+    @endif --}}
 
     @yield('css')
 </head>
