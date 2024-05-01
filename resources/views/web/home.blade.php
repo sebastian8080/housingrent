@@ -29,7 +29,7 @@
 @section('css')
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    <link rel="stylesheet" href="{{ asset('css/home-style.css?v=2') }}">
+    <link rel="stylesheet" href="{{ asset('css/home-style.css?v=3') }}">
     <link rel="stylesheet" href="{{ asset('css/font-style.css') }}">
 @livewireStyles
 @endsection
@@ -39,10 +39,9 @@
 <section class="banner">
     <section style="height: 650px;" class="d-flex align-items-center justify-content-center">
         <div class="text-center" style="z-index: 1">
-            <img width="800px" class="logo-housing" style="border-bottom: 1px solid #ffffff" src="{{ asset('img/logo.png') }}" alt="">
-            <h1 class="mt-3 mb-3 text-white title" style="font-size: 40px; line-height: 40px; font-family: 'Sharp Grotesk'">
-                <span style="font-weight: 100 !important">¡Tu alquiler está a un clic de</span><br>
-                <span style="font-weight: 500 !important">distancia!</span>
+            <h1 class="mt-3 mb-3 text-white title" style="font-size: 60px; line-height: 80px; font-family: 'Sharp Grotesk'">
+                <span style="font-weight: 100 !important">Catálogo de propiedades</span><br>
+                <span style="font-weight: 500 !important">exclusivas desde $400</span>
             </h1>
             <div class="d-flex justify-content-center mb-3">
                 <button class="btn btn-light rounded-0 px-5 btn-lg" style="border-radius: 15px 0px 0px 15px !important; font-weight: 300; font-family: 'Sharp Grotesk'">Alquilar</button>
@@ -51,8 +50,8 @@
             <form action="{{ route('web.search') }}" method="GET">
                 @csrf
                 <div class="d-flex justify-content-center">
-                    <div class="bg-white d-flex justify-content-between w-100 px-2 py-2 filters" style="border-radius: 25px">
-                        <select name="type" id="type" style="border-radius: 25px 0px 0px 25px !important; cursor: pointer; font-family: 'Sharp Grotesk'; font-weight: 300" class="form-select w-100 rounded-0 bg-white border-0 border-end">
+                    <div class="bg-white d-flex justify-content-between w-100 px-2 py-2 filters w-100" style="border-radius: 15px">
+                        <select name="type" id="type" style="border-radius: 25px 0px 0px 25px !important; cursor: pointer; font-family: 'Sharp Grotesk'; font-weight: 300; width: 30%" class="form-select rounded-0 bg-white border-0 border-end">
                             <option value="">Tipo de propiedad</option>
                             <option value="Departamentos">Departamentos</option>
                             <option value="Casas">Casas</option>
@@ -60,8 +59,8 @@
                             <option value="Locales Comerciales">Locales Comerciales</option>
                             <option value="Oficinas">Oficinas</option>
                         </select>
-                        <input type="text" name="searchtxt" id="searchtxt" style="font-family: 'Sharp Grotesk'; font-weight: 300" class="form-control w-100 rounded-0 border-0 bg-white" placeholder="Ubicacion / Codigo">
-                        <button class="btn rounded-pill text-white w-100" style="background-color: #242B40; font-family: 'Sharp Grotesk';">BUSCAR</button>
+                        <input type="text" name="searchtxt" id="searchtxt" style="font-family: 'Sharp Grotesk'; font-weight: 300; width: 45%" class="form-control rounded-0 border-0 bg-white" placeholder="Ubicacion / Codigo">
+                        <button class="btn rounded-pill text-white" style="background-color: #242B40; font-family: 'Sharp Grotesk'; width: 25%">BUSCAR</button>
                     </div>
                 </div>
             </form>
