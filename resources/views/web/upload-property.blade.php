@@ -74,10 +74,10 @@
     <section class="bg-footer-home">
         <section class="row w-full h-100 align-items-center justify-content-center">
             <article class="col-sm-6 col-12 text-center d-flex align-items-center justify-content-center">
-                <h2 class="display-6" style="font-family: 'Sharp Grotesk'; color: #ffffff"><span style="font-weight: 100">¡Desde tu casa con un click</span> <br> <span style="font-weight: 500">publica tu propiedad!</span></h2>
+                <h1 class="display-6" style="font-family: 'Sharp Grotesk'; color: #ffffff"><span style="font-weight: 100">¡Desde tu casa con un click</span> <br> <span style="font-weight: 500">publica tu propiedad!</span></h1>
             </article>
             <article class="col-sm-6 col-12">
-                <h3 style="font-family: 'Sharp Grotesk'; font-weight: 400" class="text-white px-5 h2">Registro de Usuario</h3>
+                <h2 style="font-family: 'Sharp Grotesk'; font-weight: 400" class="text-white px-5 h2">Registro de Usuario</h2>
                 <form action="{{ route('register') }}" method="POST" class="px-5">
                     @csrf
                     <div class="form-group mb-3 mt-3">

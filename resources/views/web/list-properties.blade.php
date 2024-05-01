@@ -1,6 +1,6 @@
 @extends('layouts.web')
 
-@section('title', 'Propiedades en Renta en Cuenca')
+@section('title', "Propiedades en Renta Cuenca")
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/font-style.css') }}">
