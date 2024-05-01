@@ -37,7 +37,7 @@
 
     @if(request()->getHost() === "housingrentgroup.com")
         <!-- Google tag (gtag.js) -->
-        <script defer src="https://www.googletagmanager.com/gtag/js?id=G-B53KCMR7P6"></script>
+        {{-- <script defer src="https://www.googletagmanager.com/gtag/js?id=G-B53KCMR7P6"></script> --}}
         <script>
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -161,6 +161,13 @@
     @yield('js')
 
     <script>
+
+        setTimeout(() => {
+            let script = document.createElement('script');
+            script.src = "https://www.googletagmanager.com/gtag/js?id=G-B53KCMR7P6";
+            document.head.appendChild(script);
+        }, 3000);
+
         window.addEventListener('scroll', function() {
             loadImages();
         });
