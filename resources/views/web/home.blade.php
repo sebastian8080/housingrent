@@ -1,10 +1,10 @@
 @extends('layouts.web')
 
-@section('title', 'Propiedades en Ecuador: venta y alquiler de casas, departamentos y otros bienes raíces - Housing Rent Group')
+@section('title', 'Propiedades en Renta Cuenca - Housing Rent Group')
 
-@section('meta-description', 'Explora oportunidades únicas en Ecuador para alquilar, adquirir o vender propiedades. Encuentra desde casas y apartamentos hasta terrenos y diversos inmuebles. ¡Tu propiedad ideal te espera en Housing Rent!')
+@section('meta-description', 'Explora oportunidades únicas en Ecuador para alquilar y rentar. Encuentra desde casas y departamentos hasta terrenos y diversos inmuebles - Housing Rent Group')
 
-@section('meta-keywords', 'alquiler en Ecuador, propiedades Ecuador, alquiler en Cuenca, propiedades en Cuenca, alquiler de casas en Cuenca, alquiler de departamentos en Cuenca, alquiler de locales comerciales en Cuenca, alquiler de oficinas en Cuenca, alquiler de propiedades comerciales en Cuenca, alquiler de propiedades residenciales en Cuenca, alquiler de propiedades en el centro de Cuenca, alquiler de propiedades en zonas residenciales de Cuenca, alquiler de propiedades cerca de parques en Cuenca, alquiler de propiedades cerca de colegios en Cuenca, alquiler de propiedades cerca de universidades en Cuenca, alquiler de propiedades cerca de hospitales en Cuenca, alquiler de propiedades cerca de supermercados en Cuenca, alquiler de propiedades cerca de centros comerciales en Cuenca')
+@section('meta-keywords', 'alquiler en Ecuador, propiedades Ecuador, alquiler en Cuenca, propiedades en Cuenca , renta de propiedades Cuenca, renta de casas cuenca, casas de arriendo cuenca, casa de arriendo cuenca baratas')
 
 @section('meta-robots', 'index, follow')
 
@@ -40,7 +40,10 @@
     <section style="height: 650px;" class="d-flex align-items-center justify-content-center">
         <div class="text-center" style="z-index: 1">
             <img width="800px" class="logo-housing" style="border-bottom: 1px solid #ffffff" src="{{ asset('img/logo.png') }}" alt="">
-            <p class="mt-3 mb-3 text-white title" style="font-size: 40px; line-height: 40px; font-family: 'Sharp Grotesk'"><span style="font-weight: 100 !important">¡Tu alquiler está a un clic de</span> <br> <span style="font-weight: 500 !important">distancia!</span></p>
+            <h1 class="mt-3 mb-3 text-white title" style="font-size: 40px; line-height: 40px; font-family: 'Sharp Grotesk'">
+                <span style="font-weight: 100 !important">¡Tu alquiler está a un clic de</span><br>
+                <span style="font-weight: 500 !important">distancia!</span>
+            </h1>
             <div class="d-flex justify-content-center mb-3">
                 <button class="btn btn-light rounded-0 px-5 btn-lg" style="border-radius: 15px 0px 0px 15px !important; font-weight: 300; font-family: 'Sharp Grotesk'">Alquilar</button>
                 <a href="{{ route('show.upload.page') }}" class="btn btn-outline-light btn-lg rounded-0" style="border-radius: 0px 15px 15px 0px !important;; font-family: 'Sharp Grotesk'">Publica Propiedad</a>
