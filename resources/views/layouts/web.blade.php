@@ -20,18 +20,17 @@
     </style>
     <script src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.site_key') }}"></script>
 
-    {{-- @if(!Request::is('http://localhost*'))
-        
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B53KCMR7P6"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+    @if(request()->getHost() === "housingrentgroup.com")
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-B53KCMR7P6"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
 
-        gtag('config', 'G-B53KCMR7P6');
-    </script>
-    @endif --}}
+            gtag('config', 'G-B53KCMR7P6');
+        </script>
+    @endif
 
     @yield('css')
 </head>
