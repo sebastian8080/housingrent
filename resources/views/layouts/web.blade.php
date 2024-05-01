@@ -21,32 +21,6 @@
     <script src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.site_key') }}"></script>
 
     @if(request()->getHost() === "housingrentgroup.com")
-
-        <script>
-            function cargarScript(url, callback) {
-                let script = document.createElement("script");
-                script.type = "text/javascript";
-                if (script.readyState) {  // IE
-                    script.onreadystatechange = function() {
-                        if (script.readyState === "loaded" || script.readyState === "complete") {
-                            script.onreadystatechange = null;
-                            callback();
-                        }
-                    };
-                } else {  // Otros navegadores
-                    script.onload = function() {
-                        callback();
-                    };
-                }
-                script.src = url;
-                document.getElementsByTagName("head")[0].appendChild(script);
-            }
-            
-            cargarScript("https://www.googletagmanager.com/gtag/js?id=G-B53KCMR7P6", function() {
-                console.log("script analytics cargado.");
-            });
-        </script>
-
         <!-- Google tag (gtag.js) -->
         {{-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-B53KCMR7P6"></script> --}}
         <script defer>
@@ -170,6 +144,19 @@
         </section>
     </footer>
     @yield('js')
+
+    @if(request()->getHost() === "housingrentgroup.com")
+        <script>
+            const loadScriptAnalytics = () => {
+                let script = document.createElement('script');
+                script.src = 'https://www.googletagmanager.com/gtag/js?id=G-B53KCMR7P6';
+                document.head.appendChild(script);
+            }
+            document.addEventListener('DOMContentLoaded', function() {
+                loadScriptAnalytics();
+            }); 
+        </script>
+    @endif
 
     <script>
         window.addEventListener('scroll', function() {
