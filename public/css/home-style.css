@@ -3,7 +3,7 @@ html, body{
     overflow-x: clip !important;
 }
 .banner{
-    background-image: url("../img/home-banner.jpg");
+    background-image: url("../img/home-banner.webp");
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
