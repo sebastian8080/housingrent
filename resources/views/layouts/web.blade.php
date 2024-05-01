@@ -39,11 +39,13 @@
         <!-- Google tag (gtag.js) -->
         {{-- <script defer src="https://www.googletagmanager.com/gtag/js?id=G-B53KCMR7P6"></script> --}}
         <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-B53KCMR7P6');
+            setTimeout(() => {
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+    
+                gtag('config', 'G-B53KCMR7P6');
+            }, 3000);
         </script>
     @endif
 
