@@ -20,6 +20,11 @@
     </style>
     <script src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.site_key') }}"></script>
 
+    @if(App::environment('local'))
+        <p>Estás en localhost</p>
+    @else
+        <p>Estás en el servidor</p>
+    @endif
 
     @yield('css')
 </head>
