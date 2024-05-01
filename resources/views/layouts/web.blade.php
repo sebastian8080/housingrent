@@ -22,7 +22,7 @@
     
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script defer src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -33,12 +33,12 @@
             overflow-x: clip !important;
         }
     </style>
-    <script src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.site_key') }}"></script>
+    <script defer src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.site_key') }}"></script>
 
     @if(request()->getHost() === "housingrentgroup.com")
         <!-- Google tag (gtag.js) -->
-        {{-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-B53KCMR7P6"></script> --}}
-        <script defer>
+        <script defer src="https://www.googletagmanager.com/gtag/js?id=G-B53KCMR7P6"></script>
+        <script>
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
@@ -159,19 +159,6 @@
         </section>
     </footer>
     @yield('js')
-
-    @if(request()->getHost() === "housingrentgroup.com")
-        <script>
-            const loadScriptAnalytics = () => {
-                let script = document.createElement('script');
-                script.src = 'https://www.googletagmanager.com/gtag/js?id=G-B53KCMR7P6';
-                document.head.appendChild(script);
-            }
-            document.addEventListener('DOMContentLoaded', function() {
-                loadScriptAnalytics();
-            }); 
-        </script>
-    @endif
 
     <script>
         window.addEventListener('scroll', function() {
