@@ -75,7 +75,7 @@
         <article class="col-sm-3 w-auto mb-3">
             <a href="{{ route('web.redirect.search', 'departamentos') }}" style="text-decoration: none">
                 <div class="card">
-                    <div class="rounded-top bgimages" style="width: 250px; height: 300px; background-position: center; background-repeat: no-repeat; background-size: cover;}}')" data-src="{{ asset('img/departamentos.jpg') }}"></div>
+                    <div class="rounded-top bgimages" style="width: 250px; height: 300px; background-position: center; background-repeat: no-repeat; background-size: cover;}}')" data-src="{{ asset('img/departamentos.webp') }}"></div>
                     <div class="d-flex align-items-center justify-content-center pt-2 footer-card">
                         <p style="font-family: 'Sharp Grotesk'">Departamentos</p>
                     </div>
@@ -85,7 +85,7 @@
         <article class="col-sm-3 w-auto mb-3">
             <a href="{{ route('web.redirect.search', 'casas') }}" style="text-decoration: none">
                 <div class="card">
-                    <div class="rounded-top bgimages" style="width: 250px; height: 300px; background-position: center; background-repeat: no-repeat; background-size: cover;" data-src="{{ asset('img/casas.jpg') }}"></div>
+                    <div class="rounded-top bgimages" style="width: 250px; height: 300px; background-position: center; background-repeat: no-repeat; background-size: cover;" data-src="{{ asset('img/casas.webp') }}"></div>
                     <div class="d-flex align-items-center justify-content-center pt-2 footer-card">
                         <p style="font-family: 'Sharp Grotesk'">Casas</p>
                     </div>
@@ -95,7 +95,7 @@
         <article class="col-sm-3 w-auto mb-3">
             <a href="{{ route('web.redirect.search', 'locales-comerciales') }}" style="text-decoration: none">
                 <div class="card">
-                    <div class="rounded-top bgimages" style="width: 250px; height: 300px; background-position: center; background-repeat: no-repeat; background-size: cover;" data-src="{{ asset('img/locales_comerciales.jpg') }}"></div>
+                    <div class="rounded-top bgimages" style="width: 250px; height: 300px; background-position: left center; background-repeat: no-repeat; background-size: cover;" data-src="{{ asset('img/locales-comerciales.webp') }}"></div>
                     <div class="d-flex align-items-center justify-content-center pt-2 footer-card">
                         <p style="font-family: 'Sharp Grotesk'">Locales Comerciales</p>
                     </div>
@@ -105,7 +105,7 @@
         <article class="col-sm-3 w-auto mb-3">
             <a href="{{ route('web.redirect.search', 'oficinas') }}" style="text-decoration: none">
                 <div class="card">
-                    <div class="rounded-top bgimages" style="width: 250px; height: 300px; background-position: center; background-repeat: no-repeat; background-size: cover;" data-src="{{ asset('img/oficinas.jpg') }}"></div>
+                    <div class="rounded-top bgimages" style="width: 250px; height: 300px; background-position: center; background-repeat: no-repeat; background-size: cover;" data-src="{{ asset('img/oficinas.webp') }}"></div>
                     <div class="d-flex align-items-center justify-content-center pt-2 footer-card">
                         <p style="font-family: 'Sharp Grotesk'">Oficinas</p>
                     </div>
