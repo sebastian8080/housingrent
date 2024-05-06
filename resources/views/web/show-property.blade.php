@@ -198,20 +198,20 @@
                                 @csrf
 
                                 <div class="form-group">
-                                    <input type="text" name="name" placeholder="Nombre" class="w-100" style="border: none; border-bottom: 1px solid #242B40">
-                                    <input type="text" name="lastname" placeholder="Apellido" class="w-100 mt-4" style="border: none; border-bottom: 1px solid #242B40">
+                                    <input type="text" name="name" placeholder="Nombre" class="w-100" style="border: none; border-bottom: 1px solid #242B40" required>
+                                    <input type="text" name="lastname" placeholder="Apellido" class="w-100 mt-4" style="border: none; border-bottom: 1px solid #242B40" required>
                                 </div>
     
                                 <div class="form-group mt-4 w-100">
-                                    <input type="number" name="phone" placeholder="Teléfono" class="w-100" style="border: none; border-bottom: 1px solid #242B40">
+                                    <input type="number" name="phone" placeholder="Teléfono" class="w-100" style="border: none; border-bottom: 1px solid #242B40" required>
                                 </div>
 
                                 <div class="form-group mt-4 w-100">
-                                    <input type="email" name="email" placeholder="Correo electrónico" class="w-100" style="border: none; border-bottom: 1px solid #242B40">
+                                    <input type="email" name="email" placeholder="Correo electrónico" class="w-100" style="border: none; border-bottom: 1px solid #242B40" required>
                                 </div>
 
                                 <div class="form-group mt-4 w-100">
-                                    <textarea name="message" rows="3" placeholder="Mensaje" class="w-100" style="border: none; border-bottom: 1px solid #242B40"></textarea>
+                                    <textarea name="message" rows="3" placeholder="Mensaje" class="w-100" style="border: none; border-bottom: 1px solid #242B40" required></textarea>
                                 </div>
 
                                 <input type="hidden" name="interest" value="{{ $listing->product_code }}">
