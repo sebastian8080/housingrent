@@ -145,9 +145,9 @@
                                 Ubicación
                             </button>
                             <div class="dropdown-menu p-2" aria-labelledby="locationInput">
-                                <input type="text" id="sector" class="form-control" placeholder="Sector">
+                                <input type="text" id="sector" class="form-control mb-2" placeholder="Sector">
                                 <input type="text" id="city" class="form-control mb-2" placeholder="Ciudad">
-                                <input type="text" id="state" class="form-control mb-2" placeholder="Estado">
+                                <input type="text" id="state" class="form-control" placeholder="Estado">
                             </div>
                         </div>
                         <div class="col-auto dropdown">
@@ -444,6 +444,7 @@
                     } else {
                         html =
                             '<section class="row"><p class="text-center fw-bold">No hemos encontrado propiedades</p></section>';
+                            updateDynamicTitle(response.data.pagination.total, searchParams, isModal);
                     }
                     document.getElementById('propertiesList').innerHTML = html;
                     updatePagination(response.data.pagination);
