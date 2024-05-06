@@ -97,7 +97,7 @@
                         </a>
                     </div>
                     <div>
-                        <a class="text-white text-decoration-none" href="">
+                        <a class="text-white text-decoration-none" href="/propiedades-en-renta">
                             PROPIEDADES
                         </a>
                     </div>
