@@ -147,7 +147,7 @@
                             <div class="dropdown-menu p-2" aria-labelledby="locationInput">
                                 <input type="text" id="sector" class="form-control mb-2" placeholder="Sector">
                                 <input type="text" id="city" class="form-control mb-2" placeholder="Ciudad">
-                                <input type="text" id="state" class="form-control" placeholder="Estado">
+                                <input type="text" id="state" class="form-control" placeholder="Provincia">
                             </div>
                         </div>
                         <div class="col-auto dropdown">
@@ -228,8 +228,7 @@
                                 <div class="dropdown-menu p-2" aria-labelledby="locationInputModal">
                                     <input type="text" id="sectorModal" class="form-control" placeholder="Sector">
                                     <input type="text" id="cityModal" class="form-control mb-2" placeholder="Ciudad">
-                                    <input type="text" id="stateModal" class="form-control mb-2"
-                                        placeholder="Estado">
+                                    <input type="text" id="stateModal" class="form-control mb-2" placeholder="Provincia">
                                 </div>
                             </div>
                             <div class="col-auto dropdown">
