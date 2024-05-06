@@ -215,7 +215,8 @@ class PropertyController extends Controller
                 'listings.slug',
                 'listings.available',
                 'listings.status',
-                'listing_types.type_title as type_name'
+                'listing_types.type_title as type_name',
+                'listings.aliquot'
             )
             ->where('listings.available', 1)
             ->where('listings.status', 1)

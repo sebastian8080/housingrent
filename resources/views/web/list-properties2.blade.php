@@ -228,7 +228,8 @@
                                 <div class="dropdown-menu p-2" aria-labelledby="locationInputModal">
                                     <input type="text" id="sectorModal" class="form-control" placeholder="Sector">
                                     <input type="text" id="cityModal" class="form-control mb-2" placeholder="Ciudad">
-                                    <input type="text" id="stateModal" class="form-control mb-2" placeholder="Provincia">
+                                    <input type="text" id="stateModal" class="form-control mb-2"
+                                        placeholder="Provincia">
                                 </div>
                             </div>
                             <div class="col-auto dropdown">
@@ -297,6 +298,7 @@
             const initialCity = '{{ $city ?? '' }}';
             const initialParish = '{{ $parish ?? '' }}';
             const initialTypeIds = JSON.parse('{{ json_encode($typeId) }}' || '[]');
+            console.log(initialTypeIds);
             const searchTerm = new URLSearchParams(window.location.search).get('searchTerm') || '';
 
             // Configuración inicial para el formulario de desktop
@@ -353,7 +355,7 @@
             typeIdsArrayModal = JSON.parse(typeIds);
         });
         window.searchProperties = function(page = 1, isModal = false) {
-
+            console.log(isModal);
             page = parseInt(page);
             var currentTypeIds = isModal ? typeIdsArrayModal : typeIdsArray;
             var selectElement = isModal ? document.getElementById('propertyTypeModal') : document.getElementById(
@@ -430,6 +432,8 @@
                 path: urlSlug
             }, '', urlSlug);
 
+            console.log("Current Type IDs:", currentTypeIds);
+            console.log("Query String:", queryString);
             axios.get('/propertys/list?' + queryString)
                 .then(function(response) {
                     const properties = response.data.properties;
@@ -443,10 +447,10 @@
                     } else {
                         html =
                             '<section class="row"><p class="text-center fw-bold">No hemos encontrado propiedades</p></section>';
-                            updateDynamicTitle(response.data.pagination.total, searchParams, isModal);
+                        updateDynamicTitle(response.data.pagination.total, searchParams, isModal);
                     }
                     document.getElementById('propertiesList').innerHTML = html;
-                    updatePagination(response.data.pagination);
+                    updatePagination(response.data.pagination, isModal);
                 })
                 .catch(function(error) {
                     console.error('Error en la búsqueda:', error.response ? error.response.data :
@@ -497,34 +501,46 @@
             return '{{ asset('img/casas.jpg') }}'; // Asegúrate de que esta ruta por defecto es válida y accesible
         }
 
-        function updatePagination(pagination) {
-            let paginationHtml = '<nav aria-label="Page navigation example"><ul class="pagination">';
+        function updatePagination(pagination, isModal) {
+            let paginationHtml =
+                '<nav aria-label="Page navigation" class="pagination-nav"><ul class="pagination justify-content-center">';
+            // Botón anterior con icono
             if (pagination.prev_page_url) {
                 paginationHtml +=
-                    `<li class="page-item"><button class="page-link" onclick="searchProperties(${pagination.current_page - 1})">&laquo; Previous</button></li>`;
+                    `<li class="page-item"><button class="page-link" style="border: 1px solid #242B40; border-radius: 50%; color: #242B40; width: 36px; height: 36px; padding: 0 12px; display: flex; align-items: center; justify-content: center;" onclick="searchProperties(${pagination.current_page - 1}, ${isModal})"><i class="fas fa-angle-left"></i></button></li>`;
             } else {
-                paginationHtml += '<li class="page-item disabled"><span class="page-link">&laquo; Previous</span></li>';
-            }
-
-            for (let i = 1; i <= pagination.last_page; i++) {
-                const activeClass = pagination.current_page === i ? 'active' : '';
-                const circleStyle = pagination.current_page === i ? 'border-radius: 50%;' :
-                    ''; // Estilo de círculo para el botón activo
                 paginationHtml +=
-                    `<li class="page-item ${activeClass}"><button class="page-link rounded-circle" style="${circleStyle}" onclick="searchProperties(${i})">${i}</button></li>`;
+                    '<li class="page-item disabled"><span class="page-link" style="border: 1px solid #242B40; border-radius: 50%; color: #242B40; width: 36px; height: 36px; padding: 0 12px; display: flex; align-items: center; justify-content: center;"><i class="fas fa-angle-left"></i></span></li>';
             }
 
+            // Calcular rangos de páginas para paginación deslizante
+            let startPage = Math.max(1, pagination.current_page - 2);
+            let endPage = Math.min(pagination.current_page + 2, pagination.last_page);
+            for (let i = startPage; i <= endPage; i++) {
+                const activeClass = pagination.current_page === i ? 'active' : '';
+                const activeStyle = activeClass ?
+                    'background-color: #242B40; color: white; border: 1px solid #242B40; border-radius: 50%; width: 36px; height: 36px; padding: 0 12px; display: flex; align-items: center; justify-content: center;' :
+                    'border: 1px solid #242B40; color: #242B40; border-radius: 50%; width: 36px; height: 36px; padding: 0 12px; display: flex; align-items: center; justify-content: center;';
+                paginationHtml +=
+                    `<li class="page-item ${activeClass}"><button class="page-link" style="${activeStyle}" onclick="searchProperties(${i}, ${isModal})">${i}</button></li>`;
+            }
+
+            // Botón siguiente con icono
             if (pagination.next_page_url) {
                 paginationHtml +=
-                    `<li class="page-item"><button class="page-link" onclick="searchProperties(${pagination.current_page + 1})">Next &raquo;</button></li>`;
+                    `<li class="page-item"><button class="page-link" style="border: 1px solid #242B40; border-radius: 50%; color: #242B40; width: 36px; height: 36px; padding: 0 12px; display: flex; align-items: center; justify-content: center;" onclick="searchProperties(${pagination.current_page + 1}, ${isModal})"><i class="fas fa-angle-right"></i></button></li>`;
             } else {
-                paginationHtml += '<li class="page-item disabled"><span class="page-link">Next &raquo;</span></li>';
+                paginationHtml +=
+                    '<li class="page-item disabled"><span class="page-link" style="border: 1px solid #242B40; border-radius: 50%; color: #242B40; width: 36px; height: 36px; padding: 0 12px; display: flex; align-items: center; justify-content: center;"><i class="fas fa-angle-right"></i></span></li>';
             }
             paginationHtml += '</ul></nav>';
             document.getElementById('pagination').innerHTML = paginationHtml;
         }
 
+
         function buildPropertyHTML(property, imageUrl) {
+            let aliquotInfo = property.aliquot > 0 ?
+                `<p class="card-text"><strong>Alícuota:</strong> $${property.aliquot}</p>` : '';
             return `<article class="col-12 my-1" style="padding-left: 0px !important; padding-right: 0px !important;">
         <div class="card mb-3 rounded-0">
             <div class="row g-0 d-flex">
@@ -541,28 +557,29 @@
                         <a href="/propiedades/${property.slug}" class="text-dark" style="text-decoration: none;">
                             <h2 class="card-title" style="font-size: 1.4rem; padding-right: 60px;">${property.listing_title}</h2>
                         </a>
-                        <h3 class="h5 text-muted"> <span style="font-weight: 600">Sector:</span> ${property.sector} , ${property.city} , ${property.state} </h3>
+                        <h3 class="h5 text-muted">${property.sector ? `<span style="font-weight: 600">Sector:</span> ${property.sector},` : ''} ${property.city}, ${property.state}</h3>
                         <p class="card-text" style="font-size: 23px;">${property.property_price}</p>
+                        ${aliquotInfo}
                         <h4 class="h6 text-muted">${property.listing_description.substring(0, 150)}</h4>
                         <hr>
                         <div class="row align-items-center">
                             <div class="col-sm-8 d-flex justify-content-around">
                                 ${property.bedroom > 0 ? `<div class="d-flex align-items-center justify-content-center w-100 border-end characteristics">
-                                                                                                                                                                                            <img width="50px" height="50px" src="{{ asset('img/dormitorios.png') }}" alt="">
-                                                                                                                                                                                            <p class="pt-3" style="font-weight: 600; font-size: 15px">${property.bedroom} Hab.</p>
-                                                                                                                                                                                        </div>` : ''}
+                                                                                                                                                                                                                        <img width="50px" height="50px" src="{{ asset('img/dormitorios.png') }}" alt="">
+                                                                                                                                                                                                                        <p class="pt-3" style="font-weight: 600; font-size: 15px">${property.bedroom} Hab.</p>
+                                                                                                                                                                                                                    </div>` : ''}
                                 ${property.bathroom > 0 ? `<div class="d-flex align-items-center justify-content-center w-100 border-end characteristics">
-                                                                                                                                                                                            <img width="50px" height="50px" src="{{ asset('img/banio.png') }}" alt="">
-                                                                                                                                                                                            <p class="pt-3" style="font-weight: 600; font-size: 15px">${property.bathroom} ${property.bathroom > 1 ? 'Baños' : 'Baño'}</p>
-                                                                                                                                                                                        </div>` : ''}
+                                                                                                                                                                                                                        <img width="50px" height="50px" src="{{ asset('img/banio.png') }}" alt="">
+                                                                                                                                                                                                                        <p class="pt-3" style="font-weight: 600; font-size: 15px">${property.bathroom} ${property.bathroom > 1 ? 'Baños' : 'Baño'}</p>
+                                                                                                                                                                                                                    </div>` : ''}
                                 ${property.garage > 0 ? `<div class="d-flex align-items-center justify-content-center w-100 border-end characteristics">
-                                                                                                                                                                                            <img width="50px" height="50px" src="{{ asset('img/estacionamiento.png') }}" alt="">
-                                                                                                                                                                                            <p class="pt-3" style="font-weight: 600; font-size: 15px">${property.garage} ${property.garage > 1 ? 'Garajes' : 'Garaje'}</p>
-                                                                                                                                                                                        </div>` : ''}
+                                                                                                                                                                                                                        <img width="50px" height="50px" src="{{ asset('img/estacionamiento.png') }}" alt="">
+                                                                                                                                                                                                                        <p class="pt-3" style="font-weight: 600; font-size: 15px">${property.garage} ${property.garage > 1 ? 'Garajes' : 'Garaje'}</p>
+                                                                                                                                                                                                                    </div>` : ''}
                                 ${property.construction_area > 0 ? `<div class="d-flex align-items-center justify-content-center w-100 characteristics">
-                                                                                                                                                                                            <img width="50px" height="50px" src="{{ asset('img/area.png') }}" alt="">
-                                                                                                                                                                                            <p class="pt-3" style="font-weight: 600; font-size: 15px">${property.construction_area} m<sup>2</sup> </p>
-                                                                                                                                                                                        </div>` : ''}
+                                                                                                                                                                                                                        <img width="50px" height="50px" src="{{ asset('img/area.png') }}" alt="">
+                                                                                                                                                                                                                        <p class="pt-3" style="font-weight: 600; font-size: 15px">${property.construction_area} m<sup>2</sup> </p>
+                                                                                                                                                                                                                    </div>` : ''}
                             </div>
                             <div class="col-sm-4 d-flex gap-3">
                                 <div class="w-100 d-flex align-items-center" style="height: 35px">
