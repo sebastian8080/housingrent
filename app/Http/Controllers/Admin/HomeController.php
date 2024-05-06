@@ -29,7 +29,7 @@ class HomeController extends Controller
         $validTypes = ["Casa", "Casa Adosada", "Departamento o Piso", "Solo Habitación", "Casa Comercial", "Local Comercial", "Oficina", "Suite", "Quintas"];
     
         // Obtener las propiedades del usuario actual y cargar multimedia
-        $properties = Domain::where('user_id', $userId)->with('multimedia')->paginate(2);
+        $properties = Domain::where('user_id', $userId)->with('multimedia')->paginate(10);
     
         foreach ($properties as $property) {
             // Convertir el type_property a un número entero

@@ -20,13 +20,8 @@
     <meta property="og:type" content="@yield('og-type', 'website')">
     <meta property="og:site_name" content="@yield('og-site-name', 'Housing Rent Group - Ecuador')">
     
-
-    <!-- Scripts -->
-    <script defer src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
     <style>
         body, html{
             max-width: 100% !important;
@@ -102,7 +97,7 @@
                         </a>
                     </div>
                     <div>
-                        <a class="text-white text-decoration-none" href="{{ route('get.all.properties') }}">
+                        <a class="text-white text-decoration-none" href="">
                             PROPIEDADES
                         </a>
                     </div>
@@ -160,6 +155,10 @@
             </div>
         </section>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    
     @yield('js')
 
     <script>
