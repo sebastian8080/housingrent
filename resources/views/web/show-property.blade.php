@@ -184,9 +184,11 @@
 
                 <div class="px-5 sticky-top form" style="top: 0px">
                     <div class="d-flex justify-content-center text-white py-3 shadow" style="background-color: #242B40; border-radius: 25px 25px 0px 0px">
-                        <div class="d-flex justify-content-between gap-4">
-                            <span style="font-size: xx-large" class="pe-4 fw-bold">Precio: ${{ $listing->property_price }}</span>
-                            
+                        <div class="d-flex flex-column align-items-center w-100">
+                            <span style="font-size: xx-large" class="fw-bold">Precio: ${{ $listing->property_price }}</span>
+                            @if($listing->aliquot && $listing->aliquot > 0)
+                                <span style="font-size: 25px">Alícuota: ${{ $listing->aliquot }}</span>
+                            @endif
                         </div>
                     </div>
                     <div class="bg-white pt-4 pb-5 shadow px-5" style="border-radius: 0px 0px 25px 25px">
