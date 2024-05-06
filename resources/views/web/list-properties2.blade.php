@@ -558,7 +558,7 @@
                             <h2 class="card-title" style="font-size: 1.4rem; padding-right: 60px;">${property.listing_title}</h2>
                         </a>
                         <h3 class="h5 text-muted">${property.sector ? `<span style="font-weight: 600">Sector:</span> ${property.sector},` : ''} ${property.city}, ${property.state}</h3>
-                        <p class="card-text" style="font-size: 23px;">${property.property_price}</p>
+                        <p class="card-text" style="font-size: 23px;">$${property.property_price}</p>
                         ${aliquotInfo}
                         <h4 class="h6 text-muted">${property.listing_description.substring(0, 150)}</h4>
                         <hr>
