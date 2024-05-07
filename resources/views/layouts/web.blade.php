@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
-    <link rel="icon" href="{{asset('favicon3.png')}}" type="image/x-icon" />
+    <link rel="icon" href="{{ asset('favicon3.png') }}" type="image/x-icon" />
     <!-- Meta Descriptions -->
     <meta name="description" content="@yield('meta-description', 'Alquiler, compra y venta de propiedades en Ecuador: casas, apartamentos, terrenos y otros bienes raíces. ¡La propiedad de tus sueños está en Housing Rent Group!')">
     <meta name="keywords" content="@yield('meta-keywords', 'alquiler, arriendo, renta, propiedades, bienes raíces, inmuebles, casas, departamentos, apartamentos, condominios, villas, suites, habitaciones, locales comerciales, oficinas, terrenos, espacios comerciales, residenciales, urbanizaciones, barrios, áreas comerciales, zonas residenciales, áreas industriales, sector inmobiliario, mercado inmobiliario, agencias inmobiliarias')">
@@ -19,27 +20,34 @@
     <meta property="og:url" content="@yield('og-url', 'https://housingrentgroup.com')">
     <meta property="og:type" content="@yield('og-type', 'website')">
     <meta property="og:site_name" content="@yield('og-site-name', 'Housing Rent Group - Ecuador')">
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body, html{
+        body,
+        html {
             max-width: 100% !important;
             overflow-x: clip !important;
+            background: url('{{ asset('img/fondo-dashboard.jpg') }}') no-repeat center center fixed;
+            background-size: cover;
         }
     </style>
     <script defer src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.site_key') }}"></script>
 
-    @if(request()->getHost() === "housingrentgroup.com")
+    @if (request()->getHost() === 'housingrentgroup.com')
         <!-- Google tag (gtag.js) -->
         {{-- <script defer src="https://www.googletagmanager.com/gtag/js?id=G-B53KCMR7P6"></script> --}}
         <script>
             setTimeout(() => {
                 window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
+
+                function gtag() {
+                    dataLayer.push(arguments);
+                }
                 gtag('js', new Date());
-    
+
                 gtag('config', 'G-B53KCMR7P6');
             }, 3000);
         </script>
@@ -47,12 +55,15 @@
 
     @yield('css')
 </head>
+
 <body>
 
     <nav class="navbar navbar-expand-lg bg-white">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{{ route('web.home') }}"><img width="200px" class="img-fluid" src="{{ asset('img/logo-housing-rent.png') }}" alt=""></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="{{ route('web.home') }}"><img width="200px" class="img-fluid"
+                    src="{{ asset('img/logo-housing-rent.png') }}" alt=""></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="d-flex justify-content-end">
@@ -68,7 +79,8 @@
                             <a class="nav-link" href="{{ route('web.contact') }}">Contáctenos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white rounded-pill px-3" style="background-color: #242b40" href="{{ route('login') }}">Iniciar Sesion</a>
+                            <a class="nav-link text-white rounded-pill px-3" style="background-color: #242b40"
+                                href="{{ route('login') }}">Iniciar Sesion</a>
                         </li>
                     </ul>
                 </div>
@@ -78,7 +90,7 @@
 
 
     @yield('content')
-    
+
 
     <footer style="background-color: #242b40">
         <section class="container">
@@ -91,7 +103,7 @@
                         <a class="text-white text-decoration-none" href="{{ route('web.home') }}">
                             HOME
                         </a>
-                    </div>              
+                    </div>
                     <div>
                         <a class="text-white text-decoration-none" href="{{ route('web.contact') }}">
                             CONTACTANOS
@@ -103,7 +115,7 @@
                         </a>
                     </div>
                 </div>
-                
+
                 <div class="col-sm-2 text-white">
                     <div>SERVICIOS</div>
                     <div>
@@ -115,14 +127,17 @@
                 <div class="col-sm-2 text-white">
                     <div>CONTACTOS</div>
                     <div>
-                        <p><a href="tel:+593987474637" class="asindeco" style="color: #ffffff !important; text-decoration: none"> 098-747-4637</a>
+                        <p><a href="tel:+593987474637" class="asindeco"
+                                style="color: #ffffff !important; text-decoration: none"> 098-747-4637</a>
                         </p>
                     </div>
                     {{-- <div>
                         <p><a href="mailto:ventas@habitarenecuador.com" class="asindeco" style="color: #ffffff !important; text-decoration: none">ventas@habitarenecuador.com</a></p>
                     </div> --}}
                     <div>
-                        <p class="text-dark-50"><a target="_blank" style="color: #ffffff; text-decoration: none" href="https://maps.app.goo.gl/fxWb66XY8BrzVhaf8"> Remigio Tamariz Crespo y Av. Fray Vicente Solano</a></p> 
+                        <p class="text-dark-50"><a target="_blank" style="color: #ffffff; text-decoration: none"
+                                href="https://maps.app.goo.gl/fxWb66XY8BrzVhaf8"> Remigio Tamariz Crespo y Av. Fray
+                                Vicente Solano</a></p>
                     </div>
                 </div>
             </div>
@@ -134,7 +149,8 @@
                     <a href="https://www.instagram.com/_housingrent_" target="_blank">
                         <img width="60px" src="{{ asset('img/icon-instagram.png') }}" alt="">
                     </a>
-                    <a target="_blank" href="https://wa.me/+593987474637?text=Hola%2C%20Housing%20Rent%20estoy%20interesado%20en%20alquilar">
+                    <a target="_blank"
+                        href="https://wa.me/+593987474637?text=Hola%2C%20Housing%20Rent%20estoy%20interesado%20en%20alquilar">
                         <img width="60px" src="{{ asset('img/icon-whatsapp.png') }}" alt="">
                     </a>
                     <a href="https://www.tiktok.com/@housingrent" target="_blank">
@@ -149,21 +165,24 @@
             </div>
             <div>
                 <div>
-                    <a class="text-white text-decoration-none" href="{{ route('web.politicas') }}">Políticas de Privacidad</a>
+                    <a class="text-white text-decoration-none" href="{{ route('web.politicas') }}">Políticas de
+                        Privacidad</a>
                     <span class="text-white h5">|</span>
-                    <a class="text-white text-decoration-none" href="{{ route('web.terminos') }}">Términos y Condiciones</a>
+                    <a class="text-white text-decoration-none" href="{{ route('web.terminos') }}">Términos y
+                        Condiciones</a>
                 </div>
             </div>
         </section>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
+
     @yield('js')
 
     <script>
-
         setTimeout(() => {
             let script = document.createElement('script');
             script.src = "https://www.googletagmanager.com/gtag/js?id=G-B53KCMR7P6";
@@ -174,14 +193,14 @@
             loadImages();
         });
 
-        window.addEventListener('load', function(){
+        window.addEventListener('load', function() {
             loadImages();
         });
 
         const loadImages = () => {
             let images = document.querySelectorAll('img[loading="lazy"]');
             let BGImages = document.querySelectorAll('.bgimages');
-            
+
             images.forEach(function(image) {
                 if (elementInViewport(image)) {
                     image.setAttribute('src', image.getAttribute('data-src'));
@@ -193,7 +212,8 @@
                 if (elementInViewport(elemento)) {
                     var urlImagen = elemento.getAttribute('data-src');
                     elemento.style.backgroundImage = 'url(' + urlImagen + ')';
-                    elemento.classList.remove('bgimages'); // Elimina la clase para evitar cargar la imagen múltiples veces
+                    elemento.classList.remove(
+                    'bgimages'); // Elimina la clase para evitar cargar la imagen múltiples veces
                 }
             });
         }
@@ -209,4 +229,5 @@
         }
     </script>
 </body>
+
 </html>
