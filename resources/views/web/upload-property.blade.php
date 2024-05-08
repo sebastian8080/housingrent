@@ -1,5 +1,5 @@
 @extends('layouts.web')
-
+@section('published', 'active')
 @section('title', 'Publique su propiedad Para Rentas - Housing Rent group')
 
 @section('meta-description', 'Publique propiedades únicas en Ecuador para alquilar y rentar propiedades. Encuentra desde casas y departamentos hasta terrenos y diversos inmuebles. - Housing Rent Group')

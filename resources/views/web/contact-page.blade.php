@@ -1,9 +1,9 @@
 @extends('layouts.web')
 
 @section('title', 'Contactenos ahora')
-
+@section('contact', 'active')
 @section('css')
-    
+
 @endsection
 
 @section('content')
@@ -15,7 +15,8 @@
             <div class="col-sm-8 ps-5">
                 <div class="row">
                     <h1 class="display-4 fw-bold">Contáctanos</h1>
-                    <p>Estamos aquí para responder a sus preguntas, proporcionar asistencia <br> personalizada y escuchar sus comentarios</p>
+                    <p>Estamos aquí para responder a sus preguntas, proporcionar asistencia <br> personalizada y escuchar
+                        sus comentarios</p>
                 </div>
                 <div class="row">
                     <div class="col-sm-6 py-3">
@@ -23,28 +24,38 @@
                         <form id="demo-form" action="{{ route('web.send.lead') }}" method="POST">
                             @csrf
                             <div class="form-group mb-2">
-                                <input class="w-75 form-control form-control-sm border-0 rounded-0 border-bottom border-dark" type="text" placeholder="Nombre" name="name" required>
+                                <input
+                                    class="w-75 form-control form-control-sm border-0 rounded-0 border-bottom border-dark bg-transparent"
+                                    type="text" placeholder="Nombre" name="name" required>
                             </div>
                             <div class="form-group mb-2">
-                                <input class="w-75 form-control form-control-sm border-0 rounded-0 border-bottom border-dark" type="text" placeholder="Apellido" name="lastname" required>
+                                <input
+                                    class="w-75 form-control form-control-sm border-0 rounded-0 border-bottom border-dark bg-transparent"
+                                    type="text" placeholder="Apellido" name="lastname" required>
                             </div>
                             <div class="form-group mb-2">
-                                <input class="w-75 form-control form-control-sm border-0 rounded-0 border-bottom border-dark" type="text" placeholder="Email" name="email" required>
+                                <input
+                                    class="w-75 form-control form-control-sm border-0 rounded-0 border-bottom border-dark bg-transparent"
+                                    type="text" placeholder="Email" name="email" required>
                             </div>
                             <div class="form-group mb-2">
-                                <input class="w-75 form-control form-control-sm border-0 rounded-0 border-bottom border-dark" type="number" placeholder="Teléfono" name="phone" required>
+                                <input
+                                    class="w-75 form-control form-control-sm border-0 rounded-0 border-bottom border-dark bg-transparent"
+                                    type="number" placeholder="Teléfono" name="phone" required>
                             </div>
                             <div class="form-group mb-2">
-                                <textarea name="message" cols="30" rows="3" placeholder="Mensaje" class="w-75 form-control form-control-sm border-0 rounded-0 border-bottom border-dark" required></textarea>
+                                <textarea name="message" cols="30" rows="3" placeholder="Mensaje"
+                                    class="w-75 form-control form-control-sm border-0 rounded-0 border-bottom border-dark bg-transparent" required></textarea>
                             </div>
                             <div class="w-75 text-center mt-3">
-                                <button type="submit" class="btn text-white rounded-pill" style="background-color: #242B40">Enviar</button>
+                                <button type="submit" class="btn text-white rounded-pill"
+                                    style="background-color: #242B40">Enviar</button>
                             </div>
                             <div class="w-75 text-center mt-3">
                                 <input type="hidden" name="g-recaptcha-response" id="recaptchaToken">
-            
+
                                 @error('captcha')
-                                        <div class="text-danger">{{ $message }}</div>
+                                    <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                         </form>
@@ -52,48 +63,61 @@
                     <div class="col-sm-6 py-3">
                         <h2>Nuestros datos de contacto</h2>
                         <div class="d-flex justify-content-start gap-2 align-items-center w-100 mb-2">
-                            <div class="border border-dark rounded-circle d-flex justify-content-center align-items-center" style="width: 30px; height: 30px;">
+                            <div class="border border-dark rounded-circle d-flex justify-content-center align-items-center"
+                                style="width: 30px; height: 30px;">
                                 <img width="15px" src="{{ asset('img/phone-icon.png') }}" alt="">
                             </div>
                             <a style="text-decoration: none; color: #000000" href="tel:+593987474637">098-747-4637</a>
                         </div>
                         <div class="d-flex justify-content-start gap-2 align-items-center mb-2">
-                            <div class="border border-dark rounded-circle d-flex justify-content-center align-items-center" style="width: 30px; height: 30px;">
+                            <div class="border border-dark rounded-circle d-flex justify-content-center align-items-center"
+                                style="width: 30px; height: 30px;">
                                 <img width="15px" src="{{ asset('img/whatsapp-icon.png') }}" alt="">
                             </div>
-                            <a style="text-decoration: none; color: #000000" target="_blank" href="https://wa.me/+593987474637?text=Hola%2C%20Housing%20Rent%20estoy%20interesado%20en%20alquilar">098-747-4637</a>
+                            <a style="text-decoration: none; color: #000000" target="_blank"
+                                href="https://wa.me/+593987474637?text=Hola%2C%20Housing%20Rent%20estoy%20interesado%20en%20alquilar">098-747-4637</a>
                         </div>
                         <div class="d-flex justify-content-start gap-2 align-items-center mb-2">
-                            <div class="border border-dark rounded-circle d-flex justify-content-center align-items-center" style="width: 30px; height: 30px;">
+                            <div class="border border-dark rounded-circle d-flex justify-content-center align-items-center"
+                                style="width: 30px; height: 30px;">
                                 <img width="15px" src="{{ asset('img/email-icon.png') }}" alt="">
                             </div>
-                            <a style="text-decoration: none; color: #000000" href="mailto:info@housingrentgroup.com">info@housingrentgroup.com</a>
+                            <a style="text-decoration: none; color: #000000"
+                                href="mailto:info@housingrentgroup.com">info@housingrentgroup.com</a>
                         </div>
                         <div class="d-flex justify-content-start gap-2 align-items-center mb-2">
-                            <div class="border border-dark rounded-circle d-flex justify-content-center align-items-center" style="width: 30px; height: 30px;">
+                            <div class="border border-dark rounded-circle d-flex justify-content-center align-items-center"
+                                style="width: 30px; height: 30px;">
                                 <img width="15px" src="{{ asset('img/location-icon.png') }}" alt="">
                             </div>
-                            <a style="text-decoration: none; color: #000000" href="https://maps.app.goo.gl/g4G5hBDe9doEPJvx7">Remigio Tamariz Crespo y Av. Solano</a>
+                            <a style="text-decoration: none; color: #000000"
+                                href="https://maps.app.goo.gl/g4G5hBDe9doEPJvx7">Remigio Tamariz Crespo y Av. Solano</a>
                         </div>
                         <div class="d-flex justify-content-start gap-2 align-items-center mb-2">
-                            <div class="border border-dark rounded-circle d-flex justify-content-center align-items-center" style="width: 30px; height: 30px;">
+                            <div class="border border-dark rounded-circle d-flex justify-content-center align-items-center"
+                                style="width: 30px; height: 30px;">
                                 <img width="15px" src="{{ asset('img/facebook-icon.png') }}" alt="">
                             </div>
-                            <a style="text-decoration: none; color: #000000" target="_blank" href="https://www.facebook.com/profile.php?id=61553203397168">Housing Rent Group</a>
+                            <a style="text-decoration: none; color: #000000" target="_blank"
+                                href="https://www.facebook.com/profile.php?id=61553203397168">Housing Rent Group</a>
                         </div>
                         <div class="d-flex justify-content-start gap-2 align-items-center mb-2">
-                            <div class="border border-dark rounded-circle d-flex justify-content-center align-items-center" style="width: 30px; height: 30px;">
+                            <div class="border border-dark rounded-circle d-flex justify-content-center align-items-center"
+                                style="width: 30px; height: 30px;">
                                 <img width="15px" src="{{ asset('img/instagram-icon.png') }}" alt="">
                             </div>
-                            <a style="text-decoration: none; color: #000000" target="_blank" href="https://www.instagram.com/_housingrent_">housingrentgroup</a>
+                            <a style="text-decoration: none; color: #000000" target="_blank"
+                                href="https://www.instagram.com/_housingrent_">housingrentgroup</a>
                         </div>
                         <div class="d-flex justify-content-start gap-2 align-items-center mb-2">
-                            <div class="border border-dark rounded-circle d-flex justify-content-center align-items-center" style="width: 30px; height: 30px;">
+                            <div class="border border-dark rounded-circle d-flex justify-content-center align-items-center"
+                                style="width: 30px; height: 30px;">
                                 <img width="15px" src="{{ asset('img/tiktok-icon.png') }}" alt="">
                             </div>
-                            <a style="text-decoration: none; color: #000000" target="_blank" href="https://www.tiktok.com/@housingrent">housingrentgroup</a>
+                            <a style="text-decoration: none; color: #000000" target="_blank"
+                                href="https://www.tiktok.com/@housingrent">housingrentgroup</a>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -102,17 +126,19 @@
 @endsection
 
 @section('js')
-<script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-      document.getElementById('demo-form').addEventListener('submit', function(event) {
-        event.preventDefault();
-        grecaptcha.ready(function() {
-          grecaptcha.execute('{{ config('services.recaptcha.site_key') }}', {action: 'submit'}).then(function(token) {
-              document.getElementById('recaptchaToken').value = token;
-              event.target.submit();
-          });
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.getElementById('demo-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                grecaptcha.ready(function() {
+                    grecaptcha.execute('{{ config('services.recaptcha.site_key') }}', {
+                        action: 'submit'
+                    }).then(function(token) {
+                        document.getElementById('recaptchaToken').value = token;
+                        event.target.submit();
+                    });
+                });
+            });
         });
-      });
-    });
-  </script>
+    </script>
 @endsection

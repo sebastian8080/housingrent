@@ -2,6 +2,8 @@
 
 @section('title', 'Propiedades en Renta Cuenca - Housing Rent Group')
 
+@section('home' , 'active')
+
 @section('meta-description',
     'Explora propiedades únicas en Ecuador para alquilar y rentar. Encuentra desde casas y
     departamentos hasta terrenos y diversos inmuebles - Housing Rent Group')
@@ -91,7 +93,7 @@
     </section>
 
     <section class="container my-5">
-        <h2 class="text-center" style="font-family: 'Sharp Grotesk'; font-weight: 100">Explora nuestras propiedades</h2>
+        <h2 class="text-center" style="font-family: 'Sharp Grotesk'; font-weight: 300">Explora nuestras propiedades</h2>
         <section class="row mt-5 justify-content-center">
             <article class="col-sm-3 w-auto mb-3">
                 <a href="/departamentos-en-renta" style="text-decoration: none">
@@ -148,10 +150,10 @@
         </section>
     </section>
 
-    <section class="mt-5 pt-5 pb-5" style="background-color: #F2F2F2">
+    <section class="mt-5 pt-5 pb-5">
         <section class="container">
             <h2 class="text-center" style="font-family: 'Sharp Grotesk'; color: #242B40"><span
-                    style="font-weight: 100">¡Publica tu propiedad desde</span> <br> <span style="font-weight: 500">la
+                    style="font-weight: 300">¡Publica tu propiedad desde</span> <br> <span style="font-weight: 500">la
                     comodidad de tu hogar!</span></h2>
             <p class="text-center py-2" style="font-family: 'Sharp Grotesk'; font-weight: 400; color: #242B40">Puedes
                 subir tu propiedad a nuestra página web y comenzar a recibir consultas</p>

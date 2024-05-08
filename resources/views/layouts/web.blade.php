@@ -30,8 +30,53 @@
         html {
             max-width: 100% !important;
             overflow-x: clip !important;
-            background: url('{{ asset('img/fondo-dashboard.jpg') }}') no-repeat center center fixed;
+            background: url('{{ asset('img/fondo-dashboard.jpg') }}');
             background-size: cover;
+        }
+
+        .navbar {
+            background: transparent;
+            padding: 10px 0;
+            /* Ajuste del padding vertical para dar más espacio */
+        }
+
+        .navbar-light .navbar-nav .nav-link {
+            color: #242B40;
+            /* Blanco para todos los estados normales */
+            font-size: 18px;
+            /* Tamaño de letra más grande */
+            padding: 10px 15px;
+            /* Más padding para aumentar la separación */
+            border-bottom: 3px solid transparent;
+            /* Borde transparente por defecto */
+            transition: border-color 0.3s ease;
+            /* Transición suave del borde */
+        }
+
+        .navbar-light .navbar-nav .nav-link.active,
+        .navbar-light .navbar-nav .nav-link:hover {
+            border-bottom-color: #242B40;
+            color: #242b40;
+            /* Borde blanco al estar activo o en hover */
+        }
+
+        .navbar-light .navbar-nav .dropdown-menu {
+            min-width: 10rem;
+            /* Ancho mínimo para evitar desbordamiento */
+        }
+
+        .navbar-light .navbar-nav .dropdown-item {
+            color: #242B40;
+            /* Texto blanco para items del dropdown */
+            transition: background-color 0.3s;
+            /* Suavidad al cambiar de fondo */
+        }
+
+        .navbar-light .navbar-nav .dropdown-item:hover,
+        .navbar-light .navbar-nav .dropdown-item:focus {
+            background-color: #1d2233;
+            color: #ffffff;
+            /* Fondo más claro en hover/focus */
         }
     </style>
     <script defer src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.site_key') }}"></script>
@@ -58,35 +103,43 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg bg-white">
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{{ route('web.home') }}"><img width="200px" class="img-fluid"
-                    src="{{ asset('img/logo-housing-rent.png') }}" alt=""></a>
+            <a class="navbar-brand" href="{{ route('web.home') }}">
+                <img width="200px" class="img-fluid" src="{{ asset('img/logo-housing-rent.png') }}"
+                    alt="Logo Housing Rent">
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="d-flex justify-content-end">
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav d-flex gap-4">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{{ route('web.home') }}">Inicio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('show.upload.page') }}">Publicar Propiedades</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('web.contact') }}">Contáctenos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white rounded-pill px-3" style="background-color: #242b40"
-                                href="{{ route('login') }}">Iniciar Sesion</a>
-                        </li>
-                    </ul>
-                </div>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link @yield('home')" href="{{ route('web.home') }}">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @yield('published')" href="{{ route('show.upload.page') }}">Publicar
+                            Propiedades</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @yield('contact')" href="{{ route('web.contact') }}">Contáctenos</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="dropdown-toggle btn btn-primary" href="#" id="navbarDropdownMenuLink"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Ingresar
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="{{ route('login') }}">Iniciar Sesión</a></li>
+                            <li><a class="dropdown-item" href="{{ route('register') }}">Registrarse</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
+
 
 
     @yield('content')
@@ -213,7 +266,7 @@
                     var urlImagen = elemento.getAttribute('data-src');
                     elemento.style.backgroundImage = 'url(' + urlImagen + ')';
                     elemento.classList.remove(
-                    'bgimages'); // Elimina la clase para evitar cargar la imagen múltiples veces
+                        'bgimages'); // Elimina la clase para evitar cargar la imagen múltiples veces
                 }
             });
         }
