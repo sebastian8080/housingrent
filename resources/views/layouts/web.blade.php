@@ -113,6 +113,8 @@
         }
     </script>
     @yield('css')
+
+    @yield('header')
 </head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11250334200"></script>
