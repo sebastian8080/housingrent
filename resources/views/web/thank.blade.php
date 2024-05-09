@@ -5,7 +5,9 @@
 @section('css')
     
 @endsection
-
+@section('cs')
+<script> gtag('event', 'conversion', {'send_to': 'AW-11250334200/OQg9CNvisa4ZEPjzyfQp'}); </script>
+@endsection
 @section('content')
     <section class="container" style="width: 100vw; height: 90vh">
         <div class="d-flex align-items-center justify-content-center" style="width: 100%; height: 100%">
