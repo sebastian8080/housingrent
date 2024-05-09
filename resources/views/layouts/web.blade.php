@@ -24,6 +24,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/font-style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
@@ -38,46 +39,35 @@
         .navbar {
             background: transparent;
             padding: 10px 0;
-            /* Ajuste del padding vertical para dar más espacio */
         }
 
         .navbar-light .navbar-nav .nav-link {
             color: #242B40;
-            /* Blanco para todos los estados normales */
             font-size: 18px;
-            /* Tamaño de letra más grande */
             padding: 10px 15px;
-            /* Más padding para aumentar la separación */
             border-bottom: 3px solid transparent;
-            /* Borde transparente por defecto */
             transition: border-color 0.3s ease;
-            /* Transición suave del borde */
         }
 
         .navbar-light .navbar-nav .nav-link.active,
         .navbar-light .navbar-nav .nav-link:hover {
             border-bottom-color: #242B40;
             color: #242b40;
-            /* Borde blanco al estar activo o en hover */
         }
 
         .navbar-light .navbar-nav .dropdown-menu {
             min-width: 10rem;
-            /* Ancho mínimo para evitar desbordamiento */
         }
 
         .navbar-light .navbar-nav .dropdown-item {
             color: #242B40;
-            /* Texto blanco para items del dropdown */
             transition: background-color 0.3s;
-            /* Suavidad al cambiar de fondo */
         }
 
         .navbar-light .navbar-nav .dropdown-item:hover,
         .navbar-light .navbar-nav .dropdown-item:focus {
             background-color: #1d2233;
             color: #ffffff;
-            /* Fondo más claro en hover/focus */
         }
     </style>
     <script defer src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.site_key') }}"></script>

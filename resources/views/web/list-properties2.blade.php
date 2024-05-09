@@ -540,7 +540,7 @@
 
         function buildPropertyHTML(property, imageUrl) {
             let aliquotInfo = property.aliquot > 0 ?
-                `<p class="card-text"><strong>Alícuota:</strong> $${property.aliquot}</p>` : '';
+                `<p class="card-text" style="font-family: 'Sharp Grotesk', sans-serif;"><strong>Alícuota:</strong> $${property.aliquot}</p>` : '';
             return `<article class="col-12 my-1" style="padding-left: 0px !important; padding-right: 0px !important;">
         <div class="card mb-3 rounded-0">
             <div class="row g-0 d-flex">
@@ -550,17 +550,17 @@
                     </a>
                 </div>
                 <div class="col-md-8 px-5 py-3 padding-mobile-0 position-relative">
-                    <div class="position-absolute" style="top: 0px; right: 0px; background-color: #242B40; color: #ffffff; border-radius: 0px 0px 0px 25px !important;">
+                    <div class="position-absolute" style="font-family: 'Sharp Grotesk', sans-serif;top: 0px; right: 0px; background-color: #242B40; color: #ffffff; border-radius: 0px 0px 0px 25px !important;">
                         <p class="m-0 py-3 px-3 h5">Cod: ${property.product_code}</p>
                     </div>
                     <div class="card-body">
                         <a href="/propiedades/${property.slug}" class="text-dark" style="text-decoration: none;">
-                            <h2 class="card-title" style="font-size: 1.4rem; padding-right: 60px;">${property.listing_title}</h2>
+                            <h2 class="card-title" style="font-family: 'Sharp Grotesk', sans-serif; font-size: 1.4rem; padding-right: 60px; font-weight: 500;">${property.listing_title}</h2>
                         </a>
-                        <h3 class="h5 text-muted">${property.sector ? `<span style="font-weight: 600">Sector:</span> ${property.sector},` : ''} ${property.city}, ${property.state}</h3>
-                        <p class="card-text" style="font-size: 23px;">$${property.property_price}</p>
+                        <h3 class="h5 text-muted" style="font-family: 'Sharp Grotesk', sans-serif; font-weight: 300;">${property.sector ? `<span>Sector:</span> ${property.sector},` : ''} ${property.city}, ${property.state}</h3>
+                        <p class="card-text" style="font-size: 23px; font-family: 'Sharp Grotesk', sans-serif;">$${property.property_price}</p>
                         ${aliquotInfo}
-                        <h4 class="h6 text-muted">${property.listing_description.substring(0, 150)}</h4>
+                        <h4 class="h6" style="font-family: 'Sharp Grotesk', sans-serif; font-weight: 100;">${property.listing_description.substring(0, 150)}.....</h4>
                         <hr>
                         <div class="row align-items-center">
                             <div class="col-sm-8 d-flex justify-content-around">
