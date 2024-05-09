@@ -3,15 +3,36 @@
 @section('title', 'Contactenos ahora')
 @section('contact', 'active')
 @section('css')
+    <style>
+        .image-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
+        .mirror-image {
+            width: 50%;
+            /* Ajusta el ancho para cada imagen al 50% de la columna */
+            height: auto;
+            display: block;
+        }
+
+        .mirror-image.reflected {
+            transform: scaleX(-1);
+            /* Refleja la imagen horizontalmente */
+        }
+    </style>
 @endsection
 
 @section('content')
     <section class="pt-5">
         <section class="row">
-            <div class="col-sm-4">
-                <img class="img-fluid" src="{{ asset('img/contact-page.webp') }}" alt="">
-            </div>
+             <div class="col-sm-4 image-container">
+            <!-- Imagen original -->
+            <img src="{{ asset('img/contact-img2.png') }}" alt="Imagen Original" class="mirror-image">
+            <!-- Imagen reflejada -->
+            <img src="{{ asset('img/contact-img2.png') }}" alt="Imagen Reflejada" class="mirror-image reflected">
+        </div>
             <div class="col-sm-8 ps-5">
                 <div class="row">
                     <h1 class="display-4 fw-bold">Contáctanos</h1>
@@ -99,7 +120,7 @@
                                 <img width="15px" src="{{ asset('img/facebook-icon.png') }}" alt="">
                             </div>
                             <a style="text-decoration: none; color: #000000" target="_blank"
-                                href="https://www.facebook.com/profile.php?id=61553203397168">Housing Rent Group</a>
+                                href="https://www.facebook.com/profile.php?id=61558563860180">Housing Rent Group</a>
                         </div>
                         <div class="d-flex justify-content-start gap-2 align-items-center mb-2">
                             <div class="border border-dark rounded-circle d-flex justify-content-center align-items-center"
