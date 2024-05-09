@@ -98,7 +98,20 @@
             }, 3000);
         </script>
     @endif
-
+    <script>
+        function gtag_report_conversion(url) {
+            var callback = function() {
+                if (typeof(url) != 'undefined') {
+                    window.location = url;
+                }
+            };
+            gtag('event', 'conversion', {
+                'send_to': 'AW-11250334200/hHHyCNmbrq4ZEPjzyfQp',
+                'event_callback': callback
+            });
+            return false;
+        }
+    </script>
     @yield('css')
 </head>
 <!-- Google tag (gtag.js) -->
@@ -216,9 +229,11 @@
                         <img width="60px" src="{{ asset('img/icon-instagram.png') }}" alt="">
                     </a>
                     <a target="_blank"
-                        href="https://wa.me/+593987474637?text=Hola%2C%20Housing%20Rent%20estoy%20interesado%20en%20alquilar">
+                        href="https://wa.me/+593987474637?text=Hola%2C%20Housing%20Rent%20estoy%20interesado%20en%20alquilar"
+                        onclick="return gtag_report_conversion('https://wa.me/+593987474637?text=Hola%2C%20Housing%20Rent%20estoy%20interesado%20en%20alquilar');">
                         <img width="60px" src="{{ asset('img/icon-whatsapp.png') }}" alt="">
                     </a>
+
                     <a href="https://www.tiktok.com/@housingrent" target="_blank">
                         <img width="60px" src="{{ asset('img/icon-tiktok.png') }}" alt="">
                     </a>
