@@ -5,7 +5,7 @@
 @section('css')
     
 @endsection
-@section('cs')
+@section('header')
 <script> gtag('event', 'conversion', {'send_to': 'AW-11250334200/OQg9CNvisa4ZEPjzyfQp'}); </script>
 @endsection
 @section('content')
