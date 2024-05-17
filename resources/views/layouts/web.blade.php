@@ -221,8 +221,8 @@
                         <img width="60px" src="{{ asset('img/icon-instagram.png') }}" alt="">
                     </a>
                     <a target="_blank"
-                        href="https://wa.me/+593987474637?text=Hola%2C%20Housing%20Rent%20estoy%20interesado%20en%20alquilar"
-                        onclick="return gtag_report_conversion('https://wa.me/+593987474637?text=Hola%2C%20Housing%20Rent%20estoy%20interesado%20en%20alquilar');">
+                        href="https://api.whatsapp.com/send?phone=593983849073&text=Hola,%20estoy%20interesado%20en%20una%20propiedad%20en%renta"
+                        onclick="return gtag_report_conversion('https://api.whatsapp.com/send?phone=593983849073&text=Hola,%20estoy%20interesado%20en%20una%20propiedad%20en%renta');">
                         <img width="60px" src="{{ asset('img/icon-whatsapp.png') }}" alt="">
                     </a>
 
