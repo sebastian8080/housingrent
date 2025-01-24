@@ -583,15 +583,15 @@
                             </div>
                             <div class="col-sm-4 d-flex gap-3">
                                 <div class="w-100 d-flex align-items-center" style="height: 35px">
-                                    <a href="tel:+593983849073" class="btn rounded-pill w-100 ps-4 pe-4 d-flex align-items-center" style="font-size: smaller; border: 0.5px #242B40 solid; height: 25px">Llamar</a>
+                                    <a href="tel:+593964034035" class="btn rounded-pill w-100 ps-4 pe-4 d-flex align-items-center" style="font-size: smaller; border: 0.5px #242B40 solid; height: 25px">Llamar</a>
                                     <div style="margin-left: -23px; background-color: #242B40; width: 35px; height: 30px" class="rounded-circle d-flex align-items-center justify-content-center">
-                                        <a href="tel:+593983849073"><img width="15px" style="filter: invert(1);" src="{{ asset('img/phone-icon.png') }}" alt=""></a>
+                                        <a href="tel:+593964034035"><img width="15px" style="filter: invert(1);" src="{{ asset('img/phone-icon.png') }}" alt=""></a>
                                     </div>
                                 </div>
                                 <div class="w-100 d-flex align-items-center" style="height: 35px">
-                                    <a onclick="return gtag_report_conversion('https://wa.me/+593983849073?text=Hola%2C%20Housing%20Rent%20estoy%20interesado%20en%20alquilar%20esta%20propiedad:%20${property.product_code}');" class="btn rounded-pill w-100 ps-4 pe-4 d-flex align-items-center" style="font-size: smaller; border: 0.5px green solid; height: 25px; color: green">WhatsApp</a>
+                                    <a onclick="return gtag_report_conversion('https://wa.me/+593967867998?text=Hola%2C%20Housing%20Rent%20estoy%20interesado%20en%20alquilar%20esta%20propiedad:%20${property.product_code}');" class="btn rounded-pill w-100 ps-4 pe-4 d-flex align-items-center" style="font-size: smaller; border: 0.5px green solid; height: 25px; color: green">WhatsApp</a>
                                     <div style="margin-left: -23px; padding-top: 2px; background-color: green; width: 35px; height: 30px" class="rounded-circle d-flex justify-content-center">
-                                        <a href="https://wa.me/+593983849073?text=Hola%2C%20Housing%20Rent%20estoy%20interesado%20en%20alquilar%20esta%20propiedad:%20${property.product_code}"><img width="20px" style="filter: invert(1)" src="{{ asset('img/whatsapp-icon.png') }}" alt=""></a>
+                                        <a href="https://wa.me/+593967867998?text=Hola%2C%20Housing%20Rent%20estoy%20interesado%20en%20alquilar%20esta%20propiedad:%20${property.product_code}"><img width="20px" style="filter: invert(1)" src="{{ asset('img/whatsapp-icon.png') }}" alt=""></a>
                                     </div>
                                 </div>
                             </div>
