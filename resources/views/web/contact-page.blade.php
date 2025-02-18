@@ -112,7 +112,7 @@
                                 <img width="15px" src="{{ asset('img/location-icon.png') }}" alt="">
                             </div>
                             <a style="text-decoration: none; color: #000000"
-                                href="https://maps.app.goo.gl/g4G5hBDe9doEPJvx7">Remigio Tamariz Crespo y Av. Solano</a>
+                                href="https://maps.app.goo.gl/w1S3qxfWQ5LBob9a9">Juan Iñiguez 3-87 y Gonzalo Cordero</a>
                         </div>
                         <div class="d-flex justify-content-start gap-2 align-items-center mb-2">
                             <div class="border border-dark rounded-circle d-flex justify-content-center align-items-center"

@@ -270,11 +270,12 @@
                                     <div class="d-flex gap-3 ms-4 mt-2">
                                         <div class="rounded-circle d-flex justify-content-center align-items-center"
                                             style="border: 1px solid #242b40a2; width: 30px; height: 30px">
-                                            <img width="15px" src="{{ asset('img/location-icon.png') }}" alt="">
+                                            <img width="15px" src="{{ asset('img/location-icon.png') }}" alt="Icono de ubicacion ">
                                         </div>
                                         <a style="text-decoration: none" class="mt-1 text-dark"
-                                            href="https://maps.app.goo.gl/g4G5hBDe9doEPJvx7">Remigio Tamariz Crespo y Av.
-                                            Solano</a>
+                                            href="https://maps.app.goo.gl/w1S3qxfWQ5LBob9a9">
+                                            Juan Iñiguez 3-87 y Gonzalo Cordero
+                                        </a>
                                     </div>
 
                                     <div class="form-group mb-2">
