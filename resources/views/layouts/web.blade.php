@@ -198,8 +198,8 @@
                 <div class="col-sm-2 text-white">
                     <div>CONTACTOS</div>
                     <div>
-                        <p><a href="tel:+593964034035" class="asindeco"
-                                style="color: #ffffff !important; text-decoration: none"> 096-403-4035</a>
+                        <p><a href="tel:+593964034036" class="asindeco"
+                                style="color: #ffffff !important; text-decoration: none"> 096-403-4036</a>
                         </p>
                     </div>
                     {{-- <div>

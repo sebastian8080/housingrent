@@ -244,8 +244,8 @@
                                             style="border: 1px solid #242b40a2; width: 30px; height: 30px">
                                             <i class="fa-solid fa-phone"></i>
                                         </div>
-                                        <a style="text-decoration: none" href="tel:+593964034035"
-                                            class="mt-1 text-dark">096-403-4035</a>
+                                        <a style="text-decoration: none" href="tel:+593964034036"
+                                            class="mt-1 text-dark">096-403-4036</a>
                                     </div>
 
                                     <div class="d-flex gap-3 ms-4 mt-2">
