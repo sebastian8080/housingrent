@@ -172,7 +172,7 @@
                 <div class="col-sm-2 text-white">
                     <div>
                         <a class="text-white text-decoration-none" href="{{ route('web.home') }}">
-                            HOME
+                            INICIO
                         </a>
                     </div>
                     <div>
@@ -198,8 +198,15 @@
                 <div class="col-sm-2 text-white">
                     <div>CONTACTOS</div>
                     <div>
-                        <p><a href="tel:+593964034036" class="asindeco"
-                                style="color: #ffffff !important; text-decoration: none"> 096-403-4036</a>
+                        <p class="m-0">
+                            <a href="tel:+593964034036" class="asindeco" style="color: #ffffff !important; text-decoration: none"><i class="fa-solid fa-phone text-white"></i> 
+                                096-403-4036
+                            </a>
+                        </p>
+                        <p class="m-0">
+                            <a class="text-white" style="text-decoration: none" href="https://api.whatsapp.com/send?phone=593987595789&text=Hola,%20estoy%20interesado%20en%20una%20propiedad%20en%renta">
+                                <i class="fa-brands fa-whatsapp text-white"></i> 098-759-5789
+                            </a>
                         </p>
                     </div>
                     {{-- <div>
@@ -237,7 +244,7 @@
         </section>
         <section class="row text-center pb-5">
             <div>
-                <p class="text-white h5">&copy; 2024 Housing Rent Group. Todos los derechos reservados.</p>
+                <p class="text-white h5">&copy; 2025 Housing Rent Group. Todos los derechos reservados.</p>
             </div>
             <div>
                 <div>
