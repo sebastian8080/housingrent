@@ -88,7 +88,7 @@
                                 style="width: 30px; height: 30px;">
                                 <img width="15px" src="{{ asset('img/phone-icon.png') }}" alt="">
                             </div>
-                            <a style="text-decoration: none; color: #000000" href="tel:+593964034036">096-403-4036</a>
+                            <a style="text-decoration: none; color: #000000" href="tel:+593964034037">096-403-4037</a>
                         </div>
                         <div class="d-flex justify-content-start gap-2 align-items-center mb-2">
                             <div class="border border-dark rounded-circle d-flex justify-content-center align-items-center"
@@ -96,7 +96,7 @@
                                 <img width="15px" src="{{ asset('img/whatsapp-icon.png') }}" alt="">
                             </div>
                             <a style="text-decoration: none; color: #000000" target="_blank"
-                            onclick="return gtag_report_conversion('https://wa.me/+593967867998?text=Hola%2C%20Housing%20Rent%20estoy%20interesado%20en%20alquilar');" href="https://wa.me/+593987595789?text=Hola%2C%20Housing%20Rent%20estoy%20interesado%20en%20alquilar">098-759-5789</a>
+                            onclick="return gtag_report_conversion('https://wa.me/+593987595789?text=Hola%2C%20Housing%20Rent%20estoy%20interesado%20en%20alquilar');" href="https://wa.me/+593987595789?text=Hola%2C%20Housing%20Rent%20estoy%20interesado%20en%20alquilar">098-759-5789</a>
                         </div>
                         <div class="d-flex justify-content-start gap-2 align-items-center mb-2">
                             <div class="border border-dark rounded-circle d-flex justify-content-center align-items-center"

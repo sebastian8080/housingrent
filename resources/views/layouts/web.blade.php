@@ -199,8 +199,8 @@
                     <div>CONTACTOS</div>
                     <div>
                         <p class="m-0">
-                            <a href="tel:+593964034036" class="asindeco" style="color: #ffffff !important; text-decoration: none"><i class="fa-solid fa-phone text-white"></i> 
-                                096-403-4036
+                            <a href="tel:+593964034037" class="asindeco" style="color: #ffffff !important; text-decoration: none"><i class="fa-solid fa-phone text-white"></i> 
+                                096-403-4037
                             </a>
                         </p>
                         <p class="m-0">
@@ -231,8 +231,8 @@
                         <img width="60px" src="{{ asset('img/icon-instagram.png') }}" alt="">
                     </a>
                     <a target="_blank"
-                        href="https://api.whatsapp.com/send?phone=593967867998&text=Hola,%20estoy%20interesado%20en%20una%20propiedad%20en%renta"
-                        onclick="return gtag_report_conversion('https://api.whatsapp.com/send?phone=593967867998&text=Hola,%20estoy%20interesado%20en%20una%20propiedad%20en%renta');">
+                        href="https://api.whatsapp.com/send?phone=593987595789&text=Hola,%20estoy%20interesado%20en%20una%20propiedad%20en%renta"
+                        onclick="return gtag_report_conversion('https://api.whatsapp.com/send?phone=593987595789&text=Hola,%20estoy%20interesado%20en%20una%20propiedad%20en%renta');">
                         <img width="60px" src="{{ asset('img/icon-whatsapp.png') }}" alt="">
                     </a>
 

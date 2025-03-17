@@ -583,9 +583,9 @@
                             </div>
                             <div class="col-sm-4 d-flex gap-3">
                                 <div class="w-100 d-flex align-items-center" style="height: 35px">
-                                    <a href="tel:+593964034036" class="btn rounded-pill w-100 ps-4 pe-4 d-flex align-items-center" style="font-size: smaller; border: 0.5px #242B40 solid; height: 25px">Llamar</a>
+                                    <a href="tel:+593964037" class="btn rounded-pill w-100 ps-4 pe-4 d-flex align-items-center" style="font-size: smaller; border: 0.5px #242B40 solid; height: 25px">Llamar</a>
                                     <div style="margin-left: -23px; background-color: #242B40; width: 35px; height: 30px" class="rounded-circle d-flex align-items-center justify-content-center">
-                                        <a href="tel:+593964034036"><img width="15px" style="filter: invert(1);" src="{{ asset('img/phone-icon.png') }}" alt=""></a>
+                                        <a href="tel:+593964034037"><img width="15px" style="filter: invert(1);" src="{{ asset('img/phone-icon.png') }}" alt=""></a>
                                     </div>
                                 </div>
                                 <div class="w-100 d-flex align-items-center" style="height: 35px">
