@@ -214,7 +214,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link call-btn" href="tel:+593964034037">096-403-4037</a>
+                        <a class="nav-link call-btn" href="tel:+593967867998">096-786-7998</a>
                     </li>
                 </ul>
             </div>
@@ -262,13 +262,13 @@
                     <div>CONTACTOS</div>
                     <div>
                         <p class="m-0">
-                            <a href="tel:+593964034037" class="asindeco" style="color: #ffffff !important; text-decoration: none"><i class="fa-solid fa-phone text-white"></i> 
-                                096-403-4037
+                            <a href="tel:+593967867998" class="asindeco" style="color: #ffffff !important; text-decoration: none"><i class="fa-solid fa-phone text-white"></i> 
+                                096-786-7998
                             </a>
                         </p>
                         <p class="m-0">
-                            <a class="text-white" style="text-decoration: none" href="https://api.whatsapp.com/send?phone=593987595789&text=Hola,%20estoy%20interesado%20en%20una%20propiedad%20en%renta">
-                                <i class="fa-brands fa-whatsapp text-white"></i> 098-759-5789
+                            <a class="text-white" style="text-decoration: none" href="https://api.whatsapp.com/send?phone=593967867998&text=Hola,%20estoy%20interesado%20en%20una%20propiedad%20en%renta">
+                                <i class="fa-brands fa-whatsapp text-white"></i> 096-786-7998
                             </a>
                         </p>
                     </div>
@@ -278,8 +278,8 @@
                     <div>
                         <p class="text-dark-50">
                             <a target="_blank" style="color: #ffffff; text-decoration: none"
-                                href="https://maps.app.goo.gl/w1S3qxfWQ5LBob9a9"> 
-                                Juan Iñiguez 3-87 y Gonzalo Cordero
+                                href="https://maps.app.goo.gl/huibNDLSVUqYoQ2r8"> 
+                                Remigio Tamariz Crespo y Av. Fray Vicente Solano
                             </a>
                         </p>
                     </div>
@@ -294,8 +294,8 @@
                         <img width="60px" src="{{ asset('img/icon-instagram.png') }}" alt="">
                     </a>
                     <a target="_blank"
-                        href="https://api.whatsapp.com/send?phone=593987595789&text=Hola,%20estoy%20interesado%20en%20una%20propiedad%20en%renta"
-                        onclick="return gtag_report_conversion('https://api.whatsapp.com/send?phone=593987595789&text=Hola,%20estoy%20interesado%20en%20una%20propiedad%20en%renta');">
+                        href="https://api.whatsapp.com/send?phone=593967867998&text=Hola,%20estoy%20interesado%20en%20una%20propiedad%20en%renta"
+                        onclick="return gtag_report_conversion('https://api.whatsapp.com/send?phone=593967867998&text=Hola,%20estoy%20interesado%20en%20una%20propiedad%20en%renta');">
                         <img width="60px" src="{{ asset('img/icon-whatsapp.png') }}" alt="">
                     </a>
 
@@ -321,7 +321,7 @@
         </section>
     </footer>
 
-    <a href="https://api.whatsapp.com/send?phone=593987595789&text=Hola,%20estoy%20interesado%20en%20una%20propiedad%20en%renta" target=”_blank” class="whatsapp-btn">
+    <a href="https://api.whatsapp.com/send?phone=593967867998&text=Hola,%20estoy%20interesado%20en%20una%20propiedad%20en%renta" target=”_blank” class="whatsapp-btn">
         <i class="bi bi-whatsapp"></i>
     </a>
 

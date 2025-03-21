@@ -244,8 +244,8 @@
                                             style="border: 1px solid #242b40a2; width: 30px; height: 30px">
                                             <i class="fa-solid fa-phone"></i>
                                         </div>
-                                        <a style="text-decoration: none" href="tel:+593964034037"
-                                            class="mt-1 text-dark">096-403-4037</a>
+                                        <a style="text-decoration: none" href="tel:+593967867998"
+                                            class="mt-1 text-dark">096-786-7998</a>
                                     </div>
 
                                     <div class="d-flex gap-3 ms-4 mt-2">
@@ -255,8 +255,8 @@
                                         </div>
                                         <a style="text-decoration: none"
                                             onclick="return gtag_report_conversion('https://api.whatsapp.com/send?phone=593967867998&text=Hola%20*Housing%20Rent%20Group*,%20deseo%20consultar%20por%20esta%20propiedad:%20*{{ $listing->product_code }}*');"
-                                            href="https://api.whatsapp.com/send?phone=593987595789&text=Hola%20*Housing%20Rent%20Group*,%20deseo%20consultar%20por%20esta%20propiedad:%20*{{ $listing->product_code }}*"
-                                            class="mt-1 text-dark">098-759-5789</a>
+                                            href="https://api.whatsapp.com/send?phone=593967867998&text=Hola%20*Housing%20Rent%20Group*,%20deseo%20consultar%20por%20esta%20propiedad:%20*{{ $listing->product_code }}*"
+                                            class="mt-1 text-dark">096-786-7998</a>
                                     </div>
                                     <div class="d-flex gap-3 ms-4 mt-2">
                                         <div class="rounded-circle d-flex justify-content-center align-items-center"
