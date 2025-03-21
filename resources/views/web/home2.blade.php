@@ -1,30 +1,26 @@
 @extends('layouts.web')
 
-@section('title', 'Propiedades en Renta Cuenca - Housing Rent Group')
+@section('title', 'Inmobiliaria en Cuenca | Housing Rent Group')
 
 @section('home' , 'active')
 
 @section('meta-description',
-    'Explora propiedades únicas en Ecuador para alquilar y rentar. Encuentra desde casas y
-    departamentos hasta terrenos y diversos inmuebles - Housing Rent Group')
+    'Inmobiliaria en Cuenca con las mejores opciones de renta. Alquila fácil y rápido el hogar perfecto para ti. ¡Contáctanos hoy!')
 
 @section('meta-keywords',
-    'alquiler en Ecuador, propiedades Ecuador, alquiler en Cuenca, propiedades en Cuenca , renta
-    de propiedades Cuenca, renta de casas cuenca, casas de arriendo cuenca, casa de arriendo cuenca baratas')
+    'inmobiliaria en cuenca, inmobiliarias en cuenca, rentas en cuenca, donde puedo rentar en cuenca')
 
 @section('meta-robots', 'index, follow')
 
-@section('meta-author', 'Housing Rent Group - Ecuador')
+@section('meta-author', 'Housing Rent Group')
 
 
 
 @section('og-title',
-    'Propiedades en Ecuador: venta y alquiler de casas, departamentos y otros bienes raíces - Housing
-    Rent Group')
+    'Inmobiliaria en Cuenca | Housing Rent Group')
 
 @section('og-description',
-    'Explora propiedades únicas en Ecuador para alquilar y rentar. Encuentra desde casas y
-    departamentos hasta terrenos y diversos inmuebles - Housing Rent Group')
+    'Inmobiliaria en Cuenca con las mejores opciones de renta. Alquila fácil y rápido el hogar perfecto para ti. ¡Contáctanos hoy!')
 
 @section('og-image', asset('img/departamentos.jpg'))
 
@@ -32,7 +28,7 @@
 
 @section('og-type', 'website')
 
-@section('og-site-name', 'Housing Rent Group - Ecuador')
+@section('og-site-name', 'Housing Rent Group')
 
 
 
@@ -41,7 +37,7 @@
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    <link rel="stylesheet" href="{{ asset('css/home-style.css?v=3') }}">
+    <link rel="stylesheet" href="{{ asset('css/home-style.css?v=4') }}">
     <link rel="stylesheet" href="{{ asset('css/font-style.css') }}">
 @endsection
 
@@ -50,11 +46,11 @@
     <section class="banner">
         <section style="height: 650px;" class="d-flex align-items-center justify-content-center">
             <div class="text-center" style="z-index: 1">
-                <h1 class="mt-3 mb-3 text-white title"
+                <p class="mt-3 mb-3 text-white title"
                     style="font-size: 60px; line-height: 80px; font-family: 'Sharp Grotesk'">
                     <span style="font-weight: 100 !important">Catálogo de propiedades</span><br>
                     <span style="font-weight: 500 !important">exclusivas desde $400</span>
-                </h1>
+                </p>
                 <div class="d-flex justify-content-center mb-3">
                     <button class="btn btn-light rounded-0 px-5 btn-lg"
                         style="border-radius: 15px 0px 0px 15px !important; font-weight: 300; font-family: 'Sharp Grotesk'">Alquilar</button>
@@ -92,63 +88,70 @@
         </section>
     </section>
 
-    <section class="container my-5">
-        <h2 class="text-center" style="font-family: 'Sharp Grotesk'; font-weight: 300">Explora nuestras propiedades</h2>
-        <section class="row mt-5 justify-content-center">
-            <article class="col-sm-3 w-auto mb-3">
-                <a href="/departamentos-en-renta" style="text-decoration: none">
-                    <div class="card">
-                        <div class="rounded-top bgimages"
-                            style="width: 250px; height: 300px; background-position: center; background-repeat: no-repeat; background-size: cover;}}')"
-                            data-src="{{ asset('img/departamentos.webp') }}"></div>
-                        <div class="d-flex align-items-center justify-content-center pt-2 footer-card">
-                            <p style="font-family: 'Sharp Grotesk'">Departamentos</p>
+    <div class="container my-5">
+        <h1 class="title text-center mb-4" style="color: #242B40">Inmobiliaria en Cuenca</h1>
+        <p style="text-align: justify"><strong>Housing Rent Group</strong> es tu aliado estratégico en el mercado inmobiliario cuencano. Como una de las principales inmobiliarias en Cuenca, contamos con un extenso catálogo de propiedades que se adaptan a tus necesidades: casas, departamentos, locales comerciales, entre otros. Nuestra experiencia y conocimiento del mercado local nos permiten ofrecerte las mejores opciones de vivienda en Cuenca.</p>
+    </div>
+
+    <div class="py-4" style="background-color: #242B40">
+        <section class="container my-5">
+            <h2 class="text-center text-white" style="font-family: 'Sharp Grotesk'; font-weight: 200">Explora nuestras <span style="font-weight: 500">propiedades</span></h2>
+            <section class="row mt-5 justify-content-center">
+                <article class="col-sm-3 w-auto mb-3 properties-cards">
+                    <a href="/departamentos-en-renta" style="text-decoration: none">
+                        <div class="card">
+                            <div class="rounded-top bgimages"
+                                style="width: 250px; height: 300px; background-position: center; background-repeat: no-repeat; background-size: cover;}}')"
+                                data-src="{{ asset('img/departamentos.webp') }}"></div>
+                            <div class="d-flex align-items-center justify-content-center pt-2 footer-card">
+                                <p style="font-family: 'Sharp Grotesk'">Departamentos</p>
+                            </div>
                         </div>
-                    </div>
-                </a>
-            </article>
-            <article class="col-sm-3 w-auto mb-3">
-                <a href="/casas-en-renta" style="text-decoration: none">
-                    <div class="card">
-                        <div class="rounded-top bgimages"
-                            style="width: 250px; height: 300px; background-position: center; background-repeat: no-repeat; background-size: cover;"
-                            data-src="{{ asset('img/casas.webp') }}"></div>
-                        <div class="d-flex align-items-center justify-content-center pt-2 footer-card">
-                            <p style="font-family: 'Sharp Grotesk'">Casas</p>
+                    </a>
+                </article>
+                <article class="col-sm-3 w-auto mb-3 properties-cards">
+                    <a href="/casas-en-renta" style="text-decoration: none">
+                        <div class="card">
+                            <div class="rounded-top bgimages"
+                                style="width: 250px; height: 300px; background-position: center; background-repeat: no-repeat; background-size: cover;"
+                                data-src="{{ asset('img/casas.webp') }}"></div>
+                            <div class="d-flex align-items-center justify-content-center pt-2 footer-card">
+                                <p style="font-family: 'Sharp Grotesk'">Casas</p>
+                            </div>
                         </div>
-                    </div>
-                </a>
-            </article>
-            <article class="col-sm-3 w-auto mb-3">
-                <a href="/locales-comerciales-en-renta" style="text-decoration: none">
-                    <div class="card">
-                        <div class="rounded-top bgimages"
-                            style="width: 250px; height: 300px; background-position: left center; background-repeat: no-repeat; background-size: cover;"
-                            data-src="{{ asset('img/locales-comerciales.webp') }}"></div>
-                        <div class="d-flex align-items-center justify-content-center pt-2 footer-card">
-                            <p style="font-family: 'Sharp Grotesk'">Locales Comerciales</p>
+                    </a>
+                </article>
+                <article class="col-sm-3 w-auto mb-3 properties-cards">
+                    <a href="/locales-comerciales-en-renta" style="text-decoration: none">
+                        <div class="card">
+                            <div class="rounded-top bgimages"
+                                style="width: 250px; height: 300px; background-position: left center; background-repeat: no-repeat; background-size: cover;"
+                                data-src="{{ asset('img/locales-comerciales.webp') }}"></div>
+                            <div class="d-flex align-items-center justify-content-center pt-2 footer-card">
+                                <p style="font-family: 'Sharp Grotesk'">Locales Comerciales</p>
+                            </div>
                         </div>
-                    </div>
-                </a>
-            </article>
-            <article class="col-sm-3 w-auto mb-3">
-                <a href="/oficinas-en-renta" style="text-decoration: none">
-                    <div class="card">
-                        <div class="rounded-top bgimages"
-                            style="width: 250px; height: 300px; background-position: center; background-repeat: no-repeat; background-size: cover;"
-                            data-src="{{ asset('img/oficinas.webp') }}"></div>
-                        <div class="d-flex align-items-center justify-content-center pt-2 footer-card">
-                            <p style="font-family: 'Sharp Grotesk'">Oficinas</p>
+                    </a>
+                </article>
+                <article class="col-sm-3 w-auto mb-3 properties-cards">
+                    <a href="/oficinas-en-renta" style="text-decoration: none">
+                        <div class="card">
+                            <div class="rounded-top bgimages"
+                                style="width: 250px; height: 300px; background-position: center; background-repeat: no-repeat; background-size: cover;"
+                                data-src="{{ asset('img/oficinas.webp') }}"></div>
+                            <div class="d-flex align-items-center justify-content-center pt-2 footer-card">
+                                <p style="font-family: 'Sharp Grotesk'">Oficinas</p>
+                            </div>
                         </div>
-                    </div>
-                </a>
-            </article>
+                    </a>
+                </article>
+            </section>
+            <section class="row justify-content-center mt-4">
+                <a class="btn btn-outline-light rounded-pill w-auto" href="/propiedades-en-renta">Ver todas laspropiedades</a>
+            </section>
         </section>
-        <section class="row justify-content-center mt-4">
-            <a class="btn text-white rounded-pill w-auto" href="/propiedades-en-renta" style="background-color: #242B40" href="">Ver todas las
-                propiedades</a>
-        </section>
-    </section>
+    </div>
+
 
     <section class="mt-5 pt-5 pb-5">
         <section class="container">
