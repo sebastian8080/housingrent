@@ -27,6 +27,9 @@
     <link href="{{ asset('css/font-style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
+    {{-- Iconos de bootstrap --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
     <style>
         body,
         html {
@@ -68,6 +71,62 @@
         .navbar-light .navbar-nav .dropdown-item:focus {
             background-color: #1d2233;
             color: #ffffff;
+        }
+        .call-btn{
+            background-color: #242b40;
+            color: #ffffff !important;
+            border-radius: 15px;
+            font-weight: 700;
+        }
+        /*Estilos generales del boton whatsapp*/
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #25D366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            animation: breathe 2s ease-in-out infinite;
+        }
+
+        /*Estilos solo al icono whatsapp*/
+        .whatsapp-btn i {
+            color: #fff;
+            font-size: 24px;
+            animation: beat 2s ease-in-out infinite;
+            text-decoration: none;
+        }
+
+        /*Estilos con animation contorno respirando*/
+        @keyframes breathe {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+            }
+        }
+
+        /*Estilos de animacion del icono latiendo*/
+        @keyframes beat {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
         }
     </style>
     <script defer src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.site_key') }}"></script>
@@ -140,18 +199,21 @@
                         <a class="nav-link @yield('published')" href="{{ route('show.upload.page') }}">Publicar
                             Propiedades</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item d-flex align-items-center">
                         <a class="nav-link @yield('contact')" href="{{ route('web.contact') }}">Contáctenos</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="dropdown-toggle btn btn-primary" href="#" id="navbarDropdownMenuLink"
+                    <li class="nav-item dropdown d-flex align-items-center">
+                        <a class="dropdown-toggle btn" href="#" id="navbarDropdownMenuLink"
                             role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Ingresar
+                            <i class="fa-solid fa-circle-user"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" href="{{ route('login') }}">Iniciar Sesión</a></li>
                             <li><a class="dropdown-item" href="{{ route('register') }}">Registrarse</a></li>
                         </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link call-btn" href="tel:+593964034037">096-403-4037</a>
                     </li>
                 </ul>
             </div>
@@ -257,6 +319,10 @@
             </div>
         </section>
     </footer>
+
+    <a href="https://api.whatsapp.com/send?phone=593987595789&text=Hola,%20estoy%20interesado%20en%20una%20propiedad%20en%renta" target=”_blank” class="whatsapp-btn">
+        <i class="bi bi-whatsapp"></i>
+    </a>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
