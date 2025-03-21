@@ -30,6 +30,7 @@
     {{-- Iconos de bootstrap --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
+    <link rel="canonical" href="{{ Request::url() }}">
     <style>
         body,
         html {
