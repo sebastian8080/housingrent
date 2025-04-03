@@ -542,9 +542,9 @@
                                                             </div>
                                                         </div>
                                                         <div class="w-100 d-flex align-items-center" style="height: 35px">
-                                                            <a href="https://wa.me/+593967867998?text=Hola%2C%20Housing%20Rent%20estoy%20interesado%20en%20alquilar%20esta%20propiedad:%20{{ $propertie->product_code}}" class="btn rounded-pill w-100 ps-4 pe-4 d-flex align-items-center" style="font-size: smaller; border: 0.5px green solid; height: 25px; color: green">WhatsApp</a>
+                                                            <a href="https://wa.me/+593987595789?text=Hola%2C%20Housing%20Rent%20estoy%20interesado%20en%20alquilar%20esta%20propiedad:%20{{ $propertie->product_code}}" class="btn rounded-pill w-100 ps-4 pe-4 d-flex align-items-center" style="font-size: smaller; border: 0.5px green solid; height: 25px; color: green">WhatsApp</a>
                                                             <div style="margin-left: -23px; padding-top: 2px; background-color: green; width: 35px; height: 30px" class="rounded-circle d-flex justify-content-center">
-                                                                <a href="https://wa.me/+593967867998?text=Hola%2C%20Housing%20Rent%20estoy%20interesado%20en%20alquilar%20esta%20propiedad:%20{{ $propertie->product_code}}"><img width="20px" style="filter: invert(1)" src="{{ asset('img/whatsapp-icon.png') }}" alt=""></a>
+                                                                <a href="https://wa.me/+593987595789?text=Hola%2C%20Housing%20Rent%20estoy%20interesado%20en%20alquilar%20esta%20propiedad:%20{{ $propertie->product_code}}"><img width="20px" style="filter: invert(1)" src="{{ asset('img/whatsapp-icon.png') }}" alt=""></a>
                                                             </div>
                                                             {{-- <button class="btn rounded-pill text-white w-100" style="background-color: #242B40; font-size: smaller" onclick="setInformationModal('{{$imgpri[0]}}', '{{$propertie->listing_title}}', '{{$propertie->product_code}}')" data-bs-toggle="modal" data-bs-target="#exampleModal">CONTACTAR</button> --}}
                                                         </div>
